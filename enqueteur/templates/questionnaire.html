@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<meta charset="UTF-8">
+{% load static %}
+<head>
+<title>Upgoods Verification</title>
+<style>
+@import url('https://fonts.googleapis.com/css?family=Poppins:200i,400&display=swap');
+
+:root {
+  --color-white: #f3f3f3;
+  --color-darkblue: #1b1b32;
+  --color-darkblue-alpha: rgba(27, 27, 50, 0.8);
+  --color-green: #37af65;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.4;
+  color: var(--color-white);
+  margin: 0;
+}
+
+/* mobile friendly alternative to using background-attachment: fixed */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+  background: var(--color-darkblue);
+  background-image: linear-gradient(
+      115deg,
+      rgba(58, 58, 158, 0.8),
+      rgba(136, 136, 206, 0.7)
+    ),
+    url(https://cdn.pixabay.com/photo/2016/03/22/15/29/blue-1273089_960_720.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+h1 {
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+p {
+  font-size: 1.125rem;
+}
+
+h1,
+p {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+label {
+  display: flex;
+  align-items: center;
+  font-size: 1.125rem;
+  margin-bottom: 0.5rem;
+}
+
+input,
+button,
+select,
+textarea {
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+button {
+  border: none;
+}
+
+.container {
+  width: 100%;
+  margin: 3.125rem auto 0 auto;
+}
+
+@media (min-width: 576px) {
+  .container {
+    max-width: 540px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 720px;
+  }
+}
+
+.header {
+  padding: 0 0.625rem;
+  margin-bottom: 1.875rem;
+}
+
+.description {
+  font-style: italic;
+  font-weight: 200;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
+}
+
+.clue {
+  margin-left: 0.25rem;
+  font-size: 0.9rem;
+  color: #e4e4e4;
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* form */
+
+form {
+  background: var(--color-darkblue-alpha);
+  padding: 2.5rem 0.625rem;
+  border-radius: 0.25rem;
+}
+
+@media (min-width: 480px) {
+  form {
+    padding: 2.5rem;
+  }
+}
+
+.form-group {
+  margin: 0 auto 1.25rem auto;
+  padding: 0.25rem;
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  height: 2.375rem;
+  padding: 0.375rem 0.75rem;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.form-control:focus {
+  border-color: #80bdff;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.input-radio,
+.input-checkbox {
+  display: inline-block;
+  margin-right: 0.625rem;
+  min-height: 1.25rem;
+  min-width: 1.25rem;
+}
+
+.input-textarea {
+  min-height: 120px;
+  width: 100%;
+  padding: 0.625rem;
+  resize: vertical;
+}
+
+.submit-button {
+  display: block;
+  width: 100%;
+  padding: 0.75rem;
+  background: var(--color-green);
+  color: inherit;
+  border-radius: 2px;
+  cursor: pointer;
+}
+</style>
+</head>
+<body translate="no">
+<div class="container">
+<header class="header">
+<h1 id="title" class="text-center">Bienvenue sur Upgoods</h1>
+<p id="description" class="description text-center">
+veuillez compléter le questionnaire ci dessous pour terminer la création de votre compte  </p>
+</header>
+<form id="survey-form"  action="" method="POST" enctype='multipart/form-data'>
+                      {% csrf_token %}
+
+    <div class="form-group">
+            <label id="name-label" >Nom*</label>
+            <input type="text" name="nom" class="form-control" placeholder="Entrer votre nom complet" required />
+    </div>
+         <div class="form-group">
+            <label id="photo-label" >Photo de profil*</label>
+            <input type="file" name="profile_pic" class="form-control"  />
+    </div>
+
+        <div class="form-group">
+    <label id="number-label" >Date de naissance*<span class="clue"></span></label>
+    <input type="date" name="birth_day"  class="form-control" />
+    </div>
+
+     <div class="form-group">
+    <p>Sexe </p>
+        <label>
+        <input name="genre" value="Femme" type="radio" class="input-radio" checked />Femme</label>
+        <label>
+        <input name="genre" value="Homme" type="radio" class="input-radio" />Homme</label>
+    </div>
+
+    <div class="form-group">
+    <label  >Votre numero de telephone*<span class="clue"></span></label>
+    <input type="number" name="telephone"  class="form-control" placeholder="Votre numéro de telephone" required/>
+    </div>
+
+        <div class="form-group">
+    <label  >Adresse postale*</label>
+	    <input type="text" name="adresse" class="form-control" placeholder="Entrer votre adresse" required />
+
+    </div>
+        <div class="form-group">
+	        <div><button class="submit-button"  onclick="getLocation()">Cliquez ici </button></div>
+        </div>
+
+    <div class="form-group">
+    <label  >longitute*</label>
+    <input id="long" type="text" name="longitude" placeholder="longitude..." class="form-control"  readonly  />
+    </div>
+    <div class="form-group">
+    <label  >latitude*</label>
+    <input  id="lat" type="text" name="latitude" placeholder="latitude..."  class="form-control" readonly  />
+    </div>
+						<div><p id="latlong"></p></div>
+     <div class="form-group">
+            <label >Pour quelle société avez vous réalisé des visites mystères ?</label>
+            <input type="text" name="societe" id="societe" class="form-control" placeholder="Entrer le nom de la societe par ici" required />
+            </div>
+    <div class="form-group">
+    <p>Possedez-vous un ordinateur personnel ?* </p>
+        <label>
+        <input name="ordinateur" value="1" type="radio" class="input-radio" checked />Oui</label>
+        <label>
+        <input name="ordinateur" value="2" type="radio" class="input-radio" />Non</label>
+    </div>
+
+    <div class="form-group">
+        <p>Disposez-vous d'un vehicule ? *</p>
+        <label>
+        <input name="vehicule" value="1" type="radio" class="input-radio" checked />Oui</label>
+        <label>
+        <input name="vehicule" value="2" type="radio" class="input-radio" />Non</label>
+    </div>
+
+    <div class="form-group">
+        <p>Avez-vous actuellement des missions de visites mystères pour une ou plusieurs autres entreprises d’audit satisfaction ? *</p>
+        <label>
+        <input name="userexpen" value="1" type="radio" class="input-radio" checked />Oui</label>
+        <label> <input name="userexpen" value="2" type="radio" class="input-radio" />Non</label>
+    </div>
+
+    <div class="form-group">
+    <p>Avez-vous déjà réalisé des enquêtes mystères ? *</p>
+    <label>
+    <input name="userexp" value="1" type="radio" class="input-radio" checked />Oui</label>
+    <label>
+    <input name="userexp" value="2" type="radio" class="input-radio" />Non</label>
+    </div>
+
+    <div class="form-group">
+        <p>Si oui, combien en avez-vous réalisé lors des 12 derniers mois ? *</p>
+        <label>
+        <input name="expmois" value="1" type="radio" class="input-radio" checked />Entre 0 et 3</label>
+                <label><input name="expmois" value="2" type="radio" class="input-radio" />Entre 3 et 6</label>
+        <label>
+        <input name="expmois" value="3" type="radio" class="input-radio" />Plus de 6</label>
+    </div>
+
+
+    <div class="form-group">
+            <p>Portez-vous des lunettes ? *</p>
+            <label>
+            <input name="lunettes" value="1" type="radio" class="input-radio"  />Oui</label>
+            <label>
+            <input name="lunettes" value="2" type="radio" class="input-radio" />Non</label>
+    </div>
+
+     <div class="form-group">
+    <p>Etes vous proprietaire ou locataire de votre logement ? </p>
+    <label>
+    <input name="logement" value="1" type="radio" class="input-radio"  />Proprietaire</label>
+    <label>
+    <input name="logement" value="2" type="radio" class="input-radio" />Locataire</label>
+    </div>
+   <div class="form-group">
+    <p>Dans quel type d’habitation vivez-vous ?</p>
+    <label>
+    <input name="habitation" value="1" type="radio" class="input-radio"  />Maison</label>
+    <label>
+    <input name="habitation" value="2" type="radio" class="input-radio" />Appartement</label>
+           <label>
+    <input name="habitation" value="3" type="radio" class="input-radio" />Villa</label>
+        <label>
+    <input name="habitation" value="4" type="radio" class="input-radio" />Lotissement</label>
+         <label>
+        <input name="habitation" value="5" type="radio" class="input-radio" />Autre</label>
+    </div>
+
+
+  <div class="form-group">
+    <label  >Indiquez quelles sont les langues étrangères que vous parlez ou pratiquez *</label>
+	    <input type="text" name="langues" class="form-control" placeholder="Exemple: Espagnol,Allemand,Anglais,Arabe.." required />
+
+    </div>
+
+    <div class="form-group">
+        <p>Décrivez en donnant le maximum de détails le meilleur service dont vous avez été témoin *</p>
+        <textarea class="input-textarea" name="meilleur" placeholder="Entrer votre réponse ici..."></textarea>
+    </div>
+
+    <div class="form-group">
+        <p>    Décrivez en donnant le maximum de détails le pire service dont vous avez été témoin</p>
+        <textarea  class="input-textarea" name="pire" placeholder="Entrer votre réponse ici..."></textarea>
+    </div>
+
+    <div class="form-group">
+        <p>Combien de fois par mois en moyenne allez-vous au restaurant ? *</p>
+        <label>
+        <input name="restaurant" value="1" type="radio" class="input-radio" checked />Entre 0 et 3</label>
+                <label><input name="restaurant" value="2" type="radio" class="input-radio" />Entre 3 et 6</label>
+        <label>
+        <input name="restaurant" value="3" type="radio" class="input-radio" />Plus de 6</label>
+    </div>
+
+     <div class="form-group">
+        <label >Indiquez votre situation professionnelle *</label>
+        <input type="text"  name="situation" class="form-control" placeholder="Entrer votre situation professionnelle" required />
+    </div>
+
+
+    <div class="form-group">
+    <p>A quelle heure peut-on vous joindre plus facilement ? *</p>
+    <label>
+    <input name="joindre" value="1" type="radio" class="input-radio" checked />8h00 - 12h00</label>
+            <label><input name="joindre" value="2" type="radio" class="input-radio" />12h00 - 14h00</label>
+    <label>
+    <input name="joindre" value="3" type="radio" class="input-radio" />14h00 - 17h00</label>
+    </div>
+
+    <div class="form-group">
+        <p>Combien d'enfants avez-vous ?</p>
+        <label>
+        <input name="enfants" value="1" type="radio" class="input-radio" checked />Entre 0 et 3</label>
+                <label><input name="enfants" value="2" type="radio" class="input-radio" />Entre 3 et 6</label>
+        <label>
+        <input name="enfants" value="3" type="radio" class="input-radio" />Plus de 6</label>
+    </div>
+
+
+
+<div class="form-group">
+<button type="submit" id="submit" class="submit-button">
+Submit
+</button>
+</div>
+</form>
+</div>
+	<script>
+var x = document.getElementById("latlong");
+
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else {
+    x.innerHTML = "Geolocation is not supported by this browser.";
+  }
+}
+
+function showPosition(position) {
+  document.getElementById("lat").value = position.coords.latitude
+    document.getElementById("long").value = position.coords.longitude
+}
+</script>
+
+</body>
+</html>

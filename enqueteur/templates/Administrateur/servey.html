@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Survey JS - Survey Creator Example</title>
+        <meta name="viewport" content="width=device-width"/>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.0/knockout-min.js"></script>
+        <script src="https://surveyjs.azureedge.net/1.7.28/survey.ko.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.10/ace.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.10/ext-language_tools.js" type="text/javascript" charset="utf-8"></script>
+        <link href="https://surveyjs.azureedge.net/1.7.28/survey-creator.css" type="text/css" rel="stylesheet"/>
+        <script src="https://surveyjs.azureedge.net/1.7.28/survey-creator.js"></script>
+        <link rel="stylesheet" href="https://unpkg.com/bootstrap@3.3.7/dist/css/bootstrap.min.css">
+  </head>
+    <body>
+        <div id="surveyContainer">
+            <div id="creatorElement"></div>
+        </div>
+        <script type="text/javascript" src="script.js"></script>
+    </body>
+<script>
+    var options = {
+    showLogicTab: true
+};
+//create the SurveyJS Creator and render it in div with id equals to "creatorElement"
+var creator = new SurveyCreator.SurveyCreator("creatorElement", options);
+//Show toolbox in the right container. It is shown on the left by default
+creator.showToolbox = "right";
+//Show property grid in the right container, combined with toolbox
+creator.showPropertyGrid = "right";
+//Make toolbox active by default
+creator.rightContainerActiveItem("toolbox");
+</script>
+</html>
