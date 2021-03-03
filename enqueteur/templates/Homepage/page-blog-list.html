@@ -54,7 +54,7 @@
                 </div>
                 									{% url 'login' as login %}
                 <div class="buy-button">
-                    <a href="{{login}}" target="_blank" class="btn btn-primary">Se connecter</a>
+                    <a href="{{login}}"  class="btn btn-primary">Se connecter</a>
                 </div><!--end login button-->
                 <!-- End Logo container-->
                 <div class="menu-extras">
@@ -76,12 +76,12 @@
                   <ul class="navigation-menu">
                         {% url 'index' as index %}
 
-                        <li><a href=" {{index}} ">Acceuil</a></li>
+                        <li><a href=" {{index}} ">Accueil</a></li>
                         {% url 'service' as service %}
                         <li><a href=" {{service}} ">Nos Services</a></li>
                         {% url 'guide' as guide %}
 
-                        <li><a href=" {{guide}} ">Devenir client mystère</a></li>
+                        <li><a href=" {{guide}} ">FOIRE AUX QUESTIONS</a></li>
                                                                                                             {% url 'actualite' as actualite %}
 
                         <li><a href=" {{actualite}} ">Actualités</a></li>
@@ -95,7 +95,7 @@
                     <div class="buy-menu-btn d-none">
                                                                                {% url 'login' as login %}
 
-                        <a href="{{login}}" target="_blank" class="btn btn-primary">Se connecter</a>
+                        <a href="{{login}}"  class="btn btn-primary">Se connecter</a>
                     </div><!--end login button-->
                 </div><!--end navigation-->
             </div><!--end container-->
@@ -109,7 +109,7 @@
                 <div class="row justify-content-center">
                     <div class="col-lg-12 text-center">
                         <div class="page-next-level">
-                            <h4 class="title"> Blog Listing </h4>
+                            <h4 class="title"> Bienvenue sur notre blog </h4>
                             <div class="page-next">
                                 <nav aria-label="breadcrumb" class="d-inline-block">
                                     <ul class="breadcrumb bg-white rounded shadow mb-0">
@@ -136,225 +136,47 @@
         <section class="section">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-6 col-12 mb-4 pb-2">
-                        <div class="card blog rounded border-0 shadow overflow-hidden">
-                            <div class="row align-items-center no-gutters">
-                                <div class="col-md-6">
-                                    <img src=" {% static 'images/work/14.jpg' %} " class="img-fluid" alt="">
-                                    <div class="overlay bg-dark"></div>
-                                    <div class="author">
-                                        <small class="text-light user d-block"><i class="mdi mdi-account"></i> Calvin Carlo</small>
-                                        <small class="text-light date"><i class="mdi mdi-calendar-check"></i> 13th August, 2019</small>
-                                    </div>
-                                </div><!--end col-->
-
-                                <div class="col-md-6">
-                                    <div class="card-body content">
-                                        <h5><a href=" {{actualite_detail}} " class="card-title title text-dark">Design your apps in your own way</a></h5>
-                                        <p class="text-muted mb-0">Due to its widespread use as filler text for layouts, non-readability</p>
-                                        <div class="post-meta d-flex justify-content-between mt-3">
-                                            <ul class="list-unstyled mb-0">
-                                                <li class="list-inline-item mr-2 mb-0"><a href=" {% static 'javascript:void(0)' %} " class="text-muted like"><i class="mdi mdi-heart-outline mr-1"></i>33</a></li>
-                                                <li class="list-inline-item"><a href=" {% static 'javascript:void(0)' %} " class="text-muted comments"><i class="mdi mdi-comment-outline mr-1"></i>08</a></li>
-                                            </ul>
-                                                                {% url 'article_detail' as actualite_detail %}
-
-                                            <a href=" {{actualite_detail}} " class="text-muted readmore">Read More <i class="mdi mdi-chevron-right"></i></a>
-                                        </div>
-                                    </div>
-                                </div><!--end col-->
-                            </div> <!--end row-->
-                        </div><!--end blog post-->
-                    </div><!--end col-->
+                                                                          {% for post in post %}
 
                     <div class="col-lg-6 col-12 mb-4 pb-2">
+
                         <div class="card blog rounded border-0 shadow overflow-hidden">
                             <div class="row align-items-center no-gutters">
-                                <div class="col-md-6 order-2 order-md-1">
-                                    <div class="card-body content">
-                                        <h5><a href=" {{actualite_detail}} " class="card-title title text-dark">Design your apps in your own way</a></h5>
-                                        <p class="text-muted mb-0">Due to its widespread use as filler text for layouts, non-readability</p>
-                                        <div class="post-meta d-flex justify-content-between mt-3">
-                                            <ul class="list-unstyled mb-0">
-                                                <li class="list-inline-item mr-2 mb-0"><a href=" {% static 'javascript:void(0)' %} " class="text-muted like"><i class="mdi mdi-heart-outline mr-1"></i>33</a></li>
-                                                <li class="list-inline-item"><a href=" {% static 'javascript:void(0)' %} " class="text-muted comments"><i class="mdi mdi-comment-outline mr-1"></i>08</a></li>
-                                            </ul>
-                                                   {% url 'article_detail' as actualite_detail %}
 
-                                            <a href=" {{actualite_detail}} " class="text-muted readmore">Read More <i class="mdi mdi-chevron-right"></i></a>                                        </div>
-                                    </div>
-                                </div><!--end col-->
-                                
-                                <div class="col-md-6 order-1 order-md-2">
-                                    <img src=" {% static 'images/work/15.jpg' %} " class="img-fluid" alt="">
-                                    <div class="overlay bg-dark"></div>
-                                    <div class="author">
-                                        <small class="text-light user d-block"><i class="mdi mdi-account"></i> Calvin Carlo</small>
-                                        <small class="text-light date"><i class="mdi mdi-calendar-check"></i> 13th August, 2019</small>
-                                    </div>
-                                </div><!--end col-->
-                            </div> <!--end row-->
-                        </div><!--end blog post-->
-                    </div><!--end col-->
-
-                    <div class="col-lg-6 col-12 mb-4 pb-2">
-                        <div class="card blog rounded border-0 shadow overflow-hidden">
-                            <div class="row align-items-center no-gutters">
-                                <div class="col-md-6">
-                                    <img src=" {% static 'images/work/16.jpg' %} " class="img-fluid" alt="">
-                                    <div class="overlay bg-dark"></div>
-                                    <div class="author">
-                                        <small class="text-light user d-block"><i class="mdi mdi-account"></i> Calvin Carlo</small>
-                                        <small class="text-light date"><i class="mdi mdi-calendar-check"></i> 13th August, 2019</small>
-                                    </div>
-                                </div><!--end col-->
-
-                                <div class="col-md-6">
-                                    <div class="card-body content">
-                                        <h5><a href=" {{actualite_detail}} " class="card-title title text-dark">Design your apps in your own way</a></h5>
-                                        <p class="text-muted mb-0">Due to its widespread use as filler text for layouts, non-readability</p>
-                                        <div class="post-meta d-flex justify-content-between mt-3">
-                                            <ul class="list-unstyled mb-0">
-                                                <li class="list-inline-item mr-2 mb-0"><a href=" {% static 'javascript:void(0)' %} " class="text-muted like"><i class="mdi mdi-heart-outline mr-1"></i>33</a></li>
-                                                <li class="list-inline-item"><a href=" {% static 'javascript:void(0)' %} " class="text-muted comments"><i class="mdi mdi-comment-outline mr-1"></i>08</a></li>
-                                            </ul>
-                                                   {% url 'article_detail' as actualite_detail %}
-
-                                            <a href=" {{actualite_detail}} " class="text-muted readmore">Read More <i class="mdi mdi-chevron-right"></i></a>                                        </div>
-                                    </div>
-                                </div><!--end col-->
-                            </div> <!--end row-->
-                        </div><!--end blog post-->
-                    </div><!--end col-->
-
-                    <div class="col-lg-6 col-12 mb-4 pb-2">
-                        <div class="card blog rounded border-0 shadow overflow-hidden">
-                            <div class="row align-items-center no-gutters">
-                                <div class="col-md-6 order-2 order-md-1">
-                                    <div class="card-body content">
-                                        <h5><a href=" {{actualite_detail}} " class="card-title title text-dark">Design your apps in your own way</a></h5>
-                                        <p class="text-muted mb-0">Due to its widespread use as filler text for layouts, non-readability</p>
-                                        <div class="post-meta d-flex justify-content-between mt-3">
-                                            <ul class="list-unstyled mb-0">
-                                                <li class="list-inline-item mr-2 mb-0"><a href=" {% static 'javascript:void(0)' %} " class="text-muted like"><i class="mdi mdi-heart-outline mr-1"></i>33</a></li>
-                                                <li class="list-inline-item"><a href=" {% static 'javascript:void(0)' %} " class="text-muted comments"><i class="mdi mdi-comment-outline mr-1"></i>08</a></li>
-                                            </ul>
-                                                   {% url 'article_detail' as actualite_detail %}
-
-                                            <a href=" {{actualite_detail}} " class="text-muted readmore">Read More <i class="mdi mdi-chevron-right"></i></a>                                        </div>
-                                    </div>
-                                </div><!--end col-->
-                                
-                                <div class="col-md-6  order-1 order-md-2">
-                                    <img src=" {% static 'images/work/17.jpg' %} " class="img-fluid" alt="">
-                                    <div class="overlay bg-dark"></div>
-                                    <div class="author">
-                                        <small class="text-light user d-block"><i class="mdi mdi-account"></i> Calvin Carlo</small>
-                                        <small class="text-light date"><i class="mdi mdi-calendar-check"></i> 13th August, 2019</small>
-                                    </div>
-                                </div><!--end col-->
-                            </div> <!--end row-->
-                        </div><!--end blog post-->
-                    </div><!--end col-->
-
-                    <div class="col-lg-6 col-12 mb-4 pb-2">
-                        <div class="card blog rounded border-0 shadow overflow-hidden">
-                            <div class="row align-items-center no-gutters">
-                                <div class="col-md-6">
-                                    <img src=" {% static 'images/work/18.jpg' %} " class="img-fluid" alt="">
-                                    <div class="overlay bg-dark"></div>
-                                    <div class="author">
-                                        <small class="text-light user d-block"><i class="mdi mdi-account"></i> Calvin Carlo</small>
-                                        <small class="text-light date"><i class="mdi mdi-calendar-check"></i> 13th August, 2019</small>
-                                    </div>
-                                </div><!--end col-->
-
-                                <div class="col-md-6">
-                                    <div class="card-body content">
-                                        <h5><a href=" {{actualite_detail}} " class="card-title title text-dark">Design your apps in your own way</a></h5>
-                                        <p class="text-muted mb-0">Due to its widespread use as filler text for layouts, non-readability</p>
-                                        <div class="post-meta d-flex justify-content-between mt-3">
-                                            <ul class="list-unstyled mb-0">
-                                                <li class="list-inline-item mr-2 mb-0"><a href=" {% static 'javascript:void(0)' %} " class="text-muted like"><i class="mdi mdi-heart-outline mr-1"></i>33</a></li>
-                                                <li class="list-inline-item"><a href=" {% static 'javascript:void(0)' %} " class="text-muted comments"><i class="mdi mdi-comment-outline mr-1"></i>08</a></li>
-                                            </ul>
-                                                   {% url 'article_detail' as actualite_detail %}
-
-                                            <a href=" {{actualite_detail}} " class="text-muted readmore">Read More <i class="mdi mdi-chevron-right"></i></a>                                        </div>
-                                    </div>
-                                </div><!--end col-->
-                            </div> <!--end row-->
-                        </div><!--end blog post-->
-                    </div><!--end col-->
-
-                    <div class="col-lg-6 col-12 mb-4 pb-2">
-                        <div class="card blog rounded border-0 shadow overflow-hidden">
-                            <div class="row align-items-center no-gutters">
-                                <div class="col-md-6 order-2 order-md-1">
-                                    <div class="card-body content">
-                                        <h5><a href=" {{actualite_detail}} " class="card-title title text-dark">Design your apps in your own way</a></h5>
-                                        <p class="text-muted mb-0">Due to its widespread use as filler text for layouts, non-readability</p>
-                                        <div class="post-meta d-flex justify-content-between mt-3">
-                                            <ul class="list-unstyled mb-0">
-                                                <li class="list-inline-item mr-2 mb-0"><a href=" {% static 'javascript:void(0)' %} " class="text-muted like"><i class="mdi mdi-heart-outline mr-1"></i>33</a></li>
-                                                <li class="list-inline-item"><a href=" {% static 'javascript:void(0)' %} " class="text-muted comments"><i class="mdi mdi-comment-outline mr-1"></i>08</a></li>
-                                            </ul>
-                                                   {% url 'article_detail' as actualite_detail %}
-
-                                            <a href=" {{actualite_detail}} " class="text-muted readmore">Read More <i class="mdi mdi-chevron-right"></i></a>                                        </div>
-                                    </div>
-                                </div><!--end col-->
-                                
-                                <div class="col-md-6 order-1 order-md-2">
-                                    <img src=" {% static 'images/work/19.jpg' %} " class="img-fluid" alt="">
-                                    <div class="overlay bg-dark"></div>
-                                    <div class="author">
-                                        <small class="text-light user d-block"><i class="mdi mdi-account"></i> Calvin Carlo</small>
-                                        <small class="text-light date"><i class="mdi mdi-calendar-check"></i> 13th August, 2019</small>
-                                    </div>
-                                </div><!--end col-->
-                            </div> <!--end row-->
-                        </div><!--end blog post-->
-                    </div><!--end col-->
-
-                    <div class="col-lg-6 col-12 mb-4 pb-2">
-                        <div class="card blog rounded border-0 shadow overflow-hidden">
-                            <div class="row align-items-center no-gutters">
                                 <div class="col-md-6">
                                     <img src=" {% static 'images/work/13.jpg' %} " class="img-fluid" alt="">
                                     <div class="overlay bg-dark"></div>
                                     <div class="author">
-                                        <small class="text-light user d-block"><i class="mdi mdi-account"></i> Calvin Carlo</small>
-                                        <small class="text-light date"><i class="mdi mdi-calendar-check"></i> 13th August, 2019</small>
+                                        <small class="text-light user d-block"><i class="mdi mdi-account"></i> Admin</small>
+                                        <small class="text-light date"><i class="mdi mdi-calendar-check"></i> {{ post.created_at }}</small>
                                     </div>
                                 </div><!--end col-->
 
                                 <div class="col-md-6">
                                     <div class="card-body content">
-                                        <h5><a href=" {{actualite_detail}} " class="card-title title text-dark">Design your apps in your own way</a></h5>
-                                        <p class="text-muted mb-0">Due to its widespread use as filler text for layouts, non-readability</p>
-                                        <div class="post-meta d-flex justify-content-between mt-3">
-                                            <ul class="list-unstyled mb-0">
-                                                <li class="list-inline-item mr-2 mb-0"><a href=" {% static 'javascript:void(0)' %} " class="text-muted like"><i class="mdi mdi-heart-outline mr-1"></i>33</a></li>
-                                                <li class="list-inline-item"><a href=" {% static 'javascript:void(0)' %} " class="text-muted comments"><i class="mdi mdi-comment-outline mr-1"></i>08</a></li>
-                                            </ul>
-                                                   {% url 'article_detail' as actualite_detail %}
 
-                                            <a href=" {{actualite_detail}} " class="text-muted readmore">Read More <i class="mdi mdi-chevron-right"></i></a>                                        </div>
-                                    </div>
-                                </div><!--end col-->
+                                        <h5><a href="{% url 'actualite_detail' post.id %} " class="card-title title text-dark">{{ post.title }}</a></h5>
+                                        <p class="text-muted mb-0">En quelques années, la visite mystère - qui existe depuis près de trente ans mais qui a longtemps été desservie par une image de "flicage" - est devenue un outil-clé du suivi qualité.</p>
+                                        <div class="post-meta d-flex justify-content-between mt-3">
+
+
+                                            <a href=" {% url 'actualite_detail' post.id %}" class="text-muted readmore">Lire plus <i class="mdi mdi-chevron-right"></i></a>                                        </div>
+                               </div>
                             </div> <!--end row-->
-                        </div><!--end blog post-->
+                     </div><!--end blog post-->
                     </div><!--end col-->
+
+                       </div>
+                                                              {% endfor %}
 
                     <!-- PAGINATION START -->
                     <div class="col-12">
                         <ul class="pagination justify-content-center mb-0">
-                            <li class="page-item"><a class="page-link" href=" {% static 'javascript:void(0)' %} " aria-label="Previous">Prev</a></li>
-                            <li class="page-item active"><a class="page-link" href=" {% static 'javascript:void(0)' %} ">1</a></li>
-                            <li class="page-item"><a class="page-link" href=" {% static 'javascript:void(0)' %} ">2</a></li>
-                            <li class="page-item"><a class="page-link" href=" {% static 'javascript:void(0)' %} ">3</a></li>
-                            <li class="page-item"><a class="page-link" href=" {% static 'javascript:void(0)' %} " aria-label="Next">Next</a></li>
+                            <li class="page-item"><a class="page-link" href="  " aria-label="Previous">Prev</a></li>
+                            <li class="page-item active"><a class="page-link" href="  ">1</a></li>
+                            <li class="page-item"><a class="page-link" href="  ">2</a></li>
+                            <li class="page-item"><a class="page-link" href="  ">3</a></li>
+                            <li class="page-item"><a class="page-link" href="  " aria-label="Next">Next</a></li>
                         </ul>
                     </div><!--end col-->
                     <!-- PAGINATION END -->
@@ -364,92 +186,7 @@
         <!--Blog Lists End-->
 
         <!-- Footer Start -->
-        <footer class="footer">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-4 col-12 mb-0 mb-md-4 pb-0 pb-md-2">
-                        <a href="#" class="logo-footer">
-                            <img src=" {% static 'images/logo-light.png' %} " height="24" alt="">
-                        </a>
-                        <p class="mt-4">Start working with Landrick that can provide everything you need to generate awareness, drive traffic, connect.</p>
-                        <ul class="list-unstyled social-icon social mb-0 mt-4">
-                            <li class="list-inline-item"><a href=" {% static 'javascript:void(0)' %} " class="rounded"><i data-feather="facebook" class="fea icon-sm fea-social"></i></a></li>
-                            <li class="list-inline-item"><a href=" {% static 'javascript:void(0)' %} " class="rounded"><i data-feather="instagram" class="fea icon-sm fea-social"></i></a></li>
-                            <li class="list-inline-item"><a href=" {% static 'javascript:void(0)' %} " class="rounded"><i data-feather="twitter" class="fea icon-sm fea-social"></i></a></li>
-                            <li class="list-inline-item"><a href=" {% static 'javascript:void(0)' %} " class="rounded"><i data-feather="linkedin" class="fea icon-sm fea-social"></i></a></li>
-                        </ul><!--end icon-->
-                    </div><!--end col-->
-                    
-                    <div class="col-lg-2 col-md-4 col-12 mt-4 mt-sm-0 pt-2 pt-sm-0">
-                        <h5 class="text-light footer-head">Company</h5>
-                        <ul class="list-unstyled footer-list mt-4">
-                            <li><a href=" {% static 'page-aboutus.html' %} " class="text-foot"><i class="mdi mdi-chevron-right mr-1"></i> About us</a></li>
-                            <li><a href=" {% static 'page-services.html' %} " class="text-foot"><i class="mdi mdi-chevron-right mr-1"></i> Services</a></li>
-                            <li><a href=" {% static 'page-team.html' %} " class="text-foot"><i class="mdi mdi-chevron-right mr-1"></i> Team</a></li>
-                            <li><a href=" {% static 'page-pricing.html' %} " class="text-foot"><i class="mdi mdi-chevron-right mr-1"></i> Pricing</a></li>
-                            <li><a href=" {% static 'page-portfolio-modern.html' %} " class="text-foot"><i class="mdi mdi-chevron-right mr-1"></i> Project</a></li>
-                            <li><a href=" {% static 'page-jobs.html' %} " class="text-foot"><i class="mdi mdi-chevron-right mr-1"></i> Careers</a></li>
-                            <li><a href=" {% static 'page-blog-grid.html' %} " class="text-foot"><i class="mdi mdi-chevron-right mr-1"></i> Blog</a></li>
-                            <li><a href=" {% static 'auth-cover-login.html' %} " class="text-foot"><i class="mdi mdi-chevron-right mr-1"></i> Login</a></li>
-                        </ul>
-                    </div><!--end col-->
-                    
-                    <div class="col-lg-3 col-md-4 col-12 mt-4 mt-sm-0 pt-2 pt-sm-0">
-                        <h5 class="text-light footer-head">Usefull Links</h5>
-                        <ul class="list-unstyled footer-list mt-4">
-                            <li><a href=" {% static 'page-terms.html' %} " class="text-foot"><i class="mdi mdi-chevron-right mr-1"></i> Terms of Services</a></li>
-                            <li><a href=" {% static 'page-privacy.html' %} " class="text-foot"><i class="mdi mdi-chevron-right mr-1"></i> Privacy Policy</a></li>
-                            <li><a href=" {% static 'documentation.html' %} " class="text-foot"><i class="mdi mdi-chevron-right mr-1"></i> Documentation</a></li>
-                            <li><a href=" {% static 'changelog.html' %} " class="text-foot"><i class="mdi mdi-chevron-right mr-1"></i> Changelog</a></li>
-                            <li><a href=" {% static 'components.html' %} " class="text-foot"><i class="mdi mdi-chevron-right mr-1"></i> Components</a></li>
-                        </ul>
-                    </div><!--end col-->
-
-                    <div class="col-lg-3 col-md-4 col-12 mt-4 mt-sm-0 pt-2 pt-sm-0">
-                        <h5 class="text-light footer-head">Newsletter</h5>
-                        <p class="mt-4">Sign up and receive the latest tips via email.</p>
-                        <form>
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <div class="foot-subscribe form-group">
-                                        <label>Write your email <span class="text-danger">*</span></label>
-                                        <div class="position-relative">
-                                            <i data-feather="mail" class="fea icon-sm icons"></i>
-                                            <input type="email" name="email" id="emailsubscribe" class="form-control pl-5 rounded" placeholder="Your email : " required>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-12">
-                                    <input type="submit" id="submitsubscribe" name="send" class="btn btn-soft-primary btn-block" value="Subscribe">
-                                </div>
-                            </div>
-                        </form>
-                    </div><!--end col-->
-                </div><!--end row-->
-            </div><!--end container-->
-        </footer><!--end footer-->
-        <footer class="footer footer-bar">
-            <div class="container text-center">
-                <div class="row align-items-center">
-                    <div class="col-sm-6">
-                        <div class="text-sm-left">
-                            <p class="mb-0">© <script>document.write(new Date().getFullYear())</script> Landrick. Design with <i class="mdi mdi-heart text-danger"></i> by <a href="http://shreethemes.in/" target="_blank" class="text-reset">Shreethemes</a>.</p>
-                        </div>
-                    </div><!--end col-->
-
-                    <div class="col-sm-6 mt-4 mt-sm-0 pt-2 pt-sm-0">
-                        <ul class="list-unstyled text-sm-right mb-0">
-                            <li class="list-inline-item"><a href=" {% static 'javascript:void(0)' %} "><img src=" {% static 'images/payments/american-ex.png' %} " class="avatar avatar-ex-sm" title="American Express" alt=""></a></li>
-                            <li class="list-inline-item"><a href=" {% static 'javascript:void(0)' %} "><img src=" {% static 'images/payments/discover.png' %} " class="avatar avatar-ex-sm" title="Discover" alt=""></a></li>
-                            <li class="list-inline-item"><a href=" {% static 'javascript:void(0)' %} "><img src=" {% static 'images/payments/master-card.png' %} " class="avatar avatar-ex-sm" title="Master Card" alt=""></a></li>
-                            <li class="list-inline-item"><a href=" {% static 'javascript:void(0)' %} "><img src=" {% static 'images/payments/paypal.png' %} " class="avatar avatar-ex-sm" title="Paypal" alt=""></a></li>
-                            <li class="list-inline-item"><a href=" {% static 'javascript:void(0)' %} "><img src=" {% static 'images/payments/visa.png' %} " class="avatar avatar-ex-sm" title="Visa" alt=""></a></li>
-                        </ul>
-                    </div><!--end col-->
-                </div><!--end row-->
-            </div><!--end container-->
-        </footer><!--end footer-->
-        <!-- Footer End -->
+            {% include 'footer.html' %}
 
         <!-- Back to top -->
         <a href="#" class="btn btn-icon btn-primary back-to-top"><i data-feather="arrow-up" class="icons"></i></a>

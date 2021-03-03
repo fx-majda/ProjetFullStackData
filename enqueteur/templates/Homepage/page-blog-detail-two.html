@@ -54,7 +54,7 @@
                 </div>
                 									{% url 'login' as login %}
                 <div class="buy-button">
-                    <a href="{{login}}" target="_blank" class="btn btn-primary">Se connecter</a>
+                    <a href="{{login}}"  class="btn btn-primary">Se connecter</a>
                 </div><!--end login button-->
                 <!-- End Logo container-->
                 <div class="menu-extras">
@@ -76,12 +76,12 @@
               <ul class="navigation-menu">
                         {% url 'index' as index %}
 
-                        <li><a href=" {{index}} ">Acceuil</a></li>
+                        <li><a href=" {{index}} ">Accueil</a></li>
                         {% url 'service' as service %}
                         <li><a href=" {{service}} ">Nos Services</a></li>
                         {% url 'guide' as guide %}
 
-                        <li><a href=" {{guide}} ">Devenir client mystère</a></li>
+                        <li><a href=" {{guide}} ">FOIRE AUX QUESTIONS</a></li>
                                                                                                             {% url 'actualite' as actualite %}
 
                         <li><a href=" {{actualite}} ">Actualités</a></li>
@@ -95,7 +95,7 @@
                     <div class="buy-menu-btn d-none">
                                                                                 {% url 'login' as login %}
 
-                        <a href="{{login}}" target="_blank" class="btn btn-primary">Se connecter</a>
+                        <a href="{{login}}"  class="btn btn-primary">Se connecter</a>
                     </div><!--end login button-->
                 </div><!--end navigation-->
             </div><!--end container-->
@@ -111,13 +111,13 @@
                 <div class="row justify-content-center">
                     <div class="col-lg-12 text-center">
                         <div class="page-next-level">
-                            <h4 class="title text-white title-dark"> Smartest Applications for <br>Your Business </h4>
+                            <h4 class="title text-white title-dark"> {{post.title}}</h4>
                             <div class="page-next">
                                 <nav aria-label="breadcrumb" class="d-inline-block">
                                     <ul class="breadcrumb bg-white rounded shadow mb-0">
-                                        <li class="breadcrumb-item"><a href=" {% static 'index.html' %} ">Landrick</a></li>
-                                        <li class="breadcrumb-item"><a href="#">Blog</a></li>
-                                        <li class="breadcrumb-item active" aria-current="page">Blog Details</li>
+                                        <li class="breadcrumb-item"><a href=" {{index}} ">Accueil</a></li>
+                                        <li class="breadcrumb-item"><a href="{{actualite}}">Actualité</a></li>
+                                        <li class="breadcrumb-item active" aria-current="page">Article</li>
                                     </ul>
                                 </nav>
                             </div>
@@ -144,26 +144,24 @@
                             <div class="col-md-2 d-none d-md-block">
                                 <ul class="list-unstyled text-center sticky-bar social-icon mb-0">
                                     <li class="mb-3 h6">Share</li>
-                                    <li><a href=" {% static 'javascript:void(0)' %} " class="rounded"><i data-feather="facebook" class="fea icon-sm fea-social"></i></a></li>
-                                    <li><a href=" {% static 'javascript:void(0)' %} " class="rounded"><i data-feather="instagram" class="fea icon-sm fea-social"></i></a></li>
-                                    <li><a href=" {% static 'javascript:void(0)' %} " class="rounded"><i data-feather="twitter" class="fea icon-sm fea-social"></i></a></li>
-                                    <li><a href=" {% static 'javascript:void(0)' %} " class="rounded"><i data-feather="linkedin" class="fea icon-sm fea-social"></i></a></li>
+                                    <li><a href="  " class="rounded"><i data-feather="facebook" class="fea icon-sm fea-social"></i></a></li>
+                                    <li><a href="  " class="rounded"><i data-feather="instagram" class="fea icon-sm fea-social"></i></a></li>
+                                    <li><a href="  " class="rounded"><i data-feather="twitter" class="fea icon-sm fea-social"></i></a></li>
+                                    <li><a href="  " class="rounded"><i data-feather="linkedin" class="fea icon-sm fea-social"></i></a></li>
                                 </ul><!--end icon-->
                             </div>
         
                             <div class="col-md-10">
-                                <p class="text-muted">This is required when, for example, the final text is not yet available. Dummy text is also known as 'fill text'. It is said that song composers of the past used dummy texts as lyrics when writing melodies in order to have a 'ready-made' text to sing with the melody.</p>
-                                
+
                                 <ul class="list-unstyled d-flex justify-content-between mt-4">
-                                    <li class="list-inline-item user mr-2"><a href=" {% static 'javascript:void(0)' %} " class="text-muted"><i class="mdi mdi-account text-dark"></i> Calvin Carlo</a></li>
-                                    <li class="list-inline-item date text-muted"><i class="mdi mdi-calendar-check text-dark"></i> 13th August, 2019</li>
+                                    <li class="list-inline-item user mr-2"><a href="  " class="text-muted"><i class="mdi mdi-account text-dark"></i> Upgoods Admin</a></li>
+                                    <li class="list-inline-item date text-muted"><i class="mdi mdi-calendar-check text-dark"></i> 26 Feb, 2021</li>
                                 </ul>
                                 
-                                <img src=" {% static 'images/blog/bg1.jpg' %} " class="img-fluid rounded-md shadow" alt="">
+                                <img src=" {% static 'images/blog/02.jpg' %} " class="img-fluid rounded-md shadow" alt="">
 
-                                <h5 class="mt-4">Mornings contain the secret to an extraordinarily successful life</h5>
 
-                                <p class="text-muted">Due to its widespread use as filler text for layouts, non-readability is of great importance: human perception is tuned to recognize certain patterns and repetitions in texts. If the distribution of letters and 'words' is random, the reader will not be distracted from making a neutral judgement on the visual impact and readability of the typefaces (typography), or the distribution of text on the page (layout or type area).</p>
+                                <p class="text-muted"><br> {{post.content |safe}}</p>
 
                                 <h5 class="mt-4">Comments :</h5>
 
@@ -175,81 +173,27 @@
                                                     <img src=" {% static 'images/client/01.jpg' %} " class="img-fluid avatar avatar-md-sm rounded-circle shadow" alt="img">
                                                 </a>
                                                 <div class="commentor-detail">
-                                                    <h6 class="mb-0"><a href=" {% static 'javascript:void(0)' %} " class="text-dark media-heading">Lorenzo Peterson</a></h6>
-                                                    <small class="text-muted">15th August, 2019 at 01:25 pm</small>
+                                                    <h6 class="mb-0"><a href="  " class="text-dark media-heading">Mohammed Amine Zahhaoui</h6>
+                                                    <small class="text-muted">26 Feb, 2021 at 01:25 pm</small>
                                                 </div>
                                             </div>
-                                            <a href="#" class="text-muted"><i class="mdi mdi-reply"></i> Reply</a>
                                         </div>
                                         <div class="mt-3">
-                                            <p class="text-muted font-italic p-3 bg-light rounded">" There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour "</p>
+                                            <p class="text-muted font-italic p-3 bg-light rounded">" Très instructif, Merci beaucoup pour le partage"</p>
                                         </div>
                                     </li>
     
-                                    <li class="mt-4">
-                                        <div class="d-flex justify-content-between">
-                                            <div class="media align-items-center">
-                                                <a class="pr-3" href="#">
-                                                    <img src=" {% static 'images/client/02.jpg' %} " class="img-fluid avatar avatar-md-sm rounded-circle shadow" alt="img">
-                                                </a>
-                                                <div class="commentor-detail">
-                                                    <h6 class="mb-0"><a href=" {% static 'javascript:void(0)' %} " class="media-heading text-dark">Tammy Camacho</a></h6>
-                                                    <small class="text-muted">15th August, 2019 at 05:44 pm</small>
-                                                </div>
-                                            </div>
-                                            <a href="#" class="text-muted"><i class="mdi mdi-reply"></i> Reply</a>
-                                        </div>
-                                        <div class="mt-3">
-                                            <p class="text-muted font-italic p-3 bg-light rounded">" There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour "</p>
-                                        </div>
-                                    </li>
-                                    
-                                    <li class="mt-4">
-                                        <div class="d-flex justify-content-between">
-                                            <div class="media align-items-center">
-                                                <a class="pr-3" href="#">
-                                                    <img src=" {% static 'images/client/03.jpg' %} " class="img-fluid avatar avatar-md-sm rounded-circle shadow" alt="img">
-                                                </a>
-                                                <div class="commentor-detail">
-                                                    <h6 class="mb-0"><a href=" {% static 'javascript:void(0)' %} " class="media-heading text-dark">Tammy Camacho</a></h6>
-                                                    <small class="text-muted">16th August, 2019 at 03:44 pm</small>
-                                                </div>
-                                            </div>
-                                            <a href="#" class="text-muted"><i class="mdi mdi-reply"></i> Reply</a>
-                                        </div>
-                                        <div class="mt-3">
-                                            <p class="text-muted font-italic p-3 bg-light rounded">" There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour "</p>
-                                        </div>
-    
-                                        <ul class="list-unstyled pl-4 pl-md-5 sub-comment">
-                                            <li class="mt-4">
-                                                <div class="d-flex justify-content-between">
-                                                    <div class="media align-items-center">
-                                                        <a class="pr-3" href="#">
-                                                            <img src=" {% static 'images/client/01.jpg' %} " class="img-fluid avatar avatar-md-sm rounded-circle shadow" alt="img">
-                                                        </a>
-                                                        <div class="commentor-detail">
-                                                            <h6 class="mb-0"><a href=" {% static 'javascript:void(0)' %} " class="text-dark media-heading">Lorenzo Peterson</a></h6>
-                                                            <small class="text-muted">17th August, 2019 at 01:25 pm</small>
-                                                        </div>
-                                                    </div>
-                                                    <a href="#" class="text-muted"><i class="mdi mdi-reply"></i> Reply</a>
-                                                </div>
-                                                <div class="mt-3">
-                                                    <p class="text-muted font-italic p-3 bg-light rounded">" There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour "</p>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                </ul>
 
-                                <h5 class="mt-4">Leave A Comment :</h5>
+                                    
+
+
+                                <h5 class="mt-4">Laissez un commentaire:</h5>
 
                                 <form class="mt-3">
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label>Your Comment</label>
+                                                <label>Votre commentaire</label>
                                                 <div class="position-relative">
                                                     <i data-feather="message-circle" class="fea icon-sm icons"></i>
                                                     <textarea id="message" placeholder="Your Comment" rows="5" name="message" class="form-control pl-5" required=""></textarea>
@@ -259,7 +203,7 @@
     
                                         <div class="col-lg-6">
                                             <div class="form-group">
-                                                <label>Name <span class="text-danger">*</span></label>
+                                                <label>Nom <span class="text-danger">*</span></label>
                                                 <div class="position-relative">
                                                     <i data-feather="user" class="fea icon-sm icons"></i>
                                                     <input id="name" name="name" type="text" placeholder="Name" class="form-control pl-5" required="">
@@ -269,7 +213,7 @@
     
                                         <div class="col-lg-6">
                                             <div class="form-group">
-                                                <label>Your Email <span class="text-danger">*</span></label>
+                                                <label>Votre boite mail <span class="text-danger">*</span></label>
                                                 <div class="position-relative">
                                                     <i data-feather="mail" class="fea icon-sm icons"></i>
                                                     <input id="email" type="email" placeholder="Email" name="email" class="form-control pl-5" required="">
@@ -292,92 +236,8 @@
         </section>
         
 
-        <!-- Footer Start -->
-        <footer class="footer">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-4 col-12 mb-0 mb-md-4 pb-0 pb-md-2">
-                        <a href="#" class="logo-footer">
-                            <img src=" {% static 'images/logo-light.png' %} " height="24" alt="">
-                        </a>
-                        <p class="mt-4">Start working with Landrick that can provide everything you need to generate awareness, drive traffic, connect.</p>
-                        <ul class="list-unstyled social-icon social mb-0 mt-4">
-                            <li class="list-inline-item"><a href=" {% static 'javascript:void(0)' %} " class="rounded"><i data-feather="facebook" class="fea icon-sm fea-social"></i></a></li>
-                            <li class="list-inline-item"><a href=" {% static 'javascript:void(0)' %} " class="rounded"><i data-feather="instagram" class="fea icon-sm fea-social"></i></a></li>
-                            <li class="list-inline-item"><a href=" {% static 'javascript:void(0)' %} " class="rounded"><i data-feather="twitter" class="fea icon-sm fea-social"></i></a></li>
-                            <li class="list-inline-item"><a href=" {% static 'javascript:void(0)' %} " class="rounded"><i data-feather="linkedin" class="fea icon-sm fea-social"></i></a></li>
-                        </ul><!--end icon-->
-                    </div><!--end col-->
-                    
-                    <div class="col-lg-2 col-md-4 col-12 mt-4 mt-sm-0 pt-2 pt-sm-0">
-                        <h5 class="text-light footer-head">Company</h5>
-                        <ul class="list-unstyled footer-list mt-4">
-                            <li><a href=" {% static 'page-aboutus.html' %} " class="text-foot"><i class="mdi mdi-chevron-right mr-1"></i> About us</a></li>
-                            <li><a href=" {% static 'page-services.html' %} " class="text-foot"><i class="mdi mdi-chevron-right mr-1"></i> Services</a></li>
-                            <li><a href=" {% static 'page-team.html' %} " class="text-foot"><i class="mdi mdi-chevron-right mr-1"></i> Team</a></li>
-                            <li><a href=" {% static 'page-pricing.html' %} " class="text-foot"><i class="mdi mdi-chevron-right mr-1"></i> Pricing</a></li>
-                            <li><a href=" {% static 'page-portfolio-modern.html' %} " class="text-foot"><i class="mdi mdi-chevron-right mr-1"></i> Project</a></li>
-                            <li><a href=" {% static 'page-jobs.html' %} " class="text-foot"><i class="mdi mdi-chevron-right mr-1"></i> Careers</a></li>
-                            <li><a href=" {% static 'page-blog-grid.html' %} " class="text-foot"><i class="mdi mdi-chevron-right mr-1"></i> Blog</a></li>
-                            <li><a href=" {% static 'auth-cover-login.html' %} " class="text-foot"><i class="mdi mdi-chevron-right mr-1"></i> Login</a></li>
-                        </ul>
-                    </div><!--end col-->
-                    
-                    <div class="col-lg-3 col-md-4 col-12 mt-4 mt-sm-0 pt-2 pt-sm-0">
-                        <h5 class="text-light footer-head">Usefull Links</h5>
-                        <ul class="list-unstyled footer-list mt-4">
-                            <li><a href=" {% static 'page-terms.html' %} " class="text-foot"><i class="mdi mdi-chevron-right mr-1"></i> Terms of Services</a></li>
-                            <li><a href=" {% static 'page-privacy.html' %} " class="text-foot"><i class="mdi mdi-chevron-right mr-1"></i> Privacy Policy</a></li>
-                            <li><a href=" {% static 'documentation.html' %} " class="text-foot"><i class="mdi mdi-chevron-right mr-1"></i> Documentation</a></li>
-                            <li><a href=" {% static 'changelog.html' %} " class="text-foot"><i class="mdi mdi-chevron-right mr-1"></i> Changelog</a></li>
-                            <li><a href=" {% static 'components.html' %} " class="text-foot"><i class="mdi mdi-chevron-right mr-1"></i> Components</a></li>
-                        </ul>
-                    </div><!--end col-->
+                    {% include 'footer.html' %}
 
-                    <div class="col-lg-3 col-md-4 col-12 mt-4 mt-sm-0 pt-2 pt-sm-0">
-                        <h5 class="text-light footer-head">Newsletter</h5>
-                        <p class="mt-4">Sign up and receive the latest tips via email.</p>
-                        <form>
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <div class="foot-subscribe form-group">
-                                        <label>Write your email <span class="text-danger">*</span></label>
-                                        <div class="position-relative">
-                                            <i data-feather="mail" class="fea icon-sm icons"></i>
-                                            <input type="email" name="email" id="emailsubscribe" class="form-control pl-5 rounded" placeholder="Your email : " required>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-12">
-                                    <input type="submit" id="submitsubscribe" name="send" class="btn btn-soft-primary btn-block" value="Subscribe">
-                                </div>
-                            </div>
-                        </form>
-                    </div><!--end col-->
-                </div><!--end row-->
-            </div><!--end container-->
-        </footer><!--end footer-->
-        <footer class="footer footer-bar">
-            <div class="container text-center">
-                <div class="row align-items-center">
-                    <div class="col-sm-6">
-                        <div class="text-sm-left">
-                            <p class="mb-0">© <script>document.write(new Date().getFullYear())</script> Landrick. Design with <i class="mdi mdi-heart text-danger"></i> by <a href="http://shreethemes.in/" target="_blank" class="text-reset">Shreethemes</a>.</p>
-                        </div>
-                    </div><!--end col-->
-
-                    <div class="col-sm-6 mt-4 mt-sm-0 pt-2 pt-sm-0">
-                        <ul class="list-unstyled text-sm-right mb-0">
-                            <li class="list-inline-item"><a href=" {% static 'javascript:void(0)' %} "><img src=" {% static 'images/payments/american-ex.png' %} " class="avatar avatar-ex-sm" title="American Express" alt=""></a></li>
-                            <li class="list-inline-item"><a href=" {% static 'javascript:void(0)' %} "><img src=" {% static 'images/payments/discover.png' %} " class="avatar avatar-ex-sm" title="Discover" alt=""></a></li>
-                            <li class="list-inline-item"><a href=" {% static 'javascript:void(0)' %} "><img src=" {% static 'images/payments/master-card.png' %} " class="avatar avatar-ex-sm" title="Master Card" alt=""></a></li>
-                            <li class="list-inline-item"><a href=" {% static 'javascript:void(0)' %} "><img src=" {% static 'images/payments/paypal.png' %} " class="avatar avatar-ex-sm" title="Paypal" alt=""></a></li>
-                            <li class="list-inline-item"><a href=" {% static 'javascript:void(0)' %} "><img src=" {% static 'images/payments/visa.png' %} " class="avatar avatar-ex-sm" title="Visa" alt=""></a></li>
-                        </ul>
-                    </div><!--end col-->
-                </div><!--end row-->
-            </div><!--end container-->
-        </footer><!--end footer-->
         <!-- Footer End -->
 
         <!-- Back to top -->

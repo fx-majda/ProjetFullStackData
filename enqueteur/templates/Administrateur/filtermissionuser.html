@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Upgoods | DataTables</title>
+  <title>AdminLTE 3 | DataTables</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -168,59 +168,34 @@
       </div><!-- /.container-fluid -->
     </section>
 
-    <!-- Main content -->
-
-            <!-- /.card -->
 
             <div class="card">
               <div class="card-header">
-
-                <h3 class="card-title">Information de la mission  </h3>
+                <h3 class="card-title">DataTable with default features</h3>
               </div>
               <!-- /.card-header -->
-
               <div class="card-body">
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
-                    {% for i in head %}
-
-                    <th>{{i}}</th>
-                      {% endfor %}
+                    {% for h in head%}
+                    <th>{{h}}</th>
+                    {% endfor %}
                   </tr>
                   </thead>
                   <tbody>
-                      {% for i in data %}
-
+                   {% for m in data%}
                   <tr>
-                          {% for m in i.values%}
-
-                        <td>{{m}}</td>
-                        {% endfor %}
-
+                    {%for i in m.values%}
+                    <td>{{i}}</td>
+                     {% endfor %}
                   </tr>
-                      {% endfor %}
-
+                   {%endfor%}
                   </tbody>
-                           <!--
-
-                           <tfoot>
-                  <tr>
-                    <th>Rendering engine</th>
-                    <th>Browser</th>
-                    <th>Platform(s)</th>
-                    <th>Engine version</th>
-                    <th>CSS grade</th>
-                  </tr>
-                  </tfoot>
-                           /.col -->
-
-
                 </table>
               </div>
               <!-- /.card-body -->
             </div>
-
             <!-- /.card -->
           </div>
           <!-- /.col -->
@@ -232,7 +207,17 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+  <footer class="main-footer">
+    <div class="float-right d-none d-sm-block">
+      <b>Version</b> 3.1.0-rc
+    </div>
+    <strong>Copyright &copy; 2014-2020 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
+  </footer>
 
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
   <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->

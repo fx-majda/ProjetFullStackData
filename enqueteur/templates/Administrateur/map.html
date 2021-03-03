@@ -1,0 +1,108 @@
+<html>
+{% load static%}
+ <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+    <title>Marker on the Map</title>
+    <link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.1/mapsjs-ui.css" />
+    <link rel="stylesheet" type="text/css" href="demo.css" />
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <link rel="stylesheet" type="text/css" href="../template.css" />
+    <script type="text/javascript" src='../test-credentials.js'></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-core.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-service.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-ui.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-mapevents.js"></script>
+  <script>window.ENV_VARIABLE = 'developer.here.com'</script>
+   <script src='https://cdnjs.cloudflare.com/ajax/libs/Iframe-Height-Jquery-Plugin/1.2.5/iframeheight.min.js'></script>
+
+ </head>
+  <body id="markers-on-the-map">
+   <div class="page-header">
+        <h1>Marker on the Map</h1>
+        <p>Display a map highlighting points of interest</p>
+    </div>
+    <p>This example displays a moveable map of <b>Europe</b>, including markers highlighting the locations of the captials of <b>France</b>, <b>Italy</b>, <b>Germany</b>, <b>Spain</b> and the <b>United Kingdom</b>.</p>
+    <div id="map"></div>
+    <h3>Code</h3>
+    <p>
+        Default markers are created by using the <code>H.map.Marker</code> class without specifying an <code>icon</code> and passing in a location only.<br>
+    </p>
+    <script type="text/javascript" src='demo.js'></script>
+    <script src=" {% static 'js/jquery-3.5.1.min.js' %} "></script>
+    <div style="width: 100%; height: 600px" id="mapContainer"></div>
+    <script>
+
+
+      var mdata= jQuery.parseJSON("{{datamap|escapejs}}");
+      function addMarkerToGroup(group, coordinate, html) {
+  var marker = new H.map.Marker(coordinate);
+  // add custom data to the marker
+  marker.setData(html);
+  group.addObject(marker);
+}
+
+/**
+ * Add two markers showing the position of Liverpool and Manchester City football clubs.
+ * Clicking on a marker opens an infobubble which holds HTML content related to the marker.
+ * @param  {H.Map} map      A HERE Map instance within the application
+ */
+ var mdata= jQuery.parseJSON("{{datamap|escapejs}}");
+function addInfoBubble(map) {
+  var group = new H.map.Group();
+
+  map.addObject(group);
+
+  // add 'tap' event listener, that opens info bubble, to the group
+  group.addEventListener('tap', function (evt) {
+    // event target is the marker itself, group is a parent event target
+    // for all objects that it contains
+    var bubble =  new H.ui.InfoBubble(evt.target.getGeometry(), {
+      // read custom data
+      content: evt.target.getData()
+    });
+    // show info bubble
+    ui.addBubble(bubble);
+  }, false);
+
+  for(i=0;i<mdata.length;i++){
+  addMarkerToGroup(group, {lat:mdata[i].latitude, lng:mdata[i].longitude}, mdata[i].nom +"/"+ mdata[i].adresse);
+  }
+
+  //addMarkerToGroup(group, {lat:53.439, lng:-2.221}, 'helo word');
+
+  //addMarkerToGroup(group, {lat:53.430, lng:-2.961});
+
+}
+
+
+ // Initialize the platform object:
+      var platform = new H.service.Platform({
+        'apikey': 'k7LHnBXYhx6N_yuPKM_kaAu53Boz2C5X8QawB3ntSWk'
+      });
+
+var defaultLayers = platform.createDefaultLayers();
+
+// initialize a map - this map is centered over Europe
+var map = new H.Map(document.getElementById('map'),
+  defaultLayers.vector.normal.map,{
+  center: {lat: 53.430, lng: -2.961},
+  zoom: 7,
+  pixelRatio: window.devicePixelRatio || 1
+});
+// add a resize listener to make sure that the map occupies the whole container
+window.addEventListener('resize', () => map.getViewPort().resize());
+
+// MapEvents enables the event system
+// Behavior implements default interactions for pan/zoom (also on mobile touch environments)
+var behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
+
+// create default UI with layers provided by the platform
+var ui = H.ui.UI.createDefault(map, defaultLayers);
+
+// Now use the map as required...
+addInfoBubble(map);
+    </script>
+  </body>
+</html>

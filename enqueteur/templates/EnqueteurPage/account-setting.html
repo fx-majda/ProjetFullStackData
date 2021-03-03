@@ -30,7 +30,7 @@
 
     </head>
 
-    <body onload="updateProfil();">
+    <body>
         <!-- Loader -->
         <!-- <div id="preloader">
             <div id="status">
@@ -92,7 +92,7 @@
                     <ul class="navigation-menu">
                         {% url 'indexEnqueteur' as index %}
 
-                        <li><a href=" {{index}} ">Acceuil</a></li>
+                        <li><a href=" {{index}} ">Accueil</a></li>
                         {% url 'trouvermission' as service %}
                         <li><a href=" {{service}} ">Trouver une mission</a></li>
                         {% url 'mission' as guide %}
@@ -159,10 +159,10 @@
                             <div class="widget mt-4 pt-2">
                                 <h5 class="widget-title">Projects :</h5>
                                 <div class="progress-box mt-4">
-                                    <h6 class="title text-muted">Progress</h6>
+                                    <h6 class="title text-muted">Score</h6>
                                     <div class="progress">
                                         <div class="progress-bar position-relative bg-primary" style="width:50%;">
-                                            <div class="progress-value d-block text-muted h6">24 / 48</div>
+                                            <div class="progress-value d-block text-muted h6">5 / 100</div>
                                         </div>
                                     </div>
                                 </div><!--end process box-->
@@ -449,28 +449,28 @@
                 </div><!--end row-->
             </div><!--end container-->
         </footer><!--end footer-->
-        <!-- Footer End -->
-<script>
+ <script>
+            function updateProfil() {
+        var mdata= jQuery.parseJSON("{{data|escapejs}}");
+        console.log(mdata)
+        var telephone = document.getElementById('telephone');
+        var email = document.getElementById('email');
+        var addresse = document.getElementById('adresse');
 
+        telephone.value = mdata['telephone']
+        email.value = mdata['email']
+        addresse.value = mdata['adresse']
+        }
+        document.addEventListener("DOMContentLoaded", function() {updateProfil()});
 
+        // Upadte data function after load data from view
 
-function updateProfil() {
-	var data = JSON.parse("{{data|escapejs}}");
-    var telephone = document.getElementById('telephone');
-    var email = document.getElementById('email');
-    var adresse = document.getElementById('adresse');
-    telephone.value = data['telephone']
-    email.value = data['email']
-    adresse.value = data['adresse']
-
-}
-
-function newdataupdated(){
-     var updateddata = {}
-     updateddata.telephone = document.getElementById('telephone').value;
-     updateddata.email  = document.getElementById('email').value;
-     updateddata.adresse = document.getElementById('adresse').value;
-       $.ajax({
+        function newdataupdated(){
+        var updateddata = {}
+            updateddata.telephone = document.getElementById('telephone').value;
+            updateddata.email  = document.getElementById('email').value;
+            updateddata.adresse = document.getElementById('adresse').value;
+            $.ajax({
             type: 'POST',
             url: '',
             data: {
@@ -484,9 +484,9 @@ function newdataupdated(){
              alert("it didnt work");
             }
         });
-}
 
-</script>
+}
+        </script>
         <!-- Back to top -->
         <a href="#" class="btn btn-icon btn-primary back-to-top"><i data-feather="arrow-up" class="icons"></i></a>
         <!-- Back to top -->

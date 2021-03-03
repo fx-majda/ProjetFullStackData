@@ -1,8 +1,8 @@
    {% extends 'administrateur/base_template.html' %}
    {%load static %}
   {% block page_title %}
-  Gestion des Enqueteurs
-  {% endblock page_title %}
+Gestion des quizz
+   {% endblock page_title %}
   {% block main_content %}
 
     <!-- Content Wrapper. Contains page content -->
@@ -12,7 +12,7 @@
         <!-- Default box -->
         <div class="card">
           <div class="card-header">
-            <h3 class="card-title">Informations </h3>
+            <h3 class="card-title">Quizz</h3>
 
             <div class="card-tools">
               <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
@@ -26,66 +26,72 @@
                 <thead>
                     <tr>
                         <th style="width: 1%">
-                            #
+                            Id
                         </th>
-                        <th style="width: 20%">
-                            Nom de l'enqueteur
+                        <th style="width: 15%">
+                        Nom du Quizz
                         </th>
-                        <th style="width: 30%">
-Profile Picture                        </th>
-
-                        <th style="width: 8%" class="text-center">
-                            Status
+                        <th style="width: 15%">
+                        Date de debut   </th>
+                        <th>
+                        Date de fin de mission
                         </th>
-                        <th style="width: 20%">
+                        <th style="width: 15%" class="text-center">
+                            Description
+                        </th>
+                        <th style="width: 15%" class="text-center">
+                            Organisme
+                        </th>
+                        <th style="width: 15%">
+                            Manage
                         </th>
                     </tr>
                 </thead>
                 <tbody>
-                                        {% for users in users %}
+                                  {% for servey in servey %}
+
                     <tr>
                         <td>
-                            {{users.id}}
+                            {{ survey.id }}
                         </td>
                         <td>
                             <a>
-                                                            {{users.nom}}
-
+                                {{ servey.nameform}}
                             </a>
-                            <br/>
-                            <small>
-                                Created  {{users.created_at}}
-                            </small>
+
                         </td>
                         <td>
-                            <ul class="list-inline">
-                                <li class="list-inline-item">
-                                    <img alt="Avatar" class="table-avatar" src="{{users.profile_pic.url}} ">
-                                </li>
+                                {{ servey.date_debut}}
 
-                            </ul>
                         </td>
+                        <td >
+                                                            {{ servey.date_fin}}
 
-                        <td class="project-state">
-                            {% if users.status == 0 %}
-                            <span class="badge badge-warning">Non verifie</span>
-                             {% else %}
-                            <span class="badge badge-success"> verified</span>
-                                {% endif %}
+                        </td>
+                        <td >
+                                                            {{ servey.description}}
+
+                        </td>
+                        <td >
+                                                            {{ servey.organisme}}
                         </td>
                         <td class="project-actions text-right">
-                                <a class="btn btn-primary btn-sm" href="{% url 'profile' enqueteur_id=users.id %}">
+                            <a class="btn btn-primary btn-sm" href="/createforms/{{ servey.nameform }}">
                                 <i class="fas fa-folder">
                                 </i>
-                                View Profile
+                                View
                             </a>
 
-
+                            <a class="btn btn-danger btn-sm" href="/delete_form/{{ servey.id }}">
+                                <i class="fas fa-trash">
+                                </i>
+                                Supprimer
+                            </a>
                         </td>
                     </tr>
                   {% endfor %}
-                </tbody>
 
+                </tbody>
             </table>
           </div>
           <!-- /.card-body -->

@@ -14,10 +14,20 @@ from django.views.decorators.csrf import csrf_exempt
 from django.core.files.storage import FileSystemStorage
 import json
 from django.core.serializers.json import DjangoJSONEncoder
-
-
+import sweetify
+from bs4 import BeautifulSoup
 # Create your views here.
 #Views de l'Enqueteur
+
+
+data = {}
+indice = 0
+mlist = []
+filtredNone = []
+
+
+
+
 
 
 def indexEnqueteur(request):
@@ -25,19 +35,58 @@ def indexEnqueteur(request):
 
 
 def Trouvermission(request):
-    return render(request, "EnqueteurPage/page-jobs-sidebar.html")
-
-
-def mission_detail(request):
-    return render(request, "EnqueteurPage/page-job-detail.html")
-
-
-def apply_for_mission(request):
-    return render(request, "EnqueteurPage/page-job-apply.html")
+    post = Mission.objects.all()
+    return render(request, "EnqueteurPage/page-jobs-sidebar.html",{"post":post})
 
 
 def mission(request):
     return render(request, "EnqueteurPage/page-blog-grid.html")
+
+
+def mission_detail(request,post_id):
+    post=Mission.objects.get(id=post_id)
+    return render(request, "EnqueteurPage/page-job-detail.html",{"post":post})
+
+
+def apply_for_mission(request):
+    user = request.user
+    enqueteur = Enqueteur.objects.get(user=user)
+    return render(request, "EnqueteurPage/page-job-apply.html",{"enqueteur":enqueteur})
+
+def staff_apply_leave_save(request):
+    if request.method!="POST":
+        return HttpResponseRedirect(reverse("apply_for_mission"))
+    else:
+        staff_obj=Enqueteur.objects.get(user=request.user)
+        motivation=request.POST.get("motivation")
+
+        try:
+            leave_report=Candidature(enqueteur_id=staff_obj,motivation=motivation,candidature_status=0)
+            leave_report.save()
+            messages.success(request, "Parfait, votre candidature est transmise a notre service relation pour la verification, vous reseverez une reponse dans votre boite mail")
+            return HttpResponseRedirect(reverse("apply_for_mission"))
+        except:
+            messages.error(request, "Failed To Apply for Leave")
+            return HttpResponseRedirect(reverse("apply_for_mission"))
+
+
+def staff_leave_view(request):
+    leaves=Candidature.objects.all()
+    return render(request,"administrateur/staff_leave_view.html",{"leaves":leaves})
+
+
+def staff_approve_leave(request,leave_id):
+    leave=Candidature.objects.get(id=leave_id)
+    leave.candidature_status=1
+    leave.save()
+    return HttpResponseRedirect(reverse("staff_leave_view"))
+
+def staff_disapprove_leave(request,leave_id):
+    leave=Candidature.objects.get(id=leave_id)
+    leave.candidature_status=2
+    leave.save()
+    return HttpResponseRedirect(reverse("staff_leave_view"))
+
 
 
 def account_messages(request):
@@ -58,16 +107,19 @@ def account_profile(request):
     return render(request, "EnqueteurPage/account-profile.html",{"enqueteur":enqueteur})
 
 
-def account_settings(request):
-    user = request.user
-    enqueteur = Enqueteur.objects.get(user=user)
+@login_required(login_url='login')
+@csrf_exempt
+def updateprofil(request):
     getprofildata = Enqueteur.objects.filter(user=request.user).values()
     if getprofildata:
+        print('ok we got data of user')
         profildatajson = json.dumps(getprofildata[0], sort_keys=True, indent=1, cls=DjangoJSONEncoder)
         if request.method == 'POST':
             if request.POST.get('senddata'):
                 data = request.POST.get('senddata')
                 data_dict = json.loads(data)
+                print('data dict after update is :....')
+                print(data_dict)
                 Enqueteur.objects.filter(user=request.user).update(telephone=data_dict['telephone'],
                                                                    email=data_dict['email'],
                                                                    adresse=data_dict['adresse'])
@@ -76,9 +128,9 @@ def account_settings(request):
             print('noooooo data gotten')
     else:
         print('not data existing')
+    return render(request, 'EnqueteurPage/account-setting.html', {'data': profildatajson, 'dataprofil': getprofildata[0]})
 
 
-    return render(request, "EnqueteurPage/account-setting.html",{"enqueteur":enqueteur,"data": profildatajson} )
 
 def account_works(request):
     user = request.user
@@ -100,16 +152,37 @@ def auth_re_password(request):
     return render(request, "Homepage/auth-re-password.html")
 
 def actualite(request):
-    return render(request, "Homepage/page-blog-list.html")
+    post = Actualite.objects.all()
+    return render(request, "Homepage/page-blog-list.html",{"post":post})
 
-def actualite_detail(request):
-    return render(request, "Homepage/page-blog-detail-two.html")
+def actualite_detail(request,post_id):
+    post=Actualite.objects.get(id=post_id)
+    return render(request, "Homepage/page-blog-detail-two.html",{"post":post})
 
 def faq(request):
     return render(request, "Homepage/helpcenter-faqs.html")
 
+
 def contact(request):
     return render(request, "Homepage/page-contact-one.html")
+
+@csrf_exempt
+def contact_sent(request):
+    if request.method != "POST":
+        return HttpResponse("<h2>Method Not Allowed</h2>")
+    else:
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        subject = request.POST.get('subject')
+        comments= request.POST.get('comments')
+        try:
+            contact = Contact.objects.create(name=name, email=email, subject=subject, comments=comments)
+            contact.save()
+            messages.success(request, "success ")
+            return HttpResponseRedirect('/contact')
+        except:
+            messages.error(request, "Failed ")
+            return HttpResponseRedirect('/contact')
 
 def signup(request):
     if request.user.is_authenticated:
@@ -197,29 +270,6 @@ def questionnaire(request):
 
     return render(request, 'questionnaire.html')
 
-@login_required(login_url='login')
-@csrf_exempt
-def updateprofil(request):
-    getprofildata = Enqueteur.objects.filter(user=request.user).values()
-    if getprofildata:
-        profildatajson = json.dumps(getprofildata[0], sort_keys=True, indent=1, cls=DjangoJSONEncoder)
-        if request.method == 'POST':
-            if request.POST.get('senddata'):
-                data = request.POST.get('senddata')
-                data_dict = json.loads(data)
-                Enqueteur.objects.filter(user=request.user).update(telephone=data_dict['telephone'],
-                                                                   email=data_dict['email'],
-                                                                   adresse=data_dict['adresse'])
-                print('data saved and updated.....')
-        else:
-            print('noooooo data gotten')
-    else:
-        print('not data existing')
-
-
-    return render(request, 'updateprofil.html', {'data': profildatajson})
-
-
 
 def login(request):
     if request.user.is_authenticated:
@@ -290,8 +340,8 @@ def buildpage(request, mission):
                         listname.append(mylist)
                     i += 1
                 for i in range(len(listname)):
-                    data[listname[i]] = request.GET.get(listname[i])
-                    mlist.append(request.GET.get(i))
+                    data[listname[i]] = request.POST.get(listname[i])
+                    mlist.append(request.POST.get(i))
                 print(listname)
                 print(data)
                 # New code here
@@ -315,25 +365,6 @@ def buildpage(request, mission):
     else:
         redirect('createforms')
 
-def showdata(request):
-    retrivedata = SurveyData.objects.filter(user=request.user).values()
-    json_list = []
-    if retrivedata:
-        for i in retrivedata:
-            dict_data = json.loads(i['data'])
-            dict_data['date'] = i.get('date')
-            dict_data['nameform'] = i.get('nameform')
-            dict_data['user'] = i.get('user')
-            json_list.append(dict_data)
-        headelement = json_list[0]
-        print(dict_data)
-
-    else:
-        print('fffffffffffffffffffffffffffff')
-    return render(request, 'showdata.html', {'data': json_list, 'head': headelement.keys()})
-
-
-
 
 
 def logoutuser(request):
@@ -351,15 +382,179 @@ def IndexAdmin2(request):
     return render(request, "Administrateur/indexNew.html")
 
 def tableau(request):
-    return render(request, "Administrateur/tables/data.html")
+    surveydata = SurveyData.objects.all()
+    retrivedata = SurveyData.objects.filter(user=request.user).values()
+    json_list = []
+    if retrivedata:
+        for i in retrivedata:
+            dict_data = json.loads(i['data'])
+            dict_data['date'] = i.get('date')
+            dict_data['nameform'] = i.get('nameform')
+            dict_data['user'] = i.get('user')
+            json_list.append(dict_data)
+        headelement = json_list[0]
+        print(dict_data)
+
+    else:
+        print('fffffffffffffffffffffffffffff')
+    return render(request, "Administrateur/tables/data.html", {'surveydata': surveydata,'data': json_list, 'head': headelement.keys()})
 
 def users_status(request):
-    return render(request, "Administrateur/projects.html")
+    users=Enqueteur.objects.all()
+    return render(request, "Administrateur/projects.html",{'users':users})
+
+
+def profile(request,enqueteur_id):
+    enqueteur=Enqueteur.objects.get(id=enqueteur_id)
+    return render(request, "Administrateur/profile.html",{'enqueteur':enqueteur})
+
+
+
+def gpsmap(request):
+    mls = []
+    gps = Enqueteur.objects.all().values()
+    print(len(gps))
+    for i in range(len(gps)):
+        mmdict = {}
+        mmdict['latitude'] = gps[i]['latitude']
+        mmdict['longitude'] = gps[i]['longitude']
+        mmdict['nom'] = gps[i]['nom']
+        mmdict['adresse'] = gps[i]['adresse']
+        mls.append(mmdict)
+        mlsjson = json.dumps(mls, sort_keys=True, indent=1, cls=DjangoJSONEncoder)
+    print(mlsjson)
+    return render(request, 'Administrateur/map.html', {'datamap': mlsjson})
+
+
+
+def filterUserMission(request, user, mission):
+    mlist = []
+    mfilter = SurveyData.objects.filter(nameform=mission).filter(user=user).values()
+    if mfilter:
+        for i in range(len(mfilter)):
+            jsontodict = json.loads(mfilter[i].get('data'))
+            jsontodict['user'] = mfilter[i].get('user')
+            jsontodict['mission'] = mfilter[i].get('nameform')
+            jsontodict['date'] = mfilter[i].get('date')
+            jsontodict['id'] = mfilter[i].get('id')
+            mlist.append(jsontodict)
+        headtable = mlist[0].keys()
+    else:
+        return redirect('login')
+    return render(request, 'Administrateur/filtermissionuser.html', {'data': mlist, 'head': headtable})
+
+@csrf_exempt
+def showdata(request):
+    listmission = []
+    json_list = []
+    head = []
+    retrieve_data = SurveyData.objects.all().values()
+    for i in range(len(retrieve_data)):
+        listmission.append(retrieve_data[i]['nameform'])
+    mylist = list(dict.fromkeys(listmission))
+    if request.method == 'POST':
+        mission = request.POST.get('mission')
+        retrivedata = SurveyData.objects.filter(nameform=mission).values()
+        if retrivedata:
+            for i in retrivedata:
+                dict_data = json.loads(i['data'])
+                dict_data['date'] = i.get('date')
+                dict_data['nameform'] = i.get('nameform')
+                dict_data['user'] = i.get('user')
+                json_list.append(dict_data)
+                headelement = json_list[0]
+            for key, value in headelement.items():
+                head.append(key)
+
+
+        else:
+            print('fffffffffffffffffffffffffffff')
+            # {'data': json_list, 'head': headelement.keys()}
+    return render(request, 'Administrateur/data.html', {'listmission': mylist, 'head': head, 'data': json_list})
+
 
 
 def sent(request):
     return render(request, "Administrateur/mailbox/mail-sent.html")
 
+
+def manage_forms(request):
+    servey=CreateForms.objects.all()
+    return render(request,"administrateur/gestion_forms.html",{"servey":servey})
+
+
+def view_form(request,servey_id):
+    servey=SurveyData.objects.get(id=servey_id)
+
+    return render(request,"administrateur/edit_post.html",{"servey": servey})
+
+def delete_form(request,servey_id):
+    servey=CreateForms.objects.get(id=servey_id)
+    servey.delete()
+    return redirect("manage_forms")
+
+
+
+def add_post(request):
+    return render(request, "Administrateur/add_post.html")
+
+
+def add_post_save(request):
+    if request.method!="POST":
+        return HttpResponse("Method Not Allowed")
+    else:
+
+        title = request.POST.get("title")
+        content = request.POST.get("content")
+        keywords = request.POST.get("keywords")
+
+        try:
+
+            actualite=Actualite(title=title, content=content,keywords=keywords)
+            actualite.save()
+            messages.success(request,"Successfully Added Post")
+            return HttpResponseRedirect(reverse("add_post"))
+        except:
+            messages.error(request,"Failed To Add Post")
+            return HttpResponseRedirect(reverse("add_post"))
+
+
+def manage_post(request):
+    post=Actualite.objects.all()
+    return render(request,"administrateur/manage_post.html",{"post":post})
+
+
+def edit_post(request,post_id):
+    post = Actualite.objects.get(id=post_id)
+    return render(request,"administrateur/edit_post.html",{"post": post})
+
+
+def delete_post(request,post_id):
+    post = Actualite.objects.get(id=post_id)
+    post.delete()
+    return redirect("manage_post")
+
+
+def edit_post_save(request):
+    if request.method!="POST":
+        return HttpResponse("<h2>Method Not Allowed</h2>")
+    else:
+        post_id=request.POST.get("post_id")
+        title=request.POST.get("title")
+        content=request.POST.get("content")
+        keywords=request.POST.get("keywords")
+
+        try:
+            post=Actualite.objects.get(id=post_id)
+            post.title=title
+            post.content=content
+            post.keywords=keywords
+            post.save()
+            messages.success(request,"Successfully Edited post")
+            return HttpResponseRedirect(reverse("edit_post",kwargs={"post_id":post_id}))
+        except:
+            messages.error(request,"Failed to Edit post")
+            return HttpResponseRedirect(reverse("edit_post",kwargs={"post_id":post_id}))
 
 def servey(request):
     return render(request, "Administrateur/servey.html")
@@ -372,3 +567,6 @@ def mailbox(request):
 
 def mailbox_read(request):
     return render(request, "Administrateur/mailbox/read-mail.html")
+
+def missiontest(request):
+    return render(request, "questionnairetest.html")

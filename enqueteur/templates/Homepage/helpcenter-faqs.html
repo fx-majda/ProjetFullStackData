@@ -4,7 +4,7 @@
 
     <head>
         <meta charset="utf-8" />
-        <title>Upgoods - Devenir client mystère</title>
+        <title>Upgoods - FOIRE AUX QUESTIONS</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="Upgoods service" />
         <meta name="keywords" content="upgoods, client-mystere, ams, smice, ams international" />
@@ -51,7 +51,7 @@
                 <div class="buy-button">
                                                            {% url 'login' as login %}
 
-                        <a href="{{login}}" target="_blank" class="btn btn-primary">Se connecter</a>                </div><!--end login button-->
+                        <a href="{{login}}"  class="btn btn-primary">Se connecter</a>                </div><!--end login button-->
                 <!-- End Logo container-->
                 <div class="menu-extras">
                     <div class="menu-item">
@@ -73,12 +73,12 @@
                       <ul class="navigation-menu">
                         {% url 'index' as index %}
 
-                        <li><a href=" {{index}} ">Acceuil</a></li>
+                        <li><a href=" {{index}} ">Accueil</a></li>
                         {% url 'service' as service %}
                         <li><a href=" {{service}} ">Nos Services</a></li>
                         {% url 'guide' as guide %}
 
-                        <li><a href=" {{guide}} ">Devenir client mystère</a></li>
+                        <li><a href=" {{guide}} ">FOIRE AUX QUESTIONS</a></li>
                                                                                                             {% url 'actualite' as actualite %}
 
                         <li><a href=" {{actualite}} ">Actualités</a></li>
@@ -94,7 +94,7 @@
                     <div class="buy-menu-btn d-none">
                                                                            {% url 'login' as login %}
 
-                        <a href="{{login}}" target="_blank" class="btn btn-primary">Se connecter</a>
+                        <a href="{{login}}"  class="btn btn-primary">Se connecter</a>
                     </div><!--end login button-->
                 </div><!--end navigation-->
             </div><!--end container-->
@@ -107,12 +107,12 @@
                 <div class="row justify-content-center">
                     <div class="col-lg-12 text-center">
                         <div class="page-next-level">
-                            <h4 class="title"> Questions fréquemment posées</h4>
+                            <h4 class="title"> FAQ | SOS</h4>
 
                             <div class="page-next">
                                 <nav aria-label="breadcrumb" class="d-inline-block">
                                     <ul class="breadcrumb bg-white rounded shadow mb-0">
-                                        <li class="breadcrumb-item"><a href=" {{index}} ">Acceuil</a></li>
+                                        <li class="breadcrumb-item"><a href=" {{index}} ">Accueil</a></li>
                                         <li class="breadcrumb-item active" aria-current="page">FAQs</li>
                                     </ul>
                                 </nav>
@@ -131,7 +131,7 @@
                     <div class="col-lg-4 col-md-5 col-12 d-none d-md-block">
                         <div class="rounded shadow p-4 sticky-bar">
                             <ul class="list-unstyled mb-0">
-                                <li><a href=" #tech" class="mouse-down h6 text-dark">Devenir client mystere</a></li>
+                                <li><a href=" #tech" class="mouse-down h6 text-dark">Questions générales</a></li>
                                 <li class="mt-4"><a href=" #general " class="mouse-down h6 text-dark">General Questions</a></li>
                                 <li class="mt-4"><a href=" #payment" class="mouse-down h6 text-dark">Payments Questions</a></li>
                                 <li class="mt-4"><a href=" #support " class="mouse-down h6 text-dark">Support Questions</a></li>
@@ -141,19 +141,20 @@
 
                     <div class="col-lg-8 col-md-7 col-12">
                         <div class="section-title" id="tech">
-                            <h4>Devenir client mystere</h4>
+                            <h4>Questions générales</h4>
                         </div>
                         <div class="faq-content mt-4 pt-2">
                             <div class="accordion" id="accordionExampleone">
                                 <div class="card border-0 rounded mb-2">
                                     <a data-toggle="collapse" href=" #collapseone " class="faq position-relative" aria-expanded="true" aria-controls="collapseone">
                                         <div class="card-header border-0 bg-light p-3 pr-5" id="headingfifone">
-                                            <h6 class="title mb-0"> Comment <span class="text-primary">fonctionne</span> Upgoods ? </h6>
+                                            <h6 class="title mb-0"> Comment faire une<span class="text-primary"> visite</span> ? </h6>
                                         </div>
                                     </a>
                                     <div id="collapseone" class="collapse show" aria-labelledby="headingfifone" data-parent="#accordionExampleone">
                                         <div class="card-body px-2 py-4">
-                                            <p class="text-muted mb-0 faq-ans">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form.</p>
+                                            <p class="text-muted mb-0 faq-ans">Vous devez vous inscrire sur le panel pour recevoir toutes les visites susceptibles de correspondre à votre profil client.
+                                            <br>Une fois inscrit (e), vous pourrez voir sur votre espace missions, la liste des visites mystères en cours dans votre secteur géographique. Si vous êtes amenés à voyager vous pourrez voir les visites sur d’autres secteurs géographiques.<br> Si l’une d’entre elle correspond à votre profil, vous pourrez  vous positionner en prenant soin d’indiquer sur le calendrier la date à laquelle vous souhaitez la réaliser.Une fois par semaine vous recevrez les visites en cours, assurez- vous que notre adresse mail soit dans vos favoris et non dans les spams au risque de laisser passer des visites intéressantes.</p>
                                         </div>
                                     </div>
                                 </div>
@@ -161,12 +162,12 @@
                                 <div class="card border-0 rounded mb-2">
                                     <a data-toggle="collapse" href=" #collapsetwo " class="faq position-relative collapsed" aria-expanded="false" aria-controls="collapsetwo">
                                         <div class="card-header border-0 bg-light p-3 pr-5" id="headingtwo">
-                                            <h6 class="title mb-0"> What is the main process open account ? </h6>
+                                            <h6 class="title mb-0"> C'est quoi la procédure pour effectuer une visite ? </h6>
                                         </div>
                                     </a>
                                     <div id="collapsetwo" class="collapse" aria-labelledby="headingtwo" data-parent="#accordionExampleone">
                                         <div class="card-body px-2 py-4">
-                                            <p class="text-muted mb-0 faq-ans">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form.</p>
+                                            <p class="text-muted mb-0 faq-ans"> Si l’une de nos mission correspond à votre profil, vous pourrez  vous positionner en prenant soin d’indiquer sur le calendrier la date à laquelle vous souhaitez la réaliser.Une fois par semaine vous recevrez les visites en cours, assurez- vous que notre adresse mail soit dans vos favoris et non dans les spams au risque de laisser passer des visites intéressantes.</p>
                                         </div>
                                     </div>
                                 </div>
@@ -174,12 +175,12 @@
                                 <div class="card border-0 rounded mb-2">
                                     <a data-toggle="collapse" href=" #collapsethree " class="faq position-relative collapsed" aria-expanded="false" aria-controls="collapsethree">
                                         <div class="card-header border-0 bg-light p-3 pr-5" id="headingthree">
-                                            <h6 class="title mb-0"> How to make unlimited data entry ? </h6>
+                                            <h6 class="title mb-0"> Support Upgoods </h6>
                                         </div>
                                     </a>
                                     <div id="collapsethree" class="collapse" aria-labelledby="headingthree" data-parent="#accordionExampleone">
                                         <div class="card-body px-2 py-4">
-                                            <p class="text-muted mb-0 faq-ans">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form.</p>
+                                            <p class="text-muted mb-0 faq-ans">L’équipe de chargés de relation et de communication avec le panel est à votre disposition pour répondre à vos questions et vous aider.Si vous deviez changer votre jour et heure de visite n’hésitez pas à les prévenir, ils sont à votre disposition par mail à client-mystere(at)amsinternational.fr ou au téléphone : 0033 (0)  4 72 81 99 57.Le dédommagement vous sera transmis par courrier recommandé sous un délai de 6 à 8 semaines pour vous permettre de cumuler avec d’autres dédommagements.w.</p>
                                         </div>
                                     </div>
                                 </div>
@@ -187,13 +188,15 @@
                                 <div class="card border-0 rounded mb-2">
                                     <a data-toggle="collapse" href=" #collapsefour " class="faq position-relative collapsed" aria-expanded="false" aria-controls="collapsefour">
                                         <div class="card-header border-0 bg-light p-3 pr-5" id="headingfour">
-                                            <h6 class="title mb-0"> Is <span class="text-primary">Landrick</span> safer to use with my account ? </h6>
-                                        </div>
+  <h6 class="title mb-0"> J'ai perdu mon mot de passe comment le récuperer?</h6>
+                                                                         </div>
                                     </a>
                                     <div id="collapsefour" class="collapse" aria-labelledby="headingfour" data-parent="#accordionExampleone">
                                         <div class="card-body px-2 py-4">
-                                            <p class="text-muted mb-0 faq-ans">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form.</p>
-                                        </div>
+  <div class="card-body px-2 py-4">
+                                            <p class="text-muted mb-0 faq-ans">Votre identifiant correspond à l’adresse e-mail avec laquelle vous vous êtes inscrit.<br>
+Pour récupérer votre mot de passe, vous avez deux possibilités : depuis la page web ou depuis votre application mobile (en cliquant sur le bouton « mot de passe oublié »)</p>
+                                        </div>                                              </div>
                                     </div>
                                 </div>
 
@@ -260,12 +263,13 @@
                                 <div class="card border-0 rounded mb-2">
                                     <a data-toggle="collapse" href=" #collapseeight" class="faq position-relative collapsed" aria-expanded="false" aria-controls="collapseeight">
                                         <div class="card-header border-0 bg-light p-3 pr-5" id="headingeight">
-                                            <h6 class="title mb-0"> Is <span class="text-primary">Landrick</span> safer to use with my account ? </h6>
+                                            <h6 class="title mb-0"> J'ai perdu mon mot de passe, comment le récuperer ? </h6>
                                         </div>
                                     </a>
                                     <div id="collapseeight" class="collapse" aria-labelledby="headingeight" data-parent="#accordionExampletwo">
                                         <div class="card-body px-2 py-4">
-                                            <p class="text-muted mb-0 faq-ans">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form.</p>
+                                            <p class="text-muted mb-0 faq-ans">Votre identifiant correspond à l’adresse e-mail avec laquelle vous vous êtes inscrit.<br>
+Pour récupérer votre mot de passe, vous avez deux possibilités : depuis la page web ou depuis votre application mobile (en cliquant sur le bouton « mot de passe oublié »)</p>
                                         </div>
                                     </div>
                                 </div>
@@ -434,63 +438,13 @@
                 </div><!--end row-->
             </div><!--end container-->
 
-            <div class="container mt-100 mt-60">
-                <div class="row">
-                    <div class="col-lg-6 col-md-6 col-12">
-                        <div class="media align-items-center features feature-clean shadow rounded p-4">
-                            <div class="icons text-primary text-center">
-                                <i class="uil uil-envelope-check d-block rounded h3 mb-0"></i>
-                            </div>
-                            <div class="content ml-4">
-                                <h5 class="mb-1"><a href=" {% static 'javascript:void(0)' %} " class="text-dark">Get in Touch !</a></h5>
-                                <p class="text-muted mb-0">This is required when, for text is not yet available.</p>
-                                <div class="mt-2">
-                                    <a href=" {% static 'javascript:void(0)' %} " class="btn btn-sm btn-soft-primary">Submit a Request</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div><!--end col-->
-                    
-                    <div class="col-lg-6 col-md-6 col-12 mt-4 mt-sm-0 pt-2 pt-sm-0">
-                        <div class="media align-items-center features feature-clean shadow rounded p-4">
-                            <div class="icons text-primary text-center">
-                                <i class="uil uil-webcam d-block rounded h3 mb-0"></i>
-                            </div>
-                            <div class="content ml-4">
-                                <h5 class="mb-1"><a href=" {% static 'javascript:void(0)' %} " class="text-dark">Start a Meeting</a></h5>
-                                <p class="text-muted mb-0">This is required when, for text is not yet available.</p>
-                                <div class="mt-2">
-                                    <a href=" {% static 'javascript:void(0)' %} " class="btn btn-sm btn-soft-primary">Start Video Chat</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div><!--end col-->
-                </div><!--end row-->
-            </div><!--end container-->
+
         </section><!--end section-->
         <!-- End Section -->
 
         <!-- Footer Start -->
-        <footer class="footer footer-bar">
-            <div class="container text-center">
-                <div class="row align-items-center">
-                    <div class="col-sm-6">
-                        <div class="text-sm-left">
-                            <p class="mb-0">© <script>document.write(new Date().getFullYear())</script> Landrick. Design with <i class="mdi mdi-heart text-danger"></i> by <a href="http://shreethemes.in/" target="_blank" class="text-reset">Shreethemes</a>.</p>
-                        </div>
-                    </div><!--end col-->
+                   {% include 'footer.html' %}
 
-                    <div class="col-sm-6 mt-4 mt-sm-0 pt-2 pt-sm-0">
-                        <ul class="list-unstyled text-sm-right social-icon social mb-0">
-                            <li class="list-inline-item"><a href=" {% static 'javascript:void(0)' %} " class="rounded"><i data-feather="facebook" class="fea icon-sm fea-social"></i></a></li>
-                            <li class="list-inline-item"><a href=" {% static 'javascript:void(0)' %} " class="rounded"><i data-feather="instagram" class="fea icon-sm fea-social"></i></a></li>
-                            <li class="list-inline-item"><a href=" {% static 'javascript:void(0)' %} " class="rounded"><i data-feather="twitter" class="fea icon-sm fea-social"></i></a></li>
-                            <li class="list-inline-item"><a href=" {% static 'javascript:void(0)' %} " class="rounded"><i data-feather="linkedin" class="fea icon-sm fea-social"></i></a></li>
-                        </ul><!--end icon-->
-                    </div><!--end col-->
-                </div><!--end row-->
-            </div><!--end container-->
-        </footer><!--end footer-->
         <!-- Footer End -->
 
         <!-- Back to top -->

@@ -1,0 +1,143 @@
+   {% extends 'administrateur/base_template.html' %}
+   {%load static %}
+  {% block page_title %}
+Profile de l'enquêteur {{enqueteur.nom}}
+   {% endblock page_title %}
+  {% block main_content %}
+<style>
+.center {
+  margin: auto;
+  width: 60%;
+  padding: 10px;
+}
+</style>
+    <!-- Main content -->
+   <div  class="center">
+   <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-9">
+
+            <!-- Profile Image -->
+            <div class="card card-primary card-outline">
+              <div class="card-body box-profile">
+                <div class="text-center">
+                  <img class="profile-user-img img-fluid img-circle"
+                       src=" {{enqueteur.profile_pic.url}} "
+                       alt="User profile picture">
+                </div>
+
+                <h3 class="profile-username text-center">{{enqueteur.nom}}</h3>
+
+                <p class="text-muted text-center">Membre depuis:{{enqueteur.created_at}}</p>
+
+                <ul class="list-group list-group-unbordered mb-3">
+                  <li class="list-group-item">
+                    <b>Nombre de missions effectuées</b> <a class="float-right">X</a>
+                  </li>
+                    <li class="list-group-item">
+                    <b>Nombre de missions en attente de confirmation</b> <a class="float-right">X</a>
+                  </li>
+
+                  <li class="list-group-item">
+                    <b>Nombre de candidature en attente de confirmation</b> <a class="float-right">X</a>
+                  </li>
+                 <li class="list-group-item">
+                    <b>Remuneration recu:</b> <a class="float-right">X</a>
+                  </li></ul>
+
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+
+            <!-- About Me Box -->
+            <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">About Me</h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <strong><i class="fas fa-users mr-3" ></i>Sexe</strong>
+
+                <p class="text-muted">
+                  {{enqueteur.genre}}
+                </p>
+                                <hr>
+                <strong><i class="fas fa-phone-square-alt mr-3" ></i>Telephone</strong>
+
+                <p class="text-muted">
+                  {{enqueteur.telephone}}
+                </p>
+                                <hr>
+
+              <strong><i class="fas fa-language mr-3"></i>languages</strong>
+
+                <p class="text-muted">
+                  {{enqueteur.langues}}
+                </p>
+                <hr>
+
+                <strong><i class="fas fa-map-marker-alt mr-3"></i> Adresse</strong>
+
+                <p class="text-muted">                  {{enqueteur.adresse}}</p>
+
+                <hr>
+
+                <strong><i class="fas fa-birthday-cake mr-3"></i> Date de naissance</strong>
+
+                <p class="text-muted">
+
+                  <span class="tag tag-primary">{{enqueteur.birth_day}}</span>
+                </p>
+
+                <hr>
+
+                <strong><i class="far fa-file-alt mr-3"></i> Disponibilité </strong>
+                {% if enqueteur.joindre == 1 %}
+                <p class="text-muted"> 8h00 - 12h00 </p>
+                {% elif enqueteur.joindre == 2  %}
+                <p class="text-muted"> 12h00 - 14h00 </p>
+                {% else %}
+                <p class="text-muted"> 14h00 - 17h00 </p>
+                {% endif %}
+<hr>
+
+                <strong><i class="fas fa-briefcase mr-3"></i> Situation</strong>
+
+                <p class="text-muted">                  {{enqueteur.situation}}</p>
+
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+
+        <!-- /.row -->
+      </div><!-- /.container-fluid -->
+      </div>
+    </section>
+    <!-- /.content -->
+  </div>
+   </div>
+  <!-- /.content-wrapper -->
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+</div>
+<!-- ./wrapper -->
+  {% endblock main_content %}
+
+ <script src=" {% static 'plugins/jquery/jquery.min.js' %} "></script>
+  <!-- Bootstrap 4 -->
+  <script src=" {% static 'plugins/bootstrap/js/bootstrap.bundle.min.js' %} "></script>
+  <!-- AdminLTE App -->
+  <script src=" {% static 'dist/js/adminlte.min.js' %} "></script>
+  <!-- AdminLTE for demo purposes -->
+  <script src=" {% static 'dist/js/demo.js' %} "></script>
+  </body>
+  </html>

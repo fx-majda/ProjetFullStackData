@@ -87,7 +87,7 @@
                     <ul class="navigation-menu">
                         {% url 'indexEnqueteur' as index %}
 
-                        <li><a href=" {{index}} ">Acceuil</a></li>
+                        <li><a href=" {{index}} ">Accueil</a></li>
                         {% url 'trouvermission' as service %}
                         <li><a href=" {{service}} ">Trouver une mission</a></li>
                         {% url 'mission' as guide %}
@@ -117,19 +117,17 @@
                 <div class="row justify-content-center">
                     <div class="col-lg-12 text-center">
                         <div class="page-next-level">
-                            <img src=" {% static 'images/job/Gradle.svg' %} " class="avatar avatar-small" alt="">
-                            <h4 class="title mt-4 mb-3"> Mission 820928 - Renault langres  </h4>
-                            <p class="para-desc mx-auto text-muted">Demande de devis en atelier</p>
+                            <img src="{{post.organisme.photo.url}} " class="avatar avatar-small" alt="">
+                            <h4 class="title mt-4 mb-3"> Mission {{post.ref}} - {{post.organisme.nom}}  </h4>
+                            <p class="para-desc mx-auto text-muted">{{post.nom}}</p>
                             <ul class="list-unstyled">
-                                <li class="list-inline-item text-primary mr-3"><i class="mdi mdi-map-marker text-warning mr-2"></i>Paris, France</li>
+                                <li class="list-inline-item text-primary mr-3"><i class="mdi mdi-map-marker text-warning mr-2"></i>{{post.ville}}, {{post.pays}}</li>
                             </ul>
                             <div class="page-next">
                                 <nav aria-label="breadcrumb" class="d-inline-block">
                                     <ul class="breadcrumb bg-white rounded shadow mb-0">
-                                        <li class="breadcrumb-item"><a href=" {% static 'index.html' %} ">Landrick</a></li>
-                                        <li class="breadcrumb-item"><a href="#">Page</a></li>
-                                        <li class="breadcrumb-item"><a href="#">Careers</a></li>
-                                        <li class="breadcrumb-item active" aria-current="page">Job Details</li>
+                                        <li class="breadcrumb-item"><a href=" {% static 'index.html' %} ">Missions</a></li>
+                                        <li class="breadcrumb-item active" aria-current="page">Mission Details</li>
                                     </ul>
                                 </nav>
                             </div>
@@ -167,7 +165,7 @@
                                     <i data-feather="map-pin" class="fea icon-ex-md mr-3"></i>
                                     <div class="media-body">
                                         <h6 class="widget-title">localisation:</h6>
-                                        <p class="text-primary mb-0">Paris, France</p>
+                                        <p class="text-primary mb-0">{{post.ville}}, {{post.pays}}</p>
                                     </div>
                                 </div>
 
@@ -175,7 +173,7 @@
                                     <i data-feather="monitor" class="fea icon-ex-md mr-3"></i>
                                     <div class="media-body">
                                         <h6 class="widget-title">Thématique</h6>
-                                        <p class="text-primary mb-0">Automobile</p>
+                                        <p class="text-primary mb-0">{{post.thematique}}</p>
                                     </div>
                                 </div>
 
@@ -193,46 +191,35 @@
                                     <i data-feather="dollar-sign" class="fea icon-ex-md mr-3"></i>
                                     <div class="media-body">
                                         <h6 class="widget-title">Remunération:</h6>
-                                        <p class="text-primary mb-0">13,00 €*</p>
+                                        <p class="text-primary mb-0">{{post.remuneration}}</p>
                                     </div>
                                 </div>
 
                                 <div class="media widget align-items-center mt-3">
                                     <i data-feather="clock" class="fea icon-ex-md mr-3"></i>
                                     <div class="media-body">
-                                        <h6 class="widget-title">Date du poste:</h6>
-                                        <p class="text-primary mb-0 mb-0">14 Fev, 2021</p>
+                                        <h6 class="widget-title">La date de debut de la mission :</h6>
+                                        <p class="text-primary mb-0 mb-0">{{post.date_debut}}</p>
                                     </div>
                                 </div>
-
+                                <div class="media widget align-items-center mt-3">
+                                    <i data-feather="clock" class="fea icon-ex-md mr-3"></i>
+                                    <div class="media-body">
+                                        <h6 class="widget-title">La date de fin de la mission :</h6>
+                                        <p class="text-primary mb-0 mb-0">{{post.date_fin}}</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div><!--end col-->
     
                     <div class="col-lg-8 col-md-7 col-12 mt-4 mt-sm-0 pt-2 pt-sm-0">
                         <div class="ml-lg-4">
-                            <h5>Thématique : </h5>
-                            <p class="text-muted">Automobile.</p>
+                            <h5>Description de la mission : </h5>
+                            <p class="text-muted">{{post.description |safe}}.</p>
 
-                            <h5 class="mt-4">Le profil recherché :</h5>
-                            <p class="text-muted">It sometimes makes sense to select texts containing the various letters and symbols specific to the output language.</p>
-                            <ul class="list-unstyled">
-                                <li class="text-muted"><i data-feather="arrow-right" class="fea icon-sm text-success mr-2"></i>Vous disposez d’un véhicule ou d’une une carte grise Renault ou Dacia (véhicule ou carte grise dont vous êtes propriétaire ou qui vous est prêté par une personne de votre entourage)</li>
-                                <li class="text-muted"><i data-feather="arrow-right" class="fea icon-sm text-success mr-2"></i>Vous vous sentez à l’aise pour demander un devis pour une réparation sur ce véhicule (une liste de réparations autorisées vous sera fournie).</li>
-                                <li class="text-muted"><i data-feather="arrow-right" class="fea icon-sm text-success mr-2"></i>Vous pouvez auditer quatre concessions avec une même carte grise, par contre vous devez faire une demande de devis identique (pour la même réparation).</li>
-                            </ul>
-
-                            <h5 class="mt-4">Vous devez demander un devis pour une intervention de la liste suivante :
-                            </h5>
-                            <ul class="list-unstyled">
-                                <li class="text-muted"><i data-feather="arrow-right" class="fea icon-sm text-success mr-2"></i> Recharge climatisation</li>
-                                <li class="text-muted"><i data-feather="arrow-right" class="fea icon-sm text-success mr-2"></i>Courroie de distribution + pompe à eau</li>
-                                <li class="text-muted"><i data-feather="arrow-right" class="fea icon-sm text-success mr-2"></i>Changement de pneus : Achat + montage (deux pneus minimum)</li>
-                                <li class="text-muted"><i data-feather="arrow-right" class="fea icon-sm text-success mr-2"></i>Démarrage (Bougies/Batterie/Alternateur/Démarreur)</li>
-                                <li class="text-muted"><i data-feather="arrow-right" class="fea icon-sm text-success mr-2"></i>Changement du pot d’échappement</li>
-</ul>
                             <div class="mt-4">
-                                <a href=" {% static 'page-job-apply.html' %} " class="btn btn-outline-primary">Enregistrer ma candidature pour cette mission <i class="mdi mdi-send"></i></a>
+                                <a href=" {% url 'apply_for_mission' %} " class="btn btn-outline-primary">Enregistrer ma candidature pour cette mission <i class="mdi mdi-send"></i></a>
                             </div>
                         </div>
                     </div><!--end col-->
@@ -242,90 +229,7 @@
         <!-- Job Detail End -->
 
         <!-- Footer Start -->
-        <footer class="footer">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-4 col-12 mb-0 mb-md-4 pb-0 pb-md-2">
-                        <a href="#" class="logo-footer">
-                            <img src=" {% static 'images/logo-light.png' %} " height="24" alt="">
-                        </a>
-                        <p class="mt-4">Start working with Landrick that can provide everything you need to generate awareness, drive traffic, connect.</p>
-                        <ul class="list-unstyled social-icon social mb-0 mt-4">
-                            <li class="list-inline-item"><a href=" {% static 'javascript:void(0)' %} " class="rounded"><i data-feather="facebook" class="fea icon-sm fea-social"></i></a></li>
-                            <li class="list-inline-item"><a href=" {% static 'javascript:void(0)' %} " class="rounded"><i data-feather="instagram" class="fea icon-sm fea-social"></i></a></li>
-                            <li class="list-inline-item"><a href=" {% static 'javascript:void(0)' %} " class="rounded"><i data-feather="twitter" class="fea icon-sm fea-social"></i></a></li>
-                            <li class="list-inline-item"><a href=" {% static 'javascript:void(0)' %} " class="rounded"><i data-feather="linkedin" class="fea icon-sm fea-social"></i></a></li>
-                        </ul><!--end icon-->
-                    </div><!--end col-->
-                    
-                    <div class="col-lg-2 col-md-4 col-12 mt-4 mt-sm-0 pt-2 pt-sm-0">
-                        <h5 class="text-light footer-head">Company</h5>
-                        <ul class="list-unstyled footer-list mt-4">
-                            <li><a href=" {% static 'page-aboutus.html' %} " class="text-foot"><i class="mdi mdi-chevron-right mr-1"></i> About us</a></li>
-                            <li><a href=" {% static 'page-services.html' %} " class="text-foot"><i class="mdi mdi-chevron-right mr-1"></i> Services</a></li>
-                            <li><a href=" {% static 'page-team.html' %} " class="text-foot"><i class="mdi mdi-chevron-right mr-1"></i> Team</a></li>
-                            <li><a href=" {% static 'page-pricing.html' %} " class="text-foot"><i class="mdi mdi-chevron-right mr-1"></i> Pricing</a></li>
-                            <li><a href=" {% static 'page-portfolio-modern.html' %} " class="text-foot"><i class="mdi mdi-chevron-right mr-1"></i> Project</a></li>
-                            <li><a href=" {% static 'page-jobs.html' %} " class="text-foot"><i class="mdi mdi-chevron-right mr-1"></i> Careers</a></li>
-                            <li><a href=" {% static 'page-blog-grid.html' %} " class="text-foot"><i class="mdi mdi-chevron-right mr-1"></i> Blog</a></li>
-                            <li><a href=" {% static 'auth-cover-login.html' %} " class="text-foot"><i class="mdi mdi-chevron-right mr-1"></i> Login</a></li>
-                        </ul>
-                    </div><!--end col-->
-                    
-                    <div class="col-lg-3 col-md-4 col-12 mt-4 mt-sm-0 pt-2 pt-sm-0">
-                        <h5 class="text-light footer-head">Usefull Links</h5>
-                        <ul class="list-unstyled footer-list mt-4">
-                            <li><a href=" {% static 'page-terms.html' %} " class="text-foot"><i class="mdi mdi-chevron-right mr-1"></i> Terms of Services</a></li>
-                            <li><a href=" {% static 'page-privacy.html' %} " class="text-foot"><i class="mdi mdi-chevron-right mr-1"></i> Privacy Policy</a></li>
-                            <li><a href=" {% static 'documentation.html' %} " class="text-foot"><i class="mdi mdi-chevron-right mr-1"></i> Documentation</a></li>
-                            <li><a href=" {% static 'changelog.html' %} " class="text-foot"><i class="mdi mdi-chevron-right mr-1"></i> Changelog</a></li>
-                            <li><a href=" {% static 'components.html' %} " class="text-foot"><i class="mdi mdi-chevron-right mr-1"></i> Components</a></li>
-                        </ul>
-                    </div><!--end col-->
-
-                    <div class="col-lg-3 col-md-4 col-12 mt-4 mt-sm-0 pt-2 pt-sm-0">
-                        <h5 class="text-light footer-head">Newsletter</h5>
-                        <p class="mt-4">Sign up and receive the latest tips via email.</p>
-                        <form>
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <div class="foot-subscribe form-group position-relative">
-                                        <label>Write your email <span class="text-danger">*</span></label>
-                                        <i class="mdi mdi-email ml-3 icons"></i>
-                                        <input type="email" name="email" id="emailsubscribe" class="form-control pl-5 rounded" placeholder="Your email : " required>
-                                    </div>
-                                </div>
-                                <div class="col-lg-12">
-                                    <input type="submit" id="submitsubscribe" name="send" class="btn btn-soft-primary btn-block" value="Subscribe">
-                                </div>
-                            </div>
-                        </form>
-                    </div><!--end col-->
-                </div><!--end row-->
-            </div><!--end container-->
-        </footer><!--end footer-->
-        <footer class="footer footer-bar">
-            <div class="container text-center">
-                <div class="row align-items-center">
-                    <div class="col-sm-6">
-                        <div class="text-sm-left">
-                            <p class="mb-0">© <script>document.write(new Date().getFullYear())</script> Landrick. Design with <i class="mdi mdi-heart text-danger"></i> by <a href="http://shreethemes.in/" target="_blank" class="text-reset">Shreethemes</a>.</p>
-                        </div>
-                    </div><!--end col-->
-
-                    <div class="col-sm-6 mt-4 mt-sm-0 pt-2 pt-sm-0">
-                        <ul class="list-unstyled text-sm-right mb-0">
-                            <li class="list-inline-item"><a href=" {% static 'javascript:void(0)' %} "><img src=" {% static 'images/payments/american-ex.png' %} " class="avatar avatar-ex-sm" title="American Express" alt=""></a></li>
-                            <li class="list-inline-item"><a href=" {% static 'javascript:void(0)' %} "><img src=" {% static 'images/payments/discover.png' %} " class="avatar avatar-ex-sm" title="Discover" alt=""></a></li>
-                            <li class="list-inline-item"><a href=" {% static 'javascript:void(0)' %} "><img src=" {% static 'images/payments/master-card.png' %} " class="avatar avatar-ex-sm" title="Master Card" alt=""></a></li>
-                            <li class="list-inline-item"><a href=" {% static 'javascript:void(0)' %} "><img src=" {% static 'images/payments/paypal.png' %} " class="avatar avatar-ex-sm" title="Paypal" alt=""></a></li>
-                            <li class="list-inline-item"><a href=" {% static 'javascript:void(0)' %} "><img src=" {% static 'images/payments/visa.png' %} " class="avatar avatar-ex-sm" title="Visa" alt=""></a></li>
-                        </ul>
-                    </div><!--end col-->
-                </div><!--end row-->
-            </div><!--end container-->
-        </footer><!--end footer-->
-        <!-- Footer End -->
+            {% include 'footer.html' %}
 
         <!-- Back to top -->
         <a href="#" class="btn btn-icon btn-primary back-to-top"><i data-feather="arrow-up" class="icons"></i></a>
