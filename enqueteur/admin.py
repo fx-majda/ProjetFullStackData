@@ -10,6 +10,8 @@ admin.site.register(Organisme)
 admin.site.register(Candidature)
 admin.site.register(Mission)
 admin.site.register(Contact)
+admin.site.register(Contact_enqueteur)
+
 
 
 

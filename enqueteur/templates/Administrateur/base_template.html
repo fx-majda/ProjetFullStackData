@@ -5,7 +5,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Upgoods | Dashboard</title>
+  <title>Upgoods | Dashboard Administrateur</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Font Awesome -->
@@ -55,10 +55,16 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href=" {% static 'index3.html' %} " class="nav-link">Home</a>
+        <a href=" {% url 'IndexAdmin' %} " class="nav-link">Home</a>
+      </li>
+       <li class="nav-item d-none d-sm-inline-block">
+        <a href="#" class="nav-link">Graphiques</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Contact</a>
+        <a href="{% url 'gestion' %}" class="nav-link">Gestion</a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+          <a href="{% url 'mailbox' %}" class="nav-link">Mailbox</a>
       </li>
     </ul>
 

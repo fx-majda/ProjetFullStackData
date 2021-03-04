@@ -167,6 +167,22 @@ def contact(request):
     return render(request, "Homepage/page-contact-one.html")
 
 @csrf_exempt
+def contact_sent_enqueteur(request):
+    user = request.user
+    enqueteur = Enqueteur.objects.get(user=user)
+    if request.method != "POST":
+        return HttpResponse("<h2>Method Not Allowed</h2>")
+    else:
+        subject = request.POST.get('subject')
+        comments= request.POST.get('comments')
+        try:
+            contact = Contact_enqueteur.objects.create( subject=subject, comments=comments)
+            contact.save()
+            return render(request, "EnqueteurPage/account-messages.html", {"enqueteur": enqueteur})
+        except:
+            return render(request, "EnqueteurPage/account-messages.html", {"enqueteur": enqueteur})
+
+
 def contact_sent(request):
     if request.method != "POST":
         return HttpResponse("<h2>Method Not Allowed</h2>")
@@ -178,10 +194,8 @@ def contact_sent(request):
         try:
             contact = Contact.objects.create(name=name, email=email, subject=subject, comments=comments)
             contact.save()
-            messages.success(request, "success ")
             return HttpResponseRedirect('/contact')
         except:
-            messages.error(request, "Failed ")
             return HttpResponseRedirect('/contact')
 
 def signup(request):
@@ -477,6 +491,10 @@ def showdata(request):
 def sent(request):
     return render(request, "Administrateur/mailbox/mail-sent.html")
 
+def gestion(request):
+    return render(request, "Administrateur/gestion.html")
+
+
 
 def manage_forms(request):
     servey=CreateForms.objects.all()
@@ -495,9 +513,6 @@ def delete_form(request,servey_id):
 
 
 
-def add_post(request):
-    return render(request, "Administrateur/add_post.html")
-
 
 def add_post_save(request):
     if request.method!="POST":
@@ -513,10 +528,10 @@ def add_post_save(request):
             actualite=Actualite(title=title, content=content,keywords=keywords)
             actualite.save()
             messages.success(request,"Successfully Added Post")
-            return HttpResponseRedirect(reverse("add_post"))
+            return HttpResponseRedirect(reverse("manage_post"))
         except:
             messages.error(request,"Failed To Add Post")
-            return HttpResponseRedirect(reverse("add_post"))
+            return HttpResponseRedirect(reverse("manage_post"))
 
 
 def manage_post(request):
@@ -563,10 +578,18 @@ def mailbox_compose(request):
     return render(request, "Administrateur/mailbox/compose.html")
 
 def mailbox(request):
-    return render(request, "Administrateur/mailbox/mailbox.html")
+    contact=Contact.objects.all()
+    contact_enqueteur=Contact_enqueteur.objects.all()
 
-def mailbox_read(request):
-    return render(request, "Administrateur/mailbox/read-mail.html")
+    return render(request, "Administrateur/mailbox/mailbox.html",{'contact':contact, 'contact_enqueteur':contact_enqueteur})
+
+def mailbox_read_enqueteur(request,message_id):
+    message= Contact_enqueteur.objects.get(id=message_id)
+    return render(request, "Administrateur/mailbox/read-mail_enqueteur.html",{'message':message})
+
+def mailbox_read_contact(request,contact_id):
+    contact = Contact.objects.get(id=contact_id)
+    return render(request, "Administrateur/mailbox/read-mail.html",{'contact':contact})
 
 def missiontest(request):
     return render(request, "questionnairetest.html")

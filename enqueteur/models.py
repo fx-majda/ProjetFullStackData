@@ -166,6 +166,15 @@ class Contact(models.Model):
     objects = models.Manager()
 
 
+class Contact_enqueteur(models.Model):
+    id = models.AutoField(primary_key=True)
+    enqueteur_id = models.ForeignKey(Enqueteur, on_delete=models.CASCADE)
+    subject = models.CharField(max_length=255,blank=True, null=True)
+    comments = models.CharField(max_length=255,blank=True, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    objects = models.Manager()
+
+
 
 ''''
 

@@ -39,7 +39,7 @@
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-chart-pie"></i>
               <p>
-                Charts
+                Graphique
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
@@ -70,28 +70,49 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href=" {% static 'pages/forms/advanced.html' %} " class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Gestion des visites</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href=" {% static 'pages/forms/editors.html' %} " class="nav-link">
+                <a href=" {% url 'manage_forms' %} " class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Gestion des quizz</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href=" {{staff_leave_view}} " class="nav-link">
+                <a href=" {% url 'staff_leave_view' %} " class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Gestion des candidatures</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href=" {% static 'pages/forms/advanced.html' %} " class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Gestion des visites</p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a href="  " class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Validation des visites </p>
                 </a>
               </li>
+                <li class="nav-item">
+                <a href="{% url 'users_status' %} " class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Gestion des enqueteurs</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href=" {% url 'manage_post'  %} " class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Gestion des Actualités  </p>
+                </a>
+              </li>
+
+
             </ul>
           </li>
           <li class="nav-item has-treeview">
 
-            <a href="#" class="nav-link ">
+            <a href="{% url 'mailbox'  %} " class="nav-link ">
               <i class="nav-icon far fa-envelope"></i>
               <p>
                 Mailbox

@@ -101,7 +101,7 @@ Home
         <div class="col-md-9">
           <div class="card card-primary card-outline">
             <div class="card-header">
-              <h3 class="card-title">Lire le courrier</h3>
+              <h3 class="card-title">Lire le courrier de l'enqueteur</h3>
 
               <div class="card-tools">
                 <a href="#" class="btn btn-tool" title="Previous"><i class="fas fa-chevron-left"></i></a>
@@ -111,9 +111,9 @@ Home
             <!-- /.card-header -->
             <div class="card-body p-0">
               <div class="mailbox-read-info">
-                <h5>{{contact.subject}}</h5>
-                <h6>From: {{contact.email}}
-                  <span class="mailbox-read-time float-right">{{contact.created_at}}</span></h6>
+                <h5>Sujet: {{message.subject}}</h5>
+                <h6> From: {{message.enqueteur_id.nom}}
+                <span class="mailbox-read-time float-right">{{message.created_at}}</span></h6>
               </div>
               <!-- /.mailbox-read-info -->
               <div class="mailbox-controls with-border text-center">
@@ -135,7 +135,10 @@ Home
               </div>
               <!-- /.mailbox-controls -->
               <div class="mailbox-read-message">
-                <p>{{contact.comments}}</p>
+
+                <p>
+                {{message.comments}}
+                </p>
 
 
               </div>

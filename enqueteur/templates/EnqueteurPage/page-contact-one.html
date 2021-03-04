@@ -1,17 +1,16 @@
-{% load static %}
-<!DOCTYPE html>
+<!DOCTYPE html>{% load static %}
     <html lang="en">
 
     <head>
         <meta charset="utf-8" />
-		<title>Upgoods - Mission </title>
+        <title>Upgoods - Contact</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="Upgoods mission" />
-        <meta name="keywords" content="upgoods, client-mystere, ams, smice, ams international" />
-        <meta name="author" content="MohammedAminezahhaoui" />
-        <meta name="email" content="zahhaoui@gmail.com" />
-        <meta name="website" content="http://www.up-goods.com" />
-        <meta name="Version" content="v1" />
+        <meta name="description" content="Premium Bootstrap 4 Landing Page Template" />
+        <meta name="keywords" content="Saas, Software, multi-uses, HTML, Clean, Modern" />
+        <meta name="author" content="Shreethemes" />
+        <meta name="email" content="shreethemes@gmail.com" />
+        <meta name="website" content="http://www.shreethemes.in" />
+        <meta name="Version" content="v2.6" />
         <!-- favicon -->
         <link rel="shortcut icon" href=" {% static 'images/1.ico' %} ">
         <!-- Bootstrap -->
@@ -24,6 +23,8 @@
         <!-- Main Css -->
         <link href=" {% static 'css/style.css' %} " rel="stylesheet" type="text/css" id="theme-opt" />
         <link href=" {% static 'css/colors/default.css' %} " rel="stylesheet" id="color-opt">
+        <!-- SweetAlert2 -->
+        <link rel="stylesheet" href=" {% static 'plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css' %} "rel="stylesheet" type="text/css">
 
     </head>
 
@@ -40,37 +41,20 @@
         <!-- Loader -->
 
         <!-- Navbar STart -->
-              <header id="topnav" class="defaultscroll sticky">
+        <header id="topnav" class="defaultscroll sticky">
             <div class="container">
                 <!-- Logo container-->
                 <div>
-                    {% url 'indexEnqueteur' as index %}
-                    <a class="logo" href=" {{index}} ">
+                    <a class="logo" href=" {% static 'index.html' %} ">
                         <img src=" {% static 'images/logo-dark.png' %} " height="24" alt="">
                     </a>
                 </div>
-                									{% url 'login' as login %}
-                <ul class="buy-button list-inline mb-0">
-
                 <div class="buy-button">
-                                                   {% url 'login' as login %}
+                                                                  {% url 'login' as login %}
 
-                        <a href="{{login}}" target="_blank" class="btn btn-primary">Se deconnecter</a>                </div><!--end login button-->
+                        <a href="{{login}}"  class="btn btn-primary">Se connecter</a>                </div><!--end login button-->
                 <!-- End Logo container-->
-                    <li class="list-inline-item mb-0">
-                        <div class="dropdown dropdown-primary">
-                            <button type="button" class="btn btn-icon btn-soft-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="uil uil-user align-middle icons"></i></button>
-                            <div class="dropdown-menu dd-menu dropdown-menu-right bg-white shadow rounded border-0 mt-3 py-3" style="width: 200px;">
-                                <a class="dropdown-item text-dark" href="#"><i class="uil uil-user align-middle mr-1"></i> Mon compte</a>
-                                <a class="dropdown-item text-dark" href="#"><i class="uil uil-clipboard-notes align-middle mr-1"></i> Order History</a>
-                                <a class="dropdown-item text-dark" href="#"><i class="uil uil-arrow-circle-down align-middle mr-1"></i> Download</a>
-                                <div class="dropdown-divider my-3 border-top"></div>
-                                <a class="dropdown-item text-dark" href="#"><i class="uil uil-sign-out-alt align-middle mr-1"></i> Logout</a>
-                            </div>
-                        </div>
-                    </li>
-                </ul><!--end login button-->
-                    <div class="menu-extras">
+                <div class="menu-extras">
                     <div class="menu-item">
                         <!-- Mobile menu toggle-->
                         <a class="navbar-toggle">
@@ -85,42 +69,41 @@
                 </div>
 
                 <div id="navigation">
-                    <!-- Navigation Menu-->
                     <ul class="navigation-menu">
-                        {% url 'indexEnqueteur' as index %}
+                        {% url 'index' as index %}
 
                         <li><a href=" {{index}} ">Accueil</a></li>
-                        {% url 'trouvermission' as service %}
-                        <li><a href=" {{service}} ">Trouver une mission</a></li>
-                        {% url 'mission' as guide %}
+                        {% url 'service' as service %}
+                        <li><a href=" {{service}} ">Nos Services</a></li>
+                        {% url 'guide' as guide %}
 
-                        <li><a href=" {{guide}} ">Mes missions</a></li>
-                        {% url 'account_profile' as actualite %}
+                        <li><a href=" {{guide}} ">FOIRE AUX QUESTIONS</a></li>
+                                                                                                            {% url 'actualite' as actualite %}
 
-                        <li><a href=" {{actualite}} ">Mon profile</a></li>
+                        <li><a href=" {{actualite}} ">Actualités</a></li>
+                        {% url 'contact' as contact %}
 
+                        <li><a href=" {{contact}} ">Contact</a></li>
 
 
 
                     </ul><!--end navigation menu-->
                     <div class="buy-menu-btn d-none">
-                                                                                {% url 'login' as login %}
+                                                                  {% url 'login' as login %}
 
-                        <a href="{{login}}" target="_blank" class="btn btn-primary">Se deconnecter</a>
-                    </div><!--end login button-->
+                        <a href="{{login}}"  class="btn btn-primary">Se connecter</a>                    </div><!--end login button-->
                 </div><!--end navigation-->
             </div><!--end container-->
         </header><!--end header-->
         <!-- Navbar End -->
 
-        
         <!-- Hero Start -->
         <section class="bg-half bg-light d-table w-100">
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-lg-12 text-center">
                         <div class="page-next-level">
-                            <h4 class="title">Contact Us</h4>
+                            <h4 class="title">Contactez Upgoods</h4>
                             <div class="page-next">
                                 <nav aria-label="breadcrumb" class="d-inline-block">
                                     <ul class="breadcrumb bg-white rounded shadow mb-0">
@@ -145,7 +128,6 @@
             </div>
         </div>
         <!--Shape End-->
-
         <!-- Start Contact -->
         <section class="section pb-0">
             <div class="container">
@@ -156,13 +138,12 @@
                                 <i class="uil uil-phone d-block rounded h3 mb-0"></i>
                             </div>
                             <div class="content mt-3">
-                                <h5 class="font-weight-bold">Phone</h5>
-                                <p class="text-muted">Start working with Landrick that can provide everything</p>
-                                <a href=" {% static 'tel:+152534-468-854' %} " class="text-primary">+152 534-468-854</a>
+                                <h5 class="font-weight-bold">Tel. France </h5>
+                                <a href="  " class="text-primary">0033 (0) 4 72 81 99 57</a>
                             </div>
                         </div>
                     </div><!--end col-->
-                    
+
                     <div class="col-md-4 mt-4 mt-sm-0 pt-2 pt-sm-0">
                         <div class="card border-0 text-center features feature-clean">
                             <div class="icons text-primary text-center mx-auto">
@@ -170,12 +151,14 @@
                             </div>
                             <div class="content mt-3">
                                 <h5 class="font-weight-bold">Email</h5>
-                                <p class="text-muted">Start working with Landrick that can provide everything</p>
-                                <a href=" {% static 'mailto:contact@example.com' %} " class="text-primary">contact@example.com</a>
+                                <a href="  " class="text-primary">contact@amsinternational.fr</a><br>
+                                <a href="  " class="text-primary">client-mystere@amsinternational.fr</a>
+
+
                             </div>
                         </div>
                     </div><!--end col-->
-                    
+
                     <div class="col-md-4 mt-4 mt-sm-0 pt-2 pt-sm-0">
                         <div class="card border-0 text-center features feature-clean">
                             <div class="icons text-primary text-center mx-auto">
@@ -183,9 +166,11 @@
                             </div>
                             <div class="content mt-3">
                                 <h5 class="font-weight-bold">Location</h5>
-                                    <p class="text-muted">C/54 Northwest Freeway, Suite 558, <br>Houston, USA 485</p>
-                                    <a href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d39206.002432144705!2d-95.4973981212445!3d29.709510002925988!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8640c16de81f3ca5%3A0xf43e0b60ae539ac9!2sGerald+D.+Hines+Waterwall+Park!5e0!3m2!1sen!2sin!4v1566305861440!5m2!1sen!2sin" class="video-play-icon h6 text-primary">View on Google map</a>
+                                    <p class="text-muted">L’altrium 1, 1 rue du colonel chambonnet
+                                        69500 Bron, <br>Bron, France</p>
+                                    <a href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2785.150931065882!2d4.9216293155662845!3d45.7280678791049!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47f4c16441cdd1f9%3A0x29b3873989a1a106!2s1%20Rue%20du%20Colonel%20Chambonnet%2C%2069500%20Bron%2C%20France!5e0!3m2!1sfr!2sma!4v1614273700915!5m2!1sfr!2sma" class="video-play-icon h6 text-primary">View on Google map</a>
                                 </div>
+
                             </div>
                         </div>
                     </div><!--end col-->
@@ -197,11 +182,12 @@
                     <div class="col-lg-5 col-md-6 pt-2 pt-sm-0 order-2 order-md-1">
                         <div class="card shadow rounded border-0">
                             <div class="card-body py-5">
-                                <h4 class="card-title">Get In Touch !</h4>
+                                <h4 class="card-title">Envoyez nous un message !</h4>
                                 <div class="custom-form mt-4">
                                     <div id="message"></div>
-                                    <form method="post" action="php/contact.php" name="contact-form" id="contact-form">
-                                        <div class="row">
+                                    <form method="post" action="{% url 'contact_sent' %}" name="contact-form" id="contact-form">
+                                                                                                             {% csrf_token %}
+                                           <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label>Your Name <span class="text-danger">*</span></label>

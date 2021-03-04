@@ -7,7 +7,6 @@ Home
 
 
   <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <div class="container-fluid">
@@ -62,12 +61,7 @@ Home
                   </a>
                 </li>
 
-                <li class="nav-item">
-                  <a href="#" class="nav-link">
-                    <i class="fas fa-filter"></i> Corbeille
-                    <span class="badge bg-warning float-right">65</span>
-                  </a>
-                </li>
+
 
               </ul>
             </div>
@@ -164,71 +158,42 @@ Home
               <div class="table-responsive mailbox-messages">
                 <table class="table table-hover table-striped">
                   <tbody>
+
                   <tr>
+                    {% for contact in contact %}
                     <td>
                       <div class="icheck-primary">
                         <input type="checkbox" value="" id="check1">
                         <label for="check1"></label>
                       </div>
                     </td>
-                    <td class="mailbox-star"><a href="#"><i class="fas fa-star text-warning"></i></a></td>
-                                                                            {% url 'mailbox_read' as mailbox_read %}
+                    <td class="mailbox-star"><a href="/mailbox_read_contact/{{ contact.id }}"><i class="far fa-circle text-warning"></i></a></td>
 
-                    <td class="mailbox-name"><a href=" {{mailbox_read}} ">Alexander Pierce</a></td>
-                    <td class="mailbox-subject"><b>Upgoods Issue</b> - Trying to find a solution to this problem...
+                    <td class="mailbox-name"><a href="/mailbox_read_contact/{{ contact.id }}  ">{{contact.name}}</a></td>
+                    <td class="mailbox-subject"><b>Upgoods Contact form</b> - {{contact.subject}}...
                     </td>
                     <td class="mailbox-attachment"></td>
-                    <td class="mailbox-date">5 mins ago</td>
+                    <td class="mailbox-date">{{contact.created_at}}</td>
                   </tr>
 
-                    <td>
-                      <div class="icheck-primary">
-                        <input type="checkbox" value="" id="check9">
-                        <label for="check9"></label>
-                      </div>
-                    </td>
-                    <td class="mailbox-star"><a href="#"><i class="fas fa-star text-warning"></i></a></td>
-                                                                            {% url 'mailbox_read' as mailbox_read %}
-
-                  <td class="mailbox-name"><a href=" {{mailbox_read}} ">Alexander Pierce</a></td>
-                    <td class="mailbox-subject"><b>Upgoods Issue</b> - Trying to find a solution to this problem...
-                    </td>
-                    <td class="mailbox-attachment"></td>
-                    <td class="mailbox-date">2 days ago</td>
-                  </tr>
+                                     {% endfor  %}
                   <tr>
+                    {% for contact_enqueteur in contact_enqueteur %}
                     <td>
                       <div class="icheck-primary">
-                        <input type="checkbox" value="" id="check10">
-                        <label for="check10"></label>
+                        <input type="checkbox" value="" id="check2">
+                        <label for="check2"></label>
                       </div>
                     </td>
-                    <td class="mailbox-star"><a href="#"><i class="fas fa-star-o text-warning"></i></a></td>
-                                                                            {% url 'mailbox_read' as mailbox_read %}
-
-                    <td class="mailbox-name"><a href=" {{mailbox_read}} ">Alexander Pierce</a></td>
-                    <td class="mailbox-subject"><b>Upgoods Issue</b> - Trying to find a solution to this problem...
+                    <td class="mailbox-star"><a href="/mailbox_read_enqueteur/{{ contact_enqueteur.id }}"><i class="far fa-circle text-primary"></i></a></td>
+                   <td class="mailbox-name"><a href="/mailbox_read_enqueteur/{{ contact_enqueteur.id }}  ">{{contact_enqueteur.enqueteur_id.nom}}</a></td>
+                    <td class="mailbox-subject"><b>Messages des enqueteurs </b> - {{contact_enqueteur.subject}}...
                     </td>
                     <td class="mailbox-attachment"></td>
-                    <td class="mailbox-date">2 days ago</td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="icheck-primary">
-                        <input type="checkbox" value="" id="check11">
-                        <label for="check11"></label>
-                      </div>
-                    </td>
-                    <td class="mailbox-star"><a href="#"><i class="fas fa-star-o text-warning"></i></a></td>
-                                                                            {% url 'mailbox_read' as mailbox_read %}
-
-                    <td class="mailbox-name"><a href=" {{mailbox_read}} ">Alexander Pierce</a></td>
-                    <td class="mailbox-subject"><b>Upgoods Issue</b> - Trying to find a solution to this problem...
-                    </td>
-                    <td class="mailbox-attachment"><i class="fas fa-paperclip"></i></td>
-                    <td class="mailbox-date">4 days ago</td>
+                    <td class="mailbox-date">{{contact_enqueteur.created_at}}</td>
                   </tr>
 
+                                     {% endfor  %}
                   </tbody>
                 </table>
                 <!-- /.table -->

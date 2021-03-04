@@ -46,6 +46,7 @@ Profile de l'enquêteur {{enqueteur.nom}}
                     <b>Remuneration recu:</b> <a class="float-right">X</a>
                   </li></ul>
 
+                <a href="#" class="btn btn-primary btn-block"><b>Envoyer un message</b></a>
               </div>
               <!-- /.card-body -->
             </div>
@@ -58,10 +59,16 @@ Profile de l'enquêteur {{enqueteur.nom}}
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <strong><i class="fas fa-users mr-3" ></i>Sexe</strong>
+                <strong><i class="fas fa-users mr-3" ></i>Gender</strong>
 
                 <p class="text-muted">
                   {{enqueteur.genre}}
+                </p>
+                                <hr>
+                   <strong><i class="fas fa-user-circle mr-3" ></i>Email</strong>
+
+                <p class="text-muted">
+                  {{enqueteur.email}}
                 </p>
                                 <hr>
                 <strong><i class="fas fa-phone-square-alt mr-3" ></i>Telephone</strong>

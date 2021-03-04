@@ -40,6 +40,7 @@ urlpatterns = [
 
                   #Enqueteur
     path('indexEnqueteur/', views.indexEnqueteur, name='indexEnqueteur'),
+    path('contact_sent_enqueteur/', views.contact_sent_enqueteur, name='contact_sent_enqueteur'),
     path('trouvermission/', views.Trouvermission, name='trouvermission'),
     path('mission_detail/<str:post_id>', views.mission_detail, name='mission_detail'),
     path('apply_for_mission/', views.apply_for_mission, name='apply_for_mission'),
@@ -62,9 +63,9 @@ urlpatterns = [
     path('indexAdmin/', views.indexAdmin, name='IndexAdmin'),
                   path('maps/', views.gpsmap, name='gpsmap'),
                   path('filterUserMission/<str:mission>/<str:user>', views.filterUserMission, name='filterUserMission'),
+                  path('gestion/', views.gestion, name='gestion'),
 
 
-                  path('add_post/', views.add_post, name='add_post'),
     path('add_post_save/', views.add_post_save, name='add_post_save'),
     path('edit_post/<str:post_id>', views.edit_post, name="edit_post"),
     path('edit_post_save', views.edit_post_save, name="edit_post_save"),
@@ -80,7 +81,9 @@ urlpatterns = [
     path('manage_forms', views.manage_forms, name="manage_forms"),
     path('IndexAdmin2/', views.IndexAdmin2, name='IndexAdmin2'),
     path('tableau/', views.tableau, name='tableau'),
-    path('mailbox_read/', views.mailbox_read, name='mailbox_read'),
+    path('mailbox_read_enqueteur/<str:message_id>', views.mailbox_read_enqueteur, name='mailbox_read'),
+    path('mailbox_read_contact/<str:contact_id>', views.mailbox_read_contact, name='mailbox_read'),
+
     path('mailbox/', views.mailbox, name='mailbox'),
     path('mailbox_compose/', views.mailbox_compose, name='mailbox_compose'),
     path('users_status/', views.users_status, name='users_status'),
