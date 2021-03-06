@@ -43,11 +43,7 @@
   group.addObject(marker);
 }
 
-/**
- * Add two markers showing the position of Liverpool and Manchester City football clubs.
- * Clicking on a marker opens an infobubble which holds HTML content related to the marker.
- * @param  {H.Map} map      A HERE Map instance within the application
- */
+
  var mdata= jQuery.parseJSON("{{datamap|escapejs}}");
 function addInfoBubble(map) {
   var group = new H.map.Group();

@@ -1,0 +1,270 @@
+{% extends 'administrateur/base_template.html' %}
+{% block page_title %}
+Gestion des missions:
+{% endblock page_title %}
+{% block main_content %}
+<section class="content">
+     <div class="card ">
+          <div class="card-header">
+            <h3 class="card-title">Ajouter un organisme</h3>
+
+            <div class="card-tools ">
+              <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                <i class="fas fa-minus"></i></button>
+              <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
+                <i class="fas fa-times"></i></button>
+            </div>
+          </div>
+         <div class="card-body p-0">
+      <div class="container-fluid">
+          <div class="row">
+              <div class="col-md-12">
+            <!-- general form elements -->
+            <div class="card card-primary">
+
+              <!-- /.card-header -->
+
+
+              <form role="form" action="/add_organisme_save/" method="post" enctype='multipart/form-data'>
+                  {% csrf_token %}
+                <div class="card-body">
+
+                  <div class="form-group">
+                    <label>Nom</label>
+                    <input type="text" class="form-control" name="nom" placeholder="Entrer le nom de l'organisme">
+                  </div>
+                    <div class="form-group">
+
+                    <label>Logo de l'organisme </label>
+                    <input type="file" class="form-control" name="photo" >
+                  </div>
+
+
+                      <div class="form-group">
+                      {% if messages %}
+                        {% for message in messages %}
+                        {% if message.tags == 'error' %}
+                        <div class="alert alert-danger" style="margin-top:10px">{{ message }}</div>
+                        {% endif %}
+                        {% if message.tags == 'success' %}
+                        <div class="alert alert-success" style="margin-top:10px">{{ message }}</div>
+                        {% endif %}
+                        {% endfor %}
+                      {% endif %}
+                    </div>
+
+                </div>
+                <!-- /.card-body -->
+
+                <div class="card-footer">
+                  <button type="submit" class="btn btn-primary btn-block">Ajouter</button>
+                </div>
+
+            <!-- /.card -->
+
+              </form>
+
+          </div>
+          </div>
+      </div>
+      </div>
+         </div> </div></section>
+<section class="content">
+     <div class="card ">
+          <div class="card-header">
+            <h3 class="card-title">Ajouter une mission</h3>
+
+            <div class="card-tools ">
+              <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                <i class="fas fa-minus"></i></button>
+              <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
+                <i class="fas fa-times"></i></button>
+            </div>
+          </div>
+         <div class="card-body p-0">
+      <div class="container-fluid">
+          <div class="row">
+              <div class="col-md-12">
+            <!-- general form elements -->
+            <div class="card card-primary">
+
+              <!-- /.card-header -->
+
+
+              <form role="form" action="/add_mission_save/" method="post">
+                  {% csrf_token %}
+                <div class="card-body">
+                 <div class="form-group">
+                    <label>Ref</label>
+                    <input type="number" class="form-control" name="ref" placeholder="Entrer le ref de la mission">
+                  </div>
+                  <div class="form-group">
+                    <label>Nom</label>
+                    <input type="text" class="form-control" name="nom" placeholder="Entrer le nom de la mission">
+                  </div>
+                    <div class="form-group">
+
+                    <label>L'organisme</label>
+
+                    <select class="form-control" name="organisme">
+                                {% for organisme in organisme %}
+                          <option value="{{ organisme.id }}">{{ organisme.nom }}</option>
+                        {% endfor %}
+                    </select>
+                    </div>
+
+                      <div class="form-group">
+                    <label>Thematique</label>
+                    <input type="text" class="form-control" name="thematique" placeholder="Entrer la thematique de la mission">
+                  </div>
+
+                     <div class="form-group">
+
+                    <label>Le quizz mis en place pour la mission</label>
+                    <select class="form-control" name="quizz">
+                                {% for servey in servey %}
+                          <option value="{{ servey.id }}">{{ servey.nameform }}</option>
+                        {% endfor %}
+                    </select>
+                    </div>
+                    <div class="form-group">
+                    <label>Remuneration</label>
+                    <input type="text" class="form-control" placeholder="Entrer la remuneration pour la mission" name="remuneration">
+                  </div>
+                    <label>Description</label>
+
+                     <textarea value="{{ CreateForms.description }}" name="description"></textarea>
+                    <div class="form-group">
+                    <label>Date debut de mission</label>
+                    <input type="date" class="form-control" name="date_debut" >
+                  </div>
+                    <div class="form-group">
+                    <label>Date fin de mission</label>
+                    <input type="date" class="form-control" name="date_fin" >
+                  </div>
+                    <div class="form-group">
+                    <label>Ville</label>
+                    <input type="text" class="form-control" placeholder="Entrer la ville" name="ville">
+                  </div>
+                     <div class="form-group">
+                    <label>Pays</label>
+                        <input type="text" class="form-control" placeholder="Entrer le pays" name="pays">
+                  </div>
+                      <div class="form-group">
+                      {% if messages %}
+                        {% for message in messages %}
+                        {% if message.tags == 'error' %}
+                        <div class="alert alert-danger" style="margin-top:10px">{{ message }}</div>
+                        {% endif %}
+                        {% if message.tags == 'success' %}
+                        <div class="alert alert-success" style="margin-top:10px">{{ message }}</div>
+                        {% endif %}
+                        {% endfor %}
+                      {% endif %}
+                    </div>
+
+                </div>
+                <!-- /.card-body -->
+
+                <div class="card-footer">
+                  <button type="submit" class="btn btn-primary btn-block">Ajouter</button>
+                </div>
+
+            <!-- /.card -->
+
+              </form>
+
+          </div>
+          </div>
+      </div>
+      </div>
+         </div> </div></section>
+
+        <!-- /.content -->
+     <section class="content">
+      <div class="container-fluid">
+
+
+           <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Gestion des missions </h3>
+
+                <div class="card-tools">
+                  <div class="input-group input-group-sm" style="width: 150px;">
+                    <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+
+                    <div class="input-group-append">
+                      <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body table-responsive p-0">
+                <table class="table table-hover text-nowrap">
+                  <thead>
+                    <tr>
+                      <th>Ref</th>
+                      <th>Nom de la mission</th>
+                        <th> Organisme</th>
+                      <th> Thematique</th>
+                      <th> Quizz</th>
+                        <th> Remuneration</th>
+                                                <th> Date debut </th>
+                        <th> Date limite</th>
+                        <th> Adresse</th>
+
+
+                                                <th> Edit</th>
+                        <th> Delete</th>
+
+                    </tr>
+                  </thead>
+                  <tbody>
+                  {% for mission in mission %}
+                    <tr>
+                      <td>{{ mission.ref }}</td>
+                      <td>{{ mission.nom }}</td>
+                      <td>{{ mission.organisme}} </td>
+                        <td>{{ mission.thematique}} </td>
+                      <td>{{ mission.questionnaire.nameform}} </td>
+                        <td>{{ mission.remuneration}} </td>
+
+                        <td>{{ mission.date_debut}} </td>
+                      <td>{{ mission.date_fin}} </td>
+                        <td>{{ mission.ville}},{{ mission.pays}}  </td>
+
+
+
+                                            <td>{{ post.created_at}} </td>
+
+                      <td><a href="/edit_mission/{{ mission.id }}" class="btn btn-success">Edit</a></td>
+                        <td><a href="/delete_mission/{{ mission.id }}" class="btn btn-danger">Delete</a></td>
+                    </tr>
+                  {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- /.content -->
+
+
+
+{% endblock main_content %}
+
+{% block custom_js %}
+
+<script src="//cdn.ckeditor.com/4.15.0/standard/ckeditor.js"></script>
+
+       <script>
+                        CKEDITOR.replace( 'description' );
+                </script>
+{% endblock custom_js %}

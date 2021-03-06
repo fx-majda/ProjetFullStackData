@@ -1,0 +1,131 @@
+{% extends 'administrateur/base_template.html' %}
+{% block page_title %}
+Edit Mission |  Mission ID : {{ mission.id }}
+{% endblock page_title %}
+{% block main_content %}
+        <!-- /.content -->
+
+    <section class="content">
+      <div class="container-fluid">
+
+
+           <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Mission Details</h3>
+
+                <div class="card-tools">
+                  <div class="input-group input-group-sm" style="width: 150px;">
+                    <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+
+                    <div class="input-group-append">
+                      <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- /.card-header -->
+              <form role="form" action="/edit_mission_save" method="post">
+                  {% csrf_token %}
+                <div class="card-body">
+                  <div class="form-group">
+                     <label>Ref</label>
+                    <input type="number" class="form-control" name="ref" value="{{ mission.ref }}" >
+                      <input type="hidden" class="form-control" name="mission_id" value="{{ mission.id }}" >
+
+                  </div>
+                     <div class="form-group">
+                    <label>Nom</label>
+                    <input type="text" class="form-control" name="nom" value="{{ mission.nom }}">
+
+                  </div>
+                    <div class="form-group">
+
+                    <label>L'organisme</label>
+
+                    <select class="form-control" name="organisme">
+                                {% for organisme in organisme %}
+                          <option value="{{ organisme.id }}">{{ organisme.nom }}</option>
+                        {% endfor %}
+                    </select>
+                    </div>
+
+                      <div class="form-group">
+                    <label>Thematique</label>
+                    <input type="text" class="form-control" name="thematique" value="{{ mission.thematique }}">
+</div>
+
+                     <div class="form-group">
+
+                    <label>Le quizz mis en place pour la mission</label>
+                    <select class="form-control" name="quizz">
+                                {% for servey in servey %}
+                          <option value="{{ servey.id }}">{{ servey.nameform }}</option>
+                        {% endfor %}
+                    </select>
+                    </div>
+                    <div class="form-group">
+                    <label>Remuneration</label>
+                    <input type="text" class="form-control" value="{{ mission.remuneration }}" name="remuneration">
+</div>
+                    <label>Description</label>
+
+                     <textarea value="{{ mission.description }}" name="description"></textarea>
+                    <div class="form-group">
+                    <label>Date debut de mission</label>
+                    <input type="date" class="form-control" name="date_debut" >
+
+                  </div>
+                    <div class="form-group">
+                    <label>Date fin de mission</label>
+                    <input type="date" class="form-control" name="date_fin" >
+
+                  </div>
+                    <div class="form-group">
+                    <label>Ville</label>
+                    <input type="text" class="form-control" value="{{ mission.ville }}" name="ville">
+
+                  </div>
+                     <div class="form-group">
+                    <label>Pays</label>
+                        <input type="text" class="form-control" value="{{ mission.pays }}" name="pays">
+
+                  </div>
+
+              <!-- /.card-body -->
+            </div>
+
+                   <div class="form-group">
+                      {% if messages %}
+                        {% for message in messages %}
+                        {% if message.tags == 'error' %}
+                        <div class="alert alert-danger" style="margin-top:10px">{{ message }}</div>
+                        {% endif %}
+                        {% if message.tags == 'success' %}
+                        <div class="alert alert-success" style="margin-top:10px">{{ message }}</div>
+                        {% endif %}
+                        {% endfor %}
+                      {% endif %}
+                    </div>
+
+                <!-- /.card-body -->
+
+                <div class="card-footer">
+                  <button type="submit" class="btn btn-primary btn-block">Save Mission</button>
+                </div>
+              </form>
+            </div>
+            <!-- /.card -->
+        </div>
+      </div>
+      </div>
+     </section>
+    <!-- /.content -->
+<script src="//cdn.ckeditor.com/4.15.0/standard/ckeditor.js"></script>
+
+   <script>
+                        CKEDITOR.replace( 'description' );
+                </script>
+{% endblock main_content %}
+

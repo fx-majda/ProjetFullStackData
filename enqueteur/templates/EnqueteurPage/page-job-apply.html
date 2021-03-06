@@ -54,7 +54,7 @@
                 <div class="buy-button">
                                                    {% url 'login' as login %}
 
-                        <a href="{{login}}" target="_blank" class="btn btn-primary">Se deconnecter</a>                </div><!--end login button-->
+                        <a href="{{login}}" class="btn btn-primary">Se deconnecter</a>                </div><!--end login button-->
                 <!-- End Logo container-->
                     <li class="list-inline-item mb-0">
                         <div class="dropdown dropdown-primary">
@@ -103,7 +103,7 @@
                     <div class="buy-menu-btn d-none">
                                                                                 {% url 'login' as login %}
 
-                        <a href="{{login}}" target="_blank" class="btn btn-primary">Se deconnecter</a>
+                        <a href="{{login}}" class="btn btn-primary">Se deconnecter</a>
                     </div><!--end login button-->
                 </div><!--end navigation-->
             </div><!--end container-->
@@ -160,6 +160,8 @@
                                                 <div class="position-relative">
                                                     <i data-feather="user" class="fea icon-sm icons"></i>
                                                     <input name="name" id="name" type="text" class="form-control pl-5" placeholder="{{ enqueteur.nom}}" readonly>
+                                                    <input type="hidden" class="form-control" name="mission_id" value="{{ mission.id }}" >
+
                                                 </div>
                                             </div>
                                         </div><!--end col-->
@@ -201,6 +203,18 @@
                                             </div>
                                         </div><!--end col-->
                                     </div><!--end row-->
+                                     <div class="form-group">
+                      {% if messages %}
+                        {% for message in messages %}
+                        {% if message.tags == 'error' %}
+                        <div class="alert alert-danger" style="margin-top:10px">{{ message }}</div>
+                        {% endif %}
+                        {% if message.tags == 'success' %}
+                        <div class="alert alert-success" style="margin-top:10px">{{ message }}</div>
+                        {% endif %}
+                        {% endfor %}
+                      {% endif %}
+                    </div>
                                     <div class="row">
                                         <div class="col-sm-12">
                                             <input type="submit" id="submit" name="send" class="submitBnt btn btn-primary" value="Envoyer ma candidature">

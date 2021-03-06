@@ -48,26 +48,32 @@ def mission_detail(request,post_id):
     return render(request, "EnqueteurPage/page-job-detail.html",{"post":post})
 
 
-def apply_for_mission(request):
+def apply_for_mission(request,mission_id):
     user = request.user
     enqueteur = Enqueteur.objects.get(user=user)
-    return render(request, "EnqueteurPage/page-job-apply.html",{"enqueteur":enqueteur})
+    mission=Mission.objects.get(id=mission_id)
+    return render(request, "EnqueteurPage/page-job-apply.html",{"enqueteur":enqueteur,'mission':mission})
 
 def staff_apply_leave_save(request):
     if request.method!="POST":
         return HttpResponseRedirect(reverse("apply_for_mission"))
     else:
         staff_obj=Enqueteur.objects.get(user=request.user)
+        mission_id = request.POST.get("mission_id")
+
         motivation=request.POST.get("motivation")
 
         try:
-            leave_report=Candidature(enqueteur_id=staff_obj,motivation=motivation,candidature_status=0)
+            mission_obj = Mission.objects.get(id=mission_id)
+            leave_report=Candidature(enqueteur_id=staff_obj,mission_id=mission_obj,motivation=motivation,candidature_status=0)
+
+
             leave_report.save()
             messages.success(request, "Parfait, votre candidature est transmise a notre service relation pour la verification, vous reseverez une reponse dans votre boite mail")
-            return HttpResponseRedirect(reverse("apply_for_mission"))
+            return HttpResponseRedirect(reverse("apply_for_mission",kwargs={"mission_id":mission_id}))
         except:
             messages.error(request, "Failed To Apply for Leave")
-            return HttpResponseRedirect(reverse("apply_for_mission"))
+            return HttpResponseRedirect(reverse("apply_for_mission",kwargs={"mission_id":mission_id}))
 
 
 def staff_leave_view(request):
@@ -362,13 +368,13 @@ def buildpage(request, mission):
                 filtered = {k: v for k, v in data.items() if v is not None}
                 data.clear()
                 data.update(filtered)
-                print(data)
-                user = str(request.user)
+                print(user_obj)
                 if len(data) != 0:
-                    savedataform = SurveyData.objects.create(user=user,
+                    savedataform = SurveyData.objects.create(
                                                              nameform=lowermission,
                                                              date=datetime.datetime.now(),
                                                              data=json.dumps(data))
+
                     savedataform.save()
                     data.clear()
                     return redirect('createforms')
@@ -387,9 +393,11 @@ def logoutuser(request):
 
 
 #Administrateur Views
-
 def indexAdmin(request):
     return render(request, "Administrateur/index.html")
+
+def test(request):
+    return render(request, "Administrateur/forms/general.html")
 
 
 def IndexAdmin2(request):
@@ -501,6 +509,7 @@ def manage_forms(request):
     return render(request,"administrateur/gestion_forms.html",{"servey":servey})
 
 
+
 def view_form(request,servey_id):
     servey=SurveyData.objects.get(id=servey_id)
 
@@ -512,6 +521,131 @@ def delete_form(request,servey_id):
     return redirect("manage_forms")
 
 
+def manage_mission(request):
+    organisme=Organisme.objects.all()
+    mission=Mission.objects.all()
+
+    servey=CreateForms.objects.all()
+
+    return render(request,"administrateur/manage_mission.html",{'organisme':organisme, "servey":servey, 'mission':mission})
+
+
+def add_organisme_save(request):
+    if request.method!="POST":
+        return HttpResponse("Method Not Allowed")
+    else:
+
+        nom = request.POST.get("nom")
+        photo = request.FILES['photo']
+        fs = FileSystemStorage()
+        filename = fs.save(photo.name, photo)
+        profile_pic_url = fs.url(filename)
+        try:
+
+            organisme=Organisme(nom=nom,photo=photo)
+            organisme.profile_pic = profile_pic_url
+            organisme.save()
+            messages.success(request,"Successfully Added organisme")
+            return HttpResponseRedirect(reverse("manage_mission"))
+        except:
+            messages.error(request,"Failed To Add organisme")
+            return HttpResponseRedirect(reverse("manage_mission"))
+
+
+def add_mission_save(request):
+    if request.method!="POST":
+        return HttpResponse("Method Not Allowed")
+    else:
+
+        ref = request.POST.get("ref")
+        nom = request.POST.get("nom")
+        organisme_id = request.POST.get("organisme")
+        thematique = request.POST.get("thematique")
+        quizz_id = request.POST.get("quizz")
+        remuneration = request.POST.get("remuneration")
+        description = request.POST.get("description")
+        date_debut = request.POST.get("date_debut")
+        date_fin = request.POST.get("date_fin")
+        ville = request.POST.get("ville")
+        pays = request.POST.get("pays")
+        try:
+
+            mission=Mission(ref=ref, nom=nom,thematique=thematique,remuneration=remuneration,description=description, date_debut=date_debut,date_fin=date_fin,ville=ville,pays=pays)
+            quizz_obj = CreateForms.objects.get(id=quizz_id)
+            mission.questionnaire = quizz_obj
+            organisme_obj = Organisme.objects.get(id=organisme_id)
+            mission.organisme = organisme_obj
+
+            mission.save()
+            messages.success(request,"Successfully Added mission")
+            return HttpResponseRedirect(reverse("manage_mission"))
+        except:
+            messages.error(request,"Failed To Add mission")
+            return HttpResponseRedirect(reverse("manage_mission"))
+
+
+def edit_mission(request,mission_id):
+    mission = Mission.objects.get(id=mission_id)
+    organisme = Organisme.objects.all()
+
+    servey = CreateForms.objects.all()
+    return render(request,"administrateur/edit_mission.html",{'organisme':organisme, "servey":servey,"mission": mission})
+
+def edit_mission_save(request):
+    if request.method!="POST":
+        return HttpResponse("Method Not Allowed")
+    else:
+        mission_id=request.POST.get("mission_id")
+        ref = request.POST.get("ref")
+        nom = request.POST.get("nom")
+        organisme_id = request.POST.get("organisme")
+        thematique = request.POST.get("thematique")
+        quizz_id = request.POST.get("quizz")
+        remuneration = request.POST.get("remuneration")
+        description = request.POST.get("description")
+        date_debut = request.POST.get("date_debut")
+        date_fin = request.POST.get("date_fin")
+        ville = request.POST.get("ville")
+        pays = request.POST.get("pays")
+        try:
+            mission_id = Mission.objects.get(id=mission_id)
+            mission=Mission(ref=ref, nom=nom,thematique=thematique,remuneration=remuneration,description=description, date_debut=date_debut,date_fin=date_fin,ville=ville,pays=pays)
+            quizz_obj = CreateForms.objects.get(id=quizz_id)
+            mission.questionnaire = quizz_obj
+            organisme_obj = Organisme.objects.get(id=organisme_id)
+            mission.organisme = organisme_obj
+
+            mission.save()
+            messages.success(request,"Successfully Edited mission")
+            return HttpResponseRedirect(reverse("edit_mission",kwargs={"mission_id":mission_id}))
+        except:
+            messages.error(request,"Failed To Edit mission")
+            return HttpResponseRedirect(reverse("edit_mission",kwargs={"mission_id":mission_id}))
+
+
+def delete_mission(request,mission_id):
+    mission=Mission.objects.get(id=mission_id)
+    mission.delete()
+    return redirect("manage_mission")
+
+
+def validation_visite(request):
+    servey=SurveyData.objects.all()
+
+    return render(request, "Administrateur/validation_visite.html",{"servey":servey})
+
+
+def staff_approve_visite(request,survey_id):
+    leave=CreateForms.objects.get(id=survey_id)
+    leave.visite_status=1
+    leave.save()
+    return HttpResponseRedirect(reverse("validation_visite"))
+
+def staff_disapprove_visite(request,survey_id):
+    leave = CreateForms.objects.get(id=survey_id)
+    leave.visite_status = 2
+    leave.save()
+    return HttpResponseRedirect(reverse("validation_visite"))
 
 
 def add_post_save(request):

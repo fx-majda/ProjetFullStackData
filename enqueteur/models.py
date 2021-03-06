@@ -102,12 +102,18 @@ class CreateForms(models.Model):
         return self.nameform
 
 class SurveyData(models.Model):
+    MEDIA_CHOICES7 = (
+        ('0', 'Pending'),
+        ('1', 'Accepter'),
+        ('2', 'refuser'),
+    )
     id = models.AutoField(primary_key=True)
-    user = models.CharField(max_length=250, blank=True)
+    #user = models.ManyToManyField(Enqueteur,blank=True)
     nameform = models.CharField(max_length=250, blank=True)
     date = models.CharField(max_length=250, blank=True)
     data=models.JSONField(max_length=9000, blank=True,null=True)
     created_at = models.DateTimeField(auto_now_add=True)
+    visite_status = models.IntegerField(default=0, choices=MEDIA_CHOICES7)
 
     def __str__(self):
         return self.nameform
@@ -171,79 +177,24 @@ class Contact_enqueteur(models.Model):
     enqueteur_id = models.ForeignKey(Enqueteur, on_delete=models.CASCADE)
     subject = models.CharField(max_length=255,blank=True, null=True)
     comments = models.CharField(max_length=255,blank=True, null=True)
+    feedback_reply=models.TextField()
+
     created_at = models.DateTimeField(auto_now_add=True)
     objects = models.Manager()
 
-
+'''' 
+class MessageEnqueteurs(models.Model):
+    id = models.AutoField(primary_key=True)
+    enqueteur_id = models.ForeignKey(Enqueteur, on_delete=models.CASCADE)
+    feedback = models.TextField(max_length=255, default="")
+    feedback_reply=models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now_add=True)
+    #statut= models.Boole
+    objects = models.Manager()
+'''
 
 ''''
-
-class Enqueteur(models.Model):
-    MEDIA_CHOICES = (
-        ('1', 'Homme'),
-        ('2', 'Femme'),
-    )
-    MEDIA_CHOICES2 = (
-        ('1', 'oui'),
-        ('2', 'non'),
-    )
-    MEDIA_CHOICES5 = (
-        ('1', 'Maison'),
-        ('2', 'Appartement'),
-        ('3', 'Villa'),
-        ('4', 'Lotissement'),
-        ('5', 'Autre'),
-
-    )
-    MEDIA_CHOICES4 = (
-        ('1', 'Entre 0 et 3'),
-        ('2', 'Entre 3 et 6'),
-        ('3', 'Plus de 6'),
-    )
-    MEDIA_CHOICES7 = (
-        ('1', '8h00 - 12h00'),
-        ('2', '12h00 - 14h00'),
-        ('3', '14h00 - 17h00'),
-    )
-    MEDIA_CHOICES6 = (
-        ('1', 'Proprietaire'),
-        ('2', 'locataire'),
-    )
-    CHOICES=(
-        ('1', 'Verified'),
-        ('2', 'unverified'),
-    )
-    id = models.AutoField(primary_key=True)
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    statut = models.CharField(max_length=25,choices=CHOICES)
-    profile_pic = models.FileField(blank=True, null=True)
-    nom = models.CharField(max_length=40,blank=True, null=True)
-    gender = models.CharField(max_length=25,choices=MEDIA_CHOICES)
-    tel = models.IntegerField( blank=True, null=True)
-    ordinateur = models.CharField(max_length=25,choices=MEDIA_CHOICES2,blank=True)
-    vehicule = models.CharField(max_length=25,choices=MEDIA_CHOICES2,blank=True)
-    userexpen = models.CharField(max_length=40,blank=True)
-    userexp= models.CharField(max_length=40,blank=True)
-    expmois=models.CharField(max_length=25,choices=MEDIA_CHOICES4,blank=True)
-    societe= models.CharField(max_length=40,blank=True)
-    lunettes= models.CharField(max_length=25,choices=MEDIA_CHOICES2,blank=True)
-    logement=models.CharField(max_length=40,choices=MEDIA_CHOICES6,blank=True)
-    habitation=models.CharField(max_length=40,choices=MEDIA_CHOICES5,blank=True)
-    langues= models.CharField(max_length=40,blank=True)
-    meilleur= models.CharField(max_length=40,blank=True)
-    pire= models.CharField(max_length=40,blank=True)
-    restaurant=models.CharField(max_length=25,choices=MEDIA_CHOICES4,blank=True)
-    situation= models.CharField(max_length=40,blank=True,null=True)
-    joindre=models.CharField(max_length=25,choices=MEDIA_CHOICES7,blank=True)
-    enfants=models.CharField(max_length=25,choices=MEDIA_CHOICES4,blank=True)
-    motivation = models.TextField(max_length=500, blank=True, null=True)
-    adresse = models.TextField(max_length=500, blank=True, null=True)
-    city = models.TextField(max_length=500, blank=True, null=True)
-    zipcode = models.IntegerField( blank=True, null=True)
-    country = models.TextField(max_length=500, blank=True, null=True)
-    birth_date = models.DateField(null=True, blank=True)
-    created_at = models.DateTimeField(auto_now_add=True)
-    objects = models.Manager()
 
 
 
@@ -259,33 +210,6 @@ class Professional(models.Model):
         nom = models.TextField()
         created_at = models.DateTimeField(auto_now_add=True)
         objects = models.Manager()
-
-
-
-
-class Organisme(models.Model):
-    id = models.AutoField(primary_key=True)
-    Nom = models.CharField(max_length=20)
-    created_at = models.DateTimeField(auto_now_add=True)
-    objects = models.Manager()
-
-
-class Mission(models.Model):
-    id = models.AutoField(primary_key=True)
-    Nom = models.CharField(max_length=20)
-    organisme = models.CharField(max_length=30)
-    date_debut= models.DateField(blank=False)
-    date_fin= models.DateField(blank=False)
-    latitude = models.FloatField(blank=False, null=False)
-    longitude = models.FloatField(blank=False, null=False)
-    #location = models.PointField()
-    objects = models.Manager()
-
-
-class Questionnaire(models.Model):
-    id= models.AutoField(primary_key=True)
-    questions=models.CharField(max_length=100, blank=False)
-    objects = models.Manager()
 
 
 class MessageEnqueteurs(models.Model):
@@ -307,16 +231,6 @@ class NotificationEnqueteurs(models.Model):
     updated_at = models.DateTimeField(auto_now_add=True)
     objects = models.Manager()
 
-
-class Candidature(models.Model):
-    id = models.AutoField(primary_key=True)
-    enqueteur_id = models.ForeignKey(Enqueteur, on_delete=models.CASCADE)
-    candidature_date = models.CharField(max_length=255)
-    reply_message = models.TextField()
-    candidature_status = models.IntegerField(default=0)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now_add=True)
-    objects = models.Manager()
 
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):

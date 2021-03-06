@@ -43,7 +43,7 @@ urlpatterns = [
     path('contact_sent_enqueteur/', views.contact_sent_enqueteur, name='contact_sent_enqueteur'),
     path('trouvermission/', views.Trouvermission, name='trouvermission'),
     path('mission_detail/<str:post_id>', views.mission_detail, name='mission_detail'),
-    path('apply_for_mission/', views.apply_for_mission, name='apply_for_mission'),
+    path('apply_for_mission/<str:mission_id>', views.apply_for_mission, name='apply_for_mission'),
     path('staff_apply_leave_save/', views.staff_apply_leave_save, name='staff_apply_leave_save'),
     path('mission/', views.mission, name='mission'),
     path('account_messages/', views.account_messages, name='account_messages'),
@@ -61,23 +61,30 @@ urlpatterns = [
     path('password_changed/', auth_views.PasswordResetCompleteView.as_view(),name='password_reset_completed'),
                   #Administrateur
     path('indexAdmin/', views.indexAdmin, name='IndexAdmin'),
-                  path('maps/', views.gpsmap, name='gpsmap'),
-                  path('filterUserMission/<str:mission>/<str:user>', views.filterUserMission, name='filterUserMission'),
-                  path('gestion/', views.gestion, name='gestion'),
+    path('maps/', views.gpsmap, name='gpsmap'),
+    path('filterUserMission/<str:mission>/<str:user>', views.filterUserMission, name='filterUserMission'),
+    path('gestion/', views.gestion, name='gestion'),
+    path('test/', views.test, name='test'),
 
-
+                  #mission et organisme
+    path('add_organisme_save/', views.add_organisme_save, name='add_organisme_save'),
+    path('add_mission_save/', views.add_mission_save, name='add_mission_save'),
+    path('edit_mission/<str:mission_id>', views.edit_mission, name="edit_mission"),
+    path('edit_mission_save', views.edit_mission_save, name="edit_mission_save"),
+    path('edit_mission/<str:mission_id>', views.edit_mission, name="edit_mission"),
+    path('delete_mission/<str:mission_id>', views.delete_mission, name="delete_mission"),
+    #poste
     path('add_post_save/', views.add_post_save, name='add_post_save'),
     path('edit_post/<str:post_id>', views.edit_post, name="edit_post"),
     path('edit_post_save', views.edit_post_save, name="edit_post_save"),
-                  path('staff_leave_view', views.staff_leave_view, name="staff_leave_view"),
-                  path('staff_disapprove_leave/<str:leave_id>', views.staff_disapprove_leave,
-                       name="staff_disapprove_leave"),
-                  path('staff_approve_leave/<str:leave_id>', views.staff_approve_leave, name="staff_approve_leave"),
+    path('staff_leave_view', views.staff_leave_view, name="staff_leave_view"),
+    path('staff_disapprove_leave/<str:leave_id>', views.staff_disapprove_leave,name="staff_disapprove_leave"),
+    path('staff_approve_leave/<str:leave_id>', views.staff_approve_leave, name="staff_approve_leave"),
+    path('delete_post/<str:post_id>', views.delete_post, name="delete_post "),
+    path('delete_form/<str:servey_id>', views.delete_form, name="delete_form "),
+    path('manage_mission', views.manage_mission, name="manage_mission"),
 
-                  path('delete_post/<str:post_id>', views.delete_post, name="delete_post "),
-                  path('delete_form/<str:servey_id>', views.delete_form, name="delete_form "),
-
-                  path('manage_post', views.manage_post, name="manage_post"),
+    path('manage_post', views.manage_post, name="manage_post"),
     path('manage_forms', views.manage_forms, name="manage_forms"),
     path('IndexAdmin2/', views.IndexAdmin2, name='IndexAdmin2'),
     path('tableau/', views.tableau, name='tableau'),
@@ -92,7 +99,7 @@ urlpatterns = [
     path('createforms/', views.createforms, name='createforms'),
     path('createforms/<str:mission>', views.buildpage, name='createforms'),
     path('missiontest/', views.missiontest, name='missiontest'),
-
-                  path('showdata/', views.showdata, name='showdata')
+    path('validation_visite/', views.validation_visite, name='validation_visite'),
+    path('showdata/', views.showdata, name='showdata')
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
