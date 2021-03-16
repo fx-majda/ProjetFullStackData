@@ -1,4 +1,4 @@
-asgiref @ file:///tmp/build/80754af9/asgiref_1605055780383/work
+asgiref==3.3.1
 auditlog3==1.0.1
 beautifulsoup4==4.9.3
 bs4==0.0.1
