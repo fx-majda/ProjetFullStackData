@@ -1,0 +1,76 @@
+{% extends 'administrateur/base_template.html' %}
+{% block page_title %}
+Validation des visites
+{% endblock page_title %}
+{% block main_content %}
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+          <div class="row">
+              <div class="col-md-12">
+            <!-- general form elements -->
+            <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">
+                Visites effectuées
+                </h3>
+                  <div class="card-tools">
+                  <div class="input-group input-group-sm" style="width: 150px;">
+                    <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+
+                    <div class="input-group-append">
+                      <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- /.card-header -->
+              <!-- form start -->
+                <div class="table">
+                    <table class="table">
+                        <tr>
+                            <th>ID</th>
+                            <th>Le nom de l'enqueteur </th>
+                            <th>le nom de la Mission</th>
+                            <th>Date de la visite</th>
+                            <th>Consulter la Reponse sur le quizz</th>
+                            <th>Action</th>
+                        </tr>
+                        {% for servey in servey %}
+                        <tr>
+                            <td>{{ servey.id }}</td>
+                            <td>{{ servey.enqueteur_id.nom }} </td>
+                            <td>{{ servey.created_at }}</td>
+                            <td>reponse</td>
+                            <td>
+                                {% if servey.visite_status == 0 %}
+                                <a href="{% url 'staff_approve_visite' survey_id=servey.id %}" class="btn btn-success" >Approve</a>
+                                <a class="btn btn-danger" href="{% url 'staff_disapprove_visite' survey_id=servey.id %}" >Disapprove</a>
+                                {% elif leave.candidature_status == 1  %}
+                                 <button class="btn btn-warning" disabled="disabled" data-toggle="modal" data-target="#reply_modal">Approved</button>
+                                {% else %}
+                                <button class="btn btn-danger" disabled="disabled" data-toggle="modal" data-target="#reply_modal">Disapproved</button>
+                                {% endif %}
+                            </td>
+<script>
+
+</script>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+
+            </div>
+            <!-- /.card -->
+
+
+
+          </div>
+          </div>
+      </div>
+    </section>
+  <!-- Modal -->
+
+    <!-- /.content -->
+{% endblock main_content %}

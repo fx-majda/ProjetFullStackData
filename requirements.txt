@@ -1,0 +1,41 @@
+asgiref @ file:///tmp/build/80754af9/asgiref_1605055780383/work
+auditlog3==1.0.1
+beautifulsoup4==4.9.3
+bs4==0.0.1
+certifi==2020.12.5
+chardet==4.0.0
+Django==3.1.7
+django-appconf==1.0.4
+django-ckeditor==6.0.0
+django-classy-tags==2.0.0
+django-cms==3.8.0
+django-compoundqueryset==0.1.3
+django-email-extras==0.3.4
+django-formtools==2.2
+django-ipware==2.1.0
+django-js-asset==1.2.2
+django-multiselectfield==0.1.12
+django-sekizai==2.0.0
+django-treebeard==4.5.1
+djangocms-admin-style==2.0.2
+djangocms-forms==0.2.5
+future==0.15.0
+gunicorn==20.0.4
+hashids==1.3.1
+idna==2.10
+jsonfield==3.1.0
+Pillow==8.1.1
+psycopg2 @ file:///C:/ci/psycopg2_1612298766762/work
+python-gnupg==0.4.6
+pytz @ file:///tmp/build/80754af9/pytz_1612215392582/work
+requests==2.25.1
+six==1.15.0
+soupsieve==2.2
+sphinx-me==0.3
+sqlparse @ file:///tmp/build/80754af9/sqlparse_1602184451250/work
+sweetify==2.0.0
+tablib==3.0.0
+Unidecode==1.2.0
+urllib3==1.26.3
+whitenoise==5.2.0
+wincertstore==0.2
