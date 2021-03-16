@@ -22,6 +22,7 @@ Gestion des candidatures
                         <tr>
                             <th>ID</th>
                             <th>Le nom de l'equeteur </th>
+                            <th>Nom de la mission</th>
                             <th>Motivation</th>
                             <th>Date de candidature</th>
                             <th>Action</th>
@@ -30,6 +31,7 @@ Gestion des candidatures
                         <tr>
                             <td>{{ leave.id }}</td>
                             <td>{{ leave.enqueteur_id.nom }} </td>
+                            <td>{{ leave.mission_id.nom }} </td>
                             <td>{{ leave.motivation }}</td>
                             <td>{{ leave.created_at }}</td>
                             <td>
@@ -41,18 +43,26 @@ Gestion des candidatures
                                 {% else %}
                                 <button class="btn btn-danger" disabled="disabled" data-toggle="modal" data-target="#reply_modal">Disapproved</button>
                                 {% endif %}
-                            </td>
-<script>
-
-</script>
-                        </tr>
+                            </td></tr>
                         {% endfor %}
                     </table>
                 </div>
 
             </div>
             <!-- /.card -->
+<div class="col-12">
+                        <ul class="pagination justify-content-center mb-0">
+                                                    {% if page.has_previous %}
 
+                            <li class="page-item"><a class="page-link" href="{% url 'staff_leave_view' %}?page={{ page.previous_page_number }}  " aria-label="Previous">Page précédente</a></li>
+                                                 {% endif %}
+                                                    {% if page.has_next %}
+
+                            <li class="page-item"><a class="page-link" href=" {% url 'staff_leave_view' %}?page={{ page.next_page_number }} " aria-label="Next">Page suivante</a></li>
+                                                    {% endif %}
+
+                        </ul>
+                    </div><!--end col-->
 
 
           </div>

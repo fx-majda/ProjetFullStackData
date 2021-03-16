@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form method="post" action="">
+    {% csrf_token %}
+    <div>
+    <input type="text" name="missionname" placeholder="Enter mission name">
+
+</div>
+<div>
+    <textarea name="htmlcode" placeholder="enter Html core here"></textarea>
+</div>
+    <div>
+        <input name="submit" type="submit" value="submit form">
+    </div>
+</form>
+</body>
+</html>

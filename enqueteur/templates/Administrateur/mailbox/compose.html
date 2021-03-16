@@ -111,36 +111,46 @@ Home
                 <h3 class="card-title">Ecrire un nouveau Message</h3>
               </div>
               <!-- /.card-header -->
+                <form method="post" action="/mailbox_compose_envoie_save/">
+                                    {% csrf_token %}
+
               <div class="card-body">
+
                 <div class="form-group">
-                  <input class="form-control" placeholder="Destinataire:">
+                  <input class="form-control" name= "nom" placeholder="Destinataire:" value="{{user.nom}}">
+                  <input hidden name= "enqueteur_id" value="{{user.id}}">
+
                 </div>
+
                 <div class="form-group">
-                  <input class="form-control" placeholder="Sujet:">
-                </div>
-                <div class="form-group">
-                    <textarea id="compose-textarea" class="form-control" style="height: 300px" >
+                    <textarea id="compose-textarea" name="reply" class="form-control"placeholder="message:" style="height: 300px" >
 
                     </textarea>
                 </div>
-                <div class="form-group">
-                  <div class="btn btn-default btn-file">
-                    <i class="fas fa-paperclip"></i> Attachment
-                    <input type="file" name="attachment">
-                  </div>
-                  <p class="help-block">Max. 32MB</p>
-                </div>
+     <div class="form-group">
+                      {% if messages %}
+                        {% for message in messages %}
+                        {% if message.tags == 'error' %}
+                        <div class="alert alert-danger" style="margin-top:10px">{{ message }}</div>
+                        {% endif %}
+                        {% if message.tags == 'success' %}
+                        <div class="alert alert-success" style="margin-top:10px">{{ message }}</div>
+                        {% endif %}
+                        {% endfor %}
+                      {% endif %}
+                    </div>
+
               </div>
               <!-- /.card-body -->
               <div class="card-footer">
                 <div class="float-right">
-                  <button type="button" class="btn btn-default"><i class="fas fa-pencil-alt"></i> Draft</button>
                   <button type="submit" class="btn btn-primary"><i class="far fa-envelope"></i> Send</button>
                 </div>
-                <button type="reset" class="btn btn-default"><i class="fas fa-times"></i> Discard</button>
+                <button type="reset" class="btn btn-default"><i class="fas fa-times"></i> Annuler</button>
               </div>
-              <!-- /.card-footer -->
-            </div>
+              <!-- /.card-footer -->     </form>        </div>
+
+
             <!-- /.card -->
           </div>
           <!-- /.col -->

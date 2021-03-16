@@ -45,10 +45,12 @@
             <div class="container">
                 <!-- Logo container-->
                 <div>
-                    <a class="logo" href=" {% static 'index.html' %} ">
+                    {% url 'index' as index %}
+                    <a class="logo" href=" {{index}} ">
                         <img src=" {% static 'images/logo-dark.png' %} " height="24" alt="">
                     </a>
                 </div>
+                									{% url 'login' as login %}
                 <div class="buy-button">
                                                                   {% url 'login' as login %}
 
@@ -69,16 +71,21 @@
                 </div>
 
                 <div id="navigation">
+                    <!-- Navigation Menu-->
                     <ul class="navigation-menu">
                         {% url 'index' as index %}
 
                         <li><a href=" {{index}} ">Accueil</a></li>
                         {% url 'service' as service %}
-                        <li><a href=" {{service}} ">Nos Services</a></li>
+                        <li><a href=" {{service}} "> Professionnel</a></li>
+                          {% url 'panel' as guide %}
+
+                        <li><a href=" {{guide}} ">Panel</a></li>
+
                         {% url 'guide' as guide %}
 
-                        <li><a href=" {{guide}} ">FOIRE AUX QUESTIONS</a></li>
-                                                                                                            {% url 'actualite' as actualite %}
+                        <li><a href=" {{guide}} ">FAQs</a></li>
+                        {% url 'actualite' as actualite %}
 
                         <li><a href=" {{actualite}} ">Actualités</a></li>
                         {% url 'contact' as contact %}
@@ -89,9 +96,10 @@
 
                     </ul><!--end navigation menu-->
                     <div class="buy-menu-btn d-none">
-                                                                  {% url 'login' as login %}
+                                                                                {% url 'login' as login %}
 
-                        <a href="{{login}}"  class="btn btn-primary">Se connecter</a>                    </div><!--end login button-->
+                        <a href="{{login}}"  class="btn btn-primary">Se connecter</a>
+                    </div><!--end login button-->
                 </div><!--end navigation-->
             </div><!--end container-->
         </header><!--end header-->
@@ -185,9 +193,7 @@
                             <div class="card-body py-5">
                                 <h4 class="card-title">Envoyez nous un message!</h4>
                                 <div class="custom-form mt-4">
-                                    <div id="message"></div>
-                                    <form method="post" action="{% url 'contact_sent' %}"  id="contact-form">
-                                                                        {% csrf_token %}
+                                    <form method="post" action="/contact_sent/">
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
@@ -228,10 +234,23 @@
                                         </div><!--end row-->
                                        <div class="row">
                                             <div class="col-sm-12 text-center">
-                                                <input type="submit" id="submit" name="send" class="submitBnt btn btn-primary btn-block" value="Send Message">
-                                                <div id="simple-msg"></div>
+                                                <input type="submit" id="submit" name="send" class="submitBnt btn btn-primary btn-block" value="Envoyer">
                                             </div><!--end col-->
-                                        </div><!--end row-->
+                                    <div class="col-sm-12 text-center">
+                                        <div class="form-group">
+                                          {% if messages %}
+                                            {% for message in messages %}
+                                            {% if message.tags == 'error' %}
+                                            <div class="alert alert-danger" style="margin-top:10px">{{ message }}</div>
+                                            {% endif %}
+                                            {% if message.tags == 'success' %}
+                                            <div class="alert alert-success" style="margin-top:10px">{{ message }}</div>
+                                            {% endif %}
+                                            {% endfor %}
+                                          {% endif %}
+                                        </div>
+                                    </div><!--end row-->
+                                       </div>
 
                                     </form><!--end form-->
 
@@ -291,6 +310,7 @@
         <!-- Main Js -->
         <script src=" {% static 'js/app.js' %} "></script>
         <script src=" {% static 'plugins/sweetalert2/sweetalert2.min.js' %} "></script>
+
 
     </body>
 </html>

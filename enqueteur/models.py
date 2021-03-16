@@ -68,7 +68,7 @@ class Enqueteur(models.Model):
     pire = models.CharField(max_length=40, blank=True, null=True)
     restaurant = models.CharField(max_length=25, choices=MEDIA_CHOICES4, blank=True, null=True)
     situation = models.CharField(max_length=40, blank=True, null=True)
-    profile_pic = models.FileField(upload_to='photos/',blank=True, null=True)
+    profile_pic = models.FileField(blank=True, null=True)
     joindre = models.CharField(max_length=25, choices=MEDIA_CHOICES7, blank=True, null=True)
     enfants = models.CharField(max_length=25, choices=MEDIA_CHOICES4, blank=True, null=True)
     status = models.BooleanField()
@@ -93,7 +93,6 @@ class CreateForms(models.Model):
     id = models.AutoField(primary_key=True)
     nameform = models.CharField(max_length=250, blank=True)
     coreform = models.CharField(max_length=9000, blank=True)
-    organisme=models.ForeignKey(Organisme, on_delete=models.CASCADE)
     description=models.CharField(max_length=9000, blank=True)
     date_debut = models.DateTimeField(auto_now_add=True)
     date_fin=models.DateTimeField(blank=True,null=True)
@@ -108,7 +107,7 @@ class SurveyData(models.Model):
         ('2', 'refuser'),
     )
     id = models.AutoField(primary_key=True)
-    #user = models.ManyToManyField(Enqueteur,blank=True)
+    user = models.CharField(max_length=250,blank=True)
     nameform = models.CharField(max_length=250, blank=True)
     date = models.CharField(max_length=250, blank=True)
     data=models.JSONField(max_length=9000, blank=True,null=True)
@@ -118,12 +117,21 @@ class SurveyData(models.Model):
     def __str__(self):
         return self.nameform
 
+class Categorie(models.Model):
+    id = models.AutoField(primary_key=True)
+    nom = models.TextField()
+
+    def __str__(self):
+        return self.nom
+
+
 class Actualite(models.Model):
     id = models.AutoField(primary_key=True)
     title = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     content = RichTextField()
-    keywords = models.TextField(blank=True, null=True)
+    photo=models.IntegerField(default=13)
+    categorie = models.ForeignKey(Categorie, on_delete=models.CASCADE)
     objects = models.Manager()
 
     def __str__(self):
@@ -135,7 +143,7 @@ class Mission(models.Model):
     nom = models.CharField(max_length=100)
     organisme = models.ForeignKey(Organisme, on_delete=models.CASCADE)
     thematique=models.CharField(max_length=30)
-    questionnaire = models.ForeignKey(CreateForms, on_delete=models.CASCADE)
+    questionnaire = models.ForeignKey(CreateForms, on_delete=models.CASCADE, blank=True)
     remuneration=models.CharField(max_length=40)
     description=RichTextField()
     date_debut= models.DateField(blank=False)
@@ -175,12 +183,45 @@ class Contact(models.Model):
 class Contact_enqueteur(models.Model):
     id = models.AutoField(primary_key=True)
     enqueteur_id = models.ForeignKey(Enqueteur, on_delete=models.CASCADE)
-    subject = models.CharField(max_length=255,blank=True, null=True)
     comments = models.CharField(max_length=255,blank=True, null=True)
-    feedback_reply=models.TextField()
-
+    feedback_reply=models.TextField(max_length=255,blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     objects = models.Manager()
+
+
+
+class Contact_admin(models.Model):
+    id = models.AutoField(primary_key=True)
+    enqueteur_id = models.ForeignKey(Enqueteur, on_delete=models.CASCADE)
+    reply=models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    objects = models.Manager()
+    class Meta:
+        ordering=['created_at']
+
+
+class Commentaire(models.Model):
+    id = models.AutoField(primary_key=True)
+    post_id = models.ForeignKey(Actualite, on_delete=models.CASCADE, blank=True,null=True)
+    nom = models.TextField()
+    commentaire = models.TextField()
+    post_id = models.ForeignKey(Actualite, on_delete=models.CASCADE, blank=True,null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+class Professional(models.Model):
+    id = models.AutoField(primary_key=True)
+    nom = models.TextField()
+    username=models.CharField(max_length=255,blank=True, null=True)
+    password=models.CharField(max_length=255,blank=True, null=True)
+    mission_id = models.ForeignKey(Mission, on_delete=models.CASCADE, blank=True,null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    objects = models.Manager()
+
+class avergedata(models.Model):
+    id = models.AutoField(primary_key=True)
+    namemission = models.CharField(max_length=250, blank=True)
+    averges = models.JSONField(max_length=9000,blank=True, null=True)
+
 
 '''' 
 class MessageEnqueteurs(models.Model):
@@ -192,6 +233,7 @@ class MessageEnqueteurs(models.Model):
     updated_at = models.DateTimeField(auto_now_add=True)
     #statut= models.Boole
     objects = models.Manager()
+    
 '''
 
 ''''
@@ -205,11 +247,6 @@ class AdminHOD(models.Model):
     objects = models.Manager()
 
 
-class Professional(models.Model):
-        id = models.AutoField(primary_key=True)
-        nom = models.TextField()
-        created_at = models.DateTimeField(auto_now_add=True)
-        objects = models.Manager()
 
 
 class MessageEnqueteurs(models.Model):

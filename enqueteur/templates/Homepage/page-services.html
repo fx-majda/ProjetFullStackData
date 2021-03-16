@@ -1,10 +1,11 @@
-{% load static %}
 <!DOCTYPE html>
+{% load static %}
+
 <html lang="en">
 
     <head>
          <meta charset="utf-8" />
-		<title>Upgoods - Service </title>
+		<title>Upgoods - Professionnel </title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="Upgoods service" />
         <meta name="keywords" content="upgoods, client-mystere, ams, smice, ams international" />
@@ -44,11 +45,11 @@
             <div class="container">
                 <!-- Logo container-->
                 <div>
-                									{% url 'index' as index %}
+                    {% url 'index' as index %}
                     <a class="logo" href=" {{index}} ">
                         <img src=" {% static 'images/logo-dark.png' %} " height="24" alt="">
                     </a>
-                </div>                 
+                </div>
                 									{% url 'login' as login %}
                 <div class="buy-button">
                                                                   {% url 'login' as login %}
@@ -68,19 +69,23 @@
                         <!-- End mobile menu toggle-->
                     </div>
                 </div>
-        
-              <div id="navigation">
+
+                <div id="navigation">
                     <!-- Navigation Menu-->
-                <ul class="navigation-menu">
+                    <ul class="navigation-menu">
                         {% url 'index' as index %}
 
                         <li><a href=" {{index}} ">Accueil</a></li>
                         {% url 'service' as service %}
-                        <li><a href=" {{service}} ">Nos Services</a></li>
+                        <li><a href=" {{service}} "> Professionnel</a></li>
+                          {% url 'panel' as guide %}
+
+                        <li><a href=" {{guide}} ">Panel</a></li>
+
                         {% url 'guide' as guide %}
 
-                        <li><a href=" {{guide}} ">FOIRE AUX QUESTIONS</a></li>
-                                                                                                            {% url 'actualite' as actualite %}
+                        <li><a href=" {{guide}} ">FAQs</a></li>
+                        {% url 'actualite' as actualite %}
 
                         <li><a href=" {{actualite}} ">Actualités</a></li>
                         {% url 'contact' as contact %}
@@ -91,9 +96,10 @@
 
                     </ul><!--end navigation menu-->
                     <div class="buy-menu-btn d-none">
-                                                                  {% url 'login' as login %}
+                                                                                {% url 'login' as login %}
 
-                        <a href="{{login}}"  class="btn btn-primary">Se connecter</a>                    </div><!--end login button-->
+                        <a href="{{login}}"  class="btn btn-primary">Se connecter</a>
+                    </div><!--end login button-->
                 </div><!--end navigation-->
             </div><!--end container-->
         </header><!--end header-->
@@ -104,15 +110,16 @@
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-lg-12 text-center">
+                    <div class="col-lg-12 text-center">
                         <div class="page-next-level">
-                            <h4 class="title"> Services </h4>
+                            <h3 class="title"> Une co-création permanente à votre service.</h3>
                             <div class="page-next">
                                 <nav aria-label="breadcrumb" class="d-inline-block">
                                     <ul class="breadcrumb bg-white rounded shadow mb-0">
                                                         									{% url 'index' as index %}
 
                                         <li class="breadcrumb-item"><a href=" {{ index }} ">Page d'accueil</a></li>
-                                        <li class="breadcrumb-item active" aria-current="page">Services</li>
+                                        <li class="breadcrumb-item active" aria-current="page">Professionnel</li>
                                     </ul>
                                 </nav>
                             </div>
@@ -134,100 +141,313 @@
         <!--Shape End-->
 
         <!-- Feature Start -->
-        <section class="section">
+        <section class="section ">
             <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="section-title mb-4 pb-2 justify-content-center">
+                                                <h4 class="title mb-4 para-desc  mb-0" >International Et Luxe</h4>
+                        </div>
+                    </div>
                 <div class="row">
+
+                    <div class="col">
+                        <div class="features">
+                            <div class="image position-relative d-inline-block">
+                                <i class="uil uil-calender  h1 text-primary"></i>
+                            </div>
+
+                            <div class="content mt-4">
+                                <h5>Maîtrise du calendrier des événements commerciaux en France et à l’international</h5>
+                                <p class="text-muted mb-0">Des Moments d’action étudiés,  Fêtes religieuses (noël…), fêtes des mères / pères, quotidien,  fin d’année … ce calendrier est  naturellement adapté en fonction des cultures, ou  des pays d’intervention.</p>          </div>
+                        </div>
+                    </div><!--end col-->
+
+                    <div class="col">
+                        <div class="features">
+                            <div class="image position-relative d-inline-block">
+                                <i class="uil uil-compass  h1 text-primary"></i>
+                            </div>
+
+                            <div class="content mt-4">
+                                <h5>International</h5>
+                                <p class="text-muted mb-0">Connaissance des habitudes de consommations, maitrise de la langue, disposition d’un panel de particuliers de résidents du pays.</p>
+                            </div>
+                        </div>
+                    </div><!--end col-->
+
+                    <div class="col">
+                        <div class="features">
+                            <div class="image position-relative d-inline-block">
+                                <i class="uil uil-money-stack   h1 text-primary"></i>
+                            </div>
+
+                            <div class="content mt-4">
+                                <h5>Luxe</h5>
+                                <p class="text-muted mb-0">Une exigence constante du secteur à l’image des clients, une projection qualité et long terme de la part des acheteurs.</p>   </div>
+                        </div>
+                    </div><!--end col-->
+
+                    <div class="col">
+                        <div class="features">
+                            <div class="image position-relative d-inline-block">
+                                <i class="uil uil-crosshair  h1 text-primary"></i>
+                            </div>
+
+                            <div class="content mt-4">
+                                <h5>Marketing ethnique</h5>
+                                <p class="text-muted mb-0">Adapter ses produits à un marché de niche, mieux connaitre les utilisateurs, réadapter le produit ou le concept aux exigences du marché.</p>       </div>
+                        </div>
+                    </div><!--end col-->
+
+
+
+
+                </div><!--end row-->
+
+            </div><!--end container-->
+
+        </section><!--end section-->
+        <section class="section bg-light">
+
+          <div class="container">
+              <div class="row justify-content-center">
+                    <div class="section-title mb-4 pb-2 justify-content-center">
+                        <h4 class="title mb-4 para-desc  mb-0" >Univers Marque Ou Parcours Client</h4>
+                        </div>
+                    </div>
+              <div class="row">
+
                     <div class="col-md-4 col-12">
                         <div class="features mt-5">
                             <div class="image position-relative d-inline-block">
-                                <i class="uil uil-edit-alt h1 text-primary"></i>
+                                <i class="uil uil-presentation-line  h1 text-primary"></i>
                             </div>
 
                             <div class="content mt-4">
-                                <h5>Enquêtes terrains</h5>
-                                <p class="text-muted mb-0">Sous la tutelle d’un superviseur, et à la suite d’une formation dispensée par nos services, à l’aide d’un questionnaire papier ou sur tablette vous serez en charge d’interroger les passagers dans les aéroports, les gares ferroviaires, maritimes ou routières sur 2 à 5 questions.
-Ces missions peuvent également avoir lieu à l’entrée des centres commerciaux, des grands magasins ou des institutions.</p>
-                            </div>
+                                <div class="content mt-4">
+                                <h5>Benchmark</h5>
+                                <p class="text-muted mb-0">Étude des comportements des clients d’un même secteur concurrentiel. Mettre en place les leviers différenciant.</p>       </div>
                         </div>
-                    </div><!--end col-->
-                    
-                    <div class="col-md-4 col-12 mt-5">
-                        <div class="features">
-                            <div class="image position-relative d-inline-block">
-                                <i class="uil uil-vector-square h1 text-primary"></i>
-                            </div>
-
-                            <div class="content mt-4">
-                                <h5>Comptage clients, passagers ou visiteurs</h5>
-                                <p class="text-muted mb-0">Sous la tutelle d’un superviseur et à l’aide d’un compteur client, vous serez en charge de compter les passagers ou usagers dans les gares, aéroports, prés des rames de trains ou de métro.</p>
-                            </div>
-                        </div>
-                    </div><!--end col-->
-                    
-                    <div class="col-md-4 col-12 mt-5">
-                        <div class="features">
-                            <div class="image position-relative d-inline-block">
-                                <i class="uil uil-file-search-alt h1 text-primary"></i>
-                            </div>
-
-                            <div class="content mt-4">
-                                <h5>Relevés de présence ou de prix</h5>
-                                <p class="text-muted mb-0">A l’aide d’une tablette ou d’une application sur smartphone, vous serez en charge de relever les prix des produits indiqués grâce à une liste et dans plusieurs typologies de points de vente.
-                            Le permis B et la possession d’un véhicule sont souvent exigés pour ce type de missions.
-                            Les frais sont pris en charge par AMS International.
-                            Le montant de leur prise en charge est calculé en fonction des distances à parcourir et vous est indiqué avant toute mission.</p>
-                            </div>
                         </div>
                     </div><!--end col-->
 
                     <div class="col-md-4 col-12 mt-5">
                         <div class="features">
                             <div class="image position-relative d-inline-block">
-                                <i class="uil uil-airplay h1 text-primary"></i>
+                                <i class="uil  uil-edit  h1 text-primary"></i>
                             </div>
 
                             <div class="content mt-4">
-                                <h5>Enquêtes téléphoniques</h5>
-                                <p class="text-muted mb-0">Sous la tutelle d’un superviseur et à la suite d’une formation dispensée par nos services.
-                                Vous serez en charge de contacter un panel de clients particuliers ou professionnels pour leur poser entre deux et 8 questions sur un service ou produit qu’ils ont utilisé.
-                                Les personnes interrogées au téléphonique sont prévenu par notre client ou par nos services de notre appel, et nous fournissent la plupart du temps leurs disponibilités.</p>
-                            </div>
+                                <h5>Auto-évaluation et Expérimentation collective « vis ma vie de client »</h5>
+                                <p class="text-muted mb-0">quoi de plus naturel que de se mettre dans la peau du client pour changer son regard, voir ce que l’on ne voit plus à force de routine, être force de proposition, réagir en adéquation avec la réalité du terrain. Notre outil via l’interface ou l’application Smartphone permet aux équipes de vivre l’expérience consommateur soit dans son point de vente, dans celui d’un collègue de la même enseigne, ou dans une enseigne concurrente.</p>          </div>
                         </div>
                     </div><!--end col-->
-                    
+
+                    <div class="col-md-4 col-12 mt-5">
+                        <div class="features">
+                            <div class="image position-relative d-inline-block">
+                                <i class="uil  uil-check-square  h1 text-primary"></i>
+                            </div>
+
+                            <div class="content mt-4">
+                               <div class="content mt-4">
+                                <h5>Marketing sensoriel et analyse des 5 sens</h5>
+                                <p class="text-muted mb-0">découvrir les leviers du ressentis du consommateur, ci qui impulse l’acte d’achat et de fidélisation.</p>    </div>
+                        </div>
+                        </div>
+                    </div><!--end col-->
+
+                    <div class="col-md-4 col-12 mt-5">
+                        <div class="features">
+                            <div class="image position-relative d-inline-block">
+                                <i class="uil  uil-feedback  h1 text-primary"></i>
+                            </div>
+
+                           <div class="content mt-4">
+                                <h5>Parcours client et moments de vérité</h5>
+                                <p class="text-muted mb-0">En connaitre le fil conducteur et les rendez-vous incontournables entre la marque et ses clients</p>   </div>
+                    </div><!--end col-->
+                    </div><!--end col-->
+
 
 
                     <div class="col-md-4 col-12 mt-5">
                         <div class="features">
                             <div class="image position-relative d-inline-block">
-                                <i class="uil uil-clock h1 text-primary"></i>
+                                <i class="uil  uil-dashboard  h1 text-primary"></i>
                             </div>
 
                             <div class="content mt-4">
-                                <h5>Audit pro</h5>
-                                <p class="text-muted mb-0">En plus du regard du particulier dans certains cas nous avons besoin du regard d’un professionnel pour mesurer la qualité de service rendu, l’organisation et l’environnement des différents services de travail en back office.
-                                Grâce à un référentiel élaboré par nos soins, l’auditeur vérifiera tous les points et indicateurs et sera force de proposition pour améliorer l’organisation du lieu visité en vue d’apporter un service de qualité aux consommateurs et garantir un environnement de travail serein aux salariés.
-                                Pour certains secteurs des certifications sont nécessaires, nous contacter.</p>
+                                <h5>Un panel à l’image de vos clients</h5>
+                                <p class="text-muted mb-0">en perpétuel développement et qualification.
+                                </p>
                             </div>
                         </div>
                     </div><!--end col-->
-                </div><!--end row-->
+                </div><!---->
+
+  </div>
+        </section><!--end section-->
+ <section class="section ">
+            <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="section-title mb-4 pb-2 justify-content-center">
+                                                <h4 class="title mb-4 para-desc  mb-0" >Univers Formation</h4>
+                        </div>
+                    </div>
+              <div class="row">
+
+                    <div class="col-md-4 col-12">
+                        <div class="features mt-5">
+                            <div class="image position-relative d-inline-block">
+                                <i class="uil uil-award-alt h1 text-primary"></i>
+                            </div>
+
+                            <div class="content mt-4">
+                                <div class="content mt-4">
+                                <h5>Fondamentaux</h5>
+                                    <p class="text-muted mb-0">Les définir grâce aux techniques du marketing des services, la connaissance client de votre environnement</p></div>  </div>
+                        </div>
+                    </div><!--end col-->
+
+                    <div class="col-md-4 col-12 mt-5">
+                        <div class="features">
+                            <div class="image position-relative d-inline-block">
+                                <i class="uil  uil-sign-alt h1 text-primary"></i>
+                            </div>
+
+                            <div class="content mt-4">
+                                <h5>Accueil</h5>
+                                <p class="text-muted mb-0">Grâce à nos travaux sur l’accueil et tout particulièrement en caisse, moment de vérité dans le processus de fidélisation client, nous vous accompagnons dans la valorisation de cette étape, la sensibilisation et la formation du personnel en contact</p></div>    </div>
+                    </div><!--end col-->
+
+                    <div class="col-md-4 col-12 mt-5">
+                        <div class="features">
+                            <div class="image position-relative d-inline-block">
+                                <i class="uil uil-laptop-cloud  h1 text-primary"></i>
+                            </div>
+
+                            <div class="content mt-4">
+                               <div class="content mt-4">
+                                <h5>Formation → e-learning+ présentiel</h5>
+                                   <p class="text-muted mb-0">Elaborer pour vous et avec vous des modules de formations on-line pour renforcer les acquis et en présentiel pour corriger les notions de base</p></div>    </div>
+                        </div>
+                    </div><!--end col-->
+
+                    <div class="col-md-4 col-12 mt-5">
+                        <div class="features">
+                            <div class="image position-relative d-inline-block">
+                                <i class="uil uil-graph-bar h1 text-primary"></i>
+                            </div>
+
+                           <div class="content mt-4">
+                                <h5>Charte qualité</h5>
+                               <p class="text-muted mb-0">Se baser sur les requêtes des consommateurs pour sa rédaction</p></div>    </div><!--end col-->
+                    </div><!--end col-->
+
+
+
+                    <div class="col-md-4 col-12 mt-5">
+                        <div class="features">
+                            <div class="image position-relative d-inline-block">
+                                <i class="uil uil-crosshair-alt  h1 text-primary"></i>
+                            </div>
+
+                            <div class="content mt-4">
+                                <h5>Elaboration référentiel</h5>
+                                <p class="text-muted mb-0">Base de travail des équipes en contact avec la clientèle. Point clef de la définition de l’identité relation propre à la marque. Définit également les rituels de services et de management</p>
+                            </div>
+                        </div>
+                    </div><!--end col-->
+                </div><!---->
+
             </div><!--end container-->
 
+        </section><!--end section-->
+                <section class="section bg-light">
+
+          <div class="container">
+              <div class="row justify-content-center">
+                    <div class="section-title mb-4 pb-2 justify-content-center">
+                        <h4 class="title mb-4 para-desc  mb-0" >Innovation, Modernité</h4>
+                        </div>
+                    </div>
+              <div class="row">
+
+
+                    <div class="col">
+                        <div class="features">
+                            <div class="image position-relative d-inline-block">
+                                <i class="uil uil-lightbulb-alt  h1 text-primary"></i>
+                            </div>
+
+                            <div class="content mt-4">
+                                <h5>Innovation</h5>
+                                <p class="text-muted mb-0">Innover par le service client, apporter une valeur ajoutée
+
+</p></div>    </div>
+                    </div><!--end col-->
+
+                    <div class="col">
+                        <div class="features">
+                            <div class="image position-relative d-inline-block">
+                                <i class="uil  uil-panel-add h1 text-primary"></i>
+                            </div>
+
+                            <div class="content mt-4">
+                               <div class="content mt-4">
+                                <h5>Axe de progrès sur divers plan</h5>
+                                <p class="text-muted mb-0">Stratégie, RH, formation, marketing, commercial, management, achat, maintenance…Trouver ou Redonner du sens à chacun des métiers</p>    </div>
+                        </div>
+                        </div>
+                    </div><!--end col-->
+
+                    <div class="col">
+                        <div class="features">
+                            <div class="image position-relative d-inline-block">
+                                <i class="uil uil-cloud-heart  h1 text-primary"></i>
+                            </div>
+
+                           <div class="content mt-4">
+                                <h5>Digitalisation/modernité</h5>
+                               <p class="text-muted mb-0">Des outils de mesure « Up to date » qui répondent aux besoins de chacun, faciles et facilitateurs</p></div>    </div><!--end col-->
+                    </div><!--end col-->
+
+
+
+                    <div class="col">
+                        <div class="features">
+                            <div class="image position-relative d-inline-block">
+                                <i class="uil uil-star  h1 text-primary"></i>
+                            </div>
+
+                            <div class="content mt-4">
+                                <h5>B to B</h5>
+                                <p class="text-muted mb-0">Professionnels du B to B, nous avons aussi des méthodologies de mesure et des solutions adaptés à mettre au profit de votre service client.</p>
+                            </div>
+                        </div>
+                    </div><!--end col-->
+                </div><!---->
+
+  </div>
+        </section><!--end section-->
             <div class="container mt-100 mt-60">
                 <div class="row justify-content-center">
                     <div class="col-12 text-center">
                         <div class="section-title mb-4 pb-2">
-                            <h4 class="title mb-4">Client Reviews</h4>
-                            <p class="text-muted para-desc mx-auto mb-0">Start working with <span class="text-primary font-weight-bold">Landrick</span> that can provide everything you need to generate awareness, drive traffic, connect.</p>
+                            <h4 class="title mb-4" data-aos="fade-up" data-aos-duration="1000">
+                                Sur chaque expérience vécue, il y a le pire et surtout le meilleur.</h4>
+                            <p class="text-muted para-desc mb-0 mx-auto" data-aos="fade-up" data-aos-duration="1400">Dans la majorité des cas, le consommateur décide que c'est bon ou mauvais car un incident ou un client délice s'est produit laissant sa mémoire nuancer cette expérience.<br>
+
+                                    Petit tour d'horizon des discours des consommateurs, de ce qu'ils ont aimé lors de leurs expériences et de ce qu'ils auraient voulu avoir lorsqu'une expérience client était moins bonne.</p>
                         </div>
-                    </div><!--end col-->
+                    </div>
                 </div><!--end row-->
 
                 <div class="row justify-content-center">
-                    <div class="col-lg-12 mt-4">
+                    <div class="col-lg-12 mt-4 pt-2">
                         <div id="customer-testi" class="owl-carousel owl-theme">
-                            <div class="media customer-testi m-2">
+                            <div class="media customer-testi m-2" data-aos="fade-up" data-aos-duration="1000">
                                 <img src=" {% static 'images/client/01.jpg' %} " class="avatar avatar-small mr-3 rounded shadow" alt="">
                                 <div class="media-body content p-3 shadow rounded bg-white position-relative">
                                     <ul class="list-unstyled mb-0">
@@ -237,12 +457,12 @@ Ces missions peuvent également avoir lieu à l’entrée des centres commerciau
                                         <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
                                         <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
                                     </ul>
-                                    <p class="text-muted mt-2">" It seems that only fragments of the original text remain in the Lorem Ipsum texts used today. "</p>
-                                    <h6 class="text-primary">- Thomas Israel <small class="text-muted">C.E.O</small></h6>
+                                    <p class="text-muted mt-2">« Lors d'une visite dans un magasin de vêtement. L'accueil et la prise en charge étaient très dynamiques et chaleureux. La vendeuse m’a proposé un café afin de patienter avant qu'une cabine d'essayage se libère. L'article que j'ai essayé était trop juste et la taille supérieure n'tait pas disponible en magasin. La responsable de la boutique m'a proposé de le commander et une semaine plus tard j'ai pu retirer l'article dans l'enseigne ».</p>
+                                    <h6 class="text-primary">- Panel Upgoods <small class="text-muted">Meilleure experience</small></h6>
                                 </div>
                             </div>
-                            
-                            <div class="media customer-testi m-2">
+
+                            <div class="media customer-testi m-2" data-aos="fade-up" data-aos-duration="1400">
                                 <img src=" {% static 'images/client/02.jpg' %} " class="avatar avatar-small mr-3 rounded shadow" alt="">
                                 <div class="media-body content p-3 shadow rounded bg-white position-relative">
                                     <ul class="list-unstyled mb-0">
@@ -252,12 +472,12 @@ Ces missions peuvent également avoir lieu à l’entrée des centres commerciau
                                         <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
                                         <li class="list-inline-item"><i class="mdi mdi-star-half text-warning"></i></li>
                                     </ul>
-                                    <p class="text-muted mt-2">" One disadvantage of Lorum Ipsum is that in Latin certain letters appear more frequently than others. "</p>
-                                    <h6 class="text-primary">- Barbara McIntosh <small class="text-muted">M.D</small></h6>
+                                    <p class="text-muted mt-2">Arrivée à l'hôtel, le personnel de l'accueil me donne ma chambre, arrivée à l'étage j'entre dans ma chambre ; inondation, un problème avec la baignoire avait fait envahir la chambre d'eau. Le directeur de l'hôtel s'excuse du désagrément, l'hôtel étant complet, il nous loue à sa charge une chambre dans un hôtel de catégorie supérieur et nous paye le taxi pour nous y rendre. Nous sommes finalement revenu une autre fois pour découvrir enfin cet hôtel</p>
+                                    <h6 class="text-primary">- Panel Upgoods <small class="text-muted">Meilleure experience</small></h6>
                                 </div>
                             </div>
 
-                            <div class="media customer-testi m-2">
+                            <div class="media customer-testi m-2" data-aos="fade-up" data-aos-duration="1800">
                                 <img src=" {% static 'images/client/03.jpg' %} " class="avatar avatar-small mr-3 rounded shadow" alt="">
                                 <div class="media-body content p-3 shadow rounded bg-white position-relative">
                                     <ul class="list-unstyled mb-0">
@@ -267,155 +487,65 @@ Ces missions peuvent également avoir lieu à l’entrée des centres commerciau
                                         <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
                                         <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
                                     </ul>
-                                    <p class="text-muted mt-2">" The most well-known dummy text is the 'Lorem Ipsum', which is said to have originated in the 16th century. "</p>
-                                    <h6 class="text-primary">- Carl Oliver <small class="text-muted">P.A</small></h6>
+                                    <p class="text-muted mt-2">Arrivée en groupe de 5 filles sans réservation un samedi après-midi où l’établissement est bien fréquenté. Accueil très chaleureux et grande disponibilité malgré le « rush » pour un tarif similaire à d’autres hammams, des services supplémentaires sont proposés : prêt de chausson, savon noir, exfoliation, accès spa (sauna et jacuzzi), thé à la menthe et pâtisserie. Hammam très joli avec de très belles mosaïques, parfaitement entretenue avec une ambiance sympathique et intimiste. L’ensemble du personnel fait son maximum pour la détente et le plaisir des clientes. </p>
+                                    <h6 class="text-primary">- Panel Upgoods <small class="text-muted">Meilleure experience</small></h6>
                                 </div>
                             </div>
 
-                            <div class="media customer-testi m-2">
+                            <div class="media customer-testi m-2" data-aos="fade-up" data-aos-duration="2200">
                                 <img src=" {% static 'images/client/04.jpg' %} " class="avatar avatar-small mr-3 rounded shadow" alt="">
                                 <div class="media-body content p-3 shadow rounded bg-white position-relative">
                                     <ul class="list-unstyled mb-0">
                                         <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
-                                        <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
-                                        <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
-                                        <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
-                                        <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
+
                                     </ul>
-                                    <p class="text-muted mt-2">" According to most sources, Lorum Ipsum can be traced back to a text composed by Cicero. "</p>
-                                    <h6 class="text-primary">- Christa Smith <small class="text-muted">Manager</small></h6>
+                                    <p class="text-muted mt-2">« Achat sur Internet. J'ai commandé des chaussures sur le net, je devais les recevoir il y a déjà 1 mois, celle-ci n’étant toujours pas arrivés, je contacte le service client qui me dit que ce n'est pas son soucis, lui il a fait son travail, et qu’il sous-traite l’expédition c’est à moi de contacter la société de transport pour avoir le numéro d’envoi, une déception totale ».</p>
+                                    <h6 class="text-primary">- Panel Upgoods  <small class="text-muted">Mauvaise experience</small></h6>
                                 </div>
                             </div>
 
-                            <div class="media customer-testi m-2">
+                            <div class="media customer-testi m-2" data-aos="fade-up" data-aos-duration="2400">
                                 <img src=" {% static 'images/client/05.jpg' %} " class="avatar avatar-small mr-3 rounded shadow" alt="">
                                 <div class="media-body content p-3 shadow rounded bg-white position-relative">
                                     <ul class="list-unstyled mb-0">
                                         <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
-                                        <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
-                                        <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
-                                        <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
-                                        <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
+
                                     </ul>
-                                    <p class="text-muted mt-2">" There is now an abundance of readable dummy texts. These are usually used when a text is required. "</p>
-                                    <h6 class="text-primary">- Dean Tolle <small class="text-muted">Developer</small></h6>
+                                    <p class="text-muted mt-2">« Mon pire service a été lors d'une visite dans un magasin optique. A mon entrée, la personne en charge de l'accueil ne m'a pas saluée, elle a à peine relevé la tête et a remarqué ma présence. Elle m'a demandé de patienter car elle faisait ses papiers. J'ai donc attendu, plus de 20 minutes avant d'être servie. Le magasin était très désordonné comme ses papiers».</p>
+                                    <h6 class="text-primary">- Panel Upgoods  <small class="text-muted">Mauvaise experience</small></h6>
                                 </div>
                             </div>
 
-                            <div class="media customer-testi m-2">
+                            <div class="media customer-testi m-2" data-aos="fade-up" data-aos-duration="2800">
                                 <img src=" {% static 'images/client/06.jpg' %} " class="avatar avatar-small mr-3 rounded shadow" alt="">
                                 <div class="media-body content p-3 shadow rounded bg-white position-relative">
                                     <ul class="list-unstyled mb-0">
                                         <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
-                                        <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
-                                        <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
-                                        <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
-                                        <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
+
                                     </ul>
-                                    <p class="text-muted mt-2">" Thus, Lorem Ipsum has only limited suitability as a visual filler for German texts. "</p>
-                                    <h6 class="text-primary">- Jill Webb <small class="text-muted">Designer</small></h6>
+                                    <p class="text-muted mt-2">« Pizzeria de chaine, le livreur était en retard de presque 1h!! Il est arrivé avec son casque sur la tête, pas de badge pour se présenter, son apparence laissait fortement à désirer. De plus il n'était pas très souriant, sans plus, on sentait qu'il ne s'impliquait pas du tout dans ce qu'il faisait. La nourriture était bien sur froide, et il y avait même une erreur dans la commande. (wings épicés alors que nous les voulions normaux) Et cerise sur les Gâteaux, les prix pratiqués sont exorbitants ».</p>
+                                    <h6 class="text-primary">- Panel Upgoods  <small class="text-muted">Mauvaise experience</small></h6>
                                 </div>
                             </div>
                         </div>
                     </div><!--end col-->
                 </div><!--end row-->
             </div><!--end container-->
-        </section><!--end section-->
-        <!-- Feature Start -->
 
         <!-- Project Start -->
         <section class="section bg-light">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-12 text-center">
-                        <div class="section-title mb-4 pb-2">
-                            <h4 class="title mb-4">Our Latest Projects</h4>
-                            <p class="text-muted para-desc mx-auto mb-0">Start working with <span class="text-primary font-weight-bold">Landrick</span> that can provide everything you need to generate awareness, drive traffic, connect.</p>
-                        </div>
-                    </div><!--end col-->
-                </div><!--end row-->
 
-                <div class="row">
-                    <div class="col-md-6 col-12 mt-4 pt-2">
-                        <div class="card work-container work-modern position-relative overflow-hidden shadow rounded border-0">
-                            <div class="card-body p-0">
-                                <img src=" {% static 'images/work/1.jpg' %} " class="img-fluid rounded" alt="work-image">
-                                <div class="overlay-work bg-dark"></div>
-                                <div class="content">
-                                    <a href=" {% static 'page-portfolio-detail.html' %} " class="title text-white d-block font-weight-bold">Shifting Perspective</a>
-                                    <small class="text-light">Studio</small>
-                                </div>
-                                <div class="client">
-                                    <small class="text-light user d-block"><i class="mdi mdi-account"></i> Calvin Carlo</small>
-                                    <small class="text-light date"><i class="mdi mdi-calendar-check"></i> 13th August, 2019</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div><!--end col-->
-
-                    <div class="col-md-6 col-12 mt-4 pt-2">
-                        <div class="card work-container work-modern position-relative overflow-hidden shadow rounded border-0">
-                            <div class="card-body p-0">
-                                <img src=" {% static 'images/work/2.jpg' %} " class="img-fluid rounded" alt="work-image">
-                                <div class="overlay-work bg-dark"></div>
-                                <div class="content">
-                                    <a href=" {% static 'page-portfolio-detail.html' %} " class="title text-white d-block font-weight-bold">Colors Magazine</a>
-                                    <small class="text-light">Web Design</small>
-                                </div>
-                                <div class="client">
-                                    <small class="text-light user d-block"><i class="mdi mdi-account"></i> Calvin Carlo</small>
-                                    <small class="text-light date"><i class="mdi mdi-calendar-check"></i> 13th August, 2019</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div><!--end col-->
-
-                    <div class="col-md-6 col-12 mt-4 pt-2">
-                        <div class="card work-container work-modern position-relative overflow-hidden shadow rounded border-0">
-                            <div class="card-body p-0">
-                                <img src=" {% static 'images/work/3.jpg' %} " class="img-fluid rounded" alt="work-image">
-                                <div class="overlay-work bg-dark"></div>
-                                <div class="content">
-                                    <a href=" {% static 'page-portfolio-detail.html' %} " class="title text-white d-block font-weight-bold">Spa Cosmetics</a>
-                                    <small class="text-light">Developing</small>
-                                </div>
-                                <div class="client">
-                                    <small class="text-light user d-block"><i class="mdi mdi-account"></i> Calvin Carlo</small>
-                                    <small class="text-light date"><i class="mdi mdi-calendar-check"></i> 13th August, 2019</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div><!--end col-->
-
-                    <div class="col-md-6 col-12 mt-4 pt-2">
-                        <div class="card work-container work-modern position-relative overflow-hidden shadow rounded border-0">
-                            <div class="card-body p-0">
-                                <img src=" {% static 'images/work/4.jpg' %} " class="img-fluid rounded" alt="work-image">
-                                <div class="overlay-work bg-dark"></div>
-                                <div class="content">
-                                    <a href=" {% static 'page-portfolio-detail.html' %} " class="title text-white d-block font-weight-bold">Riser Coffee</a>
-                                    <small class="text-light">Branding</small>
-                                </div>
-                                <div class="client">
-                                    <small class="text-light user d-block"><i class="mdi mdi-account"></i> Calvin Carlo</small>
-                                    <small class="text-light date"><i class="mdi mdi-calendar-check"></i> 13th August, 2019</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div><!--end col-->
-                </div><!--end row-->
-            </div><!--end container-->
-            
             <div class="container mt-100 mt-60">
                 <div class="row justify-content-center">
                     <div class="col-12 text-center">
                         <div class="section-title">
-                            <h4 class="title mb-4">See everything about your employee at one place.</h4>
-                            <p class="text-muted para-desc mx-auto">Start working with <span class="text-primary font-weight-bold">Landrick</span> that can provide everything you need to generate awareness, drive traffic, connect.</p>
+                            <h4 class="title mb-4">Pour vos demandes relatives aux projets de client mystère nous sommes à votre disposition.</h4>
+                            <p class="text-muted para-desc mx-auto">Entrons en <span class="text-primary font-weight-bold">contact</span>.</p>
                         
                             <div class="mt-4">
-                                <a href=" {% static 'javascript:void(0)' %} " class="btn btn-primary mt-2 mr-2">Get Started Now</a>
-                                <a href=" {% static 'javascript:void(0)' %} " class="btn btn-outline-primary mt-2">Free Trial</a>
+                                <a href=" {% url 'contact' %} " class="btn btn-primary mt-2 mr-2">Joindre un consultant client mystère</a>
+                                                           <a href=" {% url 'guide' %} " class="btn btn-info mt-2 mr-2">Découverez nos méthodologies de mesure</a>
+
                             </div>
                         </div>
                     </div><!--end col-->

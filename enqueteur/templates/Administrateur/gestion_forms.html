@@ -8,7 +8,27 @@ Gestion des quizz
     <!-- Content Wrapper. Contains page content -->
       <!-- Main content -->
       <section class="content">
+<div class="col-12" id="accordion">
+                <div class="card card-primary card-outline">
+                    <a class="d-block w-100" data-toggle="collapse" href="#collapseOne ">
+                        <div class="card-header">
+                            <h4 class="card-title w-100">
+                                Créer le questionnaire
+                            </h4>
+                        </div>
+                    </a>
+                    <div id="collapseOne" class="collapse show" data-parent="#accordion">
+                        <div class="card-body">
+                                                              {% url 'builder' as contact %}
+                                        <a href=" {{contact}} " class="accounts rounded d-block shadow text-center py-3">
+                                            <span class="pro-icons h3 text-muted"><i class="uil uil-setting"></i></span>
+                                            <h6 class="title text-dark h6 my-0">Cliquez ici</h6>
+                                        </a>
 
+                        </div>
+                    </div>
+                </div>
+ </div>
         <!-- Default box -->
             <div class="card">
               <div class="card-header">
@@ -25,7 +45,41 @@ Gestion des quizz
 
 
 
+<form method="post" action="">
+                  {% csrf_token %}
+                <div class="card-body">
+                  <div class="form-group">
+                    <label>Nom de la mission</label>
+                    <input type="text" class="form-control" name="missionname" placeholder="Entrer le titre de la mission">
+                  </div>
+                    <div class="form-group">
+                    <label>Entrer le code HTML ici :</label>
+                    <input type="text" class="form-control" placeholder="HTML CODE" name="htmlcode">
+                  </div>
 
+                      <div class="form-group">
+                      {% if messages %}
+                        {% for message in messages %}
+                        {% if message.tags == 'error' %}
+                        <div class="alert alert-danger" style="margin-top:10px">{{ message }}</div>
+                        {% endif %}
+                        {% if message.tags == 'success' %}
+                        <div class="alert alert-success" style="margin-top:10px">{{ message }}</div>
+                        {% endif %}
+                        {% endfor %}
+                      {% endif %}
+                    </div>
+
+                </div>
+                <!-- /.card-body -->
+
+                <div class="card-footer">
+                  <button type="submit" class="btn btn-primary btn-block">Ajouter</button>
+                </div>
+
+            <!-- /.card -->
+
+              </form>
           </div>
           <!-- /.card-body -->
         </div>

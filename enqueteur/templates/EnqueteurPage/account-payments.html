@@ -65,11 +65,11 @@
                         <div class="dropdown dropdown-primary">
                             <button type="button" class="btn btn-icon btn-soft-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="uil uil-user align-middle icons"></i></button>
                             <div class="dropdown-menu dd-menu dropdown-menu-right bg-white shadow rounded border-0 mt-3 py-3" style="width: 200px;">
-                                <a class="dropdown-item text-dark" href="#"><i class="uil uil-user align-middle mr-1"></i> Mon compte</a>
-                                <a class="dropdown-item text-dark" href="#"><i class="uil uil-clipboard-notes align-middle mr-1"></i> Order History</a>
-                                <a class="dropdown-item text-dark" href="#"><i class="uil uil-arrow-circle-down align-middle mr-1"></i> Download</a>
+                                <a class="dropdown-item text-dark" href="{% url 'account_settings'  %}"><i class="uil uil-user align-middle mr-1"></i> Settings</a>
+                                <a class="dropdown-item text-dark" href=" {% url 'account_messages'  %}"><i class="uil uil-clipboard-notes align-middle mr-1"></i>  Mes messages</a>
+                                <a class="dropdown-item text-dark" href="#"><i class="uil uil-arrow-circle-down align-middle mr-1"></i> Guide</a>
                                 <div class="dropdown-divider my-3 border-top"></div>
-                                <a class="dropdown-item text-dark" href="#"><i class="uil uil-sign-out-alt align-middle mr-1"></i> Logout</a>
+                                <a class="dropdown-item text-dark" href="{% url 'logout'  %}"><i class="uil uil-sign-out-alt align-middle mr-1"></i> Déconnexion</a>
                             </div>
                         </div>
                     </li>
@@ -103,12 +103,11 @@
                         <li><a href=" {{actualite}} ">Mon profile</a></li>
 
 
-
                     </ul><!--end navigation menu-->
                     <div class="buy-menu-btn d-none">
                                                                                 {% url 'login' as login %}
 
-                        <a href="{{login}}" class="btn btn-primary">Se deconnecter</a>
+                        <a href="{{login}}"  class="btn btn-primary">Se deconnecter</a>
                     </div><!--end login button-->
                 </div><!--end navigation-->
             </div><!--end container-->
@@ -126,7 +125,7 @@
                             <div class="card-body">
                                 <div class="row align-items-center">
                                     <div class="col-lg-2 col-md-3 text-md-left text-center">
-                                        <img src=" {% static 'images/client/05.jpg' %} " class="avatar avatar-large rounded-circle shadow d-block mx-auto" alt="">
+                                        <img src=" {{enqueteur.profile_pic}}  " class="avatar avatar-large rounded-circle shadow d-block mx-auto" alt="">
                                     </div><!--end col-->
     
                                     <div class="col-lg-10 col-md-9">
@@ -158,7 +157,7 @@
 
 
                             <div class="widget mt-4 pt-2">
-                                <h5 class="widget-title">Projects :</h5>
+                                <h5 class="widget-title">Espace profil :</h5>
                                 <div class="progress-box mt-4">
                                     <h6 class="title text-muted">Score</h6>
                                     <div class="progress">
@@ -215,16 +214,16 @@
                                     </div><!--end col-->
 
                                     <div class="col-6 mt-4 pt-2">
-                                        <a href=" {% static 'auth-login-three.html' %} " class="accounts rounded d-block shadow text-center py-3">
+                                        <a href=" {% url 'logout' %} " class="accounts rounded d-block shadow text-center py-3">
                                             <span class="pro-icons h3 text-muted"><i class="uil uil-sign-out-alt"></i></span>
-                                            <h6 class="title text-dark h6 my-0">Logout</h6>
+                                            <h6 class="title text-dark h6 my-0">Se deconnecter</h6>
                                         </a>
                                     </div><!--end col-->
                                 </div><!--end row-->
                             </div>
 
                             <div class="widget mt-4 pt-2">
-                                <h5 class="widget-title">Follow me :</h5>
+                                <h5 class="widget-title">Follow us :</h5>
                                 <ul class="list-unstyled social-icon mb-0 mt-4">
                                     <li class="list-inline-item"><a href="  " class="rounded"><i data-feather="facebook" class="fea icon-sm fea-social"></i></a></li>
                                     <li class="list-inline-item"><a href="  " class="rounded"><i data-feather="instagram" class="fea icon-sm fea-social"></i></a></li>
@@ -241,47 +240,73 @@
                     <div class="col-lg-8 col-12">
                         <div class="rounded shadow p-4">
                             <div class="d-flex align-items-center justify-content-between">
-                                <h5 class="mb-0">Méthodes de payement:</h5>
+                                <h5 class="mb-0">Balance de rémunération :</h5>
                                 </div>
 
                             <div class="row">
-                                <div class="col-md-6 mt-4 pt-2">
-                                    <a href="  ">
-                                        <div class="card rounded shadow bg-light border-0">
-                                            <div class="card-body">
-                                                <img src=" {% static 'images/payments/payment/master.png' %} " height="60" class="text-right" alt="">
-                                                <div class="mt-4">
-                                                    <h5 class="text-dark">•••• •••• •••• 4559</h5>
-                                                    <div class="d-flex justify-content-between">
-                                                        <p class="h6 text-muted mb-0">Cristino Murfy</p>
-                                                        <h6 class="mb-0 text-dark">Exp: <span class="text-muted">10/22</span></h6>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div><!--end col-->
+                                <div class="container">
+                            <div class="row justify-content-center">
+                            <div class="col-md-12 mt-3 pt-2 " >
+                                <div class="table-responsive bg-white shadow rounded">
+                                    <table class="table mb-0 table-center table-nowrap">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Mission no.</th>
+                                                <th scope="col">Date</th>
+                                                <th scope="col">Status</th>
+                                                <th scope="col">Remuneration</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">test</th>
+                                                <td></td>
+                                                <td class="text-success">Aucune mission effectuées</td>
+                                                <td>$ 0 </td>
+                                            </tr> </table>
+                                </div>
+                            </div>
+<!--
+                                            <tr>
+                                                <th scope="row">test</th>
+                                                <td>4th November 2020</td>
+                                                <td class="text-muted">Processing</td>
+                                                <td>$ 800</td>
+                                            </tr>
 
-                                <div class="col-md-6 mt-4 pt-2">
-                                    <div class="card rounded shadow bg-light border-0">
-                                        <div class="card-body">
-                                            <img src=" {% static 'images/payments/payment/location.png' %} " height="60" class="text-right" alt="">
-                                            <div class="mt-4">
-                                                <form>
-                                                    <div class="form-group mt-4 pt-3 mb-0">
-                                                        <div class="input-group">
-                                                            <input name="email" id="email" type="email" class="form-control" placeholder="{{enqueteur.adresse}}" readonly>
-                                                            <div class="input-group-append">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </form><!--end form-->
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div><!--end col-->
+                                            <tr>
+                                                <th scope="row">test</th>
+                                                <td>4th November 2020</td>
+                                                <td class="text-danger">Canceled</td>
+                                                <td>$ 800 </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            </div>                            </div>
 
-
+                            <div class="tab-pane fade bg-white shadow rounded p-4" id="down" role="tabpanel" aria-labelledby="download">
+                                <div class="table-responsive bg-white shadow rounded">
+                                    <table class="table mb-0 table-center table-nowrap">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Product Name</th>
+                                                <th scope="col">Description</th>
+                                                <th scope="col">Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">Quick heal</th>
+                                                <td class="text-muted">It is said that song composers of the past <br> used dummy texts as lyrics when writing <br> melodies in order to have a 'ready-made' <br> text to sing with the melody.</td>
+                                                <td class="text-success">Downloaded</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            -->
+</div>
                             </div>
                         </div>
                     </div><!--end col-->

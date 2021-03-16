@@ -55,15 +55,15 @@
 
                         <a href="{{login}}" class="btn btn-primary">Se deconnecter</a>                </div><!--end login button-->
                 <!-- End Logo container-->
-                    <li class="list-inline-item mb-0">
+                   <li class="list-inline-item mb-0">
                         <div class="dropdown dropdown-primary">
                             <button type="button" class="btn btn-icon btn-soft-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="uil uil-user align-middle icons"></i></button>
                             <div class="dropdown-menu dd-menu dropdown-menu-right bg-white shadow rounded border-0 mt-3 py-3" style="width: 200px;">
-                                <a class="dropdown-item text-dark" href="#"><i class="uil uil-user align-middle mr-1"></i> Mon compte</a>
-                                <a class="dropdown-item text-dark" href="#"><i class="uil uil-clipboard-notes align-middle mr-1"></i> Order History</a>
-                                <a class="dropdown-item text-dark" href="#"><i class="uil uil-arrow-circle-down align-middle mr-1"></i> Download</a>
+                                <a class="dropdown-item text-dark" href="{% url 'account_settings'  %}"><i class="uil uil-user align-middle mr-1"></i> Settings</a>
+                                <a class="dropdown-item text-dark" href=" {% url 'account_messages'  %}"><i class="uil uil-clipboard-notes align-middle mr-1"></i>  Mes messages</a>
+                                <a class="dropdown-item text-dark" href="#"><i class="uil uil-arrow-circle-down align-middle mr-1"></i> Guide</a>
                                 <div class="dropdown-divider my-3 border-top"></div>
-                                <a class="dropdown-item text-dark" href="#"><i class="uil uil-sign-out-alt align-middle mr-1"></i> Logout</a>
+                                <a class="dropdown-item text-dark" href="{% url 'logout'  %}"><i class="uil uil-sign-out-alt align-middle mr-1"></i> Déconnexion</a>
                             </div>
                         </div>
                     </li>
@@ -87,7 +87,7 @@
                     <ul class="navigation-menu">
                         {% url 'indexEnqueteur' as index %}
 
-                        <li><a href=" {{index}} ">Accueil</a></li>
+                        <li><a href=" {{index}} ">accueil</a></li>
                         {% url 'trouvermission' as service %}
                         <li><a href=" {{service}} ">Trouver une mission</a></li>
                         {% url 'mission' as guide %}
@@ -98,19 +98,18 @@
                         <li><a href=" {{actualite}} ">Mon profile</a></li>
 
 
-
                     </ul><!--end navigation menu-->
                     <div class="buy-menu-btn d-none">
                                                                                 {% url 'login' as login %}
 
-                        <a href="{{login}}" class="btn btn-primary">Se deconnecter</a>
+                        <a href="{{login}}"  class="btn btn-primary">Se deconnecter</a>
                     </div><!--end login button-->
                 </div><!--end navigation-->
             </div><!--end container-->
         </header><!--end header-->
         <!-- Navbar End -->
 
-        
+
         <!-- Hero Start -->
         <section class="bg-half bg-light d-table w-100">
             <div class="container">
@@ -219,10 +218,31 @@
                             <p class="text-muted">{{post.description |safe}}.</p>
 
                             <div class="mt-4">
-                                <a href=" {% url 'apply_for_mission' post.id %} " class="btn btn-outline-primary">Enregistrer ma candidature pour cette mission <i class="mdi mdi-send"></i></a>
+                                {% if candidature.candidature_status == 0 %}
+                                <button href=" {% url 'apply_for_mission' post.id %} " class="btn btn-outline-primary" disabled="disabled">Votre candidature est en cours de traitement <i class="mdi mdi-send"></i></button>
+                                {% elif candidature.candidature_status == 1  %}
+                                <button href=" {% url 'apply_for_mission' post.id %} " class="btn btn-outline-primary" disabled="disabled"> Votre candidature est acceptée <i class="mdi mdi-send"></i></button>
+                                {% elif candidature.candidature_status == 2  %}
+                                <button href=" {% url 'apply_for_mission' post.id %} " class="btn btn-outline-primary" disabled="disabled"> Votre candidature est refusée < <i class="mdi mdi-send"></i></button>
+                                {% else %}
+                                <a href=" {% url 'apply_for_mission' post.id %} " class="btn btn-outline-primary" >Enregistrer ma candidature pour cette mission <i class="mdi mdi-send"></i></a>
+                                {% endif %}
                             </div>
                         </div>
+                        <div class="form-group">
+                      {% if messages %}
+                        {% for message in messages %}
+                        {% if message.tags == 'error' %}
+                        <div class="alert alert-danger" style="margin-top:10px">{{ message }}</div>
+                        {% endif %}
+                        {% if message.tags == 'success' %}
+                        <div class="alert alert-success" style="margin-top:10px">{{ message }}</div>
+                        {% endif %}
+                        {% endfor %}
+                      {% endif %}
+                    </div>
                     </div><!--end col-->
+
                 </div><!--end row-->
             </div><!--end container-->
         </section><!--end section-->

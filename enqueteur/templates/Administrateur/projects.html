@@ -60,7 +60,12 @@ Profile Picture                        </th>
                         <td>
                             <ul class="list-inline">
                                 <li class="list-inline-item">
-                                    <img alt="Avatar" class="table-avatar" src="{{users.profile_pic.url}} ">
+                                        {% if users.profile_pic %}
+                                    <img alt="Avatar" class="table-avatar" src="{{users.profile_pic}} ">
+                                    {% else %}
+                                    <span> L'utilisateur n'a aucune photo de profil</span>
+                                    {% endif %}
+
                                 </li>
 
                             </ul>
@@ -91,7 +96,27 @@ Profile Picture                        </th>
           <!-- /.card-body -->
         </div>
         <!-- /.card -->
+ <div class="col-12" id="accordion">
+                <div class="card card-primary card-outline">
+                    <a class="d-block w-100" data-toggle="collapse" href="#collapseOne ">
+                        <div class="card-header">
+                            <h4 class="card-title w-100">
+                                Mappage des enqueteurs
+                            </h4>
+                        </div>
+                    </a>
+                    <div id="collapseOne" class="collapse show" data-parent="#accordion">
+                        <div class="card-body">
+                                                              {% url 'gpsmap' as contact %}
+                                        <a href=" {{contact}} " class="accounts rounded d-block shadow text-center py-3">
+                                            <span class="pro-icons h3 text-muted"><i class="uil uil-setting"></i></span>
+                                            <h6 class="title text-dark h6 my-0">Cliquez ici</h6>
+                                        </a>
 
+                        </div>
+                    </div>
+                </div>
+ </div>
       </section>
       <!-- /.content -->
     </div>

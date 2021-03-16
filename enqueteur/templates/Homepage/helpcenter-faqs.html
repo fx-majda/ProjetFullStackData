@@ -1,5 +1,6 @@
-{% load static %}
 <!DOCTYPE html>
+{% load static %}
+
 <html lang="en">
 
     <head>
@@ -44,12 +45,14 @@
             <div class="container">
                 <!-- Logo container-->
                 <div>
-                    <a class="logo" href=" {% static 'index.html' %} ">
+                    {% url 'index' as index %}
+                    <a class="logo" href=" {{index}} ">
                         <img src=" {% static 'images/logo-dark.png' %} " height="24" alt="">
                     </a>
-                </div>                 
+                </div>
+                									{% url 'login' as login %}
                 <div class="buy-button">
-                                                           {% url 'login' as login %}
+                                                                  {% url 'login' as login %}
 
                         <a href="{{login}}"  class="btn btn-primary">Se connecter</a>                </div><!--end login button-->
                 <!-- End Logo container-->
@@ -66,20 +69,23 @@
                         <!-- End mobile menu toggle-->
                     </div>
                 </div>
-        
-                <div id="navigation">
-                    <!-- Navigation Menu-->   
 
-                      <ul class="navigation-menu">
+                <div id="navigation">
+                    <!-- Navigation Menu-->
+                    <ul class="navigation-menu">
                         {% url 'index' as index %}
 
                         <li><a href=" {{index}} ">Accueil</a></li>
                         {% url 'service' as service %}
-                        <li><a href=" {{service}} ">Nos Services</a></li>
+                        <li><a href=" {{service}} "> Professionnel</a></li>
+                          {% url 'panel' as guide %}
+
+                        <li><a href=" {{guide}} ">Panel</a></li>
+
                         {% url 'guide' as guide %}
 
-                        <li><a href=" {{guide}} ">FOIRE AUX QUESTIONS</a></li>
-                                                                                                            {% url 'actualite' as actualite %}
+                        <li><a href=" {{guide}} ">FAQs</a></li>
+                        {% url 'actualite' as actualite %}
 
                         <li><a href=" {{actualite}} ">Actualités</a></li>
                         {% url 'contact' as contact %}
@@ -89,10 +95,8 @@
 
 
                     </ul><!--end navigation menu-->
-                        </li>
-                    </ul><!--end navigation menu-->
                     <div class="buy-menu-btn d-none">
-                                                                           {% url 'login' as login %}
+                                                                                {% url 'login' as login %}
 
                         <a href="{{login}}"  class="btn btn-primary">Se connecter</a>
                     </div><!--end login button-->
@@ -107,7 +111,7 @@
                 <div class="row justify-content-center">
                     <div class="col-lg-12 text-center">
                         <div class="page-next-level">
-                            <h4 class="title"> FAQ | SOS</h4>
+                            <h4 class="title"> FOIRE AUX QUESTIONS | SOS</h4>
 
                             <div class="page-next">
                                 <nav aria-label="breadcrumb" class="d-inline-block">
@@ -132,10 +136,8 @@
                         <div class="rounded shadow p-4 sticky-bar">
                             <ul class="list-unstyled mb-0">
                                 <li><a href=" #tech" class="mouse-down h6 text-dark">Questions générales</a></li>
-                                <li class="mt-4"><a href=" #general " class="mouse-down h6 text-dark">General Questions</a></li>
-                                <li class="mt-4"><a href=" #payment" class="mouse-down h6 text-dark">Payments Questions</a></li>
-                                <li class="mt-4"><a href=" #support " class="mouse-down h6 text-dark">Support Questions</a></li>
-                            </ul>
+                                <li class="mt-4"><a href=" #general " class="mouse-down h6 text-dark">Nos méthodologies de mesure</a></li>
+                                       </ul>
                         </div>
                     </div><!--end col-->
 
@@ -162,16 +164,59 @@
                                 <div class="card border-0 rounded mb-2">
                                     <a data-toggle="collapse" href=" #collapsetwo " class="faq position-relative collapsed" aria-expanded="false" aria-controls="collapsetwo">
                                         <div class="card-header border-0 bg-light p-3 pr-5" id="headingtwo">
-                                            <h6 class="title mb-0"> C'est quoi la procédure pour effectuer une visite ? </h6>
+                                            <h6 class="title mb-0"> Quels genres de sondages mystère me seront proposés ?  </h6>
                                         </div>
                                     </a>
                                     <div id="collapsetwo" class="collapse" aria-labelledby="headingtwo" data-parent="#accordionExampleone">
                                         <div class="card-body px-2 py-4">
-                                            <p class="text-muted mb-0 faq-ans"> Si l’une de nos mission correspond à votre profil, vous pourrez  vous positionner en prenant soin d’indiquer sur le calendrier la date à laquelle vous souhaitez la réaliser.Une fois par semaine vous recevrez les visites en cours, assurez- vous que notre adresse mail soit dans vos favoris et non dans les spams au risque de laisser passer des visites intéressantes.</p>
+                                            <p class="text-muted mb-0 faq-ans"> Un projet de client mystère peut concerner toutes les situations d'un client, prospect, consommateur, usager... : supermarchés, boutiques de mode, restaurants, hôtels, parcs d'attractions, agences de voyage...
+
+                                        Nos questionnaires concernent votre expérience normale de consommateur au quotidien. Vos courses, votre nuit à l'hôtel, votre dîner au restaurant, votre demande de renseignement ou de devis ou votre réclamation... vous nous indiquez vos vécus et de vos impressions dans un questionnaire.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card border-0 rounded mb-2">
+                                    <a data-toggle="collapse" href=" #collapsetwo2 " class="faq position-relative collapsed" aria-expanded="false" aria-controls="collapsetwo">
+                                        <div class="card-header border-0 bg-light p-3 pr-5" id="headingtwo2">
+                                            <h6 class="title mb-0"> Combien de temps faut-il compter ?</h6>
+                                        </div>
+                                    </a>
+                                    <div id="collapsetwo2" class="collapse" aria-labelledby="headingtwo" data-parent="#accordionExampleone">
+                                        <div class="card-body px-2 py-4">
+                                            <p class="text-muted mb-0 faq-ans"> Le temps à consacrer est variable et dépend des questionnaires et contextes.
+
+                                                Remplir nos questionnaires prend entre 5 et 15 minutes et les sondages concernent votre quotidien habituel comme vos courses pour le week-end au supermarché, votre visite chez le coiffeur ou votre shopping à l'occasion des soldes d'été.
+                                                    D'autres missions, plus orientées audit, peuvent nécessiter un déplacement spécial ou une organisation particulière. L'invitation à participer vous donnera une indication sur le type et le temps nécessaire à la réalisation de la mission. Côté horaires, vous choisirez selon vos envies et vos disponibilités, bien sûr dans le cadre des impératifs de la situation (horaires d'ouverture du magasin, heures de service du restaurant..).
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
 
+                                <div class="card border-0 rounded mb-2">
+                                    <a data-toggle="collapse" href=" #collapsethree3 " class="faq position-relative collapsed" aria-expanded="false" aria-controls="collapsethree">
+                                        <div class="card-header border-0 bg-light p-3 pr-5" id="headingthree3">
+                                            <h6 class="title mb-0"> Combien est-ce que je peux gagner ?</h6>
+                                        </div>
+                                    </a>
+                                    <div id="collapsethree3" class="collapse" aria-labelledby="headingthree" data-parent="#accordionExampleone">
+                                        <div class="card-body px-2 py-4">
+                                            <p class="text-muted mb-0 faq-ans">XXX</p>
+                                    </div>
+                                </div>
+
+
+</div>
+                                <div class="card border-0 rounded mb-2">
+                                    <a data-toggle="collapse" href=" #collapsethree33 " class="faq position-relative collapsed" aria-expanded="false" aria-controls="collapsethree">
+                                        <div class="card-header border-0 bg-light p-3 pr-5" id="headingthree33">
+                                            <h6 class="title mb-0"> Quand et comment je serais payé ?</h6>
+                                        </div>
+                                    </a>
+                                    <div id="collapsethree33" class="collapse" aria-labelledby="headingthree" data-parent="#accordionExampleone">
+                                        <div class="card-body px-2 py-4">
+                                            <p class="text-muted mb-0 faq-ans">Le dédommagement vous sera transmis par courrier recommandé sous un délai de 6 à 8 semaines pour vous permettre de cumuler avec d’autres dédommagements</p>
+                                    </div>
+                                    </div></div>
                                 <div class="card border-0 rounded mb-2">
                                     <a data-toggle="collapse" href=" #collapsethree " class="faq position-relative collapsed" aria-expanded="false" aria-controls="collapsethree">
                                         <div class="card-header border-0 bg-light p-3 pr-5" id="headingthree">
@@ -180,7 +225,7 @@
                                     </a>
                                     <div id="collapsethree" class="collapse" aria-labelledby="headingthree" data-parent="#accordionExampleone">
                                         <div class="card-body px-2 py-4">
-                                            <p class="text-muted mb-0 faq-ans">L’équipe de chargés de relation et de communication avec le panel est à votre disposition pour répondre à vos questions et vous aider.Si vous deviez changer votre jour et heure de visite n’hésitez pas à les prévenir, ils sont à votre disposition par mail à client-mystere(at)amsinternational.fr ou au téléphone : 0033 (0)  4 72 81 99 57.Le dédommagement vous sera transmis par courrier recommandé sous un délai de 6 à 8 semaines pour vous permettre de cumuler avec d’autres dédommagements.w.</p>
+                                            <p class="text-muted mb-0 faq-ans">L’équipe de chargés de relation et de communication avec le panel est à votre disposition pour répondre à vos questions et vous aider.Si vous deviez changer votre jour et heure de visite n’hésitez pas à les prévenir, ils sont à votre disposition par mail à client-mystere@amsinternational.fr ou au téléphone : 0033 (0)  4 72 81 99 57.</p>
                                         </div>
                                     </div>
                                 </div>
@@ -188,35 +233,24 @@
                                 <div class="card border-0 rounded mb-2">
                                     <a data-toggle="collapse" href=" #collapsefour " class="faq position-relative collapsed" aria-expanded="false" aria-controls="collapsefour">
                                         <div class="card-header border-0 bg-light p-3 pr-5" id="headingfour">
-  <h6 class="title mb-0"> J'ai perdu mon mot de passe comment le récuperer?</h6>
+                                        <h6 class="title mb-0"> J'ai perdu mon mot de passe comment le récuperer?</h6>
                                                                          </div>
                                     </a>
                                     <div id="collapsefour" class="collapse" aria-labelledby="headingfour" data-parent="#accordionExampleone">
                                         <div class="card-body px-2 py-4">
-  <div class="card-body px-2 py-4">
-                                            <p class="text-muted mb-0 faq-ans">Votre identifiant correspond à l’adresse e-mail avec laquelle vous vous êtes inscrit.<br>
-Pour récupérer votre mot de passe, vous avez deux possibilités : depuis la page web ou depuis votre application mobile (en cliquant sur le bouton « mot de passe oublié »)</p>
+                                            <div class="card-body px-2 py-4">
+                                                <p class="text-muted mb-0 faq-ans">Votre identifiant correspond à l’adresse e-mail avec laquelle vous vous êtes inscrit.<br>
+                                                    Pour récupérer votre mot de passe, vous avez deux possibilités : depuis la page web ou depuis votre application mobile (en cliquant sur le bouton « mot de passe oublié »)</p>
                                         </div>                                              </div>
                                     </div>
                                 </div>
 
-                                <div class="card border-0 rounded">
-                                    <a data-toggle="collapse" href=" #collapsefive2  " class="faq position-relative collapsed" aria-expanded="false" aria-controls="collapsefive2">
-                                        <div class="card-header border-0 bg-light p-3 pr-5" id="headingfive2">
-                                            <h6 class="title mb-0"> How can i contact your technical team ? </h6>
-                                        </div>
-                                    </a>
-                                    <div id="collapsefive2" class="collapse" aria-labelledby="headingfive2" data-parent="#accordionExampleone">
-                                        <div class="card-body px-2 py-4">
-                                            <p class="text-muted mb-0 faq-ans">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form.</p>
-                                        </div>
-                                    </div>
-                                </div>
+
                             </div>
                         </div>
 
                         <div class="section-title mt-5" id="general">
-                            <h4>General Questions</h4>
+                            <h4>Nos méthodologies de mesure</h4>
                         </div>
 
                         <div class="faq-content mt-4 pt-3">
@@ -224,12 +258,12 @@ Pour récupérer votre mot de passe, vous avez deux possibilités : depuis la pa
                                 <div class="card border-0 rounded mb-2">
                                     <a data-toggle="collapse" href="#collapsefive " class="faq position-relative" aria-expanded="true" aria-controls="collapsefive">
                                         <div class="card-header border-0 bg-light p-3 pr-5" id="headingfive">
-                                            <h6 class="title mb-0"> How our <span class="text-primary">Landrick</span> work ? </h6>
+                                            <h6 class="title mb-0"> Visites mystère </h6>
                                         </div>
                                     </a>
                                     <div id="collapsefive" class="collapse show" aria-labelledby="headingfive" data-parent="#accordionExampletwo">
                                         <div class="card-body px-2 py-4">
-                                            <p class="text-muted mb-0 faq-ans">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form.</p>
+                                            <p class="text-muted mb-0 faq-ans">les membres de notre panel dont le profil correspond à celui de vos clients sauront retranscrire leurs expériences vécues source pour un plan d’action en adéquation avec vos fondamentaux et l’image de votre marque.</p>
                                         </div>
                                     </div>
                                 </div>
@@ -237,209 +271,142 @@ Pour récupérer votre mot de passe, vous avez deux possibilités : depuis la pa
                                 <div class="card border-0 rounded mb-2">
                                     <a data-toggle="collapse" href=" #collapsesix " class="faq position-relative collapsed" aria-expanded="false" aria-controls="collapsesix">
                                         <div class="card-header border-0 bg-light p-3 pr-5" id="headingsix">
-                                            <h6 class="title mb-0"> What is the main process open account ? </h6>
+                                            <h6 class="title mb-0"> Enquêtes terrains </h6>
                                         </div>
                                     </a>
                                     <div id="collapsesix" class="collapse" aria-labelledby="headingsix" data-parent="#accordionExampletwo">
                                         <div class="card-body px-2 py-4">
-                                            <p class="text-muted mb-0 faq-ans">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form.</p>
-                                        </div>
+                                            <p class="text-muted mb-0 faq-ans">interroger les passagers, utilisateurs ou clients d’un lieu vaste, dense et en mouvement, recueillir leurs ressenti et avis à chaud durant leur expérience client sans qu’ils ne s’y attendent et sans les importuner, nos enquêteurs sont formés à nos techniques et respectent vos environnements.</p> </div>
                                     </div>
                                 </div>
 
                                 <div class="card border-0 rounded mb-2">
                                     <a data-toggle="collapse" href=" #collapseseven " class="faq position-relative collapsed" aria-expanded="false" aria-controls="collapseseven">
                                         <div class="card-header border-0 bg-light p-3 pr-5" id="headingseven">
-                                            <h6 class="title mb-0"> How to make unlimited data entry ? </h6>
+                                            <h6 class="title mb-0"> Focus groupe ou réunions de consommateurs </h6>
                                         </div>
                                     </a>
                                     <div id="collapseseven" class="collapse" aria-labelledby="headingseven" data-parent="#accordionExampletwo">
                                         <div class="card-body px-2 py-4">
-                                            <p class="text-muted mb-0 faq-ans">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form.</p>
-                                        </div>
+                                            <p class="text-muted mb-0 faq-ans">des réunions de consommateurs préparées, ou la spontanéité prime, les réponses et comportements sont étudiés par nos analystes.</p>  </div>
                                     </div>
                                 </div>
 
                                 <div class="card border-0 rounded mb-2">
                                     <a data-toggle="collapse" href=" #collapseeight" class="faq position-relative collapsed" aria-expanded="false" aria-controls="collapseeight">
                                         <div class="card-header border-0 bg-light p-3 pr-5" id="headingeight">
-                                            <h6 class="title mb-0"> J'ai perdu mon mot de passe, comment le récuperer ? </h6>
+                                            <h6 class="title mb-0"> Enquêtes téléphoniques </h6>
                                         </div>
                                     </a>
                                     <div id="collapseeight" class="collapse" aria-labelledby="headingeight" data-parent="#accordionExampletwo">
                                         <div class="card-body px-2 py-4">
-                                            <p class="text-muted mb-0 faq-ans">Votre identifiant correspond à l’adresse e-mail avec laquelle vous vous êtes inscrit.<br>
-Pour récupérer votre mot de passe, vous avez deux possibilités : depuis la page web ou depuis votre application mobile (en cliquant sur le bouton « mot de passe oublié »)</p>
+                                            <p class="text-muted mb-0 faq-ans">Interroger vos clients sur une ou toutes étape du parcours clients, relever leur ressenti, valoriser leurs avis.</p>
                                         </div>
                                     </div>
                                 </div>
-
-                                <div class="card border-0 rounded">
+                                <div class="card border-0 rounded mb-2">
                                     <a data-toggle="collapse" href=" #collapsenine" class="faq position-relative collapsed" aria-expanded="false" aria-controls="collapsenine">
                                         <div class="card-header border-0 bg-light p-3 pr-5" id="headingnine">
-                                            <h6 class="title mb-0"> How can i contact your technical team ? </h6>
+                                            <h6 class="title mb-0">Tests produits</h6>
                                         </div>
                                     </a>
                                     <div id="collapsenine" class="collapse" aria-labelledby="headingnine" data-parent="#accordionExampletwo">
                                         <div class="card-body px-2 py-4">
-                                            <p class="text-muted mb-0 faq-ans">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form.</p>
-                                        </div>
+                                            <p class="text-muted mb-0 faq-ans">Un retour factuel sur le produit, testé lors d’une réunion ou à domicile par les membres du panel sélectionné.</p>     </div>
                                     </div>
+                                </div>
+                                <div class="card border-0 rounded mb-2">
+                                    <a data-toggle="collapse" href=" #collapseninee" class="faq position-relative collapsed" aria-expanded="false" aria-controls="collapsenine">
+                                        <div class="card-header border-0 bg-light p-3 pr-5" id="headingnin">
+                                            <h6 class="title mb-0">Comptage clients, passagers ou visiteurs</h6>
+                                        </div>
+                                    </a>
+                                    <div id="collapseninee" class="collapse" aria-labelledby="headingnine" data-parent="#accordionExampletwo">
+                                        <div class="card-body px-2 py-4">
+                                            <p class="text-muted mb-0 faq-ans">pour compter à différents endroits ou la densité et le passage sont en nombre (aéroports, gares, centres commerciaux etc…)</p></div>
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="section-title mt-5" id="payment">
-                            <h4>Payments Questions</h4>
-                        </div>
-
-                        <div class="faq-content mt-4 pt-3">
-                            <div class="accordion" id="accordionExamplethree">
                                 <div class="card border-0 rounded mb-2">
-                                    <a data-toggle="collapse" href=" #collapseten " class="faq position-relative" aria-expanded="true" aria-controls="collapseten">
-                                        <div class="card-header border-0 bg-light p-3 pr-5" id="headingten">
-                                            <h6 class="title mb-0"> How our <span class="text-primary">Landrick</span> work ? </h6>
+                                    <a data-toggle="collapse" href=" #collapsenineee" class="faq position-relative collapsed" aria-expanded="false" aria-controls="collapsenine">
+                                        <div class="card-header border-0 bg-light p-3 pr-5" id="headingninn">
+                                            <h6 class="title mb-0">Relevés de présence ou de prix </h6>
                                         </div>
                                     </a>
-                                    <div id="collapseten" class="collapse show" aria-labelledby="headingten" data-parent="#accordionExamplethree">
+                                    <div id="collapsenineee" class="collapse" aria-labelledby="headingnine" data-parent="#accordionExampletwo">
                                         <div class="card-body px-2 py-4">
-                                            <p class="text-muted mb-0 faq-ans">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form.</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="card border-0 rounded mb-2">
-                                    <a data-toggle="collapse" href=" #collapseeleven " class="faq position-relative collapsed" aria-expanded="false" aria-controls="collapseeleven">
-                                        <div class="card-header border-0 bg-light p-3 pr-5" id="headingeleven">
-                                            <h6 class="title mb-0"> What is the main process open account ? </h6>
-                                        </div>
-                                    </a>
-                                    <div id="collapseeleven" class="collapse" aria-labelledby="headingeleven" data-parent="#accordionExamplethree">
-                                        <div class="card-body px-2 py-4">
-                                            <p class="text-muted mb-0 faq-ans">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form.</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="card border-0 rounded mb-2">
-                                    <a data-toggle="collapse" href=" #collapsetwelve " class="faq position-relative collapsed" aria-expanded="false" aria-controls="collapsetwelve">
-                                        <div class="card-header border-0 bg-light p-3 pr-5" id="headingtwelve">
-                                            <h6 class="title mb-0"> How to make unlimited data entry ? </h6>
-                                        </div>
-                                    </a>
-                                    <div id="collapsetwelve" class="collapse" aria-labelledby="headingtwelve" data-parent="#accordionExamplethree">
-                                        <div class="card-body px-2 py-4">
-                                            <p class="text-muted mb-0 faq-ans">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form.</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="card border-0 rounded mb-2">
-                                    <a data-toggle="collapse" href=" #collapsethirteen" class="faq position-relative collapsed" aria-expanded="false" aria-controls="collapsethirteen">
-                                        <div class="card-header border-0 bg-light p-3 pr-5" id="headingthirteen">
-                                            <h6 class="title mb-0"> Is <span class="text-primary">Landrick</span> safer to use with my account ? </h6>
-                                        </div>
-                                    </a>
-                                    <div id="collapsethirteen" class="collapse" aria-labelledby="headingthirteen" data-parent="#accordionExamplethree">
-                                        <div class="card-body px-2 py-4">
-                                            <p class="text-muted mb-0 faq-ans">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form.</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="card border-0 rounded">
-                                    <a data-toggle="collapse" href=" #collapsefourteen" class="faq position-relative collapsed" aria-expanded="false" aria-controls="collapsefourteen">
-                                        <div class="card-header border-0 bg-light p-3 pr-5" id="headingfourteen">
-                                            <h6 class="title mb-0"> How can i contact your technical team ? </h6>
-                                        </div>
-                                    </a>
-                                    <div id="collapsefourteen" class="collapse" aria-labelledby="headingfourteen" data-parent="#accordionExamplethree">
-                                        <div class="card-body px-2 py-4">
-                                            <p class="text-muted mb-0 faq-ans">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form.</p>
-                                        </div>
-                                    </div>
+                                            <p class="text-muted mb-0 faq-ans">relever vos prix et ceux de la même famille de produits, pour réajuster ou contrôler.
+</p></div>
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="section-title mt-5" id="support">
-                            <h4>Support Questions</h4>
-                        </div>
-
-                        <div class="faq-content mt-4 pt-3">
-                            <div class="accordion" id="accordionExamplefour">
                                 <div class="card border-0 rounded mb-2">
-                                    <a data-toggle="collapse" href=" #collapsefifthenn " class="faq position-relative" aria-expanded="true" aria-controls="collapsefifthenn">
-                                        <div class="card-header border-0 bg-light p-3 pr-5" id="headingfiftheen">
-                                            <h6 class="title mb-0"> How our <span class="text-primary">Landrick</span> work ? </h6>
+                                    <a data-toggle="collapse" href=" #collapsenineeee" class="faq position-relative collapsed" aria-expanded="false" aria-controls="collapsenine">
+                                        <div class="card-header border-0 bg-light p-3 pr-5" id="headingneinn">
+                                            <h6 class="title mb-0">Audit pro </h6>
                                         </div>
                                     </a>
-                                    <div id="collapsefifthenn" class="collapse show" aria-labelledby="headingfiftheen" data-parent="#accordionExamplefour">
+                                    <div id="collapsenineeee" class="collapse" aria-labelledby="headingnine" data-parent="#accordionExampletwo">
                                         <div class="card-body px-2 py-4">
-                                            <p class="text-muted mb-0 faq-ans">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form.</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="card border-0 rounded mb-2">
-                                    <a data-toggle="collapse" href=" #collapsesixteen " class="faq position-relative collapsed" aria-expanded="false" aria-controls="collapsesixteen">
-                                        <div class="card-header border-0 bg-light p-3 pr-5" id="headingsixteen">
-                                            <h6 class="title mb-0"> What is the main process open account ? </h6>
-                                        </div>
-                                    </a>
-                                    <div id="collapsesixteen" class="collapse" aria-labelledby="headingsixteen" data-parent="#accordionExamplefour">
-                                        <div class="card-body px-2 py-4">
-                                            <p class="text-muted mb-0 faq-ans">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form.</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="card border-0 rounded mb-2">
-                                    <a data-toggle="collapse" href=" #collapseseventeen" class="faq position-relative collapsed" aria-expanded="false" aria-controls="collapseseventeen">
-                                        <div class="card-header border-0 bg-light p-3 pr-5" id="headingseventeen">
-                                            <h6 class="title mb-0"> How to make unlimited data entry ? </h6>
-                                        </div>
-                                    </a>
-                                    <div id="collapseseventeen" class="collapse" aria-labelledby="headingseventeen" data-parent="#accordionExamplefour">
-                                        <div class="card-body px-2 py-4">
-                                            <p class="text-muted mb-0 faq-ans">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form.</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="card border-0 rounded mb-2">
-                                    <a data-toggle="collapse" href=" #collapseeigheteen" class="faq position-relative collapsed" aria-expanded="false" aria-controls="collapseeigheteen">
-                                        <div class="card-header border-0 bg-light p-3 pr-5" id="headingeighteen">
-                                            <h6 class="title mb-0"> Is <span class="text-primary">Landrick</span> safer to use with my account ? </h6>
-                                        </div>
-                                    </a>
-                                    <div id="collapseeigheteen" class="collapse" aria-labelledby="headingeighteen" data-parent="#accordionExamplefour">
-                                        <div class="card-body px-2 py-4">
-                                            <p class="text-muted mb-0 faq-ans">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form.</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="card border-0 rounded">
-                                    <a data-toggle="collapse" href=" #collapsenineteen" class="faq position-relative collapsed" aria-expanded="false" aria-controls="collapsenineteen">
-                                        <div class="card-header border-0 bg-light p-3 pr-5" id="headingnineteen">
-                                            <h6 class="title mb-0"> How can i contact your technical team ? </h6>
-                                        </div>
-                                    </a>
-                                    <div id="collapsenineteen" class="collapse" aria-labelledby="headingnineteen" data-parent="#accordionExamplefour">
-                                        <div class="card-body px-2 py-4">
-                                            <p class="text-muted mb-0 faq-ans">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form.</p>
-                                        </div>
-                                    </div>
+                                            <p class="text-muted mb-0 faq-ans">un audit de vos process vu par un regard de professionnel, mesurer la performance dans sa globalité, l’audit intervient sur le lieu de vente mais aussi en arrière boutique (logistique, cuisine, buanderie….)</p>
                                 </div>
                             </div>
+
                         </div>
+                                <div class="card border-0 rounded mb-2">
+                                    <a data-toggle="collapse" href=" #collapsenineeeee" class="faq position-relative collapsed" aria-expanded="false" aria-controls="collapsenine">
+                                        <div class="card-header border-0 bg-light p-3 pr-5" id="headingneiinn">
+                                            <h6 class="title mb-0">Etudes consommateurs </h6>
+                                        </div>
+                                    </a>
+                                    <div id="collapsenineeeee" class="collapse" aria-labelledby="headingnine" data-parent="#accordionExampletwo">
+                                        <div class="card-body px-2 py-4">
+                                            <p class="text-muted mb-0 faq-ans">analyse des habitudes de consommations, des comportements d’achats, s’adapter.</p>    </div>
+                            </div>
+
+                        </div>
+                                <div class="card border-0 rounded mb-2">
+                                    <a data-toggle="collapse" href=" #collapsenineeeeee" class="faq position-relative collapsed" aria-expanded="false" aria-controls="collapsenine">
+                                        <div class="card-header border-0 bg-light p-3 pr-5" id="headingneiinn3">
+                                            <h6 class="title mb-0">Benchmark </h6>
+                                        </div>
+                                    </a>
+                                    <div id="collapsenineeeeee" class="collapse" aria-labelledby="headingnine" data-parent="#accordionExampletwo">
+                                        <div class="card-body px-2 py-4">
+                                            <p class="text-muted mb-0 faq-ans">Analyser la concurrence, se positionner sur un marché, mieux cibler, mieux vendre</p>    </div>
+                            </div>
+
+                        </div>
+                                <div class="card border-0 rounded mb-2">
+                                    <a data-toggle="collapse" href=" #collapsenineeeee3e" class="faq position-relative collapsed" aria-expanded="false" aria-controls="collapsenine">
+                                        <div class="card-header border-0 bg-light p-3 pr-5" id="headingneiinn33">
+                                            <h6 class="title mb-0">Enquêtes web </h6>
+                                        </div>
+                                    </a>
+                                    <div id="collapsenineeeee3e" class="collapse" aria-labelledby="headingnine" data-parent="#accordionExampletwo">
+                                        <div class="card-body px-2 py-4">
+                                            <p class="text-muted mb-0 faq-ans">Pour atteindre un panel plus large et en nombre dans le cadre d’études ciblées</p>    </div>
+                            </div>
+
+                        </div>
+                                <div class="card border-0 rounded mb-2">
+                                    <a data-toggle="collapse" href=" #collapsenineeeee32e" class="faq position-relative collapsed" aria-expanded="false" aria-controls="collapsenine">
+                                        <div class="card-header border-0 bg-light p-3 pr-5" id="headingneiinn323">
+                                            <h6 class="title mb-0">Etudes géomarketing </h6>
+                                        </div>
+                                    </a>
+                                    <div id="collapsenineeeee32e" class="collapse" aria-labelledby="headingnine" data-parent="#accordionExampletwo">
+                                        <div class="card-body px-2 py-4">
+                                            <p class="text-muted mb-0 faq-ans">mieux cibler son marché géographiquement, trouver l’endroit ou s’implanter, valider un lieu.</p>    </div>
+                            </div>
+
+                        </div>
+
+
                     </div><!--end col-->
                 </div><!--end row-->
             </div><!--end container-->
 
 
-        </section><!--end section-->
+                    </div></div></div></section><!--end section-->
         <!-- End Section -->
 
         <!-- Footer Start -->

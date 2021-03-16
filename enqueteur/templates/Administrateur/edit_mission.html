@@ -31,8 +31,10 @@ Edit Mission |  Mission ID : {{ mission.id }}
                 <div class="card-body">
                   <div class="form-group">
                      <label>Ref</label>
-                    <input type="number" class="form-control" name="ref" value="{{ mission.ref }}" >
+
+                      <input type="number" class="form-control" name="ref" value="{{ mission.ref }}" >
                       <input type="hidden" class="form-control" name="mission_id" value="{{ mission.id }}" >
+
 
                   </div>
                      <div class="form-group">
@@ -74,12 +76,12 @@ Edit Mission |  Mission ID : {{ mission.id }}
                      <textarea value="{{ mission.description }}" name="description"></textarea>
                     <div class="form-group">
                     <label>Date debut de mission</label>
-                    <input type="date" class="form-control" name="date_debut" >
+                    <input type="date" class="form-control" name="date_debut" value="{{ mission.date_debut }}" >
 
                   </div>
                     <div class="form-group">
                     <label>Date fin de mission</label>
-                    <input type="date" class="form-control" name="date_fin" >
+                    <input type="date" class="form-control" name="date_fin "value="{{ mission.date_fin }}" >
 
                   </div>
                     <div class="form-group">

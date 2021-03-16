@@ -60,15 +60,15 @@
 
                         <a href="{{login}}" class="btn btn-primary">Se deconnecter</a>                </div><!--end login button-->
                 <!-- End Logo container-->
-                    <li class="list-inline-item mb-0">
+          <li class="list-inline-item mb-0">
                         <div class="dropdown dropdown-primary">
                             <button type="button" class="btn btn-icon btn-soft-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="uil uil-user align-middle icons"></i></button>
                             <div class="dropdown-menu dd-menu dropdown-menu-right bg-white shadow rounded border-0 mt-3 py-3" style="width: 200px;">
-                                <a class="dropdown-item text-dark" href="#"><i class="uil uil-user align-middle mr-1"></i> Mon compte</a>
-                                <a class="dropdown-item text-dark" href="#"><i class="uil uil-clipboard-notes align-middle mr-1"></i> Order History</a>
-                                <a class="dropdown-item text-dark" href="#"><i class="uil uil-arrow-circle-down align-middle mr-1"></i> Download</a>
+                                <a class="dropdown-item text-dark" href="{% url 'account_settings'  %}"><i class="uil uil-user align-middle mr-1"></i> Settings</a>
+                                <a class="dropdown-item text-dark" href=" {% url 'account_messages'  %}"><i class="uil uil-clipboard-notes align-middle mr-1"></i>  Mes messages</a>
+                                <a class="dropdown-item text-dark" href="#"><i class="uil uil-arrow-circle-down align-middle mr-1"></i> Guide</a>
                                 <div class="dropdown-divider my-3 border-top"></div>
-                                <a class="dropdown-item text-dark" href="#"><i class="uil uil-sign-out-alt align-middle mr-1"></i> Logout</a>
+                                <a class="dropdown-item text-dark" href="{% url 'logout'  %}"><i class="uil uil-sign-out-alt align-middle mr-1"></i> Déconnexion</a>
                             </div>
                         </div>
                     </li>
@@ -87,12 +87,12 @@
                     </div>
                 </div>
 
-                <div id="navigation">
+            <div id="navigation">
                     <!-- Navigation Menu-->
                     <ul class="navigation-menu">
                         {% url 'indexEnqueteur' as index %}
 
-                        <li><a href=" {{index}} ">Accueil</a></li>
+                        <li><a href=" {{index}} ">accueil</a></li>
                         {% url 'trouvermission' as service %}
                         <li><a href=" {{service}} ">Trouver une mission</a></li>
                         {% url 'mission' as guide %}
@@ -113,7 +113,6 @@
             </div><!--end container-->
         </header><!--end header-->
         <!-- Navbar End -->
-        
         <!-- Hero Start -->
         <section class="bg-half bg-light d-table w-100">
             <div class="container">
@@ -124,7 +123,7 @@
                             <div class="page-next">
                                 <nav aria-label="breadcrumb" class="d-inline-block">
                                     <ul class="breadcrumb bg-white rounded shadow mb-0">
-                                        <li class="breadcrumb-item"><a href=" {{index}} ">Index</a></li>
+                                        <li class="breadcrumb-item"><a href=" {{index}} ">Accueil</a></li>
                                         <li class="breadcrumb-item active" aria-current="page">Trouver une mission</li>
                                     </ul>
                                 </nav>
@@ -153,24 +152,14 @@
                     <div class="col-lg-4 col-md-6 col-12">
                         <div class="sidebar sticky-bar p-4 rounded shadow">
                             <!-- SEARCH -->
-                            <div class="widget mb-4 pb-4 border-bottom">
-                                <h5 class="widget-title">Rechercher par mots-clés</h5>
-                                <div id="jobkeywords" class="widget-search mt-4 mb-0">
-                                    <form role="search" method="get" id="searchform" class="searchform">
-                                        <div>
-                                            <input type="text" class="border rounded" name="s" id="s" placeholder="Search Keywords...">
-                                            <input type="submit" id="searchsubmit" value="Search">
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
+
                             <!-- SEARCH -->
                             <div class="widget mb-4 pb-4 border-bottom">
                                 <h5 class="widget-title">Rechercher par ville</h5>
                                 <div id="jobkeywordsville" class="widget-search mt-4 mb-0">
                                     <form role="search" method="get" id="searchformville" class="searchform">
                                         <div>
-                                            <input type="text" class="border rounded" name="s" id="sville" placeholder="Search Keywords...">
+                                            <input type="text" class="border rounded" name="s" id="sville" placeholder="Ville...">
                                             <input type="submit" id="searchsubmitville" value="Search">
                                         </div>
                                     </form>
@@ -179,10 +168,10 @@
 
                             <!-- Categories -->
                             <div class="widget mb-4 pb-4 border-bottom">
-                                <h5 class="widget-title">Catégories</h5>
+                                <h5 class="widget-title">Thématique</h5>
                                 <div class="form-group mt-4 mb-0">
                                     <select class="form-control custom-select" id="job-categories">
-                                        <option>All Jobs</option>
+                                        <option>Tous les thématiques</option>
                                         <option>Digital & Creative</option>
                                         <option>Accountancy</option>
                                         <option>Banking</option>
@@ -196,40 +185,34 @@
 
                             <!-- Posted -->
                             <div class="widget mb-4 pb-4 border-bottom">
-                                <h5 class="widget-title">Date Posted</h5>
+                                <h5 class="widget-title">Date de publication</h5>
                                 <div class="mt-4">
                                     <div class="custom-control custom-radio">
                                         <div class="form-group mb-2">
                                             <input type="radio" id="lasthour" name="customRadio" class="custom-control-input">
-                                            <label class="custom-control-label" for="lasthour">Last Hour</label>
+                                            <label class="custom-control-label" for="lasthour">Dernière heure</label>
                                         </div>
                                     </div>
-    
-                                    <div class="custom-control custom-radio">
-                                        <div class="form-group mb-2">
-                                            <input type="radio" id="oneday" name="customRadio" class="custom-control-input">
-                                            <label class="custom-control-label" for="oneday">Last 24 hours</label>
-                                        </div>
-                                    </div>
+
     
                                     <div class="custom-control custom-radio">
                                         <div class="form-group mb-2">
                                             <input type="radio" id="sevenday" name="customRadio" class="custom-control-input">
-                                            <label class="custom-control-label" for="sevenday">Last 7 days</label>
+                                            <label class="custom-control-label" for="sevenday">Les 7 derniers jours</label>
                                         </div>
                                     </div>
     
                                     <div class="custom-control custom-radio">
                                         <div class="form-group mb-2">
                                             <input type="radio" id="fourteenday" name="customRadio" class="custom-control-input">
-                                            <label class="custom-control-label" for="fourteenday">Last 14 days</label>
+                                            <label class="custom-control-label" for="fourteenday">Les 14 derniers jours</label>
                                         </div>
                                     </div>
     
                                     <div class="custom-control custom-radio">
                                         <div class="form-group mb-0">
                                             <input type="radio" id="onemonth" name="customRadio" class="custom-control-input">
-                                            <label class="custom-control-label" for="onemonth">Last 30 days</label>
+                                            <label class="custom-control-label" for="onemonth">Les 30 derniers jours</label>
                                         </div>
                                     </div>
                                 </div>
@@ -248,7 +231,7 @@
 
                     <div class="col-lg-8 col-md-6 col-12 mt-4 mt-sm-0 pt-2 pt-sm-0">
                         <div class="row">
-                                {% for post in post %}
+                                {% for post in page.object_list %}
 
                             <div class="col-lg-6 col-12 mb-4 pb-2">
 
@@ -299,15 +282,20 @@
 
                         <div class="row">
                             <!-- PAGINATION START -->
-                            <div class="col-12">
-                                <ul class="pagination justify-content-center mb-0">
-                                    <li class="page-item"><a class="page-link" href=" {% static 'javascript:void(0)' %} " aria-label="Previous">Prev</a></li>
-                                    <li class="page-item active"><a class="page-link" href=" {% static 'javascript:void(0)' %} ">1</a></li>
-                                    <li class="page-item"><a class="page-link" href=" {% static 'javascript:void(0)' %} ">2</a></li>
-                                    <li class="page-item"><a class="page-link" href=" {% static 'javascript:void(0)' %} ">3</a></li>
-                                    <li class="page-item"><a class="page-link" href=" {% static 'javascript:void(0)' %} " aria-label="Next">Next</a></li>
-                                </ul>
-                            </div><!--end col-->
+                                              <div class="col-12">
+                        <ul class="pagination justify-content-center mb-0">
+                                                    {% if page.has_previous %}
+
+                            <li class="page-item"><a class="page-link" href="{% url 'actualite' %}?page={{ page.previous_page_number }}  " aria-label="Previous">Page précédente</a></li>
+                                                 {% endif %}
+                                                    {% if page.has_next %}
+
+                            <li class="page-item"><a class="page-link" href=" {% url 'actualite' %}?page={{ page.next_page_number }} " aria-label="Next">Page suivante</a></li>
+                                                    {% endif %}
+
+                        </ul>
+                    </div><!--end col-->
+
                             <!-- PAGINATION END -->
                         </div><!--end row-->
                     </div><!--end col-->

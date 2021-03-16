@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 15px;
+}
+</style>
+    <meta charset="UTF-8">
+    <title>Averge</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+</head>
+<body>
+
+<form method="POST" action="" class="w3-container">
+    {% csrf_token %}
+    <div >
+     <input style="margin-top:70px;" class="w3-input" type="text" name="averge">
+     <label>First Name</label></p>
+    </div>
+    <div>
+        <input style="color:green; width:70%; margin-left:20%;" type="submit" value="Get Averge">
+    </div>
+</form>
+<form method="post" action="/test_post/" id="form_id" name="form_name">
+
+</form>
+<form method="post" action="">
+
+</form>
+<div>
+    <table style="width:70%; solid:4px; margin:auto; margin-top:35px">
+  <tr>
+      {% for head in key%}
+    <th>{{head}}</th>
+    {%endfor%}
+  </tr>
+  <tr>
+      {%for body in value%}
+    <td>{{body}}</td>
+    {%endfor%}
+  </tr>
+</table>
+</div>
+<button style="width:50%; margin:auto;" onClick="dessiner()" type="button">Dessiner</button>
+<div style="margin-top:60px">
+    <canvas id="radar-chart" width="800" height="600"></canvas>
+</div>
+
+<script src=" {% static 'js/jquery-3.5.1.min.js' %} "></script>
+<script type="text/javascript">
+function dessiner(){
+var mkey = jQuery.parseJSON("{{jsonkey|escapejs}}");
+var mvalue = jQuery.parseJSON("{{jsonvalue|escapejs}}");
+new Chart(document.getElementById("radar-chart"), {
+    type: 'radar',
+    data: {
+      labels: mkey,
+      datasets: [
+        {
+          label: "1950",
+          fill: true,
+          backgroundColor: "rgba(179,181,198,0.2)",
+          borderColor: "rgba(179,181,198,1)",
+          pointBorderColor: "#fff",
+          pointBackgroundColor: "rgba(179,181,198,1)",
+          data: mvalue
+        }
+      ]
+    },
+    options: {
+      title: {
+        display: true,
+        text: 'Distribution in % of world population'
+      }
+    }
+});
+
+}
+
+</script>
+</body>
+</html>

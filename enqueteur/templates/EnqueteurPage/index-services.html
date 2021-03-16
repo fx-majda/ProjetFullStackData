@@ -1,6 +1,6 @@
-{% load static %}
 <!DOCTYPE html>
-    <html lang="en">
+  {% load static %}
+  <html lang="en">
 
     <head>
         <meta charset="utf-8" />
@@ -61,17 +61,15 @@
 
                         <a href="{{logout}}" class="btn btn-primary">Se deconnecter</a>                </div><!--end login button-->
                 <!-- End Logo container-->
-                    <li class="list-inline-item mb-0">
+                   <li class="list-inline-item mb-0">
                         <div class="dropdown dropdown-primary">
                             <button type="button" class="btn btn-icon btn-soft-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="uil uil-user align-middle icons"></i></button>
                             <div class="dropdown-menu dd-menu dropdown-menu-right bg-white shadow rounded border-0 mt-3 py-3" style="width: 200px;">
-                                <a class="dropdown-item text-dark" href="#"><i class="uil uil-user align-middle mr-1"></i> Mon compte</a>
-                                <a class="dropdown-item text-dark" href="#"><i class="uil uil-clipboard-notes align-middle mr-1"></i> Order History</a>
-                                <a class="dropdown-item text-dark" href="#"><i class="uil uil-arrow-circle-down align-middle mr-1"></i> Download</a>
+                                <a class="dropdown-item text-dark" href="{% url 'account_settings'  %}"><i class="uil uil-user align-middle mr-1"></i> Settings</a>
+                                <a class="dropdown-item text-dark" href=" {% url 'account_messages'  %}"><i class="uil uil-clipboard-notes align-middle mr-1"></i>  Mes messages</a>
+                                <a class="dropdown-item text-dark" href="#"><i class="uil uil-arrow-circle-down align-middle mr-1"></i> Guide</a>
                                 <div class="dropdown-divider my-3 border-top"></div>
-                                                                                   {% url 'logout' as logout %}
-
-                                <a class="dropdown-item text-dark" href="{{logout}}"><i class="uil uil-sign-out-alt align-middle mr-1"></i> Logout</a>
+                                <a class="dropdown-item text-dark" href="{% url 'logout'  %}"><i class="uil uil-sign-out-alt align-middle mr-1"></i> Déconnexion</a>
                             </div>
                         </div>
                     </li>
@@ -89,12 +87,12 @@
                         <!-- End mobile menu toggle-->
                     </div>
                 </div>
-                <div id="navigation">
+              <div id="navigation">
                     <!-- Navigation Menu-->
                     <ul class="navigation-menu">
                         {% url 'indexEnqueteur' as index %}
 
-                        <li><a href=" {{index}} ">Accueil</a></li>
+                        <li><a href=" {{index}} ">accueil</a></li>
                         {% url 'trouvermission' as service %}
                         <li><a href=" {{service}} ">Trouver une mission</a></li>
                         {% url 'mission' as guide %}
@@ -105,22 +103,284 @@
                         <li><a href=" {{actualite}} ">Mon profile</a></li>
 
 
-
                     </ul><!--end navigation menu-->
                     <div class="buy-menu-btn d-none">
-                                                   {% url 'logout' as logout %}
+                                                                                {% url 'login' as login %}
 
-                        <a href="{{logout}}" class="btn btn-primary">Se deconnecter</a>
+                        <a href="{{login}}"  class="btn btn-primary">Se deconnecter</a>
                     </div><!--end login button-->
                 </div><!--end navigation-->
             </div><!--end container-->
         </header><!--end header-->
         <!-- Navbar End -->
-
         <!-- Navbar End -->
         <!-- Hero Start -->
-        <section class="bg-half-170 d-table w-100" id="home">
+        <!-- Hero End -->
+       <section class="section">
             <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-12 text-center">
+                        <div class="section-title mb-4 pb-2">
+                            <h4 class="title mb-4">Bienvenue  dans votre espace panéliste :</h4>
+                            <p class="text-muted para-desc mx-auto mb-0">Retrouvez vos informations personnelles, nos actualités, nos missions, les détails des missions et pleins d'autre services…<br> <span class="text-primary font-weight-bold">Renseignez </span>vous ici sur comment utiliser notre application</p>
+                        </div>
+                    </div><!--end col-->
+                </div><!--end row-->
+
+                <div class="row mt-4 pt-2 justify-content-center">
+                    <div class="col-lg-8 col-md-12 text-center">
+                        <ul class="nav nav-pills rounded nav-justified flex-column flex-sm-row" id="pills-tab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link rounded active" id="pills-dayone-tab" data-toggle="pill" href="#pills-dayone" role="tab" aria-controls="pills-dayone" aria-selected="false">
+                                    <div class="text-center py-2">
+                                        <h6 class="mb-0">Trouver une mission</h6>
+                                    </div>
+                                </a><!--end nav link-->
+                            </li><!--end nav item-->
+
+                            <li class="nav-item">
+                                <a class="nav-link rounded" id="pills-daytwo-tab" data-toggle="pill" href="#pills-daytwo" role="tab" aria-controls="pills-daytwo" aria-selected="false">
+                                    <div class="text-center py-2">
+                                        <h6 class="mb-0">Effectuer une mission</h6>
+                                    </div>
+                                </a><!--end nav link-->
+                            </li><!--end nav item-->
+
+                            <li class="nav-item">
+                                <a class="nav-link rounded" id="pills-daythree-tab" data-toggle="pill" href="#pills-daythree" role="tab" aria-controls="pills-daythree" aria-selected="false">
+                                    <div class="text-center py-2">
+                                        <h6 class="mb-0">Espace profil</h6>
+                                    </div>
+                                </a><!--end nav link-->
+                            </li><!--end nav item-->
+                        </ul><!--end nav pills-->
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="tab-content" id="pills-tabContent">
+                            <div class="tab-pane fade show active" id="pills-dayone" role="tabpanel" aria-labelledby="pills-dayone-tab">
+                                <div class="row">
+                                    <div class="col-lg-6 mt-4 pt-2">
+                                        <div class="card event-schedule rounded border">
+                                            <div class="card-body">
+                                                <div class="media">
+                                                    <ul class="date text-center text-primary mr-3 mb-0 list-unstyled">
+                                                        <li class="day font-weight-bold mb-2">1</li>
+                                                        <li class="month font-weight-bold"></li>
+                                                    </ul>
+                                                    <div class="media-body content">
+                                                        <h4><a href="{% url 'trouvermission'%}" class="text-dark title">Trouver une mission</a></h4>
+                                                        <p class="text-muted location-time"><span class="text-dark h6">Retrouvez ici les missions les plus proches de l'adresse indiquée correspondant à vos critères.</span></p>
+                                                        <a href="#tickets" class="btn btn-sm btn-outline-primary mouse-down">Trouver une mission</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div><!--end col-->
+                                    <div class="col-lg-6 mt-4 pt-2">
+                                        <div class="card event-schedule rounded border">
+                                            <div class="card-body">
+                                                <div class="media">
+                                                    <ul class="date text-center text-primary mr-3 mb-0 list-unstyled">
+                                                        <li class="day font-weight-bold mb-2">2</li>
+                                                        <li class="month font-weight-bold"></li>
+                                                    </ul>
+                                                    <div class="media-body content">
+                                                        <h4><a href="{% url 'trouvermission'%}" class="text-dark title">Chercher une mission</a></h4>
+                                                        <p class="text-muted location-time"><span class="text-dark h6">Vous pouvez filtrer les missions par catégories, ville et date de publication .</span></p>
+                                                        <a href="#tickets" class="btn btn-sm btn-outline-primary mouse-down">Trouver une mission</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div><!--end col-->
+                                    <div class="col-lg-6 mt-4 pt-2">
+                                        <div class="card event-schedule rounded border">
+                                            <div class="card-body">
+                                                <div class="media">
+                                                    <ul class="date text-center text-primary mr-3 mb-0 list-unstyled">
+                                                        <li class="day font-weight-bold mb-2">3</li>
+                                                        <li class="month font-weight-bold"></li>
+                                                    </ul>
+                                                    <div class="media-body content">
+                                                        <h4><a  class="text-dark title">Renseignez-vous sur la mission </a></h4>
+                                                        <p class="text-muted location-time"><span class="text-dark h6">Lisez attentivement les details, conditions et emplacement de la mission avant la candidature.</span></p>
+                                                        <a href="#tickets" class="btn btn-sm btn-outline-primary mouse-down">Details de la mission</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div><!--end col-->
+                                    <div class="col-lg-6 mt-4 pt-2">
+                                        <div class="card event-schedule rounded border">
+                                            <div class="card-body">
+                                                <div class="media">
+                                                    <ul class="date text-center text-primary mr-3 mb-0 list-unstyled">
+                                                        <li class="day font-weight-bold mb-2">4</li>
+                                                        <li class="month font-weight-bold"></li>
+                                                    </ul>
+                                                    <div class="media-body content">
+                                                        <h4><a  class="text-dark title">Enregistrer votre candidature </a></h4>
+                                                        <p class="text-muted location-time"><span class="text-dark h6">Veuillez vérifier votre boîte de réception pour un courriel de confirmation</span></p>
+                                                        <a href="#tickets" class="btn btn-sm btn-outline-primary mouse-down">Candidature</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div><!--end col-->
+
+
+                                </div><!--end row-->
+                            </div><!--end teb pane-->
+
+                            <div class="tab-pane fade" id="pills-daytwo" role="tabpanel" aria-labelledby="pills-daytwo-tab">
+                                <div class="row">
+                                    <div class="col-lg-6 mt-4 pt-2">
+                                        <div class="card event-schedule rounded border">
+                                            <div class="card-body">
+                                                <div class="media">
+                                                    <ul class="date text-center text-primary mr-3 mb-0 list-unstyled">
+                                                        <li class="day font-weight-bold mb-2">1</li>
+                                                    </ul>
+                                                    <div class="media-body content">
+                                                        <h4><a  class="text-dark title"> Si une mission correspond à votre profil </a></h4>
+                                                        <p class="text-muted location-time"><span class="text-dark h6">Nous vous contacterons pour s'assurer que vous avez recu le questionnaire, l'adresse et le debrief pour réaliser la visite mystère, on vérifie soit par mail soit par téléphone que la personne a bien compris et on répond à ses questions</span> </p>
+                                                        <a href="#tickets" class="btn btn-sm btn-outline-primary mouse-down">Espace mission</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div><!--end col-->
+                                    <div class="col-lg-6 mt-4 pt-2">
+                                        <div class="card event-schedule rounded border">
+                                            <div class="card-body">
+                                                <div class="media">
+                                                    <ul class="date text-center text-primary mr-3 mb-0 list-unstyled">
+                                                        <li class="day font-weight-bold mb-2">2</li>
+                                                    </ul>
+                                                    <div class="media-body content">
+                                                        <h4><a  class="text-dark title"> Une fois le questionnaire est rempli </a></h4>
+                                                        <p class="text-muted location-time"><span class="text-dark h6">On rappelle de nouveau les clients mystères pour valider les réponses et voir s'il n'y a pas d'autres choses à rajouter</span> </p>
+                                                        <a href="#tickets" class="btn btn-sm btn-outline-primary mouse-down">Espace mission</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div><!--end col-->
+                                    <div class="col-lg-6 mt-4 pt-2">
+                                        <div class="card event-schedule rounded border">
+                                            <div class="card-body">
+                                                <div class="media">
+                                                    <ul class="date text-center text-primary mr-3 mb-0 list-unstyled">
+                                                        <li class="day font-weight-bold mb-2">3</li>
+                                                    </ul>
+                                                    <div class="media-body content">
+                                                        <h4><a  class="text-dark title"> Une fois le questionnaire est validé </a></h4>
+                                                        <p class="text-muted location-time"><span class="text-dark h6">Le dédommagement vous sera transmis par courrier recommandé sous un délai de 6 à 8 semaines pour vous permettre de cumuler avec d’autres dédommagements</span> </p>
+                                                        <a href="#tickets" class="btn btn-sm btn-outline-primary mouse-down">Espace mission</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div><!--end col-->
+
+
+                                </div><!--end row-->
+                            </div><!--end teb pane-->
+
+                            <div class="tab-pane fade" id="pills-daythree" role="tabpanel" aria-labelledby="pills-daythree-tab">
+                                <div class="row">
+                                    <div class="col-lg-6 mt-4 pt-2">
+                                        <div class="card event-schedule rounded border">
+                                            <div class="card-body">
+                                                <div class="media">
+                                                    <ul class="date text-center text-primary mr-3 mb-0 list-unstyled">
+                                                        <li class="day font-weight-bold mb-2">1</li>
+                                                    </ul>
+                                                    <div class="media-body content">
+                                                        <h4><a href="{% url 'account_profile' %}" class="text-dark title">Vous pouvez en tout temps consulter votre profil en cliquant sur mon profil. </a></h4>
+                                                        <a href="#tickets" class="btn btn-sm btn-outline-primary mouse-down">Consulter mon profil</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div><!--end col-->
+
+                                    <div class="col-lg-6 mt-4 pt-2">
+                                        <div class="card event-schedule rounded border">
+                                            <div class="card-body">
+                                                <div class="media">
+                                                    <ul class="date text-center text-primary mr-3 mb-0 list-unstyled">
+                                                        <li class="day font-weight-bold mb-2">2</li>
+                                                    </ul>
+                                                    <div class="media-body content">
+                                                        <h4><a href="{% url 'account_profile' %}" class="text-dark title">Vous pourrez en tout temps modifier votre profil. </a></h4>
+                                                        <p class="text-muted location-time"><span class="text-dark h6">Photo de profil, informations ou mot de passe</span></p>
+                                                        <a href="#tickets" class="btn btn-sm btn-outline-primary mouse-down">Modifier le profil</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div><!--end col-->
+                                    <div class="col-lg-6 mt-4 pt-2">
+                                        <div class="card event-schedule rounded border">
+                                            <div class="card-body">
+                                                <div class="media">
+                                                    <ul class="date text-center text-primary mr-3 mb-0 list-unstyled">
+                                                        <li class="day font-weight-bold mb-2">3</li>
+                                                    </ul>
+                                                    <div class="media-body content">
+                                                        <h4><a href="{% url 'account_messages' %}" class="text-dark title">Vous pouvez nous envoyer un message. </a></h4>
+                                                        <p class="text-muted location-time"><span class="text-dark h6">Si vous avez besoin d'informations complémentaires, n'hésitez pas à nous contacter </span></p>
+                                                        <a href="#tickets" class="btn btn-sm btn-outline-primary mouse-down">Envoyer un message</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div><!--end col-->
+                                    <div class="col-lg-6 mt-4 pt-2">
+                                        <div class="card event-schedule rounded border">
+                                            <div class="card-body">
+                                                <div class="media">
+                                                    <ul class="date text-center text-primary mr-3 mb-0 list-unstyled">
+                                                        <li class="day font-weight-bold mb-2">4</li>
+                                                    </ul>
+                                                    <div class="media-body content">
+                                                        <h4><a href="{% url 'account_messages' %}" class="text-dark title">Vous pouvez consulter vos missions en cours ou terminées. </a></h4>
+                                                        <a href="#tickets" class="btn btn-sm btn-outline-primary mouse-down">Mission en cours/terminées</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div><!--end col-->
+                                    <div class="col-lg-6 mt-4 pt-2">
+                                        <div class="card event-schedule rounded border">
+                                            <div class="card-body">
+                                                <div class="media">
+                                                    <ul class="date text-center text-primary mr-3 mb-0 list-unstyled">
+                                                        <li class="day font-weight-bold mb-2">5</li>
+                                                    </ul>
+                                                    <div class="media-body content">
+                                                        <h4><a href="{% url 'account_payments' %}" class="text-dark title">Vous pouvez consulter votre rémunération.</a></h4>
+                                                        <a href="#tickets" class="btn btn-sm btn-outline-primary mouse-down">Rémunération</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div><!--end col-->
+
+
+                                </div><!--end row-->
+                            </div><!--end teb pane-->
+                        </div><!--end tab content-->
+                    </div><!--end col-->
+                </div><!--end row-->
+            </div><!--end container-->
+        </section><!--end section-->
+          <!--          <section class="bg-half- d-table w-100" id="home">
+         <div class="container">
                 <div class="row align-items-center">
                     <div class="col-lg-7 col-md-7">
                         <div class="title-heading mt-4">
@@ -132,16 +392,15 @@
                                 <a href=" {{ service }} " class="btn btn-primary m-1">Par ici</a>
                             </div>
                         </div>
-                    </div><!--end col-->
+                    </div>
 
                     <div class="col-lg-5 col-md-5 mt-4 pt-2 mt-sm-0 pt-sm-0">
                         <img src=" {% static 'images/digital/seo.gif' %} " alt="">
-                    </div><!--end col-->
-                </div><!--end row-->
-            </div><!--end container-->
+                    </div>
+                </div>
+            </div>-->
         </section><!--end section-->
-        <!-- Hero End -->     
-        
+
         <!-- Feature Start -->
          <section class="section">
             <div class="container">
@@ -149,22 +408,19 @@
                     <div class="col-lg-4 col-md-6 mb-4 pb-2">
                         <div class="card blog rounded border-0 shadow overflow-hidden">
                             <div class="position-relative">
-                                <img src="{% static 'images/blog/01.jpg' %}" class="card-img-top" alt="...">
+                                <img src="{% static 'images/bigstock.jpg' %}" style="height: 260px;" class="card-img-top" alt="...">
                                 <div class="overlay rounded-top bg-dark"></div>
                             </div>
                             <div class="card-body content">
-                                <h5><a href="javascript:void(0)" class="card-title title text-dark">Rejoignez notre communauté facebook !</a></h5>
+                                <h5><a href="{% url 'article1' %}" class="card-title title text-dark">Comment réaliser une visite  ?</a></h5>
                                 <div class="post-meta d-flex justify-content-between mt-3">
-                                    <ul class="list-unstyled mb-0">
-                                        <li class="list-inline-item mr-2 mb-0"><a href="javascript:void(0)" class="text-muted like"><i class="mdi mdi-heart-outline mr-1"></i>33</a></li>
-                                        <li class="list-inline-item"><a href="javascript:void(0)" class="text-muted comments"><i class="mdi mdi-comment-outline mr-1"></i>08</a></li>
-                                    </ul>
-                                    <a href="page-blog-detail.html" class="text-muted readmore">Read More <i class="mdi mdi-chevron-right"></i></a>
+
+                                    <a href="{% url 'article1' %}" class="text-muted readmore">Lire plus <i class="mdi mdi-chevron-right"></i></a>
                                 </div>
                             </div>
-                            <div class="author">
-                                <small class="text-light user d-block"><i class="mdi mdi-account"></i> Calvin Carlo</small>
-                                <small class="text-light date"><i class="mdi mdi-calendar-check"></i> 13th August, 2019</small>
+<div class="author">
+                                <small class="text-light user d-block"><i class="mdi mdi-account"></i> Upgoods support team</small>
+                                <small class="text-light date"><i class="mdi mdi-calendar-check"></i> 10 Fevrier, 2021</small>
                             </div>
                         </div>
                     </div><!--end col-->
@@ -172,140 +428,97 @@
                     <div class="col-lg-4 col-md-6 mb-4 pb-2">
                         <div class="card blog rounded border-0 shadow overflow-hidden">
                             <div class="position-relative">
-                                <img src="{% static 'images/blog/02.jpg' %}" class="card-img-top" alt="...">
+                                <img src="{% static 'images/focus.jpg' %}" class="card-img-top" alt="...">
                                 <div class="overlay rounded-top bg-dark"></div>
                             </div>
                             <div class="card-body content">
-                                <h5><a href="javascript:void(0)" class="card-title title text-dark">Vous êtes motard ?</a></h5>
+                                <h5><a href="{% url 'article2' %} " class="card-title title text-dark">Focus groupe ou réunion de consommateurs</a></h5>
                                 <div class="post-meta d-flex justify-content-between mt-3">
-                                    <ul class="list-unstyled mb-0">
-                                        <li class="list-inline-item mr-2 mb-0"><a href="javascript:void(0)" class="text-muted like"><i class="mdi mdi-heart-outline mr-1"></i>33</a></li>
-                                        <li class="list-inline-item"><a href="javascript:void(0)" class="text-muted comments"><i class="mdi mdi-comment-outline mr-1"></i>08</a></li>
-                                    </ul>
-                                    <a href="page-blog-detail.html" class="text-muted readmore">Read More <i class="mdi mdi-chevron-right"></i></a>
+
+                                    <a href="{% url 'article2' %} " class="text-muted readmore">Lire plus <i class="mdi mdi-chevron-right"></i></a>
                                 </div>
                             </div>
                             <div class="author">
-                                <small class="text-light user d-block"><i class="mdi mdi-account"></i> Calvin Carlo</small>
-                                <small class="text-light date"><i class="mdi mdi-calendar-check"></i> 13th August, 2019</small>
+                                    <small class="text-light user d-block"><i class="mdi mdi-account"></i> Upgoods support team</small>
+                                <small class="text-light date"><i class="mdi mdi-calendar-check"></i> 9 Fevrier, 2021</small>
                             </div>
                         </div>
                     </div><!--end col-->
                      <div class="col-lg-4 col-md-6 mb-4 pb-2">
                         <div class="card blog rounded border-0 shadow overflow-hidden">
                             <div class="position-relative">
-                                <img src="{% static 'images/blog/02.jpg' %}" class="card-img-top" alt="...">
+                                <img src="{% static 'images/test.png' %}" style="height:240px; width:110%" class="card-img-top" alt="...">
                                 <div class="overlay rounded-top bg-dark"></div>
                             </div>
                             <div class="card-body content">
-                                <h5><a href="javascript:void(0)" class="card-title title text-dark">How apps is changing the IT world</a></h5>
+                                <h5><a href=" {% url 'article4' %}" class="card-title title text-dark">Test produit</a></h5>
                                 <div class="post-meta d-flex justify-content-between mt-3">
-                                    <ul class="list-unstyled mb-0">
-                                        <li class="list-inline-item mr-2 mb-0"><a href="javascript:void(0)" class="text-muted like"><i class="mdi mdi-heart-outline mr-1"></i>33</a></li>
-                                        <li class="list-inline-item"><a href="javascript:void(0)" class="text-muted comments"><i class="mdi mdi-comment-outline mr-1"></i>08</a></li>
-                                    </ul>
-                                    <a href="page-blog-detail.html" class="text-muted readmore">Read More <i class="mdi mdi-chevron-right"></i></a>
+
+                                    <a href=" {% url 'article4' %}" class="text-muted readmore">Lire plus <i class="mdi mdi-chevron-right"></i></a>
                                 </div>
                             </div>
                             <div class="author">
-                                <small class="text-light user d-block"><i class="mdi mdi-account"></i> Calvin Carlo</small>
-                                <small class="text-light date"><i class="mdi mdi-calendar-check"></i> 13th August, 2019</small>
+                                    <small class="text-light user d-block"><i class="mdi mdi-account"></i> Upgoods support team</small>
+                                <small class="text-light date"><i class="mdi mdi-calendar-check"></i> 12 Fevrier, 2021</small>
                             </div>
                         </div>
-                    </div><!--
+                    </div>
+                    <div class="col-lg-4 col-md-6 mb-4 pb-2">
+                        <div class="card blog rounded border-0 shadow overflow-hidden">
+                            <div class="position-relative">
+                                <img src="{% static 'images/appel.jpg' %}" style="height:260px;"  class="card-img-top" alt="...">
+                                <div class="overlay rounded-top bg-dark"></div>
+                            </div>
+                            <div class="card-body content">
+                                <h5><a href=" {% url 'article3' %}" class="card-title title text-dark">Appels mystères</a></h5>
+                                <div class="post-meta d-flex justify-content-between mt-3">
+
+                                    <a href="{% url 'article3' %} " class="text-muted readmore">Lire plus <i class="mdi mdi-chevron-right"></i></a>
+                                </div>
+                            </div>
+                            <div class="author">
+                                    <small class="text-light user d-block"><i class="mdi mdi-account"></i> Upgoods support team</small>
+                                <small class="text-light date"><i class="mdi mdi-calendar-check"></i> 10 Fevrier, 2021</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 mb-4 pb-2">
+                        <div class="card blog rounded border-0 shadow overflow-hidden">
+                            <div class="position-relative">
+                                <img src="{% static 'images/web.jfif' %}"style="height:260px;"  class="card-img-top" alt="...">
+                                <div class="overlay rounded-top bg-dark"></div>
+                            </div>
+                            <div class="card-body content">
+                                <h5><a href=" {% url 'article5' %}" class="card-title title text-dark">Enquêtes Web</a></h5>
+                                <div class="post-meta d-flex justify-content-between mt-3">
+
+                                    <a href="{% url 'article5' %} " class="text-muted readmore">Lire plus <i class="mdi mdi-chevron-right"></i></a>
+                                </div>
+                            </div>
+                            <div class="author">
+                                    <small class="text-light user d-block"><i class="mdi mdi-account"></i> Upgoods support team</small>
+                                <small class="text-light date"><i class="mdi mdi-calendar-check"></i> 12 Fevrier, 2021</small>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div></section>
 
         <!-- counter Start -->
-          <section class="section">
 
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-12 text-center">
-                        <div class="section-title mb-4 pb-2">
-                            <h4 class="title mb-4">Que souhaitez-vous faire ?</h4>
-                        </div>
-                    </div><!--end col-->
-                </div><!--end row-->
-                <div class="row">
 
-                    <div class="col-lg-4 col-md-6 col-12">
-                        <h5>Getting started</h5>
-                        <ul class="list-unstyled mt-4 mb-0">
-                            <li class="mt-2"><a href="javascript:void(0)" class="text-muted"><i class="mdi mdi-arrow-right text-primary mr-1"></i>Deciding to purchase</a></li>
-                            <li class="mt-2"><a href="javascript:void(0)" class="text-muted"><i class="mdi mdi-arrow-right text-primary mr-1"></i>List your space</a></li>
-                            <li class="mt-2"><a href="javascript:void(0)" class="text-muted"><i class="mdi mdi-arrow-right text-primary mr-1"></i>Landing an experience or adventure</a></li>
-                            <li class="mt-2"><a href="javascript:void(0)" class="text-muted"><i class="mdi mdi-arrow-right text-primary mr-1"></i>Top uses questions</a></li>
-                        </ul>
-                    </div><!--end col-->
-
-                    <div class="col-lg-4 col-md-6 col-12">
-                        <h5>Your calendar</h5>
-                        <ul class="list-unstyled mt-4 mb-0">
-                            <li class="mt-2"><a href="javascript:void(0)" class="text-muted"><i class="mdi mdi-arrow-right text-primary mr-1"></i>Pricing & availability</a></li>
-                            <li class="mt-2"><a href="javascript:void(0)" class="text-muted"><i class="mdi mdi-arrow-right text-primary mr-1"></i>Booking settings</a></li>
-                            <li class="mt-2"><a href="javascript:void(0)" class="text-muted"><i class="mdi mdi-arrow-right text-primary mr-1"></i>Responding to enquiries & requests</a></li>
-                            <li class="mt-2"><a href="javascript:void(0)" class="text-muted"><i class="mdi mdi-arrow-right text-primary mr-1"></i>Snoozing or deactivating your listing</a></li>
-                        </ul>
-                    </div><!--end col-->
-                    <div class="col-lg-4 col-md-6 col-12">
-                        <h5>Your account</h5>
-                        <ul class="list-unstyled mt-4 mb-0">
-                            <li class="mt-2"><a href="javascript:void(0)" class="text-muted"><i class="mdi mdi-arrow-right text-primary mr-1"></i>Your profile</a></li>
-                            <li class="mt-2"><a href="javascript:void(0)" class="text-muted"><i class="mdi mdi-arrow-right text-primary mr-1"></i>Account security</a></li>
-                            <li class="mt-2"><a href="javascript:void(0)" class="text-muted"><i class="mdi mdi-arrow-right text-primary mr-1"></i>Identification & verifications</a></li>
-                            <li class="mt-2"><a href="javascript:void(0)" class="text-muted"><i class="mdi mdi-arrow-right text-primary mr-1"></i>Reviews</a></li>
-                            <li class="mt-2"><a href="javascript:void(0)" class="text-muted"><i class="mdi mdi-arrow-right text-primary mr-1"></i>Superhost status</a></li>
-                        </ul>
-                    </div><!--end col-->
-                </div><!--end row-->
-            </div><!--end container-->
-
-            <div class="container mt-100 mt-60">
-                <div class="row">
-                    <div class="col-lg-6 col-md-6 col-12">
-                        <div class="media align-items-center features feature-clean shadow rounded p-4">
-                            <div class="icons text-primary text-center">
-                                <i class="uil uil-envelope-check d-block rounded h3 mb-0"></i>
-                            </div>
-                            <div class="content ml-4">
-                                <h5 class="mb-1"><a href="javascript:void(0)" class="text-dark">Get in Touch !</a></h5>
-                                <p class="text-muted mb-0">This is required when, for text is not yet available.</p>
-                                <div class="mt-2">
-                                    <a href="javascript:void(0)" class="btn btn-sm btn-soft-primary">Submit a Request</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div><!--end col-->
-
-                    <div class="col-lg-6 col-md-6 col-12 mt-4 mt-sm-0 pt-2 pt-sm-0">
-                        <div class="media align-items-center features feature-clean shadow rounded p-4">
-                            <div class="icons text-primary text-center">
-                                <i class="uil uil-webcam d-block rounded h3 mb-0"></i>
-                            </div>
-                            <div class="content ml-4">
-                                <h5 class="mb-1"><a href="javascript:void(0)" class="text-dark">Start a Meeting</a></h5>
-                                <p class="text-muted mb-0">This is required when, for text is not yet available.</p>
-                                <div class="mt-2">
-                                    <a href="javascript:void(0)" class="btn btn-sm btn-soft-primary">Start Video Chat</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div><!--end col-->
-                </div><!--end row-->
-            </div><!--end container-->
         </section><!--end section-->
 
         <!-- Testimonial Start -->
 
 
         <!-- Footer Start -->
-                 {% include 'footer.html' %}
 
         <!-- Footer End -->
+                       {% include 'footer.html' %}
 
         <!-- Back to top -->
-        <a href="#" class="btn btn-icon btn-primary back-to-top"><i data-feather="arrow-up" class="icons"></i></a>
         <!-- Back to top -->
 
         <!-- javascript -->

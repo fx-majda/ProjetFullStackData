@@ -64,11 +64,11 @@
                         <div class="dropdown dropdown-primary">
                             <button type="button" class="btn btn-icon btn-soft-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="uil uil-user align-middle icons"></i></button>
                             <div class="dropdown-menu dd-menu dropdown-menu-right bg-white shadow rounded border-0 mt-3 py-3" style="width: 200px;">
-                                <a class="dropdown-item text-dark" href="#"><i class="uil uil-user align-middle mr-1"></i> Mon compte</a>
-                                <a class="dropdown-item text-dark" href="#"><i class="uil uil-clipboard-notes align-middle mr-1"></i> Order History</a>
-                                <a class="dropdown-item text-dark" href="#"><i class="uil uil-arrow-circle-down align-middle mr-1"></i> Download</a>
+                                <a class="dropdown-item text-dark" href="{% url 'account_settings'  %}"><i class="uil uil-user align-middle mr-1"></i> Settings</a>
+                                <a class="dropdown-item text-dark" href=" {% url 'account_messages'  %}"><i class="uil uil-clipboard-notes align-middle mr-1"></i>  Mes messages</a>
+                                <a class="dropdown-item text-dark" href="#"><i class="uil uil-arrow-circle-down align-middle mr-1"></i> Guide</a>
                                 <div class="dropdown-divider my-3 border-top"></div>
-                                <a class="dropdown-item text-dark" href="#"><i class="uil uil-sign-out-alt align-middle mr-1"></i> Logout</a>
+                                <a class="dropdown-item text-dark" href="{% url 'logout'  %}"><i class="uil uil-sign-out-alt align-middle mr-1"></i> Déconnexion</a>
                             </div>
                         </div>
                     </li>
@@ -86,7 +86,7 @@
                         <!-- End mobile menu toggle-->
                     </div>
 
-                <div id="navigation">
+               <div id="navigation">
                     <!-- Navigation Menu-->
                     <ul class="navigation-menu">
                         {% url 'indexEnqueteur' as index %}
@@ -101,14 +101,14 @@
 
                         <li><a href=" {{actualite}} ">Mon profile</a></li>
 
+
                     </ul><!--end navigation menu-->
                     <div class="buy-menu-btn d-none">
                                                                                 {% url 'login' as login %}
 
-                        <a href="{{login}}" class="btn btn-primary">Se deconnecter</a>
+                        <a href="{{login}}"  class="btn btn-primary">Se deconnecter</a>
                     </div><!--end login button-->
                 </div><!--end navigation-->
-            </div><!--end container-->
             </div><!--end container-->
         </header><!--end header-->
         <!-- Navbar End -->
@@ -124,9 +124,8 @@
                             <div class="card-body">
                                 <div class="row align-items-center">
                                     <div class="col-lg-2 col-md-3 text-md-left text-center">
-                                        <img src=" {% static 'images/client/05.jpg' %} " class="avatar avatar-large rounded-circle shadow d-block mx-auto" alt="">
+                                        <img src=" {{enqueteur.profile_pic}} " class="avatar avatar-large rounded-circle shadow d-block mx-auto" alt="">
                                     </div><!--end col-->
-
                                     <div class="col-lg-10 col-md-9">
                                         <div class="row align-items-end">
                                             <div class="col-md-7 text-md-left text-center mt-4 mt-sm-0">
@@ -155,7 +154,7 @@
 
 
                             <div class="widget mt-4 pt-2">
-                                <h5 class="widget-title">Missions :</h5>
+                                <h5 class="widget-title">Espace profil :</h5>
                                 <div class="progress-box mt-4">
                                     <h6 class="title text-muted">Score</h6>
                                     <div class="progress">
@@ -212,9 +211,9 @@
                                     </div><!--end col-->
 
                                     <div class="col-6 mt-4 pt-2">
-                                        <a href=" {% static 'auth-login-three.html' %} " class="accounts rounded d-block shadow text-center py-3">
+                                        <a href=" {% url 'logout' %} " class="accounts rounded d-block shadow text-center py-3">
                                             <span class="pro-icons h3 text-muted"><i class="uil uil-sign-out-alt"></i></span>
-                                            <h6 class="title text-dark h6 my-0">Logout</h6>
+                                            <h6 class="title text-dark h6 my-0">Se deconnecter</h6>
                                         </a>
                                     </div><!--end col-->
                                 </div><!--end row-->
@@ -241,22 +240,36 @@
                                 <h5 class="mb-0">Messages:</h5>
                                 <a href="  " data-toggle="modal" data-target="#composemail" class="btn btn-primary"><i data-feather="plus" class="fea icon-sm"></i> Envoyer un message </a>
                             </div>
+    <div class="form-group">
+                      {% if messages %}
+                        {% for message in messages %}
+                        {% if message.tags == 'error' %}
+                        <div class="alert alert-danger" style="margin-top:10px">{{ message }}</div>
+                        {% endif %}
+                        {% if message.tags == 'success' %}
+                        <div class="alert alert-success" style="margin-top:10px">{{ message }}</div>
+                        {% endif %}
+                        {% endfor %}
+                      {% endif %}
+                    </div>
 
                             <!-- Modal Content Start -->
                                 <div class="modal fade" id="composemail" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                         <div class="modal-content rounded shadow border-0">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalCenterTitle">New Message</h5>
+                                                <h5 class="modal-title" id="exampleModalCenterTitle">Ecrire un message</h5>
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
                                             </div>
+                                            <form method="post" action="{% url 'contact_sent_enqueteur'  %}">
+
                                             <div class="modal-body p-4">
-                                                <form method="post" action="{% url 'contact_sent_enqueteur'  %}">
                                                                                                                                                                  {% csrf_token %}
 
                                                     <div class="row">
+
                                                         <div class="col-md-12">
                                                             <div class="form-group">
                                                                 <label>Votre nom <span class="text-danger">*</span></label>
@@ -267,13 +280,7 @@
                                                             </div>
                                                         </div><!--end col-->
                                                         <div class="col-md-12">
-                                                            <div class="form-group">
-                                                                <label>Objet</label>
-                                                                <div class="position-relative">
-                                                                    <i data-feather="book" class="fea icon-sm icons"></i>
-                                                                    <input name="subject" id="subject" class="form-control pl-5" placeholder="Objet :">
-                                                                </div>
-                                                            </div>
+
                                                         </div><!--end col-->
                                                         <div class="col-md-12">
                                                             <div class="form-group mb-0">
@@ -285,11 +292,12 @@
                                                             </div>
                                                         </div>
                                                     </div><!--end row-->
-                                                </form>
                                             </div>
                                             <div class="border-top p-4">
-                                                <button type="button" class="btn btn-primary">envoyer</button>
+                                                <button type="submit"  class="btn btn-primary">envoyer</button>
                                             </div>
+                                            </form>
+
                                         </div>
                                     </div>
                                 </div>
@@ -318,32 +326,43 @@
                             </div>
 
 
+                                                               {% for message in page.object_list %}
 
 
                             <div class="d-flex border-bottom bg-light p-3">
                                 <div class="form-check pl-0">
                                     <div class="form-group mb-0">
                                         <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input check" id="mail8">
-                                            <label class="custom-control-label" for="mail8"></label>
+                                            <input type="checkbox" class="custom-control-input check" id="{{message.id}}">
+                                            <label class="custom-control-label" for="{{message.id}}"></label>
                                         </div>
                                     </div>
                                 </div>
+
                                 <a href="  ">
                                     <div class="media ml-2">
                                         <img src=" {% static 'images/client/08.jpg' %} " class="avatar avatar-md-sm rounded-pill shadow" alt="">
                                         <div class="content ml-3">
                                             <h6 class="text-dark">Admin</h6>
-                                            <p class="text-muted mb-0">Bienvenu sur Upgoods.N'hésitez pas à nous contacter si besoin </p>
+                                            <p class="text-muted mb-0">{{message.reply}} </p>
+                                            <p class="text-muted mb-0">{{message.created_at}} </p>
+
                                         </div>
                                     </div>
                                 </a>
                             </div>
-
-                            <div class="d-flex align-items-center justify-content-between mt-4">
-                                <span class="text-muted h6 mb-0">Showing 1 out of 1</span>
-                            </div>
+                                {% endfor %}
+                        <div class="d-flex align-items-center justify-content-between mt-4">
+                                <span class="text-muted h6 mb-0">Showing 5 out of {{count}}</span>
+                        {% if page.has_previous %}
+                         <a href="{% url 'account_messages' %}?page={{ page.previous_page_number }}">Page précédente </a>
+                        {% endif %}
+                        {% if page.has_next %}
+                        <a href="{% url 'account_messages' %}?page={{ page.next_page_number }}">Page suivante</a>
+                        {% endif %}
                         </div>
+ </div>
+
                     </div><!--end col-->
                 </div><!--end row-->
             </div><!--end container-->
@@ -374,6 +393,18 @@
         <script src=" {% static 'js/app.js' %} "></script>
 
         <script>
+       function nb_aleatoire() {
+  return Math.floor(Math.random() *4);
+}
+        function generernom() {
+
+    var nom = document.getElementById("generateur");
+    var nbGenere = nb_aleatoire();
+
+
+
+    nom.innerHTML = '<label class="custom-control-label" for="+nbGenere+"></label> <input type="checkbox" class="custom-control-input check" id="+nbGenere+">';
+}
             $("#checkAll").click(function () {
                 $(".check").prop('checked', $(this).prop('checked'));
             });

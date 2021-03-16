@@ -11,6 +11,7 @@ Profile de l'enquêteur {{enqueteur.nom}}
   padding: 10px;
 }
 </style>
+
     <!-- Main content -->
    <div  class="center">
    <section class="content">
@@ -22,9 +23,13 @@ Profile de l'enquêteur {{enqueteur.nom}}
             <div class="card card-primary card-outline">
               <div class="card-body box-profile">
                 <div class="text-center">
-                  <img class="profile-user-img img-fluid img-circle"
-                       src=" {{enqueteur.profile_pic.url}} "
-                       alt="User profile picture">
+                    {% if enqueteur.profile_pic %}
+<img class="profile-user-img img-fluid img-circle"
+                       src=" {{enqueteur.profile_pic}} "
+                       alt="User profile picture">                                    {% else %}
+                                    <span> L'utilisateur n'a aucune photo de profil</span>
+                                    {% endif %}
+
                 </div>
 
                 <h3 class="profile-username text-center">{{enqueteur.nom}}</h3>
@@ -46,9 +51,21 @@ Profile de l'enquêteur {{enqueteur.nom}}
                     <b>Remuneration recu:</b> <a class="float-right">X</a>
                   </li></ul>
 
-                <a href="#" class="btn btn-primary btn-block"><b>Envoyer un message</b></a>
+                <a href="/mailbox_compose_envoie/{{enqueteur.id}}" class="btn btn-primary btn-block"><b>Envoyer un message</b></a>
               </div>
               <!-- /.card-body -->
+     <div class="form-group">
+                      {% if messages %}
+                        {% for message in messages %}
+                        {% if message.tags == 'error' %}
+                        <div class="alert alert-danger" style="margin-top:10px">{{ message }}</div>
+                        {% endif %}
+                        {% if message.tags == 'success' %}
+                        <div class="alert alert-success" style="margin-top:10px">{{ message }}</div>
+                        {% endif %}
+                        {% endfor %}
+                      {% endif %}
+                    </div>
             </div>
             <!-- /.card -->
 
@@ -113,6 +130,27 @@ Profile de l'enquêteur {{enqueteur.nom}}
                 <strong><i class="fas fa-briefcase mr-3"></i> Situation</strong>
 
                 <p class="text-muted">                  {{enqueteur.situation}}</p>
+
+              </div>
+              <!-- /.card-body -->
+            </div>
+               <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">L'emplacement de l'enqueteur sur le map</h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+<iframe
+width="500"
+  height="400"
+  frameborder="0"
+  scrolling="no"
+  marginheight="0"
+  marginwidth="0"
+    src="https://maps.google.com/maps?q={{enqueteur.latitude}},{{enqueteur.longitude}}&hl=es;z=14&amp;output=embed"
+ >
+ </iframe>
+
 
               </div>
               <!-- /.card-body -->

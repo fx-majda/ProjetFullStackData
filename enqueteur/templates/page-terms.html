@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+  {%load static%}
+  <html lang="en">
+
+    <head>
+        <meta charset="utf-8" />
+        <title>Upgoods</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Upgoods service" />
+        <meta name="keywords" content="upgoods, client-mystere, ams, smice, ams international" />
+        <meta name="author" content="MohammedAminezahhaoui" />
+        <meta name="email" content="zahhaoui@gmail.com" />
+        <meta name="website" content="http://www.up-goods.com" />
+        <meta name="Version" content="v1" />
+        <!-- favicon -->
+        <link rel="shortcut icon" href=" {% static 'images/1.ico' %} ">
+        <!-- Bootstrap -->
+        <link href=" {% static 'css/bootstrap.min.css' %} " rel="stylesheet" type="text/css" />
+        <!-- Icons -->
+        <link href=" {% static 'css/materialdesignicons.min.css' %} " rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.3/css/line.css">
+        <!-- Main Css -->
+        <link href=" {% static 'css/style.css' %} " rel="stylesheet" type="text/css" id="theme-opt" />
+        <link href=" {% static 'css/colors/default.css' %} " rel="stylesheet" id="color-opt">
+
+    </head>
+
+    <body>
+        <!-- Loader -->
+        <!-- <div id="preloader">
+            <div id="status">
+                <div class="spinner">
+                    <div class="double-bounce1"></div>
+                    <div class="double-bounce2"></div>
+                </div>
+            </div>
+        </div> -->
+        <!-- Loader -->
+        
+        <!-- Navbar STart -->
+        <header id="topnav" class="defaultscroll sticky">
+            <div class="container">
+                <!-- Logo container-->
+                <div>
+                    <a class="logo" href=" {% url 'index' %} ">
+                        <img src=" {% static 'images/logo-dark.png' %} " height="24" alt="">
+                    </a>
+                </div>                 
+                <div class="buy-button">
+                    <a onclick="history.back()" class="btn btn-primary">Retour</a>
+                </div><!--end login button-->
+                <!-- End Logo container-->
+                <div class="menu-extras">
+                    <div class="menu-item">
+                        <!-- Mobile menu toggle-->
+                        <a class="navbar-toggle">
+                            <div class="lines">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                        </a>
+                        <!-- End mobile menu toggle-->
+                    </div>
+                </div>
+        
+            </div><!--end container-->
+        </header><!--end header-->
+        <!-- Navbar End -->
+        
+        <!-- Hero Start -->
+        <section class="bg-half bg-light d-table w-100">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-12 text-center">
+                        <div class="page-next-level">
+                            <h4 class="title"> Conditions Générales d'utilisation</h4>
+                            <div class="page-next">
+                                <nav aria-label="breadcrumb" class="d-inline-block">
+                                    <ul class="breadcrumb bg-white rounded shadow mb-0">
+                                        <li class="breadcrumb-item"><a href=" {% url 'index' %} ">Upgoods</a></li>
+                                        <li class="breadcrumb-item"><a href="{% url 'signup' %}">Inscription</a></li>
+                                        <li class="breadcrumb-item active" aria-current="page">Terms</li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>  <!--end col-->
+                </div><!--end row-->
+            </div> <!--end container-->
+        </section><!--end section-->
+        <!-- Hero End -->
+
+        <!-- Shape Start -->
+        <div class="position-relative">
+            <div class="shape overflow-hidden text-white">
+                <svg viewBox="0 0 2880 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0 48H1437.5H2880V0H2160C1442.5 52 720 0 720 0H0V48Z" fill="currentColor"></path>
+                </svg>
+            </div>
+        </div>
+        <!--Shape End-->  
+        
+        <!-- Start Terms & Conditions -->
+        <section class="section">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-9">
+                        <div class="card shadow border-0 rounded">
+                            <div class="card-body">
+                                <h5 class="card-title" style="color:#d50000;">Introduction :</h5>
+                                <p class="text-muted">La société AMS INTERNATIONAL, spécialisée dans l’audit commercial et le marketing, propose la participation en qualité de panéliste à des sondages relatifs à des situations de consommation rencontrées habituellement dans la vie.</p>
+
+                                <h5 class="card-title" style="color:#d50000;">1. CONDITIONS D’INSCRIPTION :</h5>
+                                <p class="text-muted"><b class="text-danger">1.1 </b> : Pour devenir membre du panel de la société AMS INTERNATIONAL, vous devez :
+       <ul class="list-unstyled text-muted">
+                                    <li><i data-feather="arrow-right" class="fea icon-sm mr-2"></i>être une personne physique âgée de 18 ans ou plus, et non soumis à régime de protection légale,</li>
+                                    <li><i data-feather="arrow-right" class="fea icon-sm mr-2"></i>Disposer d’une adresse mail valide afin de pouvoir recevoir les mails d’invitations aux enquêtes,</li>
+                                    <li><i data-feather="arrow-right" class="fea icon-sm mr-2"></i>Disposer d’un accès à internet afin de pouvoir répondre en ligne aux enquêtes,</li>
+                                    <li><i data-feather="arrow-right" class="fea icon-sm mr-2"></i>renseigner tous les champs obligatoires de toutes les parties du questionnaire d’inscription.</li>
+
+                                </ul>
+                                <p class="text-muted" style="color:#d50000;">Pour des raisons de précision statistique, une seule inscription par personne est autorisée.Les informations fournies dans le formulaire d’inscription doivent être exactes et complètes.Vous êtes en droit de demander l’annulation ou la rectification des données fournies.Il est strictement interdit d’usurper l’identité de quelqu’un, de déformer sa propre identité ou d’inscrire plusieurs personnes sur la même adresse e-mail.</p>
+                                </p>
+
+                                                                <p class="text-muted"><b class="text-danger">1.2 </b> :  L’adhésion au Panel est gratuite.
+                                                                <p class="text-muted"><b class="text-danger">1.3 </b> :  En vous inscrivant, vous marquez votre volonté d’adhérer au Panel de la société AMS INTERNATIONAL, et votre entière acceptation aux présentes conditions générales d’adhésion.
+                                                                <p class="text-muted"><b class="text-danger">1.4 </b> :  Votre inscription sera effective à réception de la confirmation par la société AMS INTERNATIONAL.
+                                                                <p class="text-muted"><b class="text-danger">1.5 </b> :  Vous pouvez à tout moment vous retirer du Panel en formulant la demande par courrier électronique à l’adresse suivante : contact@up-goods.com
+                                                                <p class="text-muted"><b class="text-danger">1.6 </b> :  La société AMS INTERNATIONAL se réserve le droit de retirer du panel les membres inactifs, qui n’ont répondu à aucune enquête pendant plus de 36 mois.
+
+La société AMS INTERNATIONAL est en droit de retirer du panel un membre adhérent sans préavis et sans avoir à justifier sa décision.
+
+
+
+
+
+                                <h5 class="card-title" style="color:#d50000;">2. TRAITEMENT DES DONNEES NOMINATIVES</h5>
+                                <p class="text-muted"><b class="text-danger">2.1 </b> : Conformément à la Loi « Informatique et Libertés » n°78-17 du 6 janvier 1978, les informations concernant les membres adhérents au Panel sont destinées à la société AMS, responsable du traitement.
+                                <p class="text-muted">Les membres adhérents disposent d’un droit d’accès, de rectification et de suppression des données qui les concernent.
+
+Les membres adhérents peuvent exercer ce droit directement sur le site : contact@up-goods.com</p>
+                                <p class="text-muted"><b class="text-danger">2.2 </b> : Les informations fournies par chaque membre seront exploitées de manière anonyme et non nominatives à des fins d’analyses et de statistique.
+<p class="text-muted">La société AMS INTERNATIONAL s’engage à :
+
+</p>
+                                <ul class="list-unstyled text-muted">
+                                    <li><i data-feather="arrow-right" class="fea icon-sm mr-2" style="color:#d50000;"></i>Ne pas utiliser les informations nominatives à des fins d’analyse : vos nom, prénom et adresse e-mail ne servent qu’à vous contacter et ne sont utilisés pas lors de l’analyse des résultats aux enquêtes</li>
+                                    <li><i data-feather="arrow-right" class="fea icon-sm mr-2" style="color:#d50000;"></i>À traiter vos informations de manière confidentielle : les informations personnelles fournies ne sont destinées qu’à la société AMS INTERNATIONAL et ne seront pas communiquées à des tiers</li>
+                                    <li><i data-feather="arrow-right" class="fea icon-sm mr-2" style="color:#d50000;"></i>À  ne pas exploiter commercialement vos données : vos nom, prénoms et adresse e-mail ne seront pas vendus à des tiers.</li>
+
+                                </ul>
+
+                                <h5 class="card-title" style="color:#d50000;">3. FONCTIONNEMENT DU PANEL :</h5>
+                                <p class="text-muted"><b class="text-danger">3.1 </b> : La Société AMS INTERNATIONAL ne garantit pas à ses membres adhérents qu’ils recevront effectivement une proposition de mission en s’inscrivant au panel.
+
+En particulier, la société ne peut garantir qu’un sondage sera attribué à un membre précis dans tous les inscrits.
+
+Elle n’est pas tenue d’envoyer des questionnaires à tous les membres adhérents pour chaque nouvelle enquête, et ne peut s’engager ni sur le nombre minimum ni sur le nombre maximum de questionnaires qui vous seront envoyés par an.
+
+
+<p class="text-muted">Dès que le nombre requis de membres adhérents a répondu à un questionnaire donné, la société AMS INTERNATIONAL est en droit de mettre fin à l’enquête et de rejeter des réponses.</p>
+<p class="text-muted"><b class="text-danger">3.2 </b> :  Si la candidature d’un membre pour une enquête est acceptée, le membre en est informé par un courrier électronique.
+
+Le membre n’est pas obligé d’accepter les propositions de mission qui lui sont faites, et reste libre de prendre part ou non aux enquêtes.
+
+En revanche, une fois la mission acceptée, le membre s’engage à la réaliser de manière compétente et dans le respect des délais.
+
+Le membre doit s’exprimer le plus naturellement possible en fonction de ses goûts, ses attentes et son expérience. Il n’y a pas de bonnes ou de mauvaises réponses.
+             <p class="text-muted"><b class="text-danger">3.3 </b> :   En contrepartie de sa participation aux enquêtes, le membre adhérent recevra des gains de cadeaux ; ceux-ci seront clairement définis en début d’enquête. Ils feront l’objet de traitement particulier indiqué dans la proposition d’enquête ou mission.
+                          <p class="text-muted"><b class="text-danger">3.4 </b> :   Le membre s’engage à respecter les règles de bonnes mœurs sur ses réponses aux questions posées. Les messages à caractère injurieux, diffamatoires, raciste, sexiste, révisionniste ou pornographique ne seront pas traités et leurs auteurs ne se verront pas attribuer le moindre dédommagement. La société AMS INTERNATIONAL se réserve par ailleurs le droit d’interdire l’accès au site pour ces personnes et la possibilité de poursuivre le membre adhérent devant les juridictions compétentes.
+
+Tous les rapports de visite ou réponse à un sondage qui ne concernent pas une visite réelle ou qui décrivent une visite fictive seront considérés comme des faux par la société et exposent le membre à des poursuites.
+
+                                 <h5 class="card-title" style="color:#d50000;">4.  AVIS DE CONFIDENTIALITE :</h5>
+                                <p class="text-muted"><b class="text-danger"></b> Il est <b class="text-danger">interdit </b>au membre adhérent de communiquer à qui que ce soit la teneur de tous les éléments dont il a pu avoir connaissance dans le cadre des visites et sondage, aussi bien pendant qu’après l’activité.
+                                  <h5 class="card-title"style="color:#d50000;" >5.  RESPONSABILITE :</h5>
+                                <p class="text-muted">Le membre adhérent est seul responsable de l’utilisation de sa qualité de membre et des conséquences en résultant tant pour lui-même que vis-à-vis des tiers ou de la société.
+
+
+                    </div><!--end col-->
+                </div><!--end row-->
+            </div><!--end container-->
+                </div></div> </section><!--end section-->
+        <!-- End Terms & Conditions -->
+
+        <!-- Footer Start -->
+        <!-- Footer End -->
+
+        <!-- Back to top -->
+        <a href="#" class="btn btn-icon btn-primary back-to-top"><i data-feather="arrow-up" class="icons"></i></a>
+        <!-- Back to top -->
+
+        <!-- javascript -->
+        <script src=" {% static 'js/jquery-3.5.1.min.js' %} "></script>
+        <script src=" {% static 'js/bootstrap.bundle.min.js' %} "></script>
+        <script src=" {% static 'js/jquery.easing.min.js' %} "></script>
+        <script src=" {% static 'js/scrollspy.min.js' %} "></script>
+        <!-- Icons -->
+        <script src=" {% static 'js/feather.min.js' %} "></script>
+        <script src="https://unicons.iconscout.com/release/v3.0.3/script/monochrome/bundle.js"></script>
+        <!-- Main Js -->
+        <script src=" {% static 'js/app.js' %} "></script>
+    </body>
+</html>

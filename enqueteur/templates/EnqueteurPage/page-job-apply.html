@@ -39,37 +39,19 @@
         <!-- Loader -->
         
         <!-- Navbar STart -->
-              <header id="topnav" class="defaultscroll sticky">
+<header id="topnav" class="defaultscroll sticky">
             <div class="container">
                 <!-- Logo container-->
                 <div>
-                    {% url 'indexEnqueteur' as index %}
-                    <a class="logo" href=" {{index}} ">
+                    <a class="logo">
                         <img src=" {% static 'images/logo-dark.png' %} " height="24" alt="">
                     </a>
                 </div>
-                									{% url 'login' as login %}
-                <ul class="buy-button list-inline mb-0">
-
                 <div class="buy-button">
-                                                   {% url 'login' as login %}
-
-                        <a href="{{login}}" class="btn btn-primary">Se deconnecter</a>                </div><!--end login button-->
+                    <a onclick="history.back()" class="btn btn-primary">Retour</a>
+                </div><!--end login button-->
                 <!-- End Logo container-->
-                    <li class="list-inline-item mb-0">
-                        <div class="dropdown dropdown-primary">
-                            <button type="button" class="btn btn-icon btn-soft-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="uil uil-user align-middle icons"></i></button>
-                            <div class="dropdown-menu dd-menu dropdown-menu-right bg-white shadow rounded border-0 mt-3 py-3" style="width: 200px;">
-                                <a class="dropdown-item text-dark" href="#"><i class="uil uil-user align-middle mr-1"></i> Mon compte</a>
-                                <a class="dropdown-item text-dark" href="#"><i class="uil uil-clipboard-notes align-middle mr-1"></i> Order History</a>
-                                <a class="dropdown-item text-dark" href="#"><i class="uil uil-arrow-circle-down align-middle mr-1"></i> Download</a>
-                                <div class="dropdown-divider my-3 border-top"></div>
-                                <a class="dropdown-item text-dark" href="#"><i class="uil uil-sign-out-alt align-middle mr-1"></i> Logout</a>
-                            </div>
-                        </div>
-                    </li>
-                </ul><!--end login button-->
-                    <div class="menu-extras">
+                <div class="menu-extras">
                     <div class="menu-item">
                         <!-- Mobile menu toggle-->
                         <a class="navbar-toggle">
@@ -82,30 +64,7 @@
                         <!-- End mobile menu toggle-->
                     </div>
                 </div>
-                <div id="navigation">
-                    <!-- Navigation Menu-->
-                    <ul class="navigation-menu">
-                        {% url 'indexEnqueteur' as index %}
 
-                        <li><a href=" {{index}} ">Accueil</a></li>
-                        {% url 'trouvermission' as service %}
-                        <li><a href=" {{service}} ">Trouver une mission</a></li>
-                        {% url 'mission' as guide %}
-
-                        <li><a href=" {{guide}} ">Mes missions</a></li>
-                        {% url 'account_profile' as actualite %}
-
-                        <li><a href=" {{actualite}} ">Mon profile</a></li>
-
-
-
-                    </ul><!--end navigation menu-->
-                    <div class="buy-menu-btn d-none">
-                                                                                {% url 'login' as login %}
-
-                        <a href="{{login}}" class="btn btn-primary">Se deconnecter</a>
-                    </div><!--end login button-->
-                </div><!--end navigation-->
             </div><!--end container-->
         </header><!--end header-->
         <!-- Navbar End -->
@@ -198,7 +157,7 @@
                                             <div class="form-group">
                                                 <div class="custom-control custom-checkbox">
                                                     <input type="checkbox" class="custom-control-input" id="customCheck1">
-                                                    <label class="custom-control-label" for="customCheck1">I Accept <a href="#" class="text-primary">Terms And Condition</a></label>
+                                                    <label class="custom-control-label" for="customCheck1">J'accepte les <a href="#" class="text-primary">Termes et Conditions</a></label>
                                                 </div>
                                             </div>
                                         </div><!--end col-->

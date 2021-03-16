@@ -2,7 +2,7 @@
 <footer class="footer">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-4 col-12 mb-0 mb-md-4 pb-0 pb-md-2">
+                    <div class="col-lg-4 col-12 mb-0 mb-md-4 pb-0 pb-md-2" data-aos="fade-up" data-aos-duration="1000" >
                         <a href="#" class="logo-footer">
                             <img src=" {% static 'images/logo-light.png' %} " height="24" alt="">
                         </a>
@@ -16,7 +16,7 @@
                         </ul><!--end icon-->
                     </div><!--end col-->
 
-                    <div class="col-lg-2 col-md-4 col-12 mt-4 mt-sm-0 pt-2 pt-sm-0">
+                    <div class="col-lg-2 col-md-4 col-12 mt-4 mt-sm-0 pt-2 pt-sm-0" data-aos="fade-up" data-aos-duration="1000">
                         <h5 class="text-light footer-head">Upgoods</h5>
                         <ul class="list-unstyled footer-list mt-4">
                                                                 									{% url 'index' as login %}
@@ -36,33 +36,17 @@
                         </ul>
                     </div><!--end col-->
 
-                    <div class="col-lg-3 col-md-4 col-12 mt-4 mt-sm-0 pt-2 pt-sm-0">
-                        <h5 class="text-light footer-head">Usefull Links</h5>
+                    <div class="col-lg-3 col-md-4 col-12 mt-4 mt-sm-0 pt-2 pt-sm-0" data-aos="fade-up" data-aos-duration="1000">
+                        <h5 class="text-light footer-head">Liens utiles</h5>
                         <ul class="list-unstyled footer-list mt-4">
-                                <li><a href=" {% static 'page-terms.html' %} " class="text-foot"><i class="mdi mdi-chevron-right mr-1"></i> Terms of Services</a></li>
-                                <li><a href=" {% static 'page-privacy.html' %} " class="text-foot"><i class="mdi mdi-chevron-right mr-1"></i> Privacy Policy</a></li>
-                                <li><a href=" {% static 'documentation.html' %} " class="text-foot"><i class="mdi mdi-chevron-right mr-1"></i> Documentation</a></li></ul>
+                                <li><a href=" {% url 'terms' %} " class="text-foot"><i class="mdi mdi-chevron-right mr-1"></i> Terms of Services</a></li>
+                                <li><a href="  " class="text-foot"><i class="mdi mdi-chevron-right mr-1"></i> Documentation</a></li></ul>
                     </div><!--end col-->
 
-                    <div class="col-lg-3 col-md-4 col-12 mt-4 mt-sm-0 pt-2 pt-sm-0">
-                        <h5 class="text-light footer-head">Newsletter</h5>
-                        <p class="mt-4">Sign up and receive the latest tips via email.</p>
-                        <form>
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <div class="foot-subscribe form-group">
-                                        <label>Write your email <span class="text-danger">*</span></label>
-                                        <div class="position-relative">
-                                            <i data-feather="mail" class="fea icon-sm icons"></i>
-                                            <input type="email" name="email" id="emailsubscribe" class="form-control pl-5 rounded" placeholder="Your email : " required>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-12">
-                                    <input type="submit" id="submitsubscribe" name="send" class="btn btn-soft-primary btn-block" value="Subscribe">
-                                </div>
-                            </div>
-                        </form>
+                    <div class="col-lg-3 col-md-4 col-12 mt-4 mt-sm-0 pt-2 pt-sm-0" data-aos="fade-up" data-aos-duration="1000">
+                                                <h5 class="text-light footer-head">Nos Pays D’intervention</h5>
+                                                <img src=" {% static 'images/illustrator/map.png' %} " width="300" height="170" class="mr-md-4" alt="france maroc usa europe singapoure moyen orient amerique ">
+
                     </div><!--end col-->
                 </div><!--end row-->
             </div><!--end container-->
@@ -76,15 +60,15 @@
                         </div>
                     </div><!--end col-->
 
-                    <div class="col-sm-6 mt-4 mt-sm-0 pt-2 pt-sm-0">
-                        <ul class="list-unstyled text-sm-right mb-0">
-                            <li class="list-inline-item"><a href="  "><img src=" {% static 'images/payments/american-ex.png' %} " class="avatar avatar-ex-sm" title="American Express" alt=""></a></li>
-                            <li class="list-inline-item"><a href="  "><img src=" {% static 'images/payments/discover.png' %} " class="avatar avatar-ex-sm" title="Discover" alt=""></a></li>
-                            <li class="list-inline-item"><a href="  "><img src=" {% static 'images/payments/master-card.png' %} " class="avatar avatar-ex-sm" title="Master Card" alt=""></a></li>
-                            <li class="list-inline-item"><a href="  "><img src=" {% static 'images/payments/paypal.png' %} " class="avatar avatar-ex-sm" title="Paypal" alt=""></a></li>
-                            <li class="list-inline-item"><a href="  "><img src=" {% static 'images/payments/visa.png' %} " class="avatar avatar-ex-sm" title="Visa" alt=""></a></li>
-                        </ul>
-                    </div><!--end col-->
+
                 </div><!--end row-->
             </div><!--end container-->
-        </footer><!--end footer-->s
+        </footer><!--end footer-->
+
+                  <script src=" {% static 'js/aos.js' %} "></script>
+   <script>
+            AOS.init({
+                easing: 'ease-in-out-sine',
+                duration: 1000
+            });
+        </script>

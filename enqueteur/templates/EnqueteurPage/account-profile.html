@@ -60,15 +60,15 @@
 
                         <a href="{{login}}"  class="btn btn-primary">Se deconnecter</a>                </div><!--end login button-->
                 <!-- End Logo container-->
-                    <li class="list-inline-item mb-0">
+                 <li class="list-inline-item mb-0">
                         <div class="dropdown dropdown-primary">
                             <button type="button" class="btn btn-icon btn-soft-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="uil uil-user align-middle icons"></i></button>
                             <div class="dropdown-menu dd-menu dropdown-menu-right bg-white shadow rounded border-0 mt-3 py-3" style="width: 200px;">
-                                <a class="dropdown-item text-dark" href="#"><i class="uil uil-user align-middle mr-1"></i> Mon compte</a>
-                                <a class="dropdown-item text-dark" href="#"><i class="uil uil-clipboard-notes align-middle mr-1"></i> Order History</a>
-                                <a class="dropdown-item text-dark" href="#"><i class="uil uil-arrow-circle-down align-middle mr-1"></i> Download</a>
+                                <a class="dropdown-item text-dark" href="{% url 'account_settings'  %}"><i class="uil uil-user align-middle mr-1"></i> Settings</a>
+                                <a class="dropdown-item text-dark" href=" {% url 'account_messages'  %}"><i class="uil uil-clipboard-notes align-middle mr-1"></i>  Mes messages</a>
+                                <a class="dropdown-item text-dark" href="#"><i class="uil uil-arrow-circle-down align-middle mr-1"></i> Guide</a>
                                 <div class="dropdown-divider my-3 border-top"></div>
-                                <a class="dropdown-item text-dark" href="#"><i class="uil uil-sign-out-alt align-middle mr-1"></i> Logout</a>
+                                <a class="dropdown-item text-dark" href="{% url 'logout'  %}"><i class="uil uil-sign-out-alt align-middle mr-1"></i> Déconnexion</a>
                             </div>
                         </div>
                     </li>
@@ -101,9 +101,6 @@
 
                         <li><a href=" {{actualite}} ">Mon profile</a></li>
 
-
-
-
                     </ul><!--end navigation menu-->
                     <div class="buy-menu-btn d-none">
                                                                                 {% url 'login' as login %}
@@ -124,7 +121,7 @@
                             <div class="card-body">
                                 <div class="row align-items-center">
                                     <div class="col-lg-2 col-md-3 text-md-left text-center">
-                                        <img src=" {% static 'images/client/05.jpg' %} " class="avatar avatar-large rounded-circle shadow d-block mx-auto" alt="">
+                                        <img src=" {{enqueteur.profile_pic}}  " class="avatar avatar-large rounded-circle shadow d-block mx-auto" alt="">
                                     </div><!--end col-->
     
                                     <div class="col-lg-10 col-md-9">
@@ -155,7 +152,7 @@
 
 
                             <div class="widget mt-4 pt-2">
-                                <h5 class="widget-title">Missions :</h5>
+                                <h5 class="widget-title">Espace profil :</h5>
                                 <div class="progress-box mt-4">
                                     <h6 class="title text-muted">Score</h6>
                                     <div class="progress">
@@ -215,7 +212,7 @@
                                         {% url 'logout' as logout %}
                                         <a href=" {{logout}} " class="accounts rounded d-block shadow text-center py-3">
                                             <span class="pro-icons h3 text-muted"><i class="uil uil-sign-out-alt"></i></span>
-                                            <h6 class="title text-dark h6 my-0">Logout</h6>
+                                            <h6 class="title text-dark h6 my-0">Se deconnecter</h6>
                                         </a>
                                     </div><!--end col-->
                                 </div><!--end row-->
@@ -223,7 +220,7 @@
 
 
                             <div class="widget mt-4 pt-2">
-                                <h5 class="widget-title">Follow me :</h5>
+                                <h5 class="widget-title">Follow us :</h5>
                                 <ul class="list-unstyled social-icon mb-0 mt-4">
                                     <li class="list-inline-item"><a href="  " class="rounded"><i data-feather="facebook" class="fea icon-sm fea-social"></i></a></li>
                                     <li class="list-inline-item"><a href="  " class="rounded"><i data-feather="instagram" class="fea icon-sm fea-social"></i></a></li>
@@ -256,7 +253,7 @@
                                         <div class="media align-items-center mt-3">
                                             <i data-feather="italic" class="fea icon-ex-md text-muted mr-3"></i>
                                             <div class="media-body">
-                                                <h6 class="text-primary mb-0">Language :</h6>
+                                                <h6 class="text-primary mb-0">Langues :</h6>
                                                 <a  class="text-muted">{{enqueteur.langues}}</a>
                                             </div>
                                         </div>
@@ -264,21 +261,21 @@
                                         <div class="media align-items-center mt-3">
                                             <i data-feather="gift" class="fea icon-ex-md text-muted mr-3"></i>
                                             <div class="media-body">
-                                                <h6 class="text-primary mb-0">Birthday :</h6>
+                                                <h6 class="text-primary mb-0">Date de naissance :</h6>
                                                 <p class="text-muted mb-0">{{enqueteur.birth_day}}</p>
                                             </div>
                                         </div>
                                         <div class="media align-items-center mt-3">
                                             <i data-feather="map-pin" class="fea icon-ex-md text-muted mr-3"></i>
                                             <div class="media-body">
-                                                <h6 class="text-primary mb-0">Location :</h6>
+                                                <h6 class="text-primary mb-0">Adresse :</h6>
                                                 <a class="text-muted">{{enqueteur.adresse}}</a>
                                             </div>
                                         </div>
                                         <div class="media align-items-center mt-3">
                                             <i data-feather="phone" class="fea icon-ex-md text-muted mr-3"></i>
                                             <div class="media-body">
-                                                <h6 class="text-primary mb-0">Cell No :</h6>
+                                                <h6 class="text-primary mb-0">Numéro de télephone :</h6>
                                                 <a class="text-muted">{{enqueteur.telephone}}</a>
                                             </div>
                                         </div>
@@ -289,88 +286,62 @@
                                     <h5>Missions effectuées :</h5>
 
                                     <div class="media key-feature align-items-center p-3 rounded shadow mt-4">
-                                        <img src=" {% static 'images/job/Circleci.svg' %} " class="avatar avatar-ex-sm" alt="">
+                                        <img src=" {% static 'images/job/xxxxxxxxxxxxxxxxx.svg' %} " class="avatar avatar-ex-sm" alt="">
                                         <div class="media-body content ml-3">
-                                            <h4 class="title mb-0">Senior Web Developer</h4>
-                                            <p class="text-muted mb-0">3 Years Experience</p>
-                                            <p class="text-muted mb-0"><a href=" {% static 'javascript:void(0)' %} " class="text-primary">CircleCi</a> @London, UK</p>    
+                                            <h4 class="title mb-0">Aucune mission n'est effectuée</h4>
+                                            <p class="text-muted mb-0">Visiter l'espace des missions</p>
+                                            <p class="text-muted mb-0"><a href=" {% url 'trouvermission' %} " class="text-primary">Cliquez ici</a> </p>
                                         </div>
                                     </div>
 
-                                    <div class="media key-feature align-items-center p-3 rounded shadow mt-4">
-                                        <img src=" {% static 'images/job/Codepen.svg' %} " class="avatar avatar-ex-sm" alt="">
-                                        <div class="media-body content ml-3">
-                                            <h4 class="title mb-0">Web Designer</h4>
-                                            <p class="text-muted mb-0">2 Years Experience</p>
-                                            <p class="text-muted mb-0"><a href=" {% static 'javascript:void(0)' %} " class="text-primary">Codepen</a> @Washington D.C, USA</p>    
-                                        </div>
-                                    </div>
 
-                                    <div class="media key-feature align-items-center p-3 rounded shadow mt-4">
-                                        <img src=" {% static 'images/job/Gitlab.svg' %} " class="avatar avatar-ex-sm" alt="">
-                                        <div class="media-body content ml-3">
-                                            <h4 class="title mb-0">UI Designer</h4>
-                                            <p class="text-muted mb-0">2 Years Experience</p>
-                                            <p class="text-muted mb-0"><a href=" {% static 'javascript:void(0)' %} " class="text-primary">Gitlab</a> @Perth, Australia</p>    
-                                        </div>
-                                    </div>
+
+
                                 </div><!--end col-->
                             </div><!--end row-->
                         </div>
-
+<!--
                         <h5 class="mt-4 mb-0">Annonces & News :</h5>
                         <div class="row">
-                            <div class="col-md-6 mt-4 pt-2">
-                                <div class="card blog rounded border-0 shadow">
-                                    <div class="position-relative">
-                                        <img src=" {% static 'images/blog/01.jpg' %} " class="card-img-top rounded-top" alt="...">
-                                    <div class="overlay rounded-top bg-dark"></div>
-                                    </div>
-                                    <div class="card-body content">
-                                        <h5><a href="  " class="card-title title text-dark">Design your apps in your own way</a></h5>
-                                        <div class="post-meta d-flex justify-content-between mt-3">
-                                            <ul class="list-unstyled mb-0">
-                                                <li class="list-inline-item mr-2 mb-0"><a href="  " class="text-muted like"><i class="mdi mdi-heart-outline mr-1"></i>33</a></li>
-                                                <li class="list-inline-item"><a href="
-                                            </ul>
-                                            <a href="  " class="text-muted readmore">Read More <i class="mdi mdi-chevron-right"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="author">
-                                        <small class="text-light user d-block"><i class="mdi mdi-account"></i> Calvin Carlo</small>
-                                        <small class="text-light date"><i class="mdi mdi-calendar-check"></i> 13th August, 2019</small>
-                                    </div>
-                                </div>
-                            </div><!--end col-->
-                            
-                            <div class="col-md-6 mt-4 pt-2">
-                                <div class="card blog rounded border-0 shadow">
-                                    <div class="position-relative">
-                                        <img src=" {% static 'images/blog/02.jpg' %} " class="card-img-top rounded-top" alt="...">
-                                    <div class="overlay rounded-top bg-dark"></div>
-                                    </div>
-                                    <div class="card-body content">
-                                        <h5><a href="  " class="card-title title text-dark">How apps is changing the IT world</a></h5>
-                                        <div class="post-meta d-flex justify-content-between mt-3">
-                                            <ul class="list-unstyled mb-0">
-                                                <li class="list-inline-item mr-2 mb-0"><a href="  " class="text-muted like"><i class="mdi mdi-heart-outline mr-1"></i>33</a></li>
-                                                <li class="list-inline-item"><a href=" " class="text-muted comments"><i class="mdi mdi-comment-outline mr-1"></i>08</a></li>
-                                            </ul>
-                                            <a href=" " class="text-muted readmore">Read More <i class="mdi mdi-chevron-right"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="author">
-                                        <small class="text-light user d-block"><i class="mdi mdi-account"></i> Calvin Carlo</small>
-                                        <small class="text-light date"><i class="mdi mdi-calendar-check"></i> 13th August, 2019</small>
-                                    </div>
-                                </div>
-                            </div><!--end col-->
+                                                                                                      {% for post in page.object_list %}
 
-                            <div class="col-12 mt-4 pt-2">
-                                {% url 'actualite' as index %}
-                                <a href=" {{index}} " class="btn btn-primary">Voir plus <i class="mdi mdi-chevron-right"></i></a>
-                            </div><!--end col-->
-                        </div><!--end row-->
+                            <div class="col-md-6 mt-4 pt-2">
+                                <div class="card blog rounded border-0 shadow">
+                                    <div class="position-relative">
+                                        <img src="{% static 'images/work/'%}{{ post.photo }}.jpg" class="card-img-top rounded-top" alt="...">
+                                    <div class="overlay rounded-top bg-dark"></div>
+                                    </div>
+                                    <div class="card-body content">
+                                        <h5><a href="  " class="card-title title text-dark">{{ post.title }}</a></h5>
+                                        <div class="post-meta d-flex justify-content-between mt-3">
+
+                                            <a href="{% url 'actualite_detail' post.id %}  " class="text-muted readmore">Lire plus <i class="mdi mdi-chevron-right"></i></a>
+                                        </div>
+                                    </div>
+                                    <div class="author">
+                                        <small class="text-light user d-block"><i class="mdi mdi-account"></i> Upgoods Support</small>
+                                        <small class="text-light date"><i class="mdi mdi-calendar-check"></i> {{ post.created_at }}</small>
+                                    </div>
+                                </div>
+                            </div>
+                                                                                          {% endfor %}
+
+
+
+                             <div class="col-12">
+                        <ul class="pagination justify-content-center mb-0">
+                                                    {% if page.has_previous %}
+
+                            <li class="page-item"><a class="page-link" href="{% url 'account_profile' %}?page={{ page.previous_page_number }}  " aria-label="Previous">Page précedente</a></li>
+                                                 {% endif %}
+                                                    {% if page.has_next %}
+
+                            <li class="page-item"><a class="page-link" href=" {% url 'account_profile' %}?page={{ page.next_page_number }} " aria-label="Next">Page suivante</a></li>
+                                                    {% endif %}
+
+                        </ul>
+                    </div>
+                        </div>end row-->
                     </div><!--end col-->
                 </div><!--end row-->
             </div><!--end container-->
