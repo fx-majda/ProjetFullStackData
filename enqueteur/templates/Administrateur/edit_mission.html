@@ -1,4 +1,4 @@
-{% extends 'administrateur/base_template.html' %}
+{% extends 'Administrateur/base_template.html' %}
 {% block page_title %}
 Edit Mission |  Mission ID : {{ mission.id }}
 {% endblock page_title %}
@@ -68,7 +68,7 @@ Edit Mission |  Mission ID : {{ mission.id }}
                     </select>
                     </div>
                     <div class="form-group">
-                    <label>Remuneration</label>
+                    <label>Dédommagements</label>
                     <input type="text" class="form-control" value="{{ mission.remuneration }}" name="remuneration">
 </div>
                     <label>Description</label>

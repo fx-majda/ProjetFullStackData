@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 {% load static %}
 
@@ -5,7 +6,7 @@
 
     <head>
         <meta charset="utf-8" />
-		<title>Upgoods - Accueil </title>
+		<title>EtuPlan - Accueil </title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="Upgoods indexpage" />
         <meta name="keywords" content="upgoods, client-mystere, ams, smice, ams international" />
@@ -32,36 +33,72 @@
         <link href=" {% static 'css/style.css' %} " rel="stylesheet" type="text/css" id="theme-opt" />
         <link href=" {% static 'css/colors/default.css' %} " rel="stylesheet" id="color-opt">
 
+
+ <style>
+    .navbar { background-color: #008c8d; }
+.navbar .navbar-nav .nav-link { color: #fff;  }
+.navbar .navbar-nav .nav-link:hover { color: #000000; }
+.navbar .navbar-nav .active > .nav-link { color: #b6ffff; }
+@media screen and (max-width: 600px) {
+  .navbar {
+            display: none;
+  }
+}
+.flag {
+  transition: all 300ms cubic-bezier(.25,.8,.25,1);
+
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 5px 7px rgba(0,0,0,0.60);
+}
+
+@media (min-width: 1200px) {#topnav .navigation-menu  .mob {display:block;}
+}
+@media (min-width: 1199px) { #topnav .navigation-menu .mob {display:none;} }
+
+</style>
     </head>
 
-    <body>
+    <body >
         <!-- Loader -->
-        <!-- <div id="preloader">
+        <div id="preloader">
             <div id="status">
                 <div class="spinner">
-                    <div class="double-bounce1"></div>
                     <div class="double-bounce2"></div>
                 </div>
             </div>
-        </div> -->
+        </div>
         <!-- Loader -->
-        
+
         <!-- Navbar STart -->
-        <header id="topnav" class="defaultscroll sticky">
+  <header id="topnav" class="defaultscroll sticky">
+
+	<!--- Navbar --->
+	<nav class="navbar navbar-expand-lg">
+		<div class="container">
+               {% url 'index' as index %}
+
+                <a class="navbar-brand text-white" href=" {{index}}">                        <img src=" {% static 'images/logo-light.png' %} " height="50" alt=""></a>
+
+			<div class="collapse navbar-collapse" id="nvbCollapse">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item  pl-1">
+                            {% url 'login' as login %}
+                        <a class="nav-link" href="{{login}}" id="ess">ESPACE ETUDIANT  : CONNEXION       <i class="uil uil-data-sharing      "></i>
+</a>
+					</li>
+
+
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<!--# Navbar #-->
+
+	<!--# Footer #-->
             <div class="container">
                 <!-- Logo container-->
-                <div>
-                    {% url 'index' as index %}
-                    <a class="logo" href=" {{index}} ">
-                        <img src=" {% static 'images/logo-dark.png' %} " height="24" alt="">
-                    </a>
-                </div>
-                									{% url 'login' as login %}
-                <div class="buy-button">
-                                                                  {% url 'login' as login %}
 
-                        <a href="{{login}}"  class="btn btn-primary">Se connecter</a>                </div><!--end login button-->
-                <!-- End Logo container-->
+                									{% url 'login' as login %}
+                         <!-- End Logo container-->
                 <div class="menu-extras">
                     <div class="menu-item">
                         <!-- Mobile menu toggle-->
@@ -78,60 +115,33 @@
 
                 <div id="navigation">
                     <!-- Navigation Menu-->
-                    <ul class="navigation-menu">
+                    <ul class="navigation-menu ">
                         {% url 'index' as index %}
-
-                        <li><a href=" {{index}} ">Accueil</a></li>
-                        {% url 'service' as service %}
-                        <li><a href=" {{service}} "> Professionnel</a></li>
-                          {% url 'panel' as guide %}
-
-                        <li><a href=" {{guide}} ">Panel</a></li>
-
-                        {% url 'guide' as guide %}
-
-                        <li><a href=" {{guide}} ">FAQs</a></li>
-                        {% url 'actualite' as actualite %}
-
-                        <li><a href=" {{actualite}} ">Actualités</a></li>
-                        {% url 'contact' as contact %}
-
-                        <li><a href=" {{contact}} ">Contact</a></li>
+                      <li><a href=" {{index}} " id="accueil">Accueil</a></li>
 
 
+                        {% url 'login' as login %}
+                        <li><a class="mob" href=" {{login}} ">Se connecter</a></li>
 
-                    </ul><!--end navigation menu-->
-                    <div class="buy-menu-btn d-none">
-                                                                                {% url 'login' as login %}
 
-                        <a href="{{login}}"  class="btn btn-primary">Se connecter</a>
-                    </div><!--end login button-->
+                 </ul><!--end navigation menu-->
+
+
                 </div><!--end navigation-->
             </div><!--end container-->
         </header><!--end header-->
         <!-- Navbar End -->
-        
         <!-- Hero Start -->
         <section class="bg-half-170 d-table w-100" id="home">
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-lg-7 col-md-7">
                         <div class="title-heading mt-4">
-                            <h1 class="heading mb-3"> UP Goods : Une co-création permanente à votre service.</h1>
-                            <p class="para-desc text-muted">Spécialisée dans l’accompagnement des réseaux retail de leurs performances commerciales et satisfaction client ;<br>
-
-                            L’expertise d’up goods en marketing des services prend appui sur une expérience éprouvée et pointue, un maillage international, des outils d’analyse et des conseils dans la mise en œuvre des solutions de croissance.<br>
-
-                            Combinant différents leviers que sont les audits, les visites mystères, les focus groupe… up goods délivre un diagnostic et une prescription des actions à mettre en œuvre dans la recherche de performances.<br>
-
-                            Notre pertinence dans l’analyse et notre maitrise des habitudes de consommations de vos clients en France et à l’étranger vous garantissent un « audit » en adéquation avec la réalité du terrain et un accompagnement pour des axes de progrès précis et pérennes.<br>
+                            <h1 id="title1" class="heading mb-3"> Gagne de l'argent tous les jours
+juste pour les 15-25 ans</h1>
+                            <p id="par1" class="para-desc text-muted">On est déjà 400 000 jeunes à vivre notre meilleure vie. Rejoins la communauté !
                             </p>
-                            <div class="watch-video mt-4 pt-2">
-                                {% url 'service' as service %}
 
-                                <a href=" {{ service }} " class="btn btn-primary m-1">Découvrez nos services</a>
-                                <a href="  " class="btn btn-icon btn-pills video-play-icon btn-primary m-1"><i data-feather="video" class="icons"></i></a><span class="font-weight-bold text-uppercase small align-middle ml-2">Watch Now</span>
-                            </div>
                         </div>
                     </div><!--end col-->
 
@@ -139,50 +149,23 @@
                     <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img class="d-block w-100" src=" {% static 'images/carousel/1.jpg' %} "  alt="First slide">
+      <img class="d-block w-100" src=" https://pouruneautreeconomie.fr/wp-content/uploads/2018/07/meilleure-banque-pour-etudiant-788x388.png " id="imageBie" alt="First slide">
     </div>
-    <div class="carousel-item">
-      <img class="d-block w-100" src=" {% static 'images/carousel/2.jpg' %}"  alt="Second slide">
-    </div>
-      <div class="carousel-item">
-      <img class="d-block w-100" src=" {% static 'images/carousel/3.jpg' %}"  alt="Send slide">
-    </div>
-      <div class="carousel-item">
-      <img class="d-block w-100" src=" {% static 'images/carousel/4.jpg' %}"  alt="Secnd slide">
-    </div>
-      <div class="carousel-item">
-      <img class="d-block w-100" src=" {% static 'images/carousel/5.jpg' %}"  alt="Secod slide">
-    </div>
-    <div class="carousel-item">
-      <img class="d-block w-100" src=" {% static 'images/carousel/6.jpg' %} "  alt="Third slide">
-    </div>
-      <div class="carousel-item">
-      <img class="d-block w-100" src=" {% static 'images/carousel/7.jpg' %} "  alt="Thrd slide">
-    </div>
-      <div class="carousel-item">
-      <img class="d-block w-100" src=" {% static 'images/carousel/8.jpg' %} "  alt="Tird slide">
-    </div>
+
   </div>
 </div>
                     </div><!--end col-->
                 </div><!--end row-->
             </div><!--end container-->
         </section><!--end section-->
-        <!-- Hero End -->     
-
+        <!-- Hero End -->
         <section class="section bg-light">
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-12 text-center">
                         <div class="section-title mb-4 pb-2">
-                            <h4 class="title mb-4">Découvrez Nos Compétences.</h4>
-                            <p class="text-muted para-desc mb-0 mx-auto">La grandeur d’une entreprise et en l’occurrence la notre puise  sa force dans les hommes et les femmes, salariés, consultants, <span class="text-primary font-weight-bold"> passionnés du marketing, attentifs, à l’écoute de l’autre,</span> cultivant la <span class="text-primary font-weight-bold"> bienveillance, l’agilité</span>, favorisant <span class="text-primary font-weight-bold"> l’autonomie</span> de nos clients.<br>
+                            <h4 id="titleh4" class="title mb-4">Comment utiliser EtuPlan ? </h4>
 
-Incontestablement notre valeur ajoutée, ce sont aussi et surtout les membres du panel, des consommateurs de tout âge et de tout horizon, ayant à cœur de donner leurs avis source d’amélioration.<br>
-
-                                Upgoods n’aurait pas de raison d’être sans nos clients qui nous font confiance et acceptent d’écouter <span class="text-primary font-weight-bold"> « la voix du consommateur ».</span>
-
-Ce sont aussi nos fournisseurs qui répondent à nos sollicitations avec professionnalisme. </p>
                         </div>
                     </div><!--end col-->
                 </div><!--end row-->
@@ -196,8 +179,9 @@ Ce sont aussi nos fournisseurs qui répondent à nos sollicitations avec profess
 
                             <div class="card-body p-0 content">
                                  <div class="content mt-4">
-                                <h5>Analyses sémiologiques et sémantiques</h5>
-                                <p class="text-muted mb-0">Valoriser l’importance du ressenti et des mots, mine d’or d’informations dans l’expérience client.</p>
+                                <h5 id="titlecard1">1</h5>
+                                <p id="contentcard1" class="text-muted mb-0">
+Inscris-toi et certifie ton compte pour gagner 2€ dans ta cagnotte.</p>
                             </div>
                             </div>
                         </div>
@@ -211,8 +195,9 @@ Ce sont aussi nos fournisseurs qui répondent à nos sollicitations avec profess
                             </div>
 
                             <div class="card-body p-0 content">
-                               <h5>Marketing des services et Stratégie</h5>
-                                <p class="text-muted mb-0">Innover par le service, apporter une valeur ajoutée au produit ou au concept. Accompagner à inscrire dans votre ADN de marque un relationnel spécifique.</p>
+                               <h5 id="titlecard2">2</h5>
+                                <p id="contentcard2" class="text-muted mb-0">Trouve l'offre qui te fait kiffer parmi tes marques préférées ♥️
+et fais ton shopping en passant par notre site</p>
 
                             </div>
                         </div>
@@ -225,56 +210,15 @@ Ce sont aussi nos fournisseurs qui répondent à nos sollicitations avec profess
                              </div>
 
                             <div class="card-body p-0 content">
-                                  <h5>Accompagner les hommes et les femmes au service des clients</h5>
-                                <p class="text-muted mb-0">La force d’un projet de service repose sur la volonté de valoriser le métier et ceux qui le font, par la formation et l’accompagnement au changement</p>
+                                  <h5 id="titlecard3">3</h5>
+                                <p id="contentcard3" class="text-muted mb-0">
+💸 Gagne de l'argent à chaque achat et utilise ta cagnotte pour obtenir du cash et des cadeaux 💸</p>
 
                             </div>
                         </div>
                     </div><!--end col-->
 
-                    <div class="col-lg-4 col-md-6 col-12 mt-4 pt-2">
-                        <div class="card features feature-clean explore-feature p-4 px-md-3 border-0 rounded-md shadow text-center">
-                            <div class="icons text-primary text-center mx-auto">
-      <i class="uil uil-comparison h1 text-primary"></i>
-                                            </div>
 
-                            <div class="card-body p-0 content">
-                                  <h5>Analyse des habitudes de consommation</h5>
-                                <p class="text-muted mb-0">Parce que d’une région à l’autre d’un pays à l’autre, les formes de pensées, le langage, le rapport au temps et à l’environnement conditionnent les habitudes de consommation, nous étudions pour vous ces comportements et vous conseillons sur les déclinaisons à apporter pour coller à un concept homogène.</p>
-
-                            </div>
-                        </div>
-                    </div><!--end col-->
-
-                    <div class="col-lg-4 col-md-6 col-12 mt-4 pt-2">
-                        <div class="card features feature-clean explore-feature p-4 px-md-3 border-0 rounded-md shadow text-center">
-                              <div class="icons text-primary text-center mx-auto">
-      <i class="uil uil-brackets-curly  h1 text-primary"></i>
-                            </div>
-
-
-                            <div class="card-body p-0 content">
-                             <h5>Digitalisation des outils de mesure de la satisfaction</h5>
-                                <p class="text-muted mb-0">pour gagner en simplicité et en efficacité, vivre avec les besoins actuels de la société qu’implique notre époque. Etre naturellement « UP TO DATE » grâce à l’interactivité de nos outils et de notre application.</p>
-
-                            </div>
-
-                        </div>
-                    </div><!--end col-->
-
-                    <div class="col-lg-4 col-md-6 col-12 mt-4 pt-2">
-                        <div class="card features feature-clean explore-feature p-4 px-md-3 border-0 rounded-md shadow text-center">
-                            <div class="icons text-primary text-center mx-auto">
-   <i class="uil uil-users-alt  h1 text-primary"></i>
-                                     </div>
-
-                            <div class="card-body p-0 content">
-                                   <h5>Co-création</h5>
-                                <p class="text-muted mb-0">Ces ateliers de marketing collaboratif reposant sur la participation de tous, consommateurs, employés, fournisseurs permettent une création de valeur à l’image de l’ADN de votre marque dans un processus d’innovation</p>
-
-                            </div>
-                        </div>
-                    </div><!--end col-->
                 </div><!--end row-->
             </div><!--end container-->
 
@@ -283,71 +227,7 @@ Ce sont aussi nos fournisseurs qui répondent à nos sollicitations avec profess
 
         <!-- Feature Start -->
         <!-- Feature End -->
- <section class="section" style="background: url(' {% static 'images/Powerplant.Mall_.original.5331.jpg' %} ') center center;background-position: 50% 3px;">
-            <div class="bg-overlay"></div>
-            <div class="container">
-                <div class="row py-5 justify-content-center">
-                    <div class="col-lg-8 text-center">
-                        <div id="owl-fade" class="owl-carousel owl-theme">
-                            <div class="customer-testi text-center mx-4">
-                                <p class="text-light para-dark h5 font-weight-normal font-italic mt-4">« Très tôt dans ma carrière professionnelle, je me suis posée la question de savoir pourquoi ce qui était une évidence pour moi ne l’était pas forcément pour mes collègues. Accueillir, écouter le client, lui répondre avec bienveillance faisait partie de  mon  ADN  hérité  de ma culture marocaine. Les valeurs de mon pays, l’hospitalité, la générosité, le partage étaient à mon grand bonheur ancrés en moi et dans mes habitudes. C’est en France que je grandis et développe mes qualités d’exactitude, de précision, d’écoute et de curiosité dans le savoir. Couplée à mon expérience professionnelle, cette alchimie donnera naissance à AMS International en 2009 »</p>
-                                <ul class="list-unstyled mb-0">
-                                    <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
-                                    <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
-                                    <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
-                                    <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
-                                    <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
-                                </ul>
-                                <h6 class="text-light title-dark"> Fatima Boussalla-Idrissi  </h6>
-                                 <h6 class="text-light title-dark"> Dirigeante fondatrice  </h6>
-                            </div><!--end customer testi-->
 
-
-
-
-
-                        </div><!--end owl carousel-->
-                    </div><!--end col-->
-                </div><!--end row-->
-            </div><!--end container-->
-        </section><!--end section-->
- <section class="py-4 bg-light">
-            <div class="container">
-                <div class="row " >
-                        <div class="col-sm-2">
-                        <img src=" {% static 'images/partners/01.jpg' %} " width="170" height="170" alt="">
-                    </div><!--end col-->
-
-                        <div class="col-sm-2">
-                        <img src=" {% static 'images/partners/02.jpg' %} "width="170" height="170"  alt="">
-                    </div><!--end col-->
-
-                        <div class="col-sm-2">
-                        <img src=" {% static 'images/partners/05.jpg' %} " width="170" height="170" alt="">
-                    </div><!--end col-->
-
-                        <div class="col-sm-2">
-                        <img src=" {% static 'images/partners/06.jpg' %} " width="170" height="170" alt="">
-                    </div><!--end col-->
-
-                        <div class="col-sm-2">
-                        <img src=" {% static 'images/partners/07.jpg' %} " width="170" height="170"  alt="">
-                    </div><!--end col-->
-
-                        <div class="col-sm-2">
-                        <img src=" {% static 'images/partners/08.jpg' %} " width="170" height="170" alt="">
-                    </div><!--end col-->
-                        <div class="col-sm-2" style="margin-left:190px;">
-                        <img src=" {% static 'images/partners/09.jpg' %} " width="170" height="170" style="margin-top:20px;"  alt="">
-                    </div><!--end col-->
-                          <div class="col-sm-2">
-                        <img src=" {% static 'images/partners/10.jpg' %} " width="170" height="170" style="margin-top:20px;" alt="">
-                    </div><!--end col-->
-                     <div class="col-sm-2">
-                        <img src=" {% static 'images/partners/03.jpg' %} " width="170" height="170" style="margin-top:20px;" alt="">
-                    </div><!--end col--> <div class="col-sm-2">
-                        <img src=" {% static 'images/partners/04.jpg' %} " width="170" height="170" style="margin-top:20px;" alt="">
-                    </div><!--end col-->
                 </div><!--end row-->
             </div><!--end container-->
         </section>
@@ -360,15 +240,14 @@ Ce sont aussi nos fournisseurs qui répondent à nos sollicitations avec profess
                 <div class="row align-items-center">
                     <div class="col-lg-6">
                         <div class="section-title">
-                            <h4 class="title mb-4">Au-delà des compétences, la connaissance de vos <span class="text-primary">secteurs d’activité</span></h4>
-                            <p class="text-muted para-desc">Nous adapter à votre domaine, l’adopter le temps de nos missions, vous apporter un regard nouveau pour ré-enchanter le client, la connaissance et l’intérêt que nous vouons à votre secteur d’activité permettent cette co-création permanente. </p>
-                            <ul class="list-unstyled text-muted">
-                                <li class="mb-0"><span class="text-primary h5 mr-2"><i class="uil uil-check-circle align-middle"></i></span><span class="text-primary">Retail:</span> Mettre au cœur de votre stratégie la satisfaction client comme vecteur de vos ventes quel que soit le concept de votre réseau. Mesurer, comprendre, analyser et vous adapter pour réinventer l’expérience client dans vos points de vente.</li>
-                                <li class="mb-0"><span class="text-primary h5 mr-2"><i class="uil uil-check-circle align-middle"></i></span><span class="text-primary">Hôtellerie et Tourisme :</span> Grâce à la création de référentiels de services, base des audits, adaptés aux exigences des métiers de l’hôtellerie et du tourisme</li>
-                                <li class="mb-0"><span class="text-primary h5 mr-2"><i class="uil uil-check-circle align-middle"></i></span><span class="text-primary">Transport : </span> Opérateurs des aéroports, compagnies aériennes, de transport routier maritime ou ferroviaire ; différenciez- vous grâce à la connaissance du parcours de vos passagers, de leur état d’esprit durant les différentes étapes du parcours. Adaptez vos rituels de services tout en intégrant vos contraintes de sureté et de temps.</span></li>
-                                <li class="mb-0"><span class="text-primary h5 mr-2"><i class="uil uil-check-circle align-middle"></i></span><span class="text-primary"> Industrie agroalimentaire et cosmétiques, biens de consommation et services: </span> s’assurer que le produit colle aux attentes des consommateurs, qu’il soit bien placé ; que les services des administrations publiques répondent aux attentes des usagers.</span></li>
+                            <h4 id="titlehh4" class="title mb-4"><span class="text-primary">Le site préféré des 15-25 ans !
+</span></h4>
+                            <p id="par6" class="text-muted para-desc">Tu veux kiffer ta vie de lycéen, d’étudiant et de jeune actif simplement et au maximum. Mieux vivre, bien manger, te faire plaisir et sortir avec tes potes. Sauf qu’entre les révisions, les cours, les parents, ton job et ton appartement, ton budget pour profiter de ton temps libre est pas ouf.
 
-                            </ul>
+Ce qu’il te faudrait, c’est être vraiment favorisé pour ton shopping et tes dépenses au quotidien.
+
+C’est donc pour toi qu’on a créé EtuPlan : l'appli de shopping des 15 - 25 ans avec laquelle tu gagnes de l'argent à chaque achat.</p>
+
                         </div>
                     </div><!--end col-->
 
@@ -380,7 +259,7 @@ Ce sont aussi nos fournisseurs qui répondent à nos sollicitations avec profess
                                         <div class="card counter-box border-0 bg-light shadow text-center rounded">
                                             <div class="card-body py-5">
                                                 <h2 class="mb-0"><span class="counter-value" data-count="100"></span>%</h2>
-                                                <h5 class="counter-head mb-0">Clients satisfaits</h5>
+                                                <h5 id="Clsat" class="counter-head mb-0">Etudiants satisfaits</h5>
                                             </div>
                                         </div>
                                     </div><!--end col-->
@@ -389,7 +268,7 @@ Ce sont aussi nos fournisseurs qui répondent à nos sollicitations avec profess
                                         <div class="card counter-box border-0 bg-primary shadow text-center rounded">
                                             <div class="card-body py-5">
                                                 <h2 class="text-light title-dark mb-0"><span class="counter-value" data-count="5200"></span>+</h2>
-                                                <h5 class="counter-head mb-0 title-dark text-light">Expériences clients</h5>
+                                                <h5 id="excl" class="counter-head mb-0 title-dark text-light">Expériences réussies</h5>
                                             </div>
                                         </div>
                                     </div><!--end col-->
@@ -402,7 +281,7 @@ Ce sont aussi nos fournisseurs qui répondent à nos sollicitations avec profess
                                         <div class="card counter-box border-0 bg-success shadow text-center rounded">
                                             <div class="card-body py-5">
                                                 <h2 class="text-light title-dark mb-0"><span class="counter-value" data-count="10"></span></h2>
-                                                <h5 class="counter-head mb-0 title-dark text-light"> Langues parlées</h5>
+                                                <h5 id="langparl" class="counter-head mb-0 title-dark text-light"> Partenaires</h5>
                                             </div>
                                         </div>
                                     </div><!--end col-->
@@ -411,7 +290,7 @@ Ce sont aussi nos fournisseurs qui répondent à nos sollicitations avec profess
                                         <div class="card counter-box border-0 bg-light shadow text-center rounded">
                                             <div class="card-body py-5">
                                                 <h2 class="mb-0"><span class="counter-value" data-count="260"></span>K</h2>
-                                                <h5 class="counter-head mb-0">Membres du panel actif</h5>
+                                                <h5 id="mem" class="counter-head mb-0">Membres du panel actif</h5>
                                             </div>
                                         </div>
                                     </div><!--end col-->
@@ -425,90 +304,12 @@ Ce sont aussi nos fournisseurs qui répondent à nos sollicitations avec profess
 
         <!-- Testimonial Start -->
 
- <div class="container mt-100 mt-60 bg-light">
-                <div class="row justify-content-center">
-                    <div class="col-12 text-center">
-                        <div class="section-title mb-4 pb-2">
-                            <h4 class="title mb-4">Fidèle à nos valeurs!</h4>
-                            <p class="text-muted para-desc mx-auto mb-0">Notre entreprise <span class="text-primary font-weight-bold">soutient</span>  les deux fondations suivantes : </p>
-                        </div>
-                    </div><!--end col-->
-                </div><!--end row-->
 
-                <div class="row justify-content-center mt-4">
-                    <div class="col-lg-8 col-12">
-                        <div id="single-owl" class="owl-carousel owl-theme">
-                            <!-- Review Start -->
-                            <div class="card rounded bg-light overflow-hidden border-0 m-2">
-                                <div class="row align-items-center no-gutters">
-                                    <div class="col-md-5">
-                                        <img src="{% static 'images/client/google.png' %}" class="img-fluid" alt="">
-                                    </div><!--end col-->
-
-                                    <div class="col-md-7">
-                                        <div class="card-body customer-testi">
-                                            <h6 class="text-primary font-weight-bold md-4">- Fondation idée (institut des épilepsies)</h6>
-
-                                    <p class="text-muted h6 mb-0 font-italic">  Les missions La Fondation IDÉE a eu pour but principal de contribuer à la création et au développement de l'Institut des épilepsies et plus largement de contribuer à développer la recherche, la valorisation industrielle et la formation spécialisée, par la recherche de fonds et de subventions. Lire la suite L'organisation La Fondation, créée en 2007 sous l'égide de la Fondation Rhône-Alpes Futur (FRAF) et à présent abritée par la Fondation Pour l'Université de Lyon (FPUL), est gérée par un Directoire accompagné d'un Conseil de Surveillance.</p>
-                                        </div>
-                                    </div><!--end col-->
-                                </div><!--end row-->
-                            </div>
-                            <!-- Review End -->
-
-                            <!-- Review Start -->
-                            <div class="card rounded bg-light overflow-hidden border-0 m-2">
-                                <div class="row align-items-center no-gutters">
-                                    <div class="col-md-5">
-                                        <img src="{% static 'images/client/lenovo.png' %}" class="img-fluid" alt="">
-                                    </div><!--end col-->
-
-                                    <div class="col-md-7">
-                                        <div class="card-body customer-testi">
-                                            <h6 class="text-primary font-weight-bold">- Fondation Béatrice Schönberg</h6>
-
-                                            <p class="text-muted h6 mb-0 font-italic">  Habitant loin des écoles, une majorité des petites filles marocaines issues du monde rural doivent parcourir des kms à pieds pour accéder à l’éducation. La pauvreté et l’éloignement les condamnent à stopper leurs études après le primaire. Par manque d’instruction, dans les familles où les femmes souvent ne savent ni lire ni écrire, elles restent victimes de mariages précoces et de travail infantile.
-
-Donner aux petites filles accès à l’école, c’est leur ouvrir les portes de l’éducation, de leurs droits, de leur liberté. </p>
-                                        </div>
-                                    </div><!--end col-->
-                                </div><!--end row-->
-                            </div>
-                            <!-- Review End -->
-                        </div></div></div></div>
-             <section class="section">
-       <div class="container mt-100 mt-60">
-                <div class="row justify-content-center">
-                    <div class="col-12 text-center">
-                        <div class="section-title mb-4 pb-2">
-                            <h4 class="title mb-4">Téléchargez notre Livre Blanc</h4>
-
-                            <p class="text-muted para-desc mx-auto mb-0">Vous souhaitez en savoir plus sur <span class="text-primary font-weight-bold"> Upgoods</span> ?  Renseignez votre email pour obtenir toutes les réponses à vos questions .</p>
-                        </div>
-                    </div><!--end col-->
-                </div><!--end row-->
-
-                <div class="row justify-content-center mt-4 pt-2">
-                    <div class="col-lg-7 col-md-10">
-                        <form method="get" action="{% static 'images/404.svg' %} "target="_blank">
-                            <div class="form-group mb-0">
-                                <div class="input-group">
-                                    <input name="email" id="email" type="email" class="form-control" placeholder="Votre boite mail :" required="" aria-describedby="newssubscribebtn">
-                                    <div class="input-group-append">
-                                        <button class="btn btn-primary submitBnt" type="submit" id="newssubscribebtn">Telecharger</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </form><!--end form-->
-                    </div><!--end col-->
-                </div><!--end row-->
-            </div><!--end container-->
-        </section><!--end section-->
         <!-- Testimonial End -->
 
         <!-- Footer Start -->
-                   {% include 'footer.html' %}
-
+                   <div id="footerref">
+                    </div>
         <!-- Footer End -->
 
         <!-- Back to top -->
@@ -524,10 +325,10 @@ Donner aux petites filles accès à l’école, c’est leur ouvrir les portes d
         <script src=" {% static 'js/jquery.magnific-popup.min.js' %} "></script>
         <script src=" {% static 'js/magnific.init.js' %} "></script>
         <!-- SLIDER -->
-        <script src=" {% static 'js/owl.carousel.min.js ' %} "></script>
-        <script src=" {% static 'js/owl.init.js ' %} "></script>
+        <script src=" {% static 'js/owl.carousel.min.js' %} "></script>
+        <script src=" {% static 'js/owl.init.js' %} "></script>
         <!-- Counter -->
-        <script src=" {% static 'js/counter.init.js ' %} "></script>
+        <script src=" {% static 'js/counter.init.js' %} "></script>
         <!-- Icons -->
         <script src=" {% static 'js/feather.min.js' %} "></script>
         <script src="https://unicons.iconscout.com/release/v3.0.3/script/monochrome/bundle.js"></script>
@@ -544,5 +345,180 @@ Donner aux petites filles accès à l’école, c’est leur ouvrir les portes d
                 duration: 1000
             });
         </script>
+
+         <script type="text/javascript">
+           $(document).ready(function(){
+           $('#es').click(function(){
+           Es_Function()
+           var n = document.getElementById('footerref');
+           var cont = n.innerHTML;
+           n.innerHTML = cont
+            });
+        });
+
+         $(document).ready(function(){
+        $('#en').click(function(){
+            En_Function()
+            var n = document.getElementById('footerref');
+           var cont = n.innerHTML;
+           n.innerHTML = cont
+
+        });
+    });
+
+       $(document).ready(function(){
+        $('#fr').click(function(){
+        console.log(localStorage.getItem("lang"))
+            localStorage.removeItem("lang");
+            location.reload();
+        });
+    });
+
+var welcome = {
+    titleh4: "Discover Our Skills.",
+    title1: "UP Goods: A permanent co-creation at your service.",
+    par1: "Specialized in supporting retail networks with their commercial performance and customer satisfactionUp goods expertise in service marketing is based on proven and in-depth experience, international networking, analysis tools and advice in the implementation of growth solutions.Combining different levers such as audits, mystery visits, focus groups… up goods delivers a diagnosis and a prescription of the actions to be implemented in the search for performance.Our relevance in the analysis and our mastery of the consumption habits of your customers in France and abroad guarantee you an audit in line with the reality on the ground and support for specific and sustainable areas of progress <br>",
+	par2: "The size of a company and in this case ours draws its strength from the men and women, employees, consultants, <span class = 'text-primary font-weight-bold'> marketing enthusiasts, attentive, to the 'listening to the other, </span> cultivating <span class = 'text-primary font-weight-bold'> benevolence, agility </span>, favoring <span class = 'text-primary font-weight -bold '> autonomy </span> of our customers. <br>Our added value is undoubtedly also and above all the members of the panel, consumers of all ages and from all backgrounds, keen to give their opinions that are a source of improvement. <br>Upgoods would have no reason to exist without our customers who trust us and agree to listen to <span class = 'text-primary font-weight-bold'> the voice of the consumer. </span>It is also our suppliers who respond to our requests with professionalism. </p>",
+	titlecard1 : "Semiological and semantic analyzes",
+	titlecard2: "Service Marketing and Strategy",
+	titlecard3: "Support men and women in the service of customers",
+	titlecard4: "Analysis of consumption habits",
+	titlecard5: "Digitization of satisfaction measurement tools",
+	titlecard6: "Co-creation",
+	contentcard1: "Emphasize the importance of feelings and words, a gold mine of information in the customer experience.",
+	contentcard2: "Innovate through service, bring added value to the product or concept. Helping to register a specific relationship in your brand DNA.",
+	contentcard3: "The strength of a service project is based on the desire to promote the profession and those who do it, through training and support for change",
+	contentcard4:"Because from one region to another, from one country to another, the forms of thought, the language, the relationship to time and the environment condition consumption habits, we study these behaviors for you and you advise on the variations to bring to stick to a homogeneous concept.",
+	contentcard5: "to gain in simplicity and efficiency, to live with the current needs of society that our time implies. To be naturally 'UP TO DATE' thanks to the interactivity of our tools and our application.",
+	contentcard6: "These collaborative marketing workshops based on the participation of all, consumers, employees, suppliers allow value creation in the image of your brand's DNA in an innovation process",
+	par5: "<span style='color:white;'><h5>Very early in my professional career, I asked myself why what was obvious for me was not necessarily for my colleagues. Welcoming, listening to the client, responding with kindness was part of my DNA inherited from my Moroccan culture. The values of my country, hospitality, generosity, sharing were to my great happiness rooted in me and in my habits. It was in France that I grew up and developed my qualities of accuracy, precision, listening and curiosity in knowledge. Coupled with my professional experience, this alchemy will give birth to AMS International in 2009</h5></span>",
+	titlehh4: "Beyond skills, knowledge of your <span class = 'text-primary'> sectors of activity </span>",
+    par6:"We adapt to your field, adopt the time of our missions, bring you a new perspective to re-enchant the customer, the knowledge and interest that we devote to your sector of activity allow this permanent co-creation.",
+    li1:"Put customer satisfaction at the heart of your strategy as a vehicle for your sales, whatever the concept of your network. Measure, understand, analyze and adapt to reinvent the customer experience in your points of sale.",
+    li2:"Thanks to the creation of service repositories, the basis of audits, adapted to the requirements of the hotel and tourism professions",
+    li3:"Operators of airports, airlines, road, sea or rail transport; differentiate yourself by knowing your passengers' journey and their state of mind during the different stages of the journey. Adapt your service rituals while integrating your safety and time constraints.",
+    li4: "ensure that the product meets consumers' expectations, that it is well placed; that public administration services meet users' expectations.",
+    //subli1:"Food industry and cosmetics, consumer goods and services",
+    title10: "True to our values",
+    parN1:"Our company supports the following two foundations:",
+    coursel1:"Missions The main goal of the IDEA Foundation was to contribute to the creation and development of the Institute of Epilepsies and more broadly to help develop research, industrial development and specialized training, by seeking funds and subsidies. . Read more The organization The Foundation, created in 2007 under the aegis of the Rhône-Alpes Futur Foundation (FRAF) and now housed by the Fondation Pour l'Université de Lyon (FPUL), is managed by a Management Board accompanied by a Supervisory Board.",
+    coursel2:"Living far from schools, a majority of Moroccan girls from rural areas have to walk kilometers to access education. Poverty and remoteness condemn them to stop studying after primary school. Due to a lack of education, in families where women often cannot read or write, they remain victims of early marriages and child labor.Giving little girls access to school is to open the doors to education, to their rights, to their freedom.",
+    white:"Download our White Paper",
+    more: "You want to know more Fill in your email to get all the answers to your questions",
+    cnxbtn: "Log in",
+    }
+
+function En_Function() {
+  var x = 'en';
+  localStorage.setItem("lang",x)
+  document.getElementById("imageBie").src="{% static 'images/carousel/1en.jpg' %}";
+  document.getElementById("imageBie1").src="{% static 'images/carousel/2en.jpg' %}";
+  document.getElementById("imageBie2").src="{% static 'images/carousel/3en.jpg' %}";
+  document.getElementById("imageBie3").src="{% static 'images/carousel/4en.jpg' %}";
+  document.getElementById("imageBie4").src="{% static 'images/carousel/5en.jpg' %}";
+  document.getElementById("imageBie5").src="{% static 'images/carousel/6en.jpg' %}";
+  document.getElementById("imageBie6").src="{% static 'images/carousel/7en.jpg' %}";
+  document.getElementById("imageBie7").src="{% static 'images/carousel/8en.jpg' %}";
+  console.log(localStorage.getItem("lang"))
+  document.getElementById("title1").innerHTML = welcome.title1
+  document.getElementById("par1").innerHTML = welcome.par1
+  document.getElementById("titleh4").innerHTML = welcome.titleh4
+  document.getElementById("par2").innerHTML = welcome.par2
+  document.getElementById("titlecard1").innerHTML = welcome.titlecard1
+  document.getElementById("titlecard2").innerHTML = welcome.titlecard2
+  document.getElementById("titlecard3").innerHTML = welcome.titlecard3
+  document.getElementById("titlecard4").innerHTML = welcome.titlecard4
+  document.getElementById("titlecard5").innerHTML = welcome.titlecard5
+  document.getElementById("titlecard6").innerHTML = welcome.titlecard6
+  document.getElementById("contentcard1").innerHTML = welcome.contentcard1
+  document.getElementById("contentcard2").innerHTML = welcome.contentcard2
+  document.getElementById("contentcard3").innerHTML = welcome.contentcard3
+  document.getElementById("contentcard4").innerHTML = welcome.contentcard4
+  document.getElementById("contentcard5").innerHTML = welcome.contentcard5
+  document.getElementById("contentcard6").innerHTML = welcome.contentcard6
+  document.getElementById("owl-fade").innerHTML= welcome.par5.toString()
+  document.getElementById("titlehh4").innerHTML = welcome.titlehh4
+  document.getElementById("par6").innerHTML = welcome.par6
+  document.getElementById("li1").innerHTML = welcome.li1
+  document.getElementById("li2").innerHTML = welcome.li2
+  document.getElementById("li3").innerHTML = welcome.li3
+  document.getElementById("li4").innerHTML = welcome.li4
+  //document.getElementById("subli1").innerHTML = welcome.subli1
+
+  //document.getElementById("coursel2").innerHTML = welcome.coursel2
+  document.getElementById("white").innerHTML = welcome.white
+  document.getElementById("more").innerHTML = welcome.more
+  document.getElementById("dec").innerHTML = "Discover our services"
+  document.getElementById("Clsat").innerHTML = "Satisfied customers"
+  document.getElementById("langparl").innerHTML ="Spoken languages"
+  document.getElementById("excl").innerHTML ="customer experiences"
+  document.getElementById("mem").innerHTML ="Active panel members"
+  document.getElementById("accueil").innerHTML ="Homepage"
+  document.getElementById("pro").innerHTML = "Professional"
+  document.getElementById("ess").innerHTML ="INVESTIGATOR AREA: LOG IN"
+  document.getElementById("panel").innerHTML ="Panel"
+}
+
+function Es_Function() {
+  var x = 'es';
+  localStorage.setItem("lang",x)
+  console.log(localStorage.getItem("lang"))
+document.getElementById("imageBie").src="{% static 'images/carousel/1es.jpg' %}";
+  document.getElementById("imageBie1").src="{% static 'images/carousel/2es.jpg' %}";
+  document.getElementById("imageBie2").src="{% static 'images/carousel/3es.jpg' %}";
+  document.getElementById("imageBie3").src="{% static 'images/carousel/4es.jpg' %}";
+  document.getElementById("imageBie4").src="{% static 'images/carousel/5es.jpg' %}";
+  document.getElementById("imageBie5").src="{% static 'images/carousel/6es.jpg' %}";
+  document.getElementById("imageBie6").src="{% static 'images/carousel/7es.jpg' %}";
+  document.getElementById("imageBie7").src="{% static 'images/carousel/8es.jpg' %}";  document.getElementById("dec").innerHTML = "Descubra nuestros servicios"
+  document.getElementById("title1").innerHTML = "UP Goods: Una co-creación permanente a su servicio."
+  document.getElementById("par1").innerHTML = "Especializados en apoyar a las redes minoristas con su desempeño comercial y la satisfacción del cliente La experiencia en mercadeo de servicios se basa en una experiencia probada y profunda, redes internacionales, herramientas de análisis y asesoramiento en la implementación de soluciones de crecimiento. Combinando diferentes palancas como auditorías , visitas misteriosas, grupos focales ... up Goods entrega un diagnóstico y una prescripción de las acciones a implementar en la búsqueda del desempeño. Nuestra relevancia en el análisis y nuestro dominio de los hábitos de consumo de sus clientes en Francia y en el extranjero le garantizan una auditoría en consonancia con la realidad sobre el terreno y apoyo a áreas de progreso específicas y sostenibles <br> "
+  document.getElementById("titleh4").innerHTML = "Descubra nuestras habilidades"
+  document.getElementById("par2").innerHTML = "El tamaño de una empresa, y en este caso la nuestra, se basa en hombres y mujeres, empleados, consultores, <span class = 'text-primary font-weight-bold'> entusiastas del marketing, atentos, a la escucha al otro, </span> cultivar <span class = 'text-primary font-weight-bold'> benevolencia, agilidad </span>, favoreciendo <span class = 'text-primary font-weight -bold'> autonomía </span> de nuestros clientes. <br> Nuestro valor añadido es sin duda también y sobre todo los miembros del panel, consumidores de todas las edades y procedencias, deseosos de dar sus opiniones que sean fuente de mejora. <br> Upgoods no tendría ninguna razón de existir sin nuestros clientes que confían en nosotros y aceptan escuchar <span class = 'text-primary font-weight-bold'> la voz del consumidor. </span> También son nuestros proveedores quienes responden a nuestras solicitudes con profesionalidad. </p> "
+  document.getElementById("titlecard1").innerHTML = "Análisis semiológicos y semánticos"
+  document.getElementById("titlecard2").innerHTML = "Estrategia y marketing de servicios"
+  document.getElementById("titlecard3").innerHTML = "Apoyar a hombres y mujeres en el servicio a los clientes"
+  document.getElementById("titlecard4").innerHTML = "Análisis de los hábitos de consumo"
+  document.getElementById("titlecard5").innerHTML = "Digitalización de herramientas de medición de la satisfacción"
+  document.getElementById("titlecard6").innerHTML = "Co-creación"
+  document.getElementById("contentcard1").innerHTML = "Enfatice la importancia de los sentimientos y las palabras, una mina de oro de información en la experiencia del cliente"
+  document.getElementById("contentcard2").innerHTML = "Innovar a través del servicio, aportar valor añadido al producto o concepto. Ayudando a registrar una relación concreta en el ADN de tu marca"
+  document.getElementById("contentcard3").innerHTML = "La fuerza de un proyecto de servicio se basa en el deseo de promover la profesión y quienes la realizan, a través de la formación y el apoyo al cambio"
+  document.getElementById("contentcard4").innerHTML = "Porque de una región a otra, de un país a otro, las formas de pensamiento, el lenguaje, la relación con el tiempo y el medio ambiente condicionan los hábitos de consumo, estudiamos estos comportamientos por ti y te asesoramos sobre las variaciones a llevar a ceñirse a un concepto homogéneo. "
+  document.getElementById("contentcard5").innerHTML = "ganar en simplicidad y eficiencia, vivir con las necesidades actuales de la sociedad que nuestro tiempo implica. Estar naturalmente 'ACTUALIZADO' gracias a la interactividad de nuestras herramientas y nuestra aplicación."
+  document.getElementById("contentcard6").innerHTML = "Estos talleres de marketing colaborativo basado  en la participación de todos, consumidores, empleados, proveedores permiten la creación de valor en la imagen del ADN de tu marca en un proceso de innovación"
+  document.getElementById("owl-fade").innerHTML = "<span style='color:white;'><h5>Muy temprano en mi carrera profesional, me preguntaba por qué lo obvio para míno era necesariamente para mis compañeros. Acoger, escuchar al cliente, responder con amabilidad era parte de mi ADN heredado de mi cultura marroquí. Los valores de mi país, la hospitalidad, la generosidad, el compartir fueron para mi gran felicidad arraigada en mí y en mis hábitos. Fue en Francia donde crecí y desarrollé mis cualidades de exactitud, precisión, escucha y curiosidad en el conocimiento. Unido a mi experiencia profesional, esta alquimia dará a luz a AMS International en 2009</h5></span> "
+  document.getElementById("titlehh4").innerHTML = "Más allá de las habilidades, el conocimiento de sus <span class = 'text-primary'> sectores de actividad </span>",
+  document.getElementById("par6").innerHTML = "Nos adaptamos a tu campo, adoptamos el tiempo de nuestras misiones, te traemos una nueva perspectiva para reencantar al cliente, el conocimiento y el interés que dedicamos a tu sector de actividad permiten esta co-creación permanente."
+  document.getElementById("li1").innerHTML = "Pon la satisfacción del cliente en el centro de tu estrategia como vehículo de tus ventas, sea cual sea el concepto de tu red. Mide, comprende, analiza y adapta para reinventar la experiencia del cliente en tus puntos de venta."
+  document.getElementById("li2").innerHTML = "Gracias a la creación de repositorios de servicios, base de auditorías, adaptados a los requerimientos de las profesiones hoteleras y turísticas"
+  document.getElementById("li3").innerHTML = "Operadores de aeropuertos, aerolíneas, transporte terrestre, marítimo o ferroviario; diferenciate conociendo el viaje de tus pasajeros y su estado de ánimo durante las diferentes etapas del viaje. Adapta tus rituales de servicio integrando tu seguridad y limitaciones de tiempo"
+  document.getElementById("li4").innerHTML = "asegurar que el producto cumpla con las expectativas de los consumidores, que esté bien ubicado; que los servicios de la administración pública cumplan con las expectativas de los usuarios"
+  //document.getElementById("subli1").innerHTML = espagnol.subli1
+  //document.getElementById("coursel2").innerHTML = "<p> Al vivir lejos de las escuelas, la mayoría de las niñas marroquíes de las zonas rurales tienen que caminar kilómetros para acceder a la educación. La pobreza y la lejanía las condenan a dejar de estudiar después de la escuela primaria. Debido a la falta de educación, en familias donde las mujeres a menudo no saben leer ni escribir, siguen siendo víctimas de matrimonios precoces y trabajo infantil. Dar acceso a las niñas a la escuela es abrir las puertas a la educación, a sus derechos, a su libertad. </p> "
+  document.getElementById("white").innerHTML = "Descargue nuestro informe técnico"
+  document.getElementById("more").innerHTML = "Quieres saber más Rellena tu correo electrónico para obtener todas las respuestas a tus preguntas"
+  document.getElementById("Clsat").innerHTML = "Clientes satisfechos"
+  document.getElementById("langparl").innerHTML ="Lenguajes hablados"
+  document.getElementById("excl").innerHTML ="experiencias del cliente"
+  document.getElementById("mem").innerHTML ="Miembros activos del panel"
+  document.getElementById("accueil").innerHTML ="Pagina de inicio"
+  document.getElementById("pro").innerHTML = "Profesional"
+  document.getElementById("panel").innerHTML ="Panel"
+  document.getElementById("ess").innerHTML ="ÁREA DEL INVESTIGADOR: INICIAR SESIÓN"
+
+
+}
+
+</script>
+
+
+
+
+        }
+
+</script>
+
     </body>
+
 </html>

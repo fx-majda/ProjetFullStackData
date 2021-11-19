@@ -4,14 +4,8 @@
 
     <head>
         <meta charset="utf-8" />
-		<title>Upgoods - Accueil </title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="Upgoods indexpage" />
-        <meta name="keywords" content="upgoods, client-mystere, ams, smice, ams international" />
-        <meta name="author" content="MohammedAminezahhaoui" />
-        <meta name="email" content="zahhaoui@gmail.com" />
-        <meta name="website" content="http://www.up-goods.com" />
-        <meta name="Version" content="v1" />
+		<title>EtuPlan - Accueil </title>
+
         <!-- favicon -->
         <link rel="shortcut icon" href=" {% static 'images/1.ico' %} ">
         <!-- Bootstrap -->
@@ -31,20 +25,11 @@
     </head>
 
     <body>
-        <!-- Loader -->
-        <!-- <div id="preloader">
-            <div id="status">
-                <div class="spinner">
-                    <div class="double-bounce1"></div>
-                    <div class="double-bounce2"></div>
-                </div>
-            </div>
-        </div> -->
-        <!-- Loader -->
-        
+
 
         <!-- Navbar STart -->
-               <header id="topnav" class="defaultscroll sticky">
+              <header id="topnav" class="defaultscroll sticky">
+
             <div class="container">
                 <!-- Logo container-->
                 <div>
@@ -57,22 +42,10 @@
                 <ul class="buy-button list-inline mb-0">
 
                 <div class="buy-button">
-                                                   {% url 'logout' as logout %}
+                                                   {% url 'logout' as login %}
 
-                        <a href="{{logout}}" class="btn btn-primary">Se deconnecter</a>                </div><!--end login button-->
+                        <a href="{{login}}" class="btn btn-primary">Se deconnecter</a>                </div><!--end login button-->
                 <!-- End Logo container-->
-                   <li class="list-inline-item mb-0">
-                        <div class="dropdown dropdown-primary">
-                            <button type="button" class="btn btn-icon btn-soft-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="uil uil-user align-middle icons"></i></button>
-                            <div class="dropdown-menu dd-menu dropdown-menu-right bg-white shadow rounded border-0 mt-3 py-3" style="width: 200px;">
-                                <a class="dropdown-item text-dark" href="{% url 'account_settings'  %}"><i class="uil uil-user align-middle mr-1"></i> Settings</a>
-                                <a class="dropdown-item text-dark" href=" {% url 'account_messages'  %}"><i class="uil uil-clipboard-notes align-middle mr-1"></i>  Mes messages</a>
-                                <a class="dropdown-item text-dark" href="#"><i class="uil uil-arrow-circle-down align-middle mr-1"></i> Guide</a>
-                                <div class="dropdown-divider my-3 border-top"></div>
-                                <a class="dropdown-item text-dark" href="{% url 'logout'  %}"><i class="uil uil-sign-out-alt align-middle mr-1"></i> Déconnexion</a>
-                            </div>
-                        </div>
-                    </li>
                 </ul><!--end login button-->
                     <div class="menu-extras">
                     <div class="menu-item">
@@ -87,42 +60,44 @@
                         <!-- End mobile menu toggle-->
                     </div>
                 </div>
-              <div id="navigation">
+                <div id="navigation">
                     <!-- Navigation Menu-->
                     <ul class="navigation-menu">
                         {% url 'indexEnqueteur' as index %}
 
-                        <li><a href=" {{index}} ">accueil</a></li>
+                        <li><a href=" {{index}} ">Accueil</a></li>
                         {% url 'trouvermission' as service %}
-                        <li><a href=" {{service}} ">Trouver une mission</a></li>
+                        <li><a href=" {{service}} ">Trouver une offre</a></li>
                         {% url 'mission' as guide %}
 
-                        <li><a href=" {{guide}} ">Mes missions</a></li>
+                        <li><a href=" {{guide}} ">Mes offres</a></li>
                         {% url 'account_profile' as actualite %}
 
-                        <li><a href=" {{actualite}} ">Mon profile</a></li>
+                        <li><a href=" {{actualite}} ">Mon profil</a></li>
 
 
                     </ul><!--end navigation menu-->
                     <div class="buy-menu-btn d-none">
-                                                                                {% url 'login' as login %}
+                                                                                {% url 'logout' as login %}
 
-                        <a href="{{login}}"  class="btn btn-primary">Se deconnecter</a>
+                        <a href="{{login}}" class="btn btn-primary">Se deconnecter</a>
                     </div><!--end login button-->
                 </div><!--end navigation-->
             </div><!--end container-->
         </header><!--end header-->
+
         <!-- Navbar End -->
         <!-- Navbar End -->
         <!-- Hero Start -->
         <!-- Hero End -->
        <section class="section">
             <div class="container">
-                <div class="row justify-content-center">
+
+                <div class="row justify-content-center mt-5">
                     <div class="col-12 text-center">
                         <div class="section-title mb-4 pb-2">
                             <h4 class="title mb-4">Bienvenue  dans votre espace panéliste :</h4>
-                            <p class="text-muted para-desc mx-auto mb-0">Retrouvez vos informations personnelles, nos actualités, nos missions, les détails des missions et pleins d'autre services…<br> <span class="text-primary font-weight-bold">Renseignez </span>vous ici sur comment utiliser notre application</p>
+                            <p class="text-muted para-desc mx-auto mb-0">Retrouvez vos informations personnelles, nos actualités, nos offres etudiants, les détails des offres et pleins d'autre services…<br> <span class="text-primary font-weight-bold">Cliquez dessous pour se renseigner </span> sur comment utiliser l'application</p>
                         </div>
                     </div><!--end col-->
                 </div><!--end row-->
@@ -133,7 +108,7 @@
                             <li class="nav-item">
                                 <a class="nav-link rounded active" id="pills-dayone-tab" data-toggle="pill" href="#pills-dayone" role="tab" aria-controls="pills-dayone" aria-selected="false">
                                     <div class="text-center py-2">
-                                        <h6 class="mb-0">Trouver une mission</h6>
+                                        <h6 class="mb-0">Trouver une offre</h6>
                                     </div>
                                 </a><!--end nav link-->
                             </li><!--end nav item-->
@@ -141,7 +116,7 @@
                             <li class="nav-item">
                                 <a class="nav-link rounded" id="pills-daytwo-tab" data-toggle="pill" href="#pills-daytwo" role="tab" aria-controls="pills-daytwo" aria-selected="false">
                                     <div class="text-center py-2">
-                                        <h6 class="mb-0">Effectuer une mission</h6>
+                                        <h6 class="mb-0">Profiter d'une offre</h6>
                                     </div>
                                 </a><!--end nav link-->
                             </li><!--end nav item-->
@@ -157,6 +132,7 @@
                     </div>
                 </div>
 
+
                 <div class="row">
                     <div class="col-12">
                         <div class="tab-content" id="pills-tabContent">
@@ -171,9 +147,9 @@
                                                         <li class="month font-weight-bold"></li>
                                                     </ul>
                                                     <div class="media-body content">
-                                                        <h4><a href="{% url 'trouvermission'%}" class="text-dark title">Trouver une mission</a></h4>
-                                                        <p class="text-muted location-time"><span class="text-dark h6">Retrouvez ici les missions les plus proches de l'adresse indiquée correspondant à vos critères.</span></p>
-                                                        <a href="#tickets" class="btn btn-sm btn-outline-primary mouse-down">Trouver une mission</a>
+                                                        <h4><a href="{% url 'trouvermission'%}" class="text-dark title">Trouver une offre</a></h4>
+                                                        <p class="text-muted location-time"><span class="text-dark h6">Retrouvez ici les offres les plus proches de l'adresse indiquée correspondant à vos critères.</span></p>
+                                                        <a href="#tickets" class="btn btn-sm btn-outline-primary mouse-down">Trouver une offre</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -188,9 +164,9 @@
                                                         <li class="month font-weight-bold"></li>
                                                     </ul>
                                                     <div class="media-body content">
-                                                        <h4><a href="{% url 'trouvermission'%}" class="text-dark title">Chercher une mission</a></h4>
-                                                        <p class="text-muted location-time"><span class="text-dark h6">Vous pouvez filtrer les missions par catégories, ville et date de publication .</span></p>
-                                                        <a href="#tickets" class="btn btn-sm btn-outline-primary mouse-down">Trouver une mission</a>
+                                                        <h4><a href="{% url 'trouvermission'%}" class="text-dark title">Chercher une offre</a></h4>
+                                                        <p class="text-muted location-time"><span class="text-dark h6">Vous pouvez filtrer les offres par catégories, ville et date de publication .</span></p>
+                                                        <a href="#tickets" class="btn btn-sm btn-outline-primary mouse-down">Trouver une offre</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -205,9 +181,9 @@
                                                         <li class="month font-weight-bold"></li>
                                                     </ul>
                                                     <div class="media-body content">
-                                                        <h4><a  class="text-dark title">Renseignez-vous sur la mission </a></h4>
-                                                        <p class="text-muted location-time"><span class="text-dark h6">Lisez attentivement les details, conditions et emplacement de la mission avant la candidature.</span></p>
-                                                        <a href="#tickets" class="btn btn-sm btn-outline-primary mouse-down">Details de la mission</a>
+                                                        <h4><a  class="text-dark title">Renseignez-vous sur l'offre </a></h4>
+                                                        <p class="text-muted location-time"><span class="text-dark h6">Lisez attentivement les details et conditions .</span></p>
+                                                        <a href="#tickets" class="btn btn-sm btn-outline-primary mouse-down">Details de l'offre</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -222,9 +198,9 @@
                                                         <li class="month font-weight-bold"></li>
                                                     </ul>
                                                     <div class="media-body content">
-                                                        <h4><a  class="text-dark title">Enregistrer votre candidature </a></h4>
+                                                        <h4><a  class="text-dark title">Profiter de l'offre </a></h4>
                                                         <p class="text-muted location-time"><span class="text-dark h6">Veuillez vérifier votre boîte de réception pour un courriel de confirmation</span></p>
-                                                        <a href="#tickets" class="btn btn-sm btn-outline-primary mouse-down">Candidature</a>
+                                                        <a href="#tickets" class="btn btn-sm btn-outline-primary mouse-down">Demander l'offre</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -245,46 +221,15 @@
                                                         <li class="day font-weight-bold mb-2">1</li>
                                                     </ul>
                                                     <div class="media-body content">
-                                                        <h4><a  class="text-dark title"> Si une mission correspond à votre profil </a></h4>
-                                                        <p class="text-muted location-time"><span class="text-dark h6">Nous vous contacterons pour s'assurer que vous avez recu le questionnaire, l'adresse et le debrief pour réaliser la visite mystère, on vérifie soit par mail soit par téléphone que la personne a bien compris et on répond à ses questions</span> </p>
-                                                        <a href="#tickets" class="btn btn-sm btn-outline-primary mouse-down">Espace mission</a>
+                                                        <h4><a  class="text-dark title"> Si une offre vous plait </a></h4>
+                                                        <p class="text-muted location-time"><span class="text-dark h6">Nous vous contacterons pour s'assurer que vous avez recu l offre, l'adresse et le debrief pour profiter de l'offre</span> </p>
+                                                        <a href="#tickets" class="btn btn-sm btn-outline-primary mouse-down">Espace Offre</a>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div><!--end col-->
-                                    <div class="col-lg-6 mt-4 pt-2">
-                                        <div class="card event-schedule rounded border">
-                                            <div class="card-body">
-                                                <div class="media">
-                                                    <ul class="date text-center text-primary mr-3 mb-0 list-unstyled">
-                                                        <li class="day font-weight-bold mb-2">2</li>
-                                                    </ul>
-                                                    <div class="media-body content">
-                                                        <h4><a  class="text-dark title"> Une fois le questionnaire est rempli </a></h4>
-                                                        <p class="text-muted location-time"><span class="text-dark h6">On rappelle de nouveau les clients mystères pour valider les réponses et voir s'il n'y a pas d'autres choses à rajouter</span> </p>
-                                                        <a href="#tickets" class="btn btn-sm btn-outline-primary mouse-down">Espace mission</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div><!--end col-->
-                                    <div class="col-lg-6 mt-4 pt-2">
-                                        <div class="card event-schedule rounded border">
-                                            <div class="card-body">
-                                                <div class="media">
-                                                    <ul class="date text-center text-primary mr-3 mb-0 list-unstyled">
-                                                        <li class="day font-weight-bold mb-2">3</li>
-                                                    </ul>
-                                                    <div class="media-body content">
-                                                        <h4><a  class="text-dark title"> Une fois le questionnaire est validé </a></h4>
-                                                        <p class="text-muted location-time"><span class="text-dark h6">Le dédommagement vous sera transmis par courrier recommandé sous un délai de 6 à 8 semaines pour vous permettre de cumuler avec d’autres dédommagements</span> </p>
-                                                        <a href="#tickets" class="btn btn-sm btn-outline-primary mouse-down">Espace mission</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div><!--end col-->
+
 
 
                                 </div><!--end row-->
@@ -340,36 +285,7 @@
                                             </div>
                                         </div>
                                     </div><!--end col-->
-                                    <div class="col-lg-6 mt-4 pt-2">
-                                        <div class="card event-schedule rounded border">
-                                            <div class="card-body">
-                                                <div class="media">
-                                                    <ul class="date text-center text-primary mr-3 mb-0 list-unstyled">
-                                                        <li class="day font-weight-bold mb-2">4</li>
-                                                    </ul>
-                                                    <div class="media-body content">
-                                                        <h4><a href="{% url 'account_messages' %}" class="text-dark title">Vous pouvez consulter vos missions en cours ou terminées. </a></h4>
-                                                        <a href="#tickets" class="btn btn-sm btn-outline-primary mouse-down">Mission en cours/terminées</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div><!--end col-->
-                                    <div class="col-lg-6 mt-4 pt-2">
-                                        <div class="card event-schedule rounded border">
-                                            <div class="card-body">
-                                                <div class="media">
-                                                    <ul class="date text-center text-primary mr-3 mb-0 list-unstyled">
-                                                        <li class="day font-weight-bold mb-2">5</li>
-                                                    </ul>
-                                                    <div class="media-body content">
-                                                        <h4><a href="{% url 'account_payments' %}" class="text-dark title">Vous pouvez consulter votre rémunération.</a></h4>
-                                                        <a href="#tickets" class="btn btn-sm btn-outline-primary mouse-down">Rémunération</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div><!--end col-->
+
 
 
                                 </div><!--end row-->
@@ -402,127 +318,25 @@
         </section><!--end section-->
 
         <!-- Feature Start -->
-         <section class="section">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-4 col-md-6 mb-4 pb-2">
-                        <div class="card blog rounded border-0 shadow overflow-hidden">
-                            <div class="position-relative">
-                                <img src="{% static 'images/bigstock.jpg' %}" style="height: 260px;" class="card-img-top" alt="...">
-                                <div class="overlay rounded-top bg-dark"></div>
-                            </div>
-                            <div class="card-body content">
-                                <h5><a href="{% url 'article1' %}" class="card-title title text-dark">Comment réaliser une visite  ?</a></h5>
-                                <div class="post-meta d-flex justify-content-between mt-3">
 
-                                    <a href="{% url 'article1' %}" class="text-muted readmore">Lire plus <i class="mdi mdi-chevron-right"></i></a>
-                                </div>
-                            </div>
-<div class="author">
-                                <small class="text-light user d-block"><i class="mdi mdi-account"></i> Upgoods support team</small>
-                                <small class="text-light date"><i class="mdi mdi-calendar-check"></i> 10 Fevrier, 2021</small>
-                            </div>
-                        </div>
-                    </div><!--end col-->
-
-                    <div class="col-lg-4 col-md-6 mb-4 pb-2">
-                        <div class="card blog rounded border-0 shadow overflow-hidden">
-                            <div class="position-relative">
-                                <img src="{% static 'images/focus.jpg' %}" class="card-img-top" alt="...">
-                                <div class="overlay rounded-top bg-dark"></div>
-                            </div>
-                            <div class="card-body content">
-                                <h5><a href="{% url 'article2' %} " class="card-title title text-dark">Focus groupe ou réunion de consommateurs</a></h5>
-                                <div class="post-meta d-flex justify-content-between mt-3">
-
-                                    <a href="{% url 'article2' %} " class="text-muted readmore">Lire plus <i class="mdi mdi-chevron-right"></i></a>
-                                </div>
-                            </div>
-                            <div class="author">
-                                    <small class="text-light user d-block"><i class="mdi mdi-account"></i> Upgoods support team</small>
-                                <small class="text-light date"><i class="mdi mdi-calendar-check"></i> 9 Fevrier, 2021</small>
-                            </div>
-                        </div>
-                    </div><!--end col-->
-                     <div class="col-lg-4 col-md-6 mb-4 pb-2">
-                        <div class="card blog rounded border-0 shadow overflow-hidden">
-                            <div class="position-relative">
-                                <img src="{% static 'images/test.png' %}" style="height:240px; width:110%" class="card-img-top" alt="...">
-                                <div class="overlay rounded-top bg-dark"></div>
-                            </div>
-                            <div class="card-body content">
-                                <h5><a href=" {% url 'article4' %}" class="card-title title text-dark">Test produit</a></h5>
-                                <div class="post-meta d-flex justify-content-between mt-3">
-
-                                    <a href=" {% url 'article4' %}" class="text-muted readmore">Lire plus <i class="mdi mdi-chevron-right"></i></a>
-                                </div>
-                            </div>
-                            <div class="author">
-                                    <small class="text-light user d-block"><i class="mdi mdi-account"></i> Upgoods support team</small>
-                                <small class="text-light date"><i class="mdi mdi-calendar-check"></i> 12 Fevrier, 2021</small>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 mb-4 pb-2">
-                        <div class="card blog rounded border-0 shadow overflow-hidden">
-                            <div class="position-relative">
-                                <img src="{% static 'images/appel.jpg' %}" style="height:260px;"  class="card-img-top" alt="...">
-                                <div class="overlay rounded-top bg-dark"></div>
-                            </div>
-                            <div class="card-body content">
-                                <h5><a href=" {% url 'article3' %}" class="card-title title text-dark">Appels mystères</a></h5>
-                                <div class="post-meta d-flex justify-content-between mt-3">
-
-                                    <a href="{% url 'article3' %} " class="text-muted readmore">Lire plus <i class="mdi mdi-chevron-right"></i></a>
-                                </div>
-                            </div>
-                            <div class="author">
-                                    <small class="text-light user d-block"><i class="mdi mdi-account"></i> Upgoods support team</small>
-                                <small class="text-light date"><i class="mdi mdi-calendar-check"></i> 10 Fevrier, 2021</small>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 mb-4 pb-2">
-                        <div class="card blog rounded border-0 shadow overflow-hidden">
-                            <div class="position-relative">
-                                <img src="{% static 'images/web.jfif' %}"style="height:260px;"  class="card-img-top" alt="...">
-                                <div class="overlay rounded-top bg-dark"></div>
-                            </div>
-                            <div class="card-body content">
-                                <h5><a href=" {% url 'article5' %}" class="card-title title text-dark">Enquêtes Web</a></h5>
-                                <div class="post-meta d-flex justify-content-between mt-3">
-
-                                    <a href="{% url 'article5' %} " class="text-muted readmore">Lire plus <i class="mdi mdi-chevron-right"></i></a>
-                                </div>
-                            </div>
-                            <div class="author">
-                                    <small class="text-light user d-block"><i class="mdi mdi-account"></i> Upgoods support team</small>
-                                <small class="text-light date"><i class="mdi mdi-calendar-check"></i> 12 Fevrier, 2021</small>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div></section>
 
         <!-- counter Start -->
 
 
         </section><!--end section-->
-
         <!-- Testimonial Start -->
 
 
         <!-- Footer Start -->
-
         <!-- Footer End -->
-                       {% include 'footer.html' %}
 
         <!-- Back to top -->
         <!-- Back to top -->
+
+        <script src=" {% static 'js/jquery-3.5.1.min.js' %} "></script>
+
 
         <!-- javascript -->
-        <script src=" {% static 'js/jquery-3.5.1.min.js' %} "></script>
         <script src=" {% static 'js/bootstrap.bundle.min.js' %} "></script>
         <script src=" {% static 'js/jquery.easing.min.js' %} "></script>
         <script src=" {% static 'js/scrollspy.min.js' %} "></script>
@@ -530,14 +344,16 @@
         <script src=" {% static 'js/jquery.magnific-popup.min.js' %} "></script>
         <script src=" {% static 'js/magnific.init.js' %} "></script>
         <!-- SLIDER -->
-        <script src=" {% static 'js/owl.carousel.min.js ' %} "></script>
-        <script src=" {% static 'js/owl.init.js ' %} "></script>
+        <script src=" {% static 'js/owl.carousel.min.js' %} "></script>
+        <script src=" {% static 'js/owl.init.js' %} "></script>
         <!-- Counter -->
-        <script src=" {% static 'js/counter.init.js ' %} "></script>
+        <script src=" {% static 'js/counter.init.js' %} "></script>
         <!-- Icons -->
         <script src=" {% static 'js/feather.min.js' %} "></script>
         <script src="https://unicons.iconscout.com/release/v3.0.3/script/monochrome/bundle.js"></script>
         <!-- Main Js -->
         <script src=" {% static 'js/app.js' %} "></script>
+    </body>
+</html>
     </body>
 </html>

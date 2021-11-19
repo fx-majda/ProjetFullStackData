@@ -7,14 +7,8 @@
     <head>
         <head>
         <meta charset="utf-8" />
-		<title>Upgoods - Settings </title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="Upgoods trouver une mission" />
-        <meta name="keywords" content="upgoods, client-mystere, ams, smice, ams international" />
-        <meta name="author" content="MohammedAminezahhaoui" />
-        <meta name="email" content="zahhaoui@gmail.com" />
-        <meta name="website" content="http://www.up-goods.com" />
-        <meta name="Version" content="v1" />
+		<title>EtuPlan - Settings </title>
+
         <link rel="shortcut icon" href=" {% static 'images/1.ico' %} ">
         <!-- Bootstrap -->
         <link href=" {% static 'css/bootstrap.min.css' %} " rel="stylesheet" type="text/css" />
@@ -27,6 +21,7 @@
         <!-- Main Css -->
         <link href=" {% static 'css/style.css' %} " rel="stylesheet" type="text/css" id="theme-opt" />
         <link href=" {% static 'css/colors/default.css' %} " rel="stylesheet" id="color-opt">
+
 
     </head>
 
@@ -43,7 +38,7 @@
         <!-- Loader -->
         
         <!-- Navbar STart -->
-             <header id="topnav" class="defaultscroll sticky">
+              <header id="topnav" class="defaultscroll sticky">
             <div class="container">
                 <!-- Logo container-->
                 <div>
@@ -56,22 +51,10 @@
                 <ul class="buy-button list-inline mb-0">
 
                 <div class="buy-button">
-                                                   {% url 'login' as login %}
+                                                   {% url 'logout' as login %}
 
                         <a href="{{login}}" class="btn btn-primary">Se deconnecter</a>                </div><!--end login button-->
                 <!-- End Logo container-->
-                    <li class="list-inline-item mb-0">
-                        <div class="dropdown dropdown-primary">
-                            <button type="button" class="btn btn-icon btn-soft-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="uil uil-user align-middle icons"></i></button>
-                            <div class="dropdown-menu dd-menu dropdown-menu-right bg-white shadow rounded border-0 mt-3 py-3" style="width: 200px;">
-                                <a class="dropdown-item text-dark" href="{% url 'account_settings'  %}"><i class="uil uil-user align-middle mr-1"></i> Settings</a>
-                                <a class="dropdown-item text-dark" href=" {% url 'account_messages'  %}"><i class="uil uil-clipboard-notes align-middle mr-1"></i>  Mes messages</a>
-                                <a class="dropdown-item text-dark" href="#"><i class="uil uil-arrow-circle-down align-middle mr-1"></i> Guide</a>
-                                <div class="dropdown-divider my-3 border-top"></div>
-                                <a class="dropdown-item text-dark" href="{% url 'logout'  %}"><i class="uil uil-sign-out-alt align-middle mr-1"></i> Déconnexion</a>
-                            </div>
-                        </div>
-                    </li>
                 </ul><!--end login button-->
                     <div class="menu-extras">
                     <div class="menu-item">
@@ -86,27 +69,27 @@
                         <!-- End mobile menu toggle-->
                     </div>
                 </div>
-
-              <div id="navigation">
+                 <div id="navigation">
                     <!-- Navigation Menu-->
                     <ul class="navigation-menu">
                         {% url 'indexEnqueteur' as index %}
 
-                        <li><a href=" {{index}} ">accueil</a></li>
+                        <li><a href=" {{index}} ">Accueil</a></li>
                         {% url 'trouvermission' as service %}
-                        <li><a href=" {{service}} ">Trouver une mission</a></li>
+                        <li><a href=" {{service}} ">Trouver une offre</a></li>
                         {% url 'mission' as guide %}
 
-                        <li><a href=" {{guide}} ">Mes missions</a></li>
+                        <li><a href=" {{guide}} ">Mes offres</a></li>
                         {% url 'account_profile' as actualite %}
 
-                        <li><a href=" {{actualite}} ">Mon profile</a></li>
+                        <li><a href=" {{actualite}} ">Mon profil</a></li>
+
 
                     </ul><!--end navigation menu-->
                     <div class="buy-menu-btn d-none">
-                                                                                {% url 'login' as login %}
+                                                                                {% url 'logout' as login %}
 
-                        <a href="{{login}}"  class="btn btn-primary">Se deconnecter</a>
+                        <a href="{{login}}" class="btn btn-primary">Se deconnecter</a>
                     </div><!--end login button-->
                 </div><!--end navigation-->
             </div><!--end container-->
@@ -114,25 +97,54 @@
         <!-- Navbar End -->
 
         <!-- Navbar End -->
-        
+
         <!-- Hero Start -->
-        <section class="bg-profile d-table w-100 bg-primary" style="background: url(' {% static 'images/account/bg.png' %} ') center center;">
+        <section class="bg-profile d-table w-100 bg-primary" style="background: url(' {% static 'images/account/bg.png' %} ') center center;width:100%;height:100%; repeat:no-repeat;">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="card public-profile border-0 rounded shadow" style="z-index: 1;">
                             <div class="card-body">
                                 <div class="row align-items-center">
-                                    <div class="col-lg-2 col-md-3 text-md-left text-center">
-                                        <img src=" {{enqueteur.profile_pic}}  " class="avatar avatar-large rounded-circle shadow d-block mx-auto" alt="">
+                               <div class="col-lg-2 col-md-3 text-md-left text-center">
+
+<img src=" {% static 'dist/img/AdminLTELogo.png'%}  " class="avatar avatar-large rounded-circle shadow d-block mx-auto" alt="">
                                     </div><!--end col-->
-    
+
                                     <div class="col-lg-10 col-md-9">
                                         <div class="row align-items-end">
                                             <div class="col-md-7 text-md-left text-center mt-4 mt-sm-0">
-                                                 <h3 class="title mb-0">{{ enqueteur.nom }}</h3>
-                                                <small class="text-muted h6 mr-2">Compte vérifié : {{ enqueteur.status }}</small>
-                                                <input type="hidden" class="form-control" name="enqueteur_id" value="{{ enqueteur.id }}" >
+                                                <h3 class="title mb-0">{{ data.nom }}</h3>
+                                                <small class="text-primary h6 mr-2">Status du compte :
+                                                 {% if data.verification == 0  %}
+                                                      <small class="text-muted h6 mr-2 ">
+                                                        En attente de confirmation <i class="mdi mdi-account-clock"></i>
+                                                    </small >
+                                                    {% endif %}
+
+                                                    {% if data.verification == 1  %}
+                                                   <small class="text-muted h6 mr-2">
+                                                        Votre profil est verifié
+                                                        <i data-feather="check-circle" class="fea icon-sm icons"></i>
+
+                                                    </small>
+                                                    {% else %}
+                                                    <small class="text-muted h6 mr-2">
+
+                                                    </small>
+                                                    {% endif%}
+
+                                                </small>
+
+                                            </div><!--end col-->
+                                             <div class="col-md-5 text-md-right text-center">
+                                                 <ul class="list-unstyled social-icon social mb-0 mt-4">
+                                                    <li class="list-inline-item"><a href="{% url 'account_profile'  %}" class="rounded" data-toggle="tooltip" data-placement="bottom" title="Mon profil"><i data-feather="user" class="fea icon-sm fea-social"></i></a></li>
+                                                    <li class="list-inline-item"><a href="{% url 'account_works'  %}" class="rounded" data-toggle="tooltip" data-placement="bottom" title="Mes offres"><i data-feather="compass" class="fea icon-sm fea-social"></i></a></li>
+                                                    <li class="list-inline-item"><a href="{% url 'account_messages'  %}" class="rounded" data-toggle="tooltip" data-placement="bottom" title="Messages"><i data-feather="message-circle" class="fea icon-sm fea-social"></i></a></li>
+                                                    <li class="list-inline-item"><a href="{% url 'account_payments'  %}" class="rounded" data-toggle="tooltip" data-placement="bottom" title="Rémunération "><i data-feather="gift" class="fea icon-sm fea-social"></i></a></li>
+                                                    <li class="list-inline-item"><a href="{% url 'account_settings'  %}" class="rounded" data-toggle="tooltip" data-placement="bottom" title="Paramètres"><i data-feather="tool" class="fea icon-sm fea-social"></i></a></li>
+                                                </ul><!--end icon-->
                                             </div><!--end col-->
 
                                         </div><!--end row-->
@@ -155,16 +167,9 @@
 
                             <div class="widget mt-4 pt-2">
                                 <h5 class="widget-title">Espace profil :</h5>
-                                <div class="progress-box mt-4">
-                                    <h6 class="title text-muted">Score</h6>
-                                    <div class="progress">
-                                        <div class="progress-bar position-relative bg-primary" style="width:50%;">
-                                            <div class="progress-value d-block text-muted h6">5 / 100</div>
-                                        </div>
-                                    </div>
-                                </div><!--end process box-->
+
                             </div>
-                           <div class="widget">
+           <div class="widget">
                                 <div class="row">
                                     <div class="col-6 mt-4 pt-2">
                                                                 {% url 'account_profile' as contact %}
@@ -181,7 +186,7 @@
                                     <div class="col-6 mt-4 pt-2">
                                         <a href=" {{contact}} " class="accounts rounded d-block shadow text-center py-3">
                                             <span class="pro-icons h3 text-muted"><i class="uil uil-file"></i></span>
-                                            <h6 class="title text-dark h6 my-0">Missions</h6>
+                                            <h6 class="title text-dark h6 my-0">Offres</h6>
                                         </a>
                                     </div><!--end col-->
                                                                 {% url 'account_messages' as contact %}
@@ -197,7 +202,7 @@
                                         {% url 'account_payments' as contact %}
                                         <a href=" {{contact}} " class="accounts rounded d-block shadow text-center py-3">
                                             <span class="pro-icons h3 text-muted"><i class="uil uil-transaction"></i></span>
-                                            <h6 class="title text-dark h6 my-0">Rémunération</h6>
+                                            <h6 class="title text-dark h6 my-0">Dédommagement</h6>
                                         </a>
                                     </div><!--end col-->
 
@@ -217,7 +222,6 @@
                                     </div><!--end col-->
                                 </div><!--end row-->
                             </div>
-
                             <div class="widget mt-4 pt-2">
                                 <h5 class="widget-title">Follow us :</h5>
                                 <ul class="list-unstyled social-icon mb-0 mt-4">
@@ -234,23 +238,21 @@
                     </div><!--end col-->
 
                     <div class="col-lg-8 col-12">
-
                         <div class="card border-0 rounded shadow">
                             <div class="card-body">
-                                <h5 class="text-md-left text-center">Personal Detail :</h5>
+                                <h5 class="text-md-left text-center">Informations personnelles :</h5>
 
-                                <div class="mt-3 text-md-left text-center d-sm-flex">
-                                    <img src=" {{enqueteur.profile_pic}}  " class="avatar float-md-left avatar-medium rounded-circle shadow mr-md-4" alt="">
+                                <!--<div class="mt-3 text-md-left text-center d-sm-flex">
+                                    <img src=" {% static 'images/client/05.jpg' %} " class="avatar float-md-left avatar-medium rounded-circle shadow mr-md-4" alt="">
 
                                     <div class="mt-md-4 mt-3 mt-sm-0">
-                                        <a href=" "data-toggle="modal" data-target="#composemail" class="btn btn-primary mt-2" >Change Picture</a>
+                                        <a href="  "data-toggle="modal" data-target="#composemail" class="btn btn-primary mt-2">Change Picture</a>
                                     </div>
-                                </div>
+                                </div>-->
 
                                 <div class="modal fade" id="composemail" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered" role="document">
-                                                                                           <form role="form" action="/updateprofile" method="post">
- <div class="modal-content rounded shadow border-0">
+                                    <div class="modal-content rounded shadow border-0">
                                         <div class="modal-header">
                                             <h5 class="modal-title" id="exampleModalCenterTitle">Modifier votre photo de profil</h5>
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -258,74 +260,72 @@
                                             </button>
                                         </div>
                                         <div class="modal-body p-4">
-                                            <form>
+                                            <form method="POST" action="">
                                                 <div class="row">
                                                     <div class="col-md-12">
                                                         <div class="form-group">
                                                             <div class="position-relative">
                                                                 <i data-feather="user" class="fea icon-sm icons"></i>
-                                                                <input name="name" id="name" type="file" class="form-control pl-5" placeholder="{{enqueteur.nom}}" readonly>
+                                                                <input name="name" id="name" type="file" class="form-control pl-5" placeholder="{{data.nom}}" readonly>
                                                             </div>
                                                         </div>
                                                     </div><!--end col-->
 
 
                                                 </div><!--end row-->
-                                            </form> </div>
-                                        <div class="border-top p-4">
-                                            <button type="button" class="btn btn-primary" disabled>Enregistrer</button>
+                                            </form>
                                         </div>
- </div></form>
+                                        <div class="border-top p-4">
+                                            <button type="button" class="btn btn-primary">Enregistrer</button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                                <!-- -->
-                                <form role="form" action="/updateprofile/" method="post">
+                                <form method="POST" action="" enctype="multipart/form-data">
+                                     <div class="mt-3 text-md-left text-center d-sm-flex">
+                                    <img src=" {{data.profile_pic}} " class="avatar float-md-left avatar-medium rounded-circle shadow mr-md-4" alt="">
+
+
+                                </div>
                                     <div class="row mt-4">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Adresse</label>
+                                                <label>Adresse :</label>
                                                 <div class="position-relative">
                                                     <i data-feather="user" class="fea icon-sm icons"></i>
-                                                    <input name="adresse" id="Adresse" type="text" class="form-control pl-5" placeholder="Votre nouvelle adresse :">
+                                                    <input name="adresse" id="adresse" type="text" class="form-control pl-5" placeholder="Votre nouvelle adresse :" value="{{data.adresse}}">
                                                 </div>
                                             </div>
                                         </div><!--end col-->
                                         <div class="col-md-6">
                                             <div class="col-lg-12">
                                                     <div class="form-group">
-                                                        <label>Phone No. :</label>
+                                                        <label>Numéro de téléphone :</label>
                                                         <div class="position-relative">
                                                             <i data-feather="phone" class="fea icon-sm icons"></i>
-                                                            <input name="telephone" id="number" type="number" class="form-control pl-5" placeholder="Phone :">
+                                                            <input name="telephone" id="telephone" type="number" class="form-control pl-5" placeholder="Phone :" value="0{{data.telephone}}">
                                                         </div>
                                                     </div>
                                                 </div><!--end col-->
                                         </div><!--end col-->
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Your Email</label>
+                                                <label>Boite mail:</label>
                                                 <div class="position-relative">
                                                     <i data-feather="mail" class="fea icon-sm icons"></i>
-                                                    <input name="email" id="email" type="email" class="form-control pl-5" placeholder="Your email :">
+                                                    <input name="email" id="email" type="email" class="form-control pl-5" placeholder="Your email :" value="{{data.email}}">
                                                 </div>
-                                            </div> 
+                                            </div>
+                                            </div>
                                         </div><!--end col-->
-
-
-                                    </div><!--end row-->
-                                    <div class="row">
+                                     <div class="row">
                                         <div class="col-sm-12">
-                                            <input type="submit" id="submit" name="send" class="btn btn-primary"  disabled value="Save Changes">
+                                            <input type="submit" onclick="newdataupdated()" id="submit" name="send" class="btn btn-primary" value="Save Changes">
                                         </div><!--end col-->
                                     </div><!--end row-->
                                 </form><!--end form-->
-
-                                
-
-                                </div>
-                        </div>
-
-                        
+                                 </div><!--end row-->
 
 <div class="rounded shadow mt-4">
                             <div class="p-4 border-bottom">
@@ -336,34 +336,27 @@
                                 <h6 class="mb-0">Voulez-vous changez le mot de passe de votre compte? Veuillez appuyer sur le bouton "changer" ci-dessous</h6>
                                 <h6 class="mb-0">Vous recevrez un message sur votre boite email pour completer la procedure</h6>
  <div class="mt-4">
-                         {% url 'reset_password' as reset_password %}
 
-                                    <button class="btn btn-warning" href="{{reset_password}}" disabled >Changer mon mot de passe</button>
+
+                                    <button class="btn btn-warning" href="{% url 'reset_password'%}">Changer mon mot de passe</button>
                                 </div><!--end col-->
                             </div>
                         </div>
 
-                        <div class="rounded shadow mt-4">
-                            <div class="p-4 border-bottom">
-                                <h5 class="mb-0 text-danger">Delete Account :</h5>
-                            </div>
 
-                            <div class="p-4">
-                                <h6 class="mb-0">Voulez-vous supprimer le compte? Veuillez appuyer sur le bouton "Supprimer" ci-dessous</h6>
-                                <div class="mt-4">
-                                    <button class="btn btn-danger" disabled>Supprimer mon compte</button>
-                                </div><!--end col-->
+
                             </div>
                         </div>
-                                                        </div><!--end col-->
+
+                    </div><!--end col-->
                 </div><!--end row-->
             </div><!--end container-->
         </section><!--end section-->
         <!-- Profile Setting End -->
 
         <!-- Footer Start -->
-                    {% include 'footer.html' %}
 
+        <!-- Footer End -->
         <!-- Back to top -->
         <a href="#" class="btn btn-icon btn-primary back-to-top"><i data-feather="arrow-up" class="icons"></i></a>
         <!-- Back to top -->
@@ -381,5 +374,9 @@
         <script src="https://unicons.iconscout.com/release/v3.0.3/script/monochrome/bundle.js"></script>
         <!-- Main Js -->
         <script src=" {% static 'js/app.js' %} "></script>
+
+        <!--<script type="text/javascript" src="{% static 'js/templateview.js' %}"></script>-->
+
+
     </body>
 </html>

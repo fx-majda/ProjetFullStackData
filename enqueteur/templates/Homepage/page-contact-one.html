@@ -25,7 +25,31 @@
         <link href=" {% static 'css/colors/default.css' %} " rel="stylesheet" id="color-opt">
         <!-- SweetAlert2 -->
         <link rel="stylesheet" href=" {% static 'plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css' %} "rel="stylesheet" type="text/css">
+                <link href=" {% static 'css/aos.css' %} " rel="stylesheet" type="text/css" />
+ <!-- Slider -->
+        <link rel="stylesheet" href=" {% static 'css/owl.carousel.min.css' %} "/>
+        <link rel="stylesheet" href=" {% static 'css/owl.theme.default.min.css' %} "/>
+<style>
+    .navbar { background-color: #008c8d; }
+.navbar .navbar-nav .nav-link { color: #fff;  }
+.navbar .navbar-nav .nav-link:hover { color: #000000; }
+.navbar .navbar-nav .active > .nav-link { color: #b6ffff; }
+@media screen and (max-width: 600px) {
+  .navbar {
+            display: none;
+  }
+}
+.flag
+{
+  transition: all 300ms cubic-bezier(.25,.8,.25,1);
 
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 5px 7px rgba(0,0,0,0.60);
+}
+@media (min-width: 1200px) {#topnav .navigation-menu  .mob {display:block;}
+}
+@media (min-width: 1199px) { #topnav .navigation-menu .mob {display:none;} }
+
+</style>
     </head>
 
     <body>
@@ -41,21 +65,36 @@
         <!-- Loader -->
 
         <!-- Navbar STart -->
-        <header id="topnav" class="defaultscroll sticky">
+  <header id="topnav" class="defaultscroll sticky">
+
+	<!--- Navbar --->
+	<nav class="navbar navbar-expand-lg">
+		<div class="container">
+               {% url 'index' as index %}
+
+                <a class="navbar-brand text-white" href=" {{index}}">                        <img src=" {% static 'images/logo-light.png' %} " height="50" alt=""></a>
+
+			<div class="collapse navbar-collapse" id="nvbCollapse">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item  pl-1">
+                            {% url 'login' as login %}
+                        <a class="nav-link" href="{{login}}" id="ess">ESPACE ENQUÊTEUR  : CONNEXION       <i class="uil uil-data-sharing      "></i>
+</a>
+					</li>
+
+
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<!--# Navbar #-->
+
+	<!--# Footer #-->
             <div class="container">
                 <!-- Logo container-->
-                <div>
-                    {% url 'index' as index %}
-                    <a class="logo" href=" {{index}} ">
-                        <img src=" {% static 'images/logo-dark.png' %} " height="24" alt="">
-                    </a>
-                </div>
-                									{% url 'login' as login %}
-                <div class="buy-button">
-                                                                  {% url 'login' as login %}
 
-                        <a href="{{login}}"  class="btn btn-primary">Se connecter</a>                </div><!--end login button-->
-                <!-- End Logo container-->
+                									{% url 'login' as login %}
+                         <!-- End Logo container-->
                 <div class="menu-extras">
                     <div class="menu-item">
                         <!-- Mobile menu toggle-->
@@ -69,54 +108,59 @@
                         <!-- End mobile menu toggle-->
                     </div>
                 </div>
-
                 <div id="navigation">
                     <!-- Navigation Menu-->
                     <ul class="navigation-menu">
                         {% url 'index' as index %}
-
-                        <li><a href=" {{index}} ">Accueil</a></li>
+                        <li><a href=" {{index}} " id="accueil">Accueil</a></li>
                         {% url 'service' as service %}
-                        <li><a href=" {{service}} "> Professionnel</a></li>
+                        <li><a href=" {{service}} " id="pro"> Professionnel</a></li>
                           {% url 'panel' as guide %}
-
-                        <li><a href=" {{guide}} ">Panel</a></li>
-
-                        {% url 'guide' as guide %}
-
-                        <li><a href=" {{guide}} ">FAQs</a></li>
-                        {% url 'actualite' as actualite %}
-
-                        <li><a href=" {{actualite}} ">Actualités</a></li>
+                        <li><a href=" {{guide}} " id="panel">Panel</a></li>
                         {% url 'contact' as contact %}
+                            <li><a href=" {{contact}} " >Contact</a></li>
+                        {% url 'guide' as guide %}
+                             <li><a href=" {{guide}} " >FAQs</a></li>
 
-                        <li><a href=" {{contact}} ">Contact</a></li>
+                            {% url 'login' as login %}
+                        <li >
+                            <a class="mob" href=" {{login}} ">Se connecter</a></li>
+
+                        <li>
+                        <a>
+			<img class="flag" id="fr" src="https://flagcdn.com/w20/fr.png" srcset="https://flagcdn.com/w40/fr.png 2x" width="20" style="cursor:pointer; outline:1px solid black;" onmouseover="this.style.backgroundPosition=-150px -25px;" onmouseout="this.style.backgroundPosition=-150px 0px;" alt="Francais">
+                            </a>
+                        </li>
+                        <li ><a>
+                           <img  class="flag" id="es" src="https://flagcdn.com/w20/es.png" srcset="https://flagcdn.com/w40/es.png 2x" width="20" style="  cursor:pointer;      outline:1px solid black;" alt="Spain">
+                            </a>
+                        </li>
+
+                             <li ><a>
+                            <img id="en" class="flag" src="https://flagcdn.com/w20/gb.png" srcset="https://flagcdn.com/w40/gb.png 2x" width="20" height="13.5"style="       cursor:pointer; outline:1px solid black;" alt="English">
+                            </a>
+                        </li>
+                 </ul><!--end navigation menu-->
 
 
-
-                    </ul><!--end navigation menu-->
-                    <div class="buy-menu-btn d-none">
-                                                                                {% url 'login' as login %}
-
-                        <a href="{{login}}"  class="btn btn-primary">Se connecter</a>
-                    </div><!--end login button-->
                 </div><!--end navigation-->
             </div><!--end container-->
         </header><!--end header-->
         <!-- Navbar End -->
+               <!-- Navbar End -->
 
         <!-- Hero Start -->
-        <section class="bg-half bg-light d-table w-100">
+                 <section class="bg-half d-table w-100" style="background:  url('/static/images/illustrator/envelope.svg') center center; background-repeat: no-repeat; margin-top:156px">
+
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-lg-12 text-center">
                         <div class="page-next-level">
-                            <h4 class="title">Contactez Upgoods</h4>
                             <div class="page-next">
                                 <nav aria-label="breadcrumb" class="d-inline-block">
                                     <ul class="breadcrumb bg-white rounded shadow mb-0">
-                                        <li class="breadcrumb-item"><a href=" {{index}} ">Page d'accueil</a></li>
-                                        <li class="breadcrumb-item active" aria-current="page">Contact </li>
+                                        <li class="breadcrumb-item"><a href=" {{index}} " id="pg">Page d'accueil</a></li>
+                                        <li class="breadcrumb-item active" aria-current="page" id="cn">Contact </li>
                                     </ul>
                                 </nav>
                             </div>
@@ -140,9 +184,14 @@
         <!-- Start Contact -->
         <section class="section pb-0">
             <div class="container">
+                <h4 class="title" style="  text-align: center; margin-bottom:25px" id="par1">Contactez nous</h4>
+            </div>
+            <div class="container">
+
                 <div class="row">
+
                     <div class="col-md-4">
-                        <div class="card border-0 text-center features feature-clean">
+                        <div class="card border-0 text-center features feature-clean" data-aos="fade-up" data-aos-duration="1100">
                             <div class="icons text-primary text-center mx-auto">
                                 <i class="uil uil-phone d-block rounded h3 mb-0"></i>
                             </div>
@@ -154,7 +203,7 @@
                     </div><!--end col-->
 
                     <div class="col-md-4 mt-4 mt-sm-0 pt-2 pt-sm-0">
-                        <div class="card border-0 text-center features feature-clean">
+                        <div class="card border-0 text-center features feature-clean" data-aos="fade-up" data-aos-duration="1300">
                             <div class="icons text-primary text-center mx-auto">
                                 <i class="uil uil-envelope d-block rounded h3 mb-0"></i>
                             </div>
@@ -169,7 +218,7 @@
                     </div><!--end col-->
 
                     <div class="col-md-4 mt-4 mt-sm-0 pt-2 pt-sm-0">
-                        <div class="card border-0 text-center features feature-clean">
+                        <div class="card border-0 text-center features feature-clean"data-aos="fade-up" data-aos-duration="1500">
                             <div class="icons text-primary text-center mx-auto">
                                 <i class="uil uil-map-marker d-block rounded h3 mb-0"></i>
                             </div>
@@ -189,15 +238,15 @@
             <div class="container mt-100 mt-60">
                 <div class="row align-items-center">
                     <div class="col-lg-5 col-md-6 pt-2 pt-sm-0 order-2 order-md-1">
-                        <div class="card shadow rounded border-0">
-                            <div class="card-body py-5">
-                                <h4 class="card-title">Envoyez nous un message!</h4>
+                        <div class="card shadow rounded border-0" >
+                            <div class="card-body py-5"data-aos="fade-up" data-aos-duration="1100">
+                                <h4 class="card-title" id="ms">Envoyez nous un message!</h4>
                                 <div class="custom-form mt-4">
                                     <form method="post" action="/contact_sent/">
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label>Votre nom <span class="text-danger">*</span></label>
+                                                    <label id="nom">Votre nom <span class="text-danger">*</span></label>
                                                     <div class="position-relative">
                                                         <i data-feather="user" class="fea icon-sm icons"></i>
                                                             <input name="name" id="name" type="text" class="form-control pl-5" placeholder="Votre nom :">
@@ -206,7 +255,7 @@
                                             </div><!--end col-->
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label>Votre Email <span class="text-danger">*</span></label>
+                                                    <label id="email1">Votre Email <span class="text-danger">*</span></label>
                                                     <div class="position-relative">
                                                         <i data-feather="mail" class="fea icon-sm icons"></i>
                                                     <input name="email" id="email" type="email" class="form-control pl-5" placeholder="Votre email :">
@@ -215,7 +264,7 @@
                                             </div><!--end col-->
                                             <div class="col-md-12">
                                                 <div class="form-group">
-                                                    <label>Sujet</label>
+                                                    <label id="sujet">Sujet</label>
                                                     <div class="position-relative">
                                                         <i data-feather="book" class="fea icon-sm icons"></i>
                                                         <input name="subject" id="subject" type="text" class="form-control pl-5" placeholder="Sujet">
@@ -224,7 +273,7 @@
                                             </div><!--end col-->
                                             <div class="col-md-12">
                                                 <div class="form-group">
-                                                    <label>Message</label>
+                                                    <label id="message">Message</label>
                                                     <div class="position-relative">
                                                         <i data-feather="message-circle" class="fea icon-sm icons"></i>
                                                         <textarea name="comments" id="comments" rows="4" class="form-control pl-5" placeholder="Your Message :"></textarea>
@@ -234,7 +283,7 @@
                                         </div><!--end row-->
                                        <div class="row">
                                             <div class="col-sm-12 text-center">
-                                                <input type="submit" id="submit" name="send" class="submitBnt btn btn-primary btn-block" value="Envoyer">
+                                                <input type="submit" id="submit" name="send" class="submitBnt btn btn-primary btn-block" value="Send">
                                             </div><!--end col-->
                                     <div class="col-sm-12 text-center">
                                         <div class="form-group">
@@ -286,7 +335,6 @@
 
         <!-- Footer Start -->
 
-                {% include 'footer.html' %}
 
         <!-- Footer End -->
 
@@ -299,6 +347,9 @@
         <script src=" {% static 'js/bootstrap.bundle.min.js' %} "></script>
         <script src=" {% static 'js/jquery.easing.min.js' %} "></script>
         <script src=" {% static 'js/scrollspy.min.js' %} "></script>
+         <!-- SLIDER -->
+        <script src=" {% static 'js/owl.carousel.min.js' %} "></script>
+        <script src=" {% static 'js/owl.init.js' %} "></script>
         <!-- Magnific Popup -->
         <script src=" {% static 'js/jquery.magnific-popup.min.js' %} "></script>
         <script src=" {% static 'js/magnific.init.js' %} "></script>
@@ -309,8 +360,84 @@
         <script src="https://unicons.iconscout.com/release/v3.0.3/script/monochrome/bundle.js"></script>
         <!-- Main Js -->
         <script src=" {% static 'js/app.js' %} "></script>
-        <script src=" {% static 'plugins/sweetalert2/sweetalert2.min.js' %} "></script>
 
+        <!-- Animation -->
+               <script src=" {% static 'js/aos.js' %} "></script>
+  <!-- Animation Js -->
+        <script>
+        $('.carousel').carousel({
+  interval: 1500
+})
+            AOS.init({
+                easing: 'ease-in-out-sine',
+                duration: 1000
+            });
+        </script>
+          <script type="text/javascript">
+          $(document).ready(function(){
+           $('#es').click(function(){
+            espagnol()
+            localStorage.setItem("lang",'es')
+
+            });
+        });
+
+         $(document).ready(function(){
+           $('#en').click(function(){
+            english()
+            localStorage.setItem("lang",'en')
+
+            });
+        });
+
+        $(document).ready(function(){
+           $('#fr').click(function(){
+            localStorage.removeItem("lang");
+            location.reload();
+            });
+         });
+
+
+        window.onload = function getlang(){
+        var x = localStorage.getItem("lang")
+        console.log(x)
+        if(x == 'en'){
+           english()
+          }
+        if(x == 'es') {
+            espagnol()
+           }
+
+        }
+
+        function english(){
+         document.getElementById("pg").innerHTML = "HOME PAGE"
+            document.getElementById("par1").innerHTML = "Contact us"
+            document.getElementById("ms").innerHTML = "Send us a message"
+            document.getElementById("nom").innerHTML = "Your name	"
+            document.getElementById("email1").innerHTML ="Your email"
+            document.getElementById("sujet").innerHTML = "Subject"
+            document.getElementById("submit").innerHTML ="Submit"
+            document.getElementById("accueil").innerHTML ="Homepage"
+            document.getElementById("pro").innerHTML = "Professional"
+            document.getElementById("ess").innerHTML ="INVESTIGATOR AREA: LOG IN"
+            document.getElementById("panel").innerHTML ="Panel"
+        }
+
+        function espagnol(){
+            document.getElementById("pg").innerHTML = "HOME PAGE"
+            document.getElementById("par1").innerHTML = "Contáctenos"
+            document.getElementById("ms").innerHTML = "Mandanos un mensaje"
+            document.getElementById("nom").innerHTML = "Tu nombre	"
+            document.getElementById("email1").innerHTML ="Tu correo electrónico"
+            document.getElementById("sujet").innerHTML = "sujeto"
+            document.getElementById("submit").innerHTML ="Submit"
+            document.getElementById("accueil").innerHTML ="Pagina de inicio"
+            document.getElementById("pro").innerHTML = "Profesional"
+            document.getElementById("panel").innerHTML ="Panel"
+            document.getElementById("ess").innerHTML ="ÁREA DEL INVESTIGADOR: INICIAR SESIÓN"
+        }
+    </script>
 
     </body>
 </html>

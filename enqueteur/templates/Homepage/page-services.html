@@ -26,6 +26,45 @@
         <!-- Main Css -->
         <link href=" {% static 'css/style.css' %} " rel="stylesheet" type="text/css" id="theme-opt" />
         <link href=" {% static 'css/colors/default.css' %} " rel="stylesheet" id="color-opt">
+         <!-- Slider -->
+                        <link href=" {% static 'css/aos.css' %} " rel="stylesheet" type="text/css" />
+
+    </head>
+    <style>
+
+.bg-overla {
+  background-color: rgba(60, 72, 88, 0.7);
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+
+  width: 100%;
+  height: 100%;
+}
+    </style>
+ <style>
+      .navbar { background-color: #008c8d; }
+.navbar .navbar-nav .nav-link { color: #fff;  }
+.navbar .navbar-nav .nav-link:hover { color: #000000; }
+.navbar .navbar-nav .active > .nav-link { color: #b6ffff; }
+@media screen and (max-width: 600px) {
+  .navbar {
+            display: none;
+  }
+}
+.flag {
+  transition: all 300ms cubic-bezier(.25,.8,.25,1);
+
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 5px 7px rgba(0,0,0,0.60);
+}
+@media (min-width: 1200px) {#topnav .navigation-menu  .mob {display:block;}
+}
+@media (min-width: 1199px) { #topnav .navigation-menu .mob {display:none;} }
+
+
+</style>
     </head>
 
     <body>
@@ -39,23 +78,38 @@
             </div>
         </div> -->
         <!-- Loader -->
-        
+
         <!-- Navbar STart -->
-        <header id="topnav" class="defaultscroll sticky">
+  <header id="topnav" class="defaultscroll sticky">
+
+	<!--- Navbar --->
+	<nav class="navbar navbar-expand-lg">
+		<div class="container">
+               {% url 'index' as index %}
+
+                <a class="navbar-brand text-white" href=" {{index}}">                        <img src=" {% static 'images/logo-light.png' %} " height="50" alt=""></a>
+
+			<div class="collapse navbar-collapse" id="nvbCollapse">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item  pl-1">
+                            {% url 'login' as login %}
+                        <a class="nav-link" href="{{login}}" id="ess">ESPACE ENQUÊTEUR  : CONNEXION       <i class="uil uil-data-sharing      "></i>
+</a>
+					</li>
+
+
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<!--# Navbar #-->
+
+	<!--# Footer #-->
             <div class="container">
                 <!-- Logo container-->
-                <div>
-                    {% url 'index' as index %}
-                    <a class="logo" href=" {{index}} ">
-                        <img src=" {% static 'images/logo-dark.png' %} " height="24" alt="">
-                    </a>
-                </div>
-                									{% url 'login' as login %}
-                <div class="buy-button">
-                                                                  {% url 'login' as login %}
 
-                        <a href="{{login}}"  class="btn btn-primary">Se connecter</a>                </div><!--end login button-->
-                <!-- End Logo container-->
+                									{% url 'login' as login %}
+                         <!-- End Logo container-->
                 <div class="menu-extras">
                     <div class="menu-item">
                         <!-- Mobile menu toggle-->
@@ -74,51 +128,55 @@
                     <!-- Navigation Menu-->
                     <ul class="navigation-menu">
                         {% url 'index' as index %}
-
-                        <li><a href=" {{index}} ">Accueil</a></li>
+                      <li><a href=" {{index}} " id="accueil">Accueil</a></li>
                         {% url 'service' as service %}
-                        <li><a href=" {{service}} "> Professionnel</a></li>
+                        <li><a href=" {{service}} " id="pro"> Professionnel</a></li>
                           {% url 'panel' as guide %}
-
-                        <li><a href=" {{guide}} ">Panel</a></li>
-
-                        {% url 'guide' as guide %}
-
-                        <li><a href=" {{guide}} ">FAQs</a></li>
-                        {% url 'actualite' as actualite %}
-
-                        <li><a href=" {{actualite}} ">Actualités</a></li>
+                        <li><a href=" {{guide}} " id="panel">Panel</a></li>
                         {% url 'contact' as contact %}
+                            <li><a href=" {{contact}} ">Contact</a></li>
+                        {% url 'guide' as guide %}
+                             <li><a href=" {{guide}} ">FAQs</a></li>
+                            {% url 'login' as login %}
+                        <li><a  class="mob" href=" {{login}} ">Se connecter</a></li>
 
-                        <li><a href=" {{contact}} ">Contact</a></li>
+                           <li>
+                        <a>
+			<img class="flag" id="fr" src="https://flagcdn.com/w20/fr.png" srcset="https://flagcdn.com/w40/fr.png 2x" width="20" style="cursor:pointer; outline:1px solid black;" onmouseover="this.style.backgroundPosition=-150px -25px;" onmouseout="this.style.backgroundPosition=-150px 0px;" alt="Francais">
+                            </a>
+                        </li>
+                        <li ><a>
+                           <img  class="flag" id="es" src="https://flagcdn.com/w20/es.png" srcset="https://flagcdn.com/w40/es.png 2x" width="20" style="  cursor:pointer;      outline:1px solid black;" alt="Spain">
+                            </a>
+                        </li>
+
+                             <li ><a>
+                            <img id="en" class="flag" src="https://flagcdn.com/w20/gb.png" srcset="https://flagcdn.com/w40/gb.png 2x" width="20" height="13.5"style="       cursor:pointer; outline:1px solid black;" alt="English">
+                            </a>
+                        </li>
+                 </ul><!--end navigation menu-->
 
 
 
-                    </ul><!--end navigation menu-->
-                    <div class="buy-menu-btn d-none">
-                                                                                {% url 'login' as login %}
-
-                        <a href="{{login}}"  class="btn btn-primary">Se connecter</a>
-                    </div><!--end login button-->
                 </div><!--end navigation-->
             </div><!--end container-->
         </header><!--end header-->
-        <!-- Navbar End -->
-        
         <!-- Hero Start -->
-        <section class="bg-half bg-light d-table w-100">
+         <section class="bg-half d-table w-100" style="background:  url('/static/images/illustrator/SEO_SVG.svg') center center;  height: 50%;width: 50%; margin-top:66px">
+                     <div class="bg-overl"></div>
+
+            <div class="bg-overla"></div>
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-lg-12 text-center">
-                    <div class="col-lg-12 text-center">
                         <div class="page-next-level">
-                            <h3 class="title"> Une co-création permanente à votre service.</h3>
+                            <h4 class="title text-white title-dark" id="tt">Une co-création permanente à votre service.</h4>
                             <div class="page-next">
-                                <nav aria-label="breadcrumb" class="d-inline-block">
+                            <nav aria-label="breadcrumb" class="d-inline-block">
                                     <ul class="breadcrumb bg-white rounded shadow mb-0">
                                                         									{% url 'index' as index %}
 
-                                        <li class="breadcrumb-item"><a href=" {{ index }} ">Page d'accueil</a></li>
+                                        <li class="breadcrumb-item"><a href=" {{ index }} " id="home">Page d'accueil</a></li>
                                         <li class="breadcrumb-item active" aria-current="page">Professionnel</li>
                                     </ul>
                                 </nav>
@@ -143,39 +201,39 @@
         <!-- Feature Start -->
         <section class="section ">
             <div class="container">
-                    <div class="row justify-content-center">
-                        <div class="section-title mb-4 pb-2 justify-content-center">
-                                                <h4 class="title mb-4 para-desc  mb-0" >International Et Luxe</h4>
+                    <div class="row justify-content-center" >
+                        <div class="section-title mb-4 pb-2 justify-content-center ">
+                                                <h4 id="bigtitle" class="title mb-4 para-desc  mb-0" >International Et Luxe</h4>
                         </div>
                     </div>
                 <div class="row">
 
-                    <div class="col">
+                    <div class="col" data-aos="fade-up" data-aos-duration="800">
                         <div class="features">
                             <div class="image position-relative d-inline-block">
                                 <i class="uil uil-calender  h1 text-primary"></i>
                             </div>
 
                             <div class="content mt-4">
-                                <h5>Maîtrise du calendrier des événements commerciaux en France et à l’international</h5>
-                                <p class="text-muted mb-0">Des Moments d’action étudiés,  Fêtes religieuses (noël…), fêtes des mères / pères, quotidien,  fin d’année … ce calendrier est  naturellement adapté en fonction des cultures, ou  des pays d’intervention.</p>          </div>
+                                <h5 id="head1">Maîtrise du calendrier des événements commerciaux en France et à l’international</h5>
+                                <p id="content1" class="text-muted mb-0">Des Moments d’action étudiés,  Fêtes religieuses (noël…), fêtes des mères / pères, quotidien,  fin d’année … ce calendrier est  naturellement adapté en fonction des cultures, ou  des pays d’intervention.</p>          </div>
                         </div>
                     </div><!--end col-->
 
-                    <div class="col">
+                    <div class="col" data-aos="fade-up" data-aos-duration="1000">
                         <div class="features">
                             <div class="image position-relative d-inline-block">
                                 <i class="uil uil-compass  h1 text-primary"></i>
                             </div>
 
-                            <div class="content mt-4">
+                            <div class="content mt-4" >
                                 <h5>International</h5>
-                                <p class="text-muted mb-0">Connaissance des habitudes de consommations, maitrise de la langue, disposition d’un panel de particuliers de résidents du pays.</p>
+                                <p id="parli" class="text-muted mb-0">Connaissance des habitudes de consommations, maitrise de la langue, disposition d’un panel de particuliers de résidents du pays.</p>
                             </div>
                         </div>
                     </div><!--end col-->
 
-                    <div class="col">
+                    <div class="col " data-aos="fade-up" data-aos-duration="1200">
                         <div class="features">
                             <div class="image position-relative d-inline-block">
                                 <i class="uil uil-money-stack   h1 text-primary"></i>
@@ -183,19 +241,19 @@
 
                             <div class="content mt-4">
                                 <h5>Luxe</h5>
-                                <p class="text-muted mb-0">Une exigence constante du secteur à l’image des clients, une projection qualité et long terme de la part des acheteurs.</p>   </div>
+                                <p id="parli11" class="text-muted mb-0">Une exigence constante du secteur à l’image des clients, une projection qualité et long terme de la part des acheteurs.</p>   </div>
                         </div>
                     </div><!--end col-->
 
-                    <div class="col">
+                    <div class="col" data-aos="fade-up" data-aos-duration="1400">
                         <div class="features">
                             <div class="image position-relative d-inline-block">
                                 <i class="uil uil-crosshair  h1 text-primary"></i>
                             </div>
 
                             <div class="content mt-4">
-                                <h5>Marketing ethnique</h5>
-                                <p class="text-muted mb-0">Adapter ses produits à un marché de niche, mieux connaitre les utilisateurs, réadapter le produit ou le concept aux exigences du marché.</p>       </div>
+                                <h5 id="head2">Marketing ethnique</h5>
+                                <p id="parli2" class="text-muted mb-0">Adapter ses produits à un marché de niche, mieux connaitre les utilisateurs, réadapter le produit ou le concept aux exigences du marché.</p>       </div>
                         </div>
                     </div><!--end col-->
 
@@ -212,12 +270,12 @@
           <div class="container">
               <div class="row justify-content-center">
                     <div class="section-title mb-4 pb-2 justify-content-center">
-                        <h4 class="title mb-4 para-desc  mb-0" >Univers Marque Ou Parcours Client</h4>
+                        <h5 class="title mb-4 para-desc  mb-0" id="te">Univers Marque Ou Parcours Client</h5>
                         </div>
                     </div>
               <div class="row">
 
-                    <div class="col-md-4 col-12">
+                    <div class="col-md-4 col-12"  data-aos="fade-up" data-aos-duration="800">
                         <div class="features mt-5">
                             <div class="image position-relative d-inline-block">
                                 <i class="uil uil-presentation-line  h1 text-primary"></i>
@@ -226,24 +284,24 @@
                             <div class="content mt-4">
                                 <div class="content mt-4">
                                 <h5>Benchmark</h5>
-                                <p class="text-muted mb-0">Étude des comportements des clients d’un même secteur concurrentiel. Mettre en place les leviers différenciant.</p>       </div>
+                                <p id="bench" class="text-muted mb-0">Étude des comportements des clients d’un même secteur concurrentiel. Mettre en place les leviers différenciant.</p>       </div>
                         </div>
                         </div>
                     </div><!--end col-->
 
-                    <div class="col-md-4 col-12 mt-5">
+                    <div class="col-md-4 col-12 mt-5"  data-aos="fade-up" data-aos-duration="1000">
                         <div class="features">
                             <div class="image position-relative d-inline-block">
                                 <i class="uil  uil-edit  h1 text-primary"></i>
                             </div>
 
                             <div class="content mt-4">
-                                <h5>Auto-évaluation et Expérimentation collective « vis ma vie de client »</h5>
-                                <p class="text-muted mb-0">quoi de plus naturel que de se mettre dans la peau du client pour changer son regard, voir ce que l’on ne voit plus à force de routine, être force de proposition, réagir en adéquation avec la réalité du terrain. Notre outil via l’interface ou l’application Smartphone permet aux équipes de vivre l’expérience consommateur soit dans son point de vente, dans celui d’un collègue de la même enseigne, ou dans une enseigne concurrente.</p>          </div>
+                                <h5 id="titleli">Auto-évaluation et Expérimentation collective « vis ma vie de client »</h5>
+                                <p id="parli1" class="text-muted mb-0"> Notre outil via l’interface ou l’application Smartphone permet aux équipes de vivre l’expérience consommateur soit dans son point de vente, dans celui d’un collègue de la même enseigne, ou dans une enseigne concurrente.</p>          </div>
                         </div>
                     </div><!--end col-->
 
-                    <div class="col-md-4 col-12 mt-5">
+                    <div class="col-md-4 col-12 mt-5"  data-aos="fade-up" data-aos-duration="1200">
                         <div class="features">
                             <div class="image position-relative d-inline-block">
                                 <i class="uil  uil-check-square  h1 text-primary"></i>
@@ -251,35 +309,35 @@
 
                             <div class="content mt-4">
                                <div class="content mt-4">
-                                <h5>Marketing sensoriel et analyse des 5 sens</h5>
-                                <p class="text-muted mb-0">découvrir les leviers du ressentis du consommateur, ci qui impulse l’acte d’achat et de fidélisation.</p>    </div>
+                                <h5 id="titleli1">Marketing sensoriel et analyse des 5 sens</h5>
+                                <p id="parli3" class="text-muted mb-0">découvrir les leviers du ressentis du consommateur, ci qui impulse l’acte d’achat et de fidélisation.</p>    </div>
                         </div>
                         </div>
                     </div><!--end col-->
 
-                    <div class="col-md-4 col-12 mt-5">
+                    <div class="col-md-4 col-12 mt-5"  data-aos="fade-up" data-aos-duration="1200">
                         <div class="features">
                             <div class="image position-relative d-inline-block">
                                 <i class="uil  uil-feedback  h1 text-primary"></i>
                             </div>
 
                            <div class="content mt-4">
-                                <h5>Parcours client et moments de vérité</h5>
-                                <p class="text-muted mb-0">En connaitre le fil conducteur et les rendez-vous incontournables entre la marque et ses clients</p>   </div>
+                                <h5 id="titleli2">Parcours client et moments de vérité</h5>
+                                <p id="parli4" class="text-muted mb-0">En connaitre le fil conducteur et les rendez-vous incontournables entre la marque et ses clients</p>   </div>
                     </div><!--end col-->
                     </div><!--end col-->
 
 
 
-                    <div class="col-md-4 col-12 mt-5">
+                    <div class="col-md-4 col-12 mt-5" data-aos="fade-up" data-aos-duration="1200">
                         <div class="features">
                             <div class="image position-relative d-inline-block">
                                 <i class="uil  uil-dashboard  h1 text-primary"></i>
                             </div>
 
                             <div class="content mt-4">
-                                <h5>Un panel à l’image de vos clients</h5>
-                                <p class="text-muted mb-0">en perpétuel développement et qualification.
+                                <h5 id="titleli3">Un panel à l’image de vos clients</h5>
+                                <p id="parli5" class="text-muted mb-0">en perpétuel développement et qualification.
                                 </p>
                             </div>
                         </div>
@@ -288,16 +346,15 @@
 
   </div>
         </section><!--end section-->
- <section class="section ">
+        <section class="section ">
             <div class="container">
                     <div class="row justify-content-center">
                         <div class="section-title mb-4 pb-2 justify-content-center">
-                                                <h4 class="title mb-4 para-desc  mb-0" >Univers Formation</h4>
+                                                <h4 class="title mb-4 para-desc  mb-0" id="uni" >Univers Formation</h4>
                         </div>
                     </div>
               <div class="row">
-
-                    <div class="col-md-4 col-12">
+                    <div class="col-md-4 col-12"  data-aos="fade-up" data-aos-duration="800">
                         <div class="features mt-5">
                             <div class="image position-relative d-inline-block">
                                 <i class="uil uil-award-alt h1 text-primary"></i>
@@ -305,90 +362,78 @@
 
                             <div class="content mt-4">
                                 <div class="content mt-4">
-                                <h5>Fondamentaux</h5>
-                                    <p class="text-muted mb-0">Les définir grâce aux techniques du marketing des services, la connaissance client de votre environnement</p></div>  </div>
+                                <h5 id="li">Fondamentaux</h5>
+                                    <p id="li2" class="text-muted mb-0" >Les définir grâce aux techniques du marketing des services, la connaissance client de votre environnement</p></div>  </div>
                         </div>
                     </div><!--end col-->
-
-                    <div class="col-md-4 col-12 mt-5">
+                    <div class="col-md-4 col-12 mt-5"  data-aos="fade-up" data-aos-duration="1000">
                         <div class="features">
                             <div class="image position-relative d-inline-block">
                                 <i class="uil  uil-sign-alt h1 text-primary"></i>
                             </div>
-
                             <div class="content mt-4">
                                 <h5>Accueil</h5>
-                                <p class="text-muted mb-0">Grâce à nos travaux sur l’accueil et tout particulièrement en caisse, moment de vérité dans le processus de fidélisation client, nous vous accompagnons dans la valorisation de cette étape, la sensibilisation et la formation du personnel en contact</p></div>    </div>
+                                <p id="li3" class="text-muted mb-0">Grâce à nos travaux sur l’accueil et tout particulièrement en caisse, moment de vérité dans le processus de fidélisation client, nous vous accompagnons dans la valorisation de cette étape, la sensibilisation et la formation du personnel en contact</p></div>    </div>
                     </div><!--end col-->
-
-                    <div class="col-md-4 col-12 mt-5">
+                    <div class="col-md-4 col-12 mt-5"  data-aos="fade-up" data-aos-duration="1200">
                         <div class="features">
                             <div class="image position-relative d-inline-block">
                                 <i class="uil uil-laptop-cloud  h1 text-primary"></i>
                             </div>
-
                             <div class="content mt-4">
                                <div class="content mt-4">
-                                <h5>Formation → e-learning+ présentiel</h5>
-                                   <p class="text-muted mb-0">Elaborer pour vous et avec vous des modules de formations on-line pour renforcer les acquis et en présentiel pour corriger les notions de base</p></div>    </div>
+                                <h5 id="fors">Formation → e-learning+ présentiel</h5>
+                                   <p id="li5" class="text-muted mb-0">Elaborer pour vous et avec vous des modules de formations on-line pour renforcer les acquis et en présentiel pour corriger les notions de base</p></div>    </div>
                         </div>
                     </div><!--end col-->
-
-                    <div class="col-md-4 col-12 mt-5">
+                    <div class="col-md-4 col-12 mt-5" data-aos="fade-up" data-aos-duration="1000">
                         <div class="features">
                             <div class="image position-relative d-inline-block">
                                 <i class="uil uil-graph-bar h1 text-primary"></i>
                             </div>
-
                            <div class="content mt-4">
-                                <h5>Charte qualité</h5>
-                               <p class="text-muted mb-0">Se baser sur les requêtes des consommateurs pour sa rédaction</p></div>    </div><!--end col-->
+                                <h5 id="char">Charte qualité</h5>
+                               <p id="li4" class="text-muted mb-0">Se baser sur les requêtes des consommateurs pour sa rédaction</p></div>    </div><!--end col-->
                     </div><!--end col-->
-
-
-
-                    <div class="col-md-4 col-12 mt-5">
+                    <div class="col-md-4 col-12 mt-5"  data-aos="fade-up" data-aos-duration="1000">
                         <div class="features">
                             <div class="image position-relative d-inline-block">
                                 <i class="uil uil-crosshair-alt  h1 text-primary"></i>
                             </div>
 
                             <div class="content mt-4">
-                                <h5>Elaboration référentiel</h5>
-                                <p class="text-muted mb-0">Base de travail des équipes en contact avec la clientèle. Point clef de la définition de l’identité relation propre à la marque. Définit également les rituels de services et de management</p>
+                                <h5 id="char1">Elaboration référentiel</h5>
+                                <p id="li6" class="text-muted mb-0">Base de travail des équipes en contact avec la clientèle. Point clef de la définition de l’identité relation propre à la marque. Définit également les rituels de services et de management</p>
                             </div>
                         </div>
                     </div><!--end col-->
                 </div><!---->
-
             </div><!--end container-->
-
         </section><!--end section-->
-                <section class="section bg-light">
 
+        <section class="section bg-light">
           <div class="container">
               <div class="row justify-content-center">
                     <div class="section-title mb-4 pb-2 justify-content-center">
-                        <h4 class="title mb-4 para-desc  mb-0" >Innovation, Modernité</h4>
+                        <h4 id="head" class="title mb-4 para-desc  mb-0"  >Innovation, Modernité</h4>
                         </div>
                     </div>
               <div class="row">
-
-
-                    <div class="col">
+                    <div class="col-md-4 col-12 mt-5"  data-aos="fade-up" data-aos-duration="800">
                         <div class="features">
                             <div class="image position-relative d-inline-block">
                                 <i class="uil uil-lightbulb-alt  h1 text-primary"></i>
                             </div>
 
                             <div class="content mt-4">
-                                <h5>Innovation</h5>
-                                <p class="text-muted mb-0">Innover par le service client, apporter une valeur ajoutée
-
-</p></div>    </div>
+                                <h5 id="in">Innovation</h5>
+                                <p id="head10" class="text-muted mb-0">Innover par le service client, apporter une valeur ajoutée
+                                </p>
+                            </div>
+                        </div>
                     </div><!--end col-->
 
-                    <div class="col">
+                    <div class="col-md-4 col-12 mt-5" data-aos="fade-up" data-aos-duration="1000">
                         <div class="features">
                             <div class="image position-relative d-inline-block">
                                 <i class="uil  uil-panel-add h1 text-primary"></i>
@@ -396,26 +441,26 @@
 
                             <div class="content mt-4">
                                <div class="content mt-4">
-                                <h5>Axe de progrès sur divers plan</h5>
-                                <p class="text-muted mb-0">Stratégie, RH, formation, marketing, commercial, management, achat, maintenance…Trouver ou Redonner du sens à chacun des métiers</p>    </div>
+                                <h5 id="axe">Axe de progrès sur divers plan</h5>
+                                <p id="head20" class="text-muted mb-0">Stratégie, RH, formation, marketing, commercial, management, achat, maintenance…Trouver ou Redonner du sens à chacun des métiers</p>    </div>
                         </div>
                         </div>
                     </div><!--end col-->
 
-                    <div class="col">
+                    <div class="col-md-4 col-12 mt-5"  data-aos="fade-up" data-aos-duration="1100">
                         <div class="features">
                             <div class="image position-relative d-inline-block">
                                 <i class="uil uil-cloud-heart  h1 text-primary"></i>
                             </div>
 
                            <div class="content mt-4">
-                                <h5>Digitalisation/modernité</h5>
-                               <p class="text-muted mb-0">Des outils de mesure « Up to date » qui répondent aux besoins de chacun, faciles et facilitateurs</p></div>    </div><!--end col-->
+                                <h5 id="dig">Digitalisation/modernité</h5>
+                               <p id="head22" class="text-muted mb-0">Des outils de mesure « Up to date » qui répondent aux besoins de chacun, faciles et facilitateurs</p></div>    </div><!--end col-->
                     </div><!--end col-->
 
 
 
-                    <div class="col">
+                    <div class="col-md-4 col-12 mt-5"  data-aos="fade-up" data-aos-duration="1300">
                         <div class="features">
                             <div class="image position-relative d-inline-block">
                                 <i class="uil uil-star  h1 text-primary"></i>
@@ -423,21 +468,20 @@
 
                             <div class="content mt-4">
                                 <h5>B to B</h5>
-                                <p class="text-muted mb-0">Professionnels du B to B, nous avons aussi des méthodologies de mesure et des solutions adaptés à mettre au profit de votre service client.</p>
+                                <p id="head55" class="text-muted mb-0">Professionnels du B to B, nous avons aussi des méthodologies de mesure et des solutions adaptés à mettre au profit de votre service client.</p>
                             </div>
                         </div>
                     </div><!--end col-->
                 </div><!---->
-
-  </div>
+                </div>
         </section><!--end section-->
-            <div class="container mt-100 mt-60">
+            <div class="container mt-100 mt-60" data-aos="fade-up" data-aos-duration="1000">
                 <div class="row justify-content-center">
                     <div class="col-12 text-center">
                         <div class="section-title mb-4 pb-2">
-                            <h4 class="title mb-4" data-aos="fade-up" data-aos-duration="1000">
+                            <h4 class="title mb-4" id="p1" >
                                 Sur chaque expérience vécue, il y a le pire et surtout le meilleur.</h4>
-                            <p class="text-muted para-desc mb-0 mx-auto" data-aos="fade-up" data-aos-duration="1400">Dans la majorité des cas, le consommateur décide que c'est bon ou mauvais car un incident ou un client délice s'est produit laissant sa mémoire nuancer cette expérience.<br>
+                            <p class="text-muted para-desc mb-0 mx-auto" data-aos="fade-up" data-aos-duration="1400" id="p2">Dans la majorité des cas, le consommateur décide que c'est bon ou mauvais car un incident ou un client délice s'est produit laissant sa mémoire nuancer cette expérience.<br>
 
                                     Petit tour d'horizon des discours des consommateurs, de ce qu'ils ont aimé lors de leurs expériences et de ce qu'ils auraient voulu avoir lorsqu'une expérience client était moins bonne.</p>
                         </div>
@@ -539,12 +583,12 @@
                 <div class="row justify-content-center">
                     <div class="col-12 text-center">
                         <div class="section-title">
-                            <h4 class="title mb-4">Pour vos demandes relatives aux projets de client mystère nous sommes à votre disposition.</h4>
-                            <p class="text-muted para-desc mx-auto">Entrons en <span class="text-primary font-weight-bold">contact</span>.</p>
-                        
+                            <h4 class="title mb-4" id="p3">Pour vos demandes relatives aux projets de client mystère nous sommes à votre disposition.</h4>
+                            <p class="text-muted para-desc mx-auto" id="p4">Entrons en contact</p>
+
                             <div class="mt-4">
-                                <a href=" {% url 'contact' %} " class="btn btn-primary mt-2 mr-2">Joindre un consultant client mystère</a>
-                                                           <a href=" {% url 'guide' %} " class="btn btn-info mt-2 mr-2">Découverez nos méthodologies de mesure</a>
+                                <a href=" {% url 'contact' %} " class="btn btn-primary mt-2 mr-2" id="p5">Joindre un consultant client mystère</a>
+                                                           <a href=" {% url 'guide' %} " class="btn btn-info mt-2 mr-2" id="p6">Découverez nos méthodologies de mesure</a>
 
                             </div>
                         </div>
@@ -555,24 +599,173 @@
         <!-- Project End -->
 
         <!-- Footer Start -->
-            {% include 'footer.html' %}
-<
+
         <!-- Back to top -->
         <a href="#" class="btn btn-icon btn-primary back-to-top"><i data-feather="arrow-up" class="icons"></i></a>
         <!-- Back to top -->
-
+       <!-- SLIDER -->
+        <script src=" {% static 'js/owl.carousel.min.js' %} "></script>
+        <script src=" {% static 'js/owl.init.js' %} "></script>
         <!-- javascript -->
         <script src=" {% static 'js/jquery-3.5.1.min.js' %} "></script>
         <script src=" {% static 'js/bootstrap.bundle.min.js' %} "></script>
         <script src=" {% static 'js/jquery.easing.min.js' %} "></script>
         <script src=" {% static 'js/scrollspy.min.js' %} "></script>
         <!-- SLIDER -->
-        <script src=" {% static 'js/owl.carousel.min.js ' %} "></script>
+        <script src=" {% static 'js/owl.carousel.min.js' %} "></script>
         <script src=" {% static 'js/owl.init.js' %} "></script>
         <!-- Icons -->
         <script src=" {% static 'js/feather.min.js' %} "></script>
         <script src="https://unicons.iconscout.com/release/v3.0.3/script/monochrome/bundle.js"></script>
         <!-- Main Js -->
         <script src=" {% static 'js/app.js' %} "></script>
+                       <script src=" {% static 'js/aos.js' %} "></script>
+
+      <script>
+        $('.carousel').carousel({
+  interval: 1500
+})
+            AOS.init({
+                easing: 'ease-in-out-sine',
+                duration: 1000
+            });
+        </script>
+      <script type="text/javascript">
+       $(document).ready(function(){
+           $('#es').click(function(){
+            espagnol()
+            localStorage.setItem("lang",'es')
+
+            });
+        });
+
+         $(document).ready(function(){
+           $('#en').click(function(){
+            english()
+            localStorage.setItem("lang",'en')
+
+            });
+        });
+
+        $(document).ready(function(){
+           $('#fr').click(function(){
+            localStorage.removeItem("lang");
+            location.reload();
+            });
+         });
+
+
+        window.onload = function getlang(){
+        var x = localStorage.getItem("lang")
+        console.log(x)
+        if(x == 'en'){
+           english()
+            }
+
+        if(x == 'es')
+        {
+            espagnol()
+        }
+        }
+
+        function english(){
+            document.getElementById("home").innerHTML ="Home"
+            document.getElementById ("fors"). innerHTML = "training → e-learning + face-to-face"
+            document.getElementById("tt").innerHTML ="A permanent co-creation at your service."
+            document.getElementById("uni").innerHTML = "Training Universe"
+            document.getElementById("bigtitle").innerHTML = "International And Luxery"
+            document.getElementById("head1").innerHTML = "Control of the calendar of commercial events in France and internationally"
+            document.getElementById("head2").innerHTML = "Ethnic Marketing"
+            document.getElementById("content1").innerHTML = "Studied moments of action, Religious holidays (Christmas ...), Mother's / Father's Day, daily life, end of the year ... this calendar is naturally adapted according to cultures, or countries of intervention."
+            document.getElementById("parli11").innerHTML = "A constant requirement of the sector in the image of the customers, a quality and long-term projection on the part of the buyers."
+            document.getElementById("parli").innerHTML = "Knowledge of consumption habits, mastery of the language, provision of a panel of individuals from residents of the country."
+            document.getElementById("parli1").innerHTML = "Our tool via the interface or the Smartphone application allows teams to live the consumer experience either at their point of sale, that of a colleague from the same brand, or in a competing brand."
+            document.getElementById("parli2").innerHTML = "Adapt its products to a niche market, get to know users better, readjust the product or concept to market requirements."
+            document.getElementById("titleli").innerHTML = "Self-assessment and collective experimentation live my life as a customer"
+            document.getElementById("titleli1").innerHTML ="Sensory marketing and analysis of the 5 senses"
+            document.getElementById("titleli2").innerHTML ="Customer journey and moments of truth"
+            document.getElementById("titleli3").innerHTML = "A panel that reflects your customers"
+            document.getElementById("bench").innerHTML = "Study of customer behavior in the same competitive sector. Set up the differentiating levers."
+            document.getElementById("te").innerHTML = "Customer Universe Brand Or Path"
+            document.getElementById("parli2").innerHTML = "Our tool via the interface or the Smartphone application allows teams to live the consumer experience either at their point of sale, that of a colleague from the same brand, or in a competing brand."
+            document.getElementById("parli3").innerHTML ="discover the levers of consumer sentiment, which drives the act of buying and building loyalty."
+            document.getElementById("parli4").innerHTML ="Know the common thread and the essential meetings between the brand and its customers"
+            document.getElementById("parli5").innerHTML = "in perpetual development and qualification."
+            document.getElementById("li").innerHTML = "Fundamentals"
+            document.getElementById("li2").innerHTML = "Define them using service marketing techniques, customer knowledge of your environment"
+            document.getElementById("li3").innerHTML = "Thanks to our work on reception and especially at the checkout, a moment of truth in the customer loyalty process, we support you in enhancing this stage, raising awareness and training the staff in contact."
+            document.getElementById("li5").innerHTML = "Develop for you and with you online training modules to reinforce knowledge and face-to-face to correct basic concepts"
+            document.getElementById("li4").innerHTML = "Be based on consumer requests for its drafting"
+            document.getElementById("li6").innerHTML ="Work base for teams in contact with customers. Key point in the definition of the brand's own relationship identity. Also defines service and management rituals"
+            document.getElementById("char").innerHTML ="Quality charter"
+            document.getElementById("char1").innerHTML ="Reference development"
+            document.getElementById("head").innerHTML ="Innovation, Modernity"
+            document.getElementById("head10").innerHTML ="Innovate through customer service, bring added value"
+            document.getElementById("head20").innerHTML ="Strategy, HR, training, marketing, sales, management, purchasing, maintenance ... Finding or Restoring meaning to each of the professions"
+            document.getElementById("head22").innerHTML ="Up to date measurement tools that meet everyones needs, easy and facilitating"
+            document.getElementById("head55").innerHTML ="B to B professionals, we also have measurement methodologies and solutions adapted to benefit your customer service."
+            document.getElementById ("axe").innerHTML = "Multi-level progress axis"
+            document.getElementById ("dig").innerHTML = "Digitization / currency"
+            document.getElementById ("in").innerHTML = "Innovation"
+            document.getElementById ("p1").innerHTML = "Of each experience, there is the worst and above all the best."
+            document.getElementById ("p2").innerHTML = "In most cases, the consumer decides that it is good or bad because there has been an incident or a pleasant customer leaving their memory qualifying this experience. Here is a quick overview what consumers say, what they liked about their experiences and what they would have liked to have when a customer's experience was worse. "
+            document.getElementById ("p3").innerHTML = "For your inquiries related to mystery shopper projects, we are at your disposal."
+            document.getElementById ("p4").innerHTML = "Let's keep in touch."
+            document.getElementById ("p5").innerHTML = "Join a mystery shopper consultant"
+            document.getElementById ("p6").innerHTML = "discover our measurement methodologies"
+            document.getElementById("ess").innerHTML ="INVESTIGATOR AREA: LOG IN"
+        }
+
+        function espagnol(){
+            document.getElementById("home").innerHTML = "Home"
+            document.getElementById("uni").innerHTML = "Universo de entrenamiento"
+            document.getElementById("te").innerHTML = "Marca o trayectoria del universo del cliente"
+            document.getElementById("tt").innerHTML ="Una co-creación permanente a tu servicio."
+            document.getElementById("bigtitle").innerHTML = "Internacional y de lujo"
+            document.getElementById("head1").innerHTML = "Control del calendario de eventos comerciales en Francia e internacionalmente"
+            document.getElementById("head2").innerHTML = "Marketing étnico"
+            document.getElementById("content1").innerHTML = "Momentos de acción estudiados, Fiestas religiosas (Navidad ...), Día de la Madre / Padre, vida cotidiana, fin de año ... este calendario se adapta naturalmente según culturas, o países de intervención."
+            document.getElementById("bench").innerHTML = "Conocimiento de hábitos de consumo, dominio del idioma, provisión de un panel de individuos de residentes del país."
+            document.getElementById("parli11").innerHTML = "Una demanda constante del sector a imagen de los clientes, una calidad y proyección a largo plazo por parte de los compradores."
+            document.getElementById("parli2").innerHTML = "Adaptar sus productos a un nicho de mercado, conocer mejor a los usuarios, reajustar el producto o concepto a los requerimientos del mercado."
+            document.getElementById("titleli").innerHTML ="Autoevaluación y experimentación colectiva vive mi vida como cliente"
+            document.getElementById("titleli1").innerHTML ="Marketing sensorial y análisis de los 5 sentidos"
+            document.getElementById("titleli2").innerHTML ="Viaje del cliente y momentos de la verdad"
+            document.getElementById("titleli3").innerHTML = "Un panel que refleja a sus clientes"
+            document.getElementById("parli").innerHTML = "Estudio del comportamiento de los clientes en el mismo sector competitivo. Configure las palancas diferenciadoras."
+            document.getElementById("parli1").innerHTML = "Nuestra herramienta a través de la interfaz o la aplicación Smartphone permite a los equipos vivir la experiencia del consumidor ya sea en su punto de venta, el de un colega de la misma marca, o en una marca competidora."
+            document.getElementById("parli2").innerHTML = "Nuestra herramienta a través de la interfaz o la aplicación Smartphone permite a los equipos vivir la experiencia del consumidor ya sea en su punto de venta, el de un colega de la misma marca, o en una marca competidora."
+            document.getElementById("parli3").innerHTML ="descubra las palancas del sentimiento del consumidor, que impulsa el acto de comprar y fidelizar."
+            document.getElementById("parli4").innerHTML ="Conocer el hilo conductor y los encuentros imprescindibles entre la marca y sus clientes"
+            document.getElementById("parli5").innerHTML = "en perpetuo desarrollo y calificación."
+            document.getElementById("li").innerHTML = "Fundamentos"
+            document.getElementById("li2").innerHTML = "Definirlos utilizando técnicas de marketing de servicios, conocimiento del cliente de su entorno."
+            document.getElementById("li3").innerHTML = "Gracias a nuestro trabajo en la recepción y especialmente en el checkout, momento de la verdad en el proceso de fidelización del cliente, te apoyamos en la potenciación de esta etapa, sensibilizando y formando al personal en contacto."
+            document.getElementById("li5").innerHTML = "Desarrollar para ti y contigo módulos de formación online para reforzar conocimientos y cara a cara para corregir conceptos básicos"
+            document.getElementById("li4").innerHTML =  "Estar basado en las solicitudes de los consumidores para su redacción."
+            document.getElementById("li6").innerHTML ="Base de trabajo para equipos en contacto con clientes. Punto clave en la definición de la identidad relacional propia de la marca. También define los rituales de servicio y gestión."
+            document.getElementById("char").innerHTML ="Carta de calidad"
+            document.getElementById("char1").innerHTML ="Desarrollo de referencia"
+            document.getElementById("head").innerHTML ="Innovación, Modernidad"
+            document.getElementById("head10").innerHTML ="Innovar a través del servicio al cliente, aportar valor añadido"
+            document.getElementById("head20").innerHTML ="Estrategia, RRHH, formación, marketing, ventas, gestión, compras, mantenimiento ... Encontrar o devolver sentido a cada una de las profesiones"
+            document.getElementById("head22").innerHTML ="Herramientas de medición actualizadas que satisfacen las necesidades de todos, de forma fácil y sencilla"
+            document.getElementById("head55").innerHTML ="Profesionales B to B, también contamos con metodologías de medición y soluciones adaptadas para beneficiar su servicio al cliente."
+            document.getElementById("p1").innerHTML ="De cada experiencia, está la peor y sobre todo la mejor."
+            document.getElementById("p2").innerHTML ="En la mayoría de los casos, el consumidor decide que es bueno o malo porque se ha producido una incidencia o un cliente agradable dejando su memoria matizando esta experiencia. Aquí hay una descripción general rápida de lo que dicen los consumidores, lo que les gustó de sus experiencias y lo que les hubiera gustado tener cuando la experiencia de un cliente fue peor."
+            document.getElementById("p3").innerHTML ="Para sus solicitudes relacionadas con proyectos de compradores misteriosos, estamos a su disposición."
+            document.getElementById("p4").innerHTML ="Mantengámonos en contacto."
+            document.getElementById("p5").innerHTML ="Únase a un consultor de compradores misteriosos"
+            document.getElementById("p6").innerHTML ="descubre nuestras metodologías de medición"
+            document.getElementById("axe").innerHTML ="Eje de progreso en varios niveles"
+            document.getElementById("dig").innerHTML ="Digitalización / modernidad"
+            document.getElementById("in").innerHTML ="Innovación"
+            document.getElementById("fors").innerHTML ="formación → e-learning + presencial"
+            document.getElementById("accueil").innerHTML ="Pagina de inicio"
+            document.getElementById("pro").innerHTML = "Profesional"
+            document.getElementById("panel").innerHTML ="Panel"
+            document.getElementById("ess").innerHTML ="ÁREA DEL INVESTIGADOR: INICIAR SESIÓN"
+        }
+    </script>
     </body>
 </html>

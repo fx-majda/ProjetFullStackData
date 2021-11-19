@@ -6,8 +6,8 @@
                         <a href="#" class="logo-footer">
                             <img src=" {% static 'images/logo-light.png' %} " height="24" alt="">
                         </a>
-                        <p class="mt-4">Pour joindre par mail un chargé de relation et de communication avec le panel: <br> <span class="text-primary font-weight-bold">client-mystere@up-goods.com</span><br>
-                        Pour toute autre question: <br><span class="text-primary font-weight-bold" >contact@up-goods.com</span></p>
+                        <p class="mt-4" id="1">Pour joindre par mail un chargé de relation et de communication avec le panel: <br> <span class="text-white font-weight-bold" id="email">client-mystere@up-goods.com</span><br>
+                        Pour toute autre question: <br><span class="text-white font-weight-bold" id="2">contact@up-goods.com</span></p>
                         <ul class="list-unstyled social-icon social mb-0 mt-4">
                             <li class="list-inline-item"><a href="  " class="rounded"><i data-feather="facebook" class="fea icon-sm fea-social"></i></a></li>
                             <li class="list-inline-item"><a href="  " class="rounded"><i data-feather="instagram" class="fea icon-sm fea-social"></i></a></li>
@@ -20,19 +20,19 @@
                         <h5 class="text-light footer-head">Upgoods</h5>
                         <ul class="list-unstyled footer-list mt-4">
                                                                 									{% url 'index' as login %}
-                         <li><a href=" {{login}} " class="text-foot"><i class="mdi mdi-chevron-right mr-1"></i> Accueil</a></li>
+                         <li><a href=" {{login}} " class="text-foot" id="3"><i class="mdi mdi-chevron-right mr-1"></i> Accueil</a></li>
                                                                    									{% url 'service' as login %}
-                         <li><a href=" {{login}} " class="text-foot"><i class="mdi mdi-chevron-right mr-1"></i> Nos Services</a></li>
+                         <li><a href=" {{login}} " class="text-foot " id="4"><i class="mdi mdi-chevron-right mr-1"></i> Nos Services</a></li>
                                                                									{% url 'guide' as login %}
-                         <li><a href=" {{login}} " class="text-foot"><i class="mdi mdi-chevron-right mr-1"></i> FAQ | SOS</a></li>
+                         <li><a href=" {{login}} " class="text-foot" id="5"><i class="mdi mdi-chevron-right mr-1"></i> FAQ | SOS</a></li>
                                                                   									{% url 'actualite' as login %}
-                            <li><a href="{{login}} " class="text-foot"><i class="mdi mdi-chevron-right mr-1"></i> Actualités</a></li>
+                            <li><a href="{{login}} " class="text-foot" id="6"><i class="mdi mdi-chevron-right mr-1"></i> Actualités</a></li>
                                                                									{% url 'contact' as login %}
-                    <li><a href=" {{login}} " class="text-foot"><i class="mdi mdi-chevron-right mr-1"></i> Contact</a></li>
+                    <li><a href=" {{login}} " class="text-foot" id="7"><i class="mdi mdi-chevron-right mr-1"></i> Contact</a></li>
                                         									{% url 'signup' as login %}
-                     <li><a href=" {{login}} " class="text-foot"><i class="mdi mdi-chevron-right mr-1"></i> Inscription</a></li>
+                     <li><a href=" {{login}} " class="text-foot " id="8"><i class="mdi mdi-chevron-right mr-1"></i> Inscription</a></li>
                                        									{% url 'login' as login %}
-                    <li><a href=" {{login}} " class="text-foot"><i class="mdi mdi-chevron-right mr-1"></i> Se connecter </a></li>
+                    <li><a href=" {{login}} " class="text-foot" id="9"><i class="mdi mdi-chevron-right mr-1"></i> Se connecter </a></li>
                         </ul>
                     </div><!--end col-->
 
@@ -72,3 +72,23 @@
                 duration: 1000
             });
         </script>
+          <script type="text/javascript">
+        window.onload = function getlang(){
+        var x = localStorage.getItem("lang")
+        console.log(x)
+        if(x == 'en'){
+            document.getElementById("1").innerHTML = "To reach by email a relationship and communication manager with the panel:"
+
+          }
+        if(x == 'es') {
+            document.getElementById("pg").innerHTML = "HOME PAGE"
+            document.getElementById("par1").innerHTML = "Contáctenos"
+            document.getElementById("ms").innerHTML = "Mandanos un mensaje"
+            document.getElementById("nom").innerHTML = "Tu nombre	"
+            document.getElementById("email1").innerHTML ="Tu correo electrónico"
+            document.getElementById("sujet").innerHTML = "sujeto"
+            document.getElementById("submit").innerHTML ="Submit"
+           }
+
+        }
+    </script>

@@ -3,7 +3,21 @@
 <meta charset="UTF-8">
 {% load static %}
 <head>
+
 <title>Upgoods Verification</title>
+     <link rel="stylesheet" href=" {% static 'build/css/intlTelInput.css' %} ">
+  <link rel="stylesheet" href=" {% static 'build/css/demo.css' %} ">
+     <script src=" {% static 'build/js/intlTelInput.js' %} "></script>
+        <script src=" {% static 'js/jquery-3.5.1.min.js' %} "></script>
+            <link rel="shortcut icon" href=" {% static 'images/1.ico' %} ">
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+		<script src="{% static 'character-counter.js' %}"></script>
+
+<script src=" {% static 'plugins/jquery/jquery.min.js' %} "></script>
+    	<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+<style>.container{ margin: 150px auto; max-width: 640px; }
+  #CharCounterMessage,#NameTextMessage { margin-top: 1rem; }
+</style>
     <style>
     @import url('https://fonts.googleapis.com/css?family=Poppins:200i,400&display=swap');
 
@@ -142,6 +156,14 @@
       margin: 0 auto 1.25rem auto;
       padding: 0.25rem;
     }
+    .form-group1 {
+    border-style: outset ;
+    border-width: thick;
+    padding: 0px 0px 15px 15px;
+    margin: 0px 3px 0px 0px;
+    margin: 0 auto 1.75rem auto;
+    padding: 1.25rem;
+    }
 
     .form-control {
       display: block;
@@ -167,7 +189,7 @@
       display: inline-block;
       margin-right: 0.625rem;
       min-height: 1.25rem;
-      min-width: 1.25rem;
+      min-width: 2rem;
     }
 
     .input-textarea {
@@ -178,47 +200,140 @@
     }
 
     .submit-button {
-      display: block;
-      width: 100%;
-      padding: 0.75rem;
       background: var(--color-green);
-      color: inherit;
-      border-radius: 2px;
+      padding: 10px;
+      text-align: center;
+
+      text-decoration: none;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top:20px;
+      font-size: 16px;
       cursor: pointer;
+      border-radius: 12px;
     }
+    .sub-button {
+      background-image: linear-gradient(115deg, rgba(58, 58, 158, 0.8), rgba(136, 136, 206, 0.7) ), url(https://cdn.pixabay.com/photo/2016/03/22/15/29/blue-1273089_960_720.jpg);
+      color: white;
+      padding: 10px;
+      text-align: center;
+
+      text-decoration: none;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top:20px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 12px;
+    }
+
+.waves {
+  position:relative;
+  width: 100%;
+  height:15vh;
+  margin-bottom:-7px; /*Fix for safari gap*/
+  min-height:100px;
+  max-height:150px;
+}
+
+.content {
+  position:relative;
+  height:20vh;
+  text-align:center;
+  background-color: white;
+}
+
+/* Animation */
+
+.parallax > use {
+  animation: move-forever 25s cubic-bezier(.55,.5,.45,.5)     infinite;
+}
+.parallax > use:nth-child(1) {
+  animation-delay: -2s;
+  animation-duration: 7s;
+}
+.parallax > use:nth-child(2) {
+  animation-delay: -3s;
+  animation-duration: 10s;
+}
+.parallax > use:nth-child(3) {
+  animation-delay: -4s;
+  animation-duration: 13s;
+}
+.parallax > use:nth-child(4) {
+  animation-delay: -5s;
+  animation-duration: 20s;
+}
+@keyframes move-forever {
+  0% {
+   transform: translate3d(-90px,0,0);
+  }
+  100% {
+    transform: translate3d(85px,0,0);
+  }
+}
+/*Shrinking for mobile*/
+@media (max-width: 768px) {
+  .waves {
+    height:40px;
+    min-height:40px;
+  }
+  .content {
+    height:30vh;
+  }
+  h1 {
+    font-size:24px;
+  }
+}
     </style>
 </head>
-<body translate="no">
+<body translate="no" >
+
 <div class="container">
 <header class="header">
 
+</header>
+<div>
+<svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+<defs>
+<path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+</defs>
+<g class="parallax">
+<use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.7" />
+<use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.5)" />
+<use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.3)" />
+<use xlink:href="#gentle-wave" x="48" y="7" fill="#fff" />
+</g>
+</svg>
+</div>
+<form id="survey-form"  action="" method="POST" enctype='multipart/form-data'>
+                      {% csrf_token %}
     <div class="row justify-content-center">
 
-                                <img   src=" {% static 'images/logo-dark.png' %} " style="margin-left:130px;margin-top:10px;" height="80" alt="">
+                                <img   src=" {% static 'images/logo-light.png' %} " style="display: block;margin-left: auto;margin-right: auto; margin-bottom:10px" height="80" alt="">
                                         </div>
 <h1 id="title" class="text-center">Bienvenue sur Upgoods</h1>
 <p id="description" class="description text-center">
-veuillez compléter le questionnaire ci dessous pour terminer la création de votre compte  </p></header>
-
-<form id="survey-form"  action="" method="POST" enctype='multipart/form-data'>
-                      {% csrf_token %}
-
+veuillez compléter le questionnaire ci dessous pour terminer la création de votre compte  </p>
     <div class="form-group">
-            <label id="name-label" >Nom*</label>
+            <label id="name-label" >Nom complet<span style="color:#f50057;   margin: 0px 0px 0px 15px;">*</span></label>
             <input type="text" name="nom" class="form-control" placeholder="Entrer votre nom complet" required />
     </div>
          <div class="form-group">
-            <label id="photo-label" >Photo de profil*</label>
+            <label id="photo-label" >Photo de profil</label>
             <input type="file" name="profile_pic" class="form-control"  />
     </div>
 
         <div class="form-group">
-    <label id="number-label" >Date de naissance*<span class="clue"></span></label>
+            <label id="number-label" >Date de naissance <div class="description text-center"> : Mois/Jour/Année</div> <span style="color:#f50057;   margin: 0px 0px 0px 15px;">*</span></label>
     <input type="date" name="birth_day"  class="form-control" />
     </div>
 
      <div class="form-group">
-    <p>Sexe </p>
+    <p>Sexe <span style="color:#f50057;   margin: 0px 0px 0px 15px;">*</span></p>
         <label>
         <input name="genre" value="Femme" type="radio" class="input-radio" checked />Femme</label>
         <label>
@@ -226,34 +341,36 @@ veuillez compléter le questionnaire ci dessous pour terminer la création de vo
     </div>
 
     <div class="form-group">
-    <label  >Votre numero de telephone*<span class="clue"></span></label>
-    <input type="number" name="telephone"  class="form-control" placeholder="Votre numéro de telephone" required/>
+    <label  >Votre numero de telephone<span style="color:#f50057;   margin: 0px 0px 0px 15px;">*</span></label>
+    <input id="phone" name="telephone" type="tel" class="form-control" required/>
     </div>
 
         <div class="form-group">
-    <label  >Adresse postale:adresse,ville et pays*</label>
-	    <input type="text" name="adresse" class="form-control" placeholder="adresse, ville, pays, zipcode" required />
+            <label  >Adresse postale:<span style="color:#f50057;   margin: 0px 0px 0px 15px;">*</span></label>
+	    <input type="text" maxlength="200" name="adresse" class="form-control" placeholder="adresse.." required />
 
     </div>
-        <div class="form-group">
-	        <div><button class="submit-button"  onclick="getLocation()">Cliquez ici </button></div>
-        </div>
+    <div class="form-group">
+            <label  >Zipcode:<span style="color:#f50057;   margin: 0px 0px 0px 15px;">*</span></label>
+	    <input type="text" maxlength="200" name="zipcode" class="form-control" placeholder="zipcode.." required />
 
-    <div class="form-group">
-    <label  >longitute*</label>
-    <input id="long" type="text" name="longitude" placeholder="longitude..." class="form-control"  readonly  />
     </div>
     <div class="form-group">
-    <label  >latitude*</label>
-    <input  id="lat" type="text" name="latitude" placeholder="latitude..."  class="form-control" readonly  />
+            <label  >Ville:<span style="color:#f50057;   margin: 0px 0px 0px 15px;">*</span></label>
+	    <input type="text" maxlength="200" name="ville" class="form-control" placeholder="ville.." required />
+
     </div>
-						<div><p id="latlong"></p></div>
+
      <div class="form-group">
-            <label >Pour quelle société avez vous réalisé des visites mystères ?</label>
-            <input type="text" name="societe" id="societe" class="form-control" placeholder="Entrer le nom de la societe par ici" required />
-            </div>
+            <label  >Pays:<span style="color:#f50057;   margin: 0px 0px 0px 15px;">*</span></label>
+	    <input type="text" maxlength="200" name="pays" class="form-control" placeholder="pays.." required />
+
+    </div>
+
+
+
     <div class="form-group">
-    <p>Possedez-vous un ordinateur personnel ?* </p>
+    <p>Possedez-vous un ordinateur personnel ?<span style="color:#f50057;   margin: 0px 0px 0px 15px;">*</span> </p>
         <label>
         <input name="ordinateur" value="1" type="radio" class="input-radio" checked />Oui</label>
         <label>
@@ -261,22 +378,16 @@ veuillez compléter le questionnaire ci dessous pour terminer la création de vo
     </div>
 
     <div class="form-group">
-        <p>Disposez-vous d'un vehicule ? *</p>
+        <p>Disposez-vous d'un vehicule ? <span style="color:#f50057;   margin: 0px 0px 0px 15px;">*</span></p>
         <label>
         <input name="vehicule" value="1" type="radio" class="input-radio" checked />Oui</label>
         <label>
         <input name="vehicule" value="2" type="radio" class="input-radio" />Non</label>
     </div>
 
-    <div class="form-group">
-        <p>Avez-vous actuellement des missions de visites mystères pour une ou plusieurs autres entreprises d’audit satisfaction ? *</p>
-        <label>
-        <input name="userexpen" value="1" type="radio" class="input-radio" checked />Oui</label>
-        <label> <input name="userexpen" value="2" type="radio" class="input-radio" />Non</label>
-    </div>
 
     <div class="form-group">
-    <p>Avez-vous déjà réalisé des enquêtes mystères ? *</p>
+    <p>Avez-vous déjà réalisé des: visites mysteres, tests produits, reunions de consommateur ? <span style="color:#f50057;   margin: 0px 0px 0px 15px;">*</span></p>
     <label>
     <input name="userexp" value="1" type="radio" class="input-radio" checked />Oui</label>
     <label>
@@ -284,17 +395,20 @@ veuillez compléter le questionnaire ci dessous pour terminer la création de vo
     </div>
 
     <div class="form-group">
-        <p>Si oui, combien en avez-vous réalisé lors des 12 derniers mois ? *</p>
+        <p>Si oui, combien en avez-vous réalisé lors des 12 derniers mois ? <span style="color:#f50057;   margin: 0px 0px 0px 15px;">*</span></p>
         <label>
         <input name="expmois" value="1" type="radio" class="input-radio" checked />Entre 0 et 3</label>
                 <label><input name="expmois" value="2" type="radio" class="input-radio" />Entre 3 et 6</label>
         <label>
         <input name="expmois" value="3" type="radio" class="input-radio" />Plus de 6</label>
     </div>
-
+    <div class="form-group">
+            <label >Pour quelle société avez vous réalisé des visites mystères ?</label>
+            <input type="text" name="societe" id="societe" class="form-control" placeholder="Entrer le nom de la societe par ici"  />
+     </div>
 
     <div class="form-group">
-            <p>Portez-vous des lunettes ? *</p>
+            <p>Portez-vous des lunettes ? <span style="color:#f50057;   margin: 0px 0px 0px 15px;">*</span></p>
             <label>
             <input name="lunettes" value="1" type="radio" class="input-radio"  />Oui</label>
             <label>
@@ -309,38 +423,42 @@ veuillez compléter le questionnaire ci dessous pour terminer la création de vo
     <input name="logement" value="2" type="radio" class="input-radio" />Locataire</label>
     </div>
    <div class="form-group">
-    <p>Dans quel type d’habitation vivez-vous ?</p>
+    <p>Dans quel type d’habitation vivez-vous ? <span style="color:#f50057;   margin: 0px 0px 0px 15px;">*</span></p>
     <label>
-    <input name="habitation" value="1" type="radio" class="input-radio"  />Maison</label>
+    <input name="habitation" value="Maison" type="radio" class="input-radio"  />Maison</label>
     <label>
-    <input name="habitation" value="2" type="radio" class="input-radio" />Appartement</label>
+    <input name="habitation" value="Appartement" type="radio" class="input-radio" />Appartement</label>
            <label>
-    <input name="habitation" value="3" type="radio" class="input-radio" />Villa</label>
+    <input name="habitation" value="Villa" type="radio" class="input-radio" />Villa</label>
         <label>
-    <input name="habitation" value="4" type="radio" class="input-radio" />Lotissement</label>
-         <label>
-        <input name="habitation" value="5" type="radio" class="input-radio" />Autre</label>
+    <input name="habitation" value="Lotissement" type="radio" class="input-radio" />Lotissement</label>
+      <label>Autre :  <input type="text"  class="input-text" name="habitation" id="habitation" placeholder="Logement en copropriété, chambre.."></label>
     </div>
 
 
-  <div class="form-group">
-    <label  >Indiquez quelles sont les langues étrangères que vous parlez ou pratiquez *</label>
-	    <input type="text" name="langues" class="form-control" placeholder="Exemple: Espagnol,Allemand,Anglais,Arabe.." required />
+  <div class="form-group" >
+    <label  >Indiquez quelles sont les langues étrangères que vous parlez ou pratiquez</label>
+<label>        <input type="checkbox" value="Anglais" class="input-checkbox" id="test1">Anglais</label>
+<label>        <input type="checkbox" value="Espagnol"class="input-checkbox" id="test2">Espagnol</label>
+<label>        <input type="checkbox" value="Allemand" class="input-checkbox" id="test3">Allemand</label>
+<label>        <input type="checkbox" value="Arabe" class="input-checkbox" id="test4">Arabe</label>
+<label>        <input type="checkbox" value="Portugais" class="input-checkbox" id="test5">Portugais</label>
+<label>Autre :  <input type="text"  class="input-text" id="test6" placeholder="chinois.."></label>
 
     </div>
-
+<input type="hidden" name="debug" id="debug">
     <div class="form-group">
-        <p>Décrivez en donnant le maximum de détails le meilleur service dont vous avez été témoin *</p>
-        <textarea class="input-textarea" name="meilleur" placeholder="Entrer votre réponse ici..."></textarea>
+        <p>Décrivez en donnant le maximum de détails le meilleur service dont vous avez été témoin </p>
+        <textarea class="form-control count-chars"  name="meilleur" id = "CharCounter" maxlength="1200" data-chars-max="1200" data-msg-color="danger"></textarea>
     </div>
 
     <div class="form-group">
         <p>    Décrivez en donnant le maximum de détails le pire service dont vous avez été témoin</p>
-        <textarea  class="input-textarea" name="pire" placeholder="Entrer votre réponse ici..."></textarea>
+        <textarea  class="input-textarea" name="pire" id = "CharCounterw" maxlength="1200" data-chars-max="1200" data-msg-color="danger"></textarea>
     </div>
 
     <div class="form-group">
-        <p>Combien de fois par mois en moyenne allez-vous au restaurant ? *</p>
+        <p>Combien de fois par mois en moyenne allez-vous au restaurant ? <span style="color:#f50057;   margin: 0px 0px 0px 15px;">*</span></p>
         <label>
         <input name="restaurant" value="1" type="radio" class="input-radio" checked />Entre 0 et 3</label>
                 <label><input name="restaurant" value="2" type="radio" class="input-radio" />Entre 3 et 6</label>
@@ -349,13 +467,13 @@ veuillez compléter le questionnaire ci dessous pour terminer la création de vo
     </div>
 
      <div class="form-group">
-        <label >Indiquez votre situation professionnelle *</label>
-        <input type="text"  name="situation" class="form-control" placeholder="Entrer votre situation professionnelle" required />
+        <label >Indiquez votre situation professionnelle <span style="color:#f50057;   margin: 0px 0px 0px 15px;">*</span></label>
+        <input type="text"  maxlength="40" name="situation" class="form-control" placeholder="Entrer votre situation professionnelle" required />
     </div>
 
 
     <div class="form-group">
-    <p>A quelle heure peut-on vous joindre plus facilement ? *</p>
+    <p>A quelle heure peut-on vous joindre plus facilement ? <span style="color:#f50057;   margin: 0px 0px 0px 15px;">*</span></p>
     <label>
     <input name="joindre" value="1" type="radio" class="input-radio" checked />8h00 - 12h00</label>
             <label><input name="joindre" value="2" type="radio" class="input-radio" />12h00 - 14h00</label>
@@ -371,18 +489,58 @@ veuillez compléter le questionnaire ci dessous pour terminer la création de vo
         <label>
         <input name="enfants" value="3" type="radio" class="input-radio" />Plus de 6</label>
     </div>
-
-
-
     <div class="form-group">
-    <button type="submit" id="submit" class="submit-button">
-    Submit
-    </button>
+        <button type="submit" id="submit" class="submit-button">
+        Soumettre le questionnaire
+        </button>
     </div>
-    </form>
+    <div class="form-group1">
+        <p>Êtes vous en situation de handicap ? Ou connaissez vous une personne handicap?<br> Aidez nous à répondre à ces questions</p>
+                                        {% url 'handicap' as login %}
+        <a class="sub-button " href="{{login}}" target="_blank" >cliquez ici</a>
     </div>
-	<script>
-var x = document.getElementById("latlong");
+</form>
+
+<!--Waves end-->
+
+</div>
+<!--Header ends-->
+
+
+    </div>
+ <script>
+    var input = document.querySelector("#phone");
+    window.intlTelInput(input, {
+      // allowDropdown: false,
+      // autoHideDialCode: false,
+      // autoPlaceholder: "off",
+      // dropdownContainer: document.body,
+      // excludeCountries: ["ws"],
+      // formatOnDisplay: false,
+        //initialCountry: "auto",
+        geoIpLookup: function(success, failure) {
+        $.get("https://ipinfo.io", function() {}, "jsonp").always(function(resp) {
+            var countryCode = (resp && resp.country) ? resp.country : "";
+            success(countryCode);
+        });
+    },
+       hiddenInput: "full_number",
+      // initialCountry: "auto",
+      // localizedCountries: { 'de': 'Deutschland' },
+      // nationalMode: false,
+      // onlyCountries: ['us', 'gb', 'ch', 'ca', 'do'],
+         placeholderNumberType: "MOBILE",
+       preferredCountries: ['fr', 'ma',],
+       excludeCountries: ["eh"],
+
+      // separateDialCode: true,
+
+      utilsScript: "{% static 'build/js/utils.js' %}",
+
+    });
+  </script>
+<script>
+    var x = document.getElementById("latlong");
 
 function getLocation() {
   if (navigator.geolocation) {
@@ -396,7 +554,54 @@ function showPosition(position) {
   document.getElementById("lat").value = position.coords.latitude
     document.getElementById("long").value = position.coords.longitude
 }
+function geek() {
+  var doc;
+  var result = confirm("Avant de remplir toutes les informations, vous devez accepter les termes et conditions, cliquez sur OK");
+  if (result == true) {
+     getLocation()
+     doc = 'Merci vous pouvez remplir les informations'
+     doc = 'Merci vous pouvez remplir les informations'
+     }
+     else
+     {
+      getLocation()
+      doc = "Cancel was pressed.";
+      document.getElementById("g").innerHTML = doc;
+      }
+}
 </script>
+    <script type="text/javascript">
+$('input[type=checkbox]').change(function() {
+
+    var vals = $('input[type=checkbox]:checked').map(function() {
+        return $(this).val();
+    }).get().join(',');
+     document.getElementById("debug").value= vals
+
+
+
+});
+
+$(document).ready(function(){
+
+	$(".textarea1").maxLength();
+
+	$(".textarea2").maxLength({
+		maxChars: 30,
+		clearChars: false,
+		countHolder: '.chars-count2',
+		remainHolder: '.chars-remaining2',
+		maxHolder: '.chars-max2',
+		onLimitOver: function(){ $('.textarea2').css('color', 'red'); $('.chars-remaining2-container').css('color', 'red'); },
+		onLimitUnder: function(){ $('.textarea2').css('color', '#000'); $('.chars-remaining2-container').css('color', '#000'); }
+	});
+
+});
+    </script>
+
+
+
 
 </body>
+
 </html>

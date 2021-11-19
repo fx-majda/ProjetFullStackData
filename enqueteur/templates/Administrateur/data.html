@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | DataTables</title>
+  <title>Upgoods | Resultats des visites</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -36,6 +36,7 @@
 
     <!-- SEARCH FORM -->
     <form class="form-inline ml-3">
+
       <div class="input-group input-group-sm">
         <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
         <div class="input-group-append">
@@ -171,18 +172,19 @@
 
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">DataTable with default features</h3>
-              </div>
-              <!-- /.card-header -->
-               <form method="post" action="">
-                  <label for="Missions">Missions</label>
+               <form method="post" >
+                                       {% csrf_token %}
+                  <label for="mission">Choisisez une mission</label>
               <select id="mission" name="mission">
                 {% for i in listmission %}
                 <option value="{{i}}">{{i}}</option>
                 {% endfor%}
               </select>
-                 <input type="submit">
+                 <input  class="btn btn-primary" type="submit" value="Entrer" style="margin-right:10px;">
                </form>
+              </div>
+              <!-- /.card-header -->
+
               <div class="card-body">
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
@@ -216,18 +218,8 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-  <footer class="main-footer">
-    <div class="float-right d-none d-sm-block">
-      <b>Version</b> 3.1.0-rc
-    </div>
-    <strong>Copyright &copy; 2014-2020 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
-  </footer>
+      {% include 'Administrateur/footer.html' %}
 
-  <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
-  </aside>
-  <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
 

@@ -32,7 +32,28 @@
         <!-- Main Css -->
         <link href=" {% static 'css/style.css' %} " rel="stylesheet" type="text/css" id="theme-opt" />
         <link href=" {% static 'css/colors/default.css' %} " rel="stylesheet" id="color-opt">
+<style>
+       .navbar { background-color: #008c8d; }
+.navbar .navbar-nav .nav-link { color: #fff;  }
+.navbar .navbar-nav .nav-link:hover { color: #000000; }
+.navbar .navbar-nav .active > .nav-link { color: #b6ffff; }
+@media screen and (max-width: 600px) {
+  .navbar {
+            display: none;
+  }
+}
+.flag {
+  transition: all 300ms cubic-bezier(.25,.8,.25,1);
 
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 5px 7px rgba(0,0,0,0.60);
+}
+
+@media (min-width: 1200px) {#topnav .navigation-menu  .mob {display:block;}
+}
+@media (min-width: 1199px) { #topnav .navigation-menu .mob {display:none;} }
+
+
+</style>
     </head>
 
     <body>
@@ -48,21 +69,36 @@
         <!-- Loader -->
         
         <!-- Navbar STart -->
-        <header id="topnav" class="defaultscroll sticky">
+  <header id="topnav" class="defaultscroll sticky">
+
+	<!--- Navbar --->
+	<nav class="navbar navbar-expand-lg">
+		<div class="container">
+               {% url 'index' as index %}
+
+                <a class="navbar-brand text-white" href=" {{index}}">                        <img src=" {% static 'images/logo-light.png' %} " height="50" alt=""></a>
+
+			<div class="collapse navbar-collapse" id="nvbCollapse">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item  pl-1">
+                            {% url 'login' as login %}
+                        <a class="nav-link" href="{{login}}" id="ess">ESPACE ENQUÊTEUR  : CONNEXION       <i class="uil uil-data-sharing      "></i>
+</a>
+					</li>
+
+
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<!--# Navbar #-->
+
+	<!--# Footer #-->
             <div class="container">
                 <!-- Logo container-->
-                <div>
-                    {% url 'index' as index %}
-                    <a class="logo" href=" {{index}} ">
-                        <img src=" {% static 'images/logo-dark.png' %} " height="24" alt="">
-                    </a>
-                </div>
-                									{% url 'login' as login %}
-                <div class="buy-button">
-                                                                  {% url 'login' as login %}
 
-                        <a href="{{login}}"  class="btn btn-primary">Se connecter</a>                </div><!--end login button-->
-                <!-- End Logo container-->
+                									{% url 'login' as login %}
+                         <!-- End Logo container-->
                 <div class="menu-extras">
                     <div class="menu-item">
                         <!-- Mobile menu toggle-->
@@ -81,32 +117,35 @@
                     <!-- Navigation Menu-->
                     <ul class="navigation-menu">
                         {% url 'index' as index %}
-
-                        <li><a href=" {{index}} ">Accueil</a></li>
+                       <li><a href=" {{index}} " id="accueil">Accueil</a></li>
                         {% url 'service' as service %}
-                        <li><a href=" {{service}} "> Professionnel</a></li>
+                        <li><a href=" {{service}} " id="pro"> Professionnel</a></li>
                           {% url 'panel' as guide %}
-
-                        <li><a href=" {{guide}} ">Panel</a></li>
-
-                        {% url 'guide' as guide %}
-
-                        <li><a href=" {{guide}} ">FAQs</a></li>
-                        {% url 'actualite' as actualite %}
-
-                        <li><a href=" {{actualite}} ">Actualités</a></li>
+                        <li><a href=" {{guide}} " id="panel">Panel</a></li>
                         {% url 'contact' as contact %}
+                            <li><a href=" {{contact}} ">Contact</a></li>
+                        {% url 'guide' as guide %}
+                             <li><a href=" {{guide}} ">FAQs</a></li>
+                            {% url 'login' as login %}
+                        <li><a class="mob" href=" {{login}} ">Se connecter</a></li>
 
-                        <li><a href=" {{contact}} ">Contact</a></li>
+                          <li>
+                        <a>
+			<img class="flag" id="fr" src="https://flagcdn.com/w20/fr.png" srcset="https://flagcdn.com/w40/fr.png 2x" width="20" style="cursor:pointer; outline:1px solid black;" onmouseover="this.style.backgroundPosition=-150px -25px;" onmouseout="this.style.backgroundPosition=-150px 0px;" alt="Francais">
+                            </a>
+                        </li>
+                        <li ><a>
+                           <img  class="flag" id="es" src="https://flagcdn.com/w20/es.png" srcset="https://flagcdn.com/w40/es.png 2x" width="20" style="  cursor:pointer;      outline:1px solid black;" alt="Spain">
+                            </a>
+                        </li>
+
+                             <li ><a>
+                            <img id="en" class="flag" src="https://flagcdn.com/w20/gb.png" srcset="https://flagcdn.com/w40/gb.png 2x" width="20" height="13.5"style="       cursor:pointer; outline:1px solid black;" alt="English">
+                            </a>
+                        </li>
+                 </ul><!--end navigation menu-->
 
 
-
-                    </ul><!--end navigation menu-->
-                    <div class="buy-menu-btn d-none">
-                                                                                {% url 'login' as login %}
-
-                        <a href="{{login}}"  class="btn btn-primary">Se connecter</a>
-                    </div><!--end login button-->
                 </div><!--end navigation-->
             </div><!--end container-->
         </header><!--end header-->
@@ -119,8 +158,8 @@
                     <div class="col-lg-10">
                         <div class="title-heading text-center mt-5 pt-3">
 
-                            <h1 class="heading mb-3" data-aos="fade-up" data-aos-duration="1400">Bienvenue dans votre espace </h1>
-                            <p class="para-desc mx-auto text-muted" data-aos="fade-up" data-aos-duration="1800">Parce que vous êtes les premiers utilisateurs et consommateurs des marques, vos avis sont précieux, ils nous aident à conseiller nos clients pour coller à vos attentes et exigences.<br>
+                            <h1 id="title4" class="heading mb-3" data-aos="fade-up" data-aos-duration="1400">Bienvenue dans votre espace </h1>
+                            <p id="par1" class="para-desc mx-auto text-muted" data-aos="fade-up" data-aos-duration="1800">Parce que vous êtes les premiers utilisateurs et consommateurs des marques, vos avis sont précieux, ils nous aident à conseiller nos clients pour coller à vos attentes et exigences.<br>
 Tous les profils de consommateurs nous intéressent dans la mesure où chacun nous sommes amenés à être client, passager, usager, consommateur, des enseignes et des marques.<br>
 Vous serez enfin entendu et pourrez donner votre avis en réalisant des visites mystères, en participant à des focus groupe (aussi appelés réunions de consommateurs) ou à des tests produits, en répondant à des questionnaires en ligne ou au téléphone. Quelle que soit la méthode vous serez dédommagé en remerciement de vos réponses.<br>
 Parce que nous pratiquons la bienveillance au quotidien, nous prônons la proximité avec le panel et valorisons également les remarques positives que vous nous transmettez concernant les entreprises et leur personnel.<br>
@@ -139,8 +178,8 @@ Ce sont bien entendu des outils visant l’amélioration et non la réprimande.<
                 <div class="row justify-content-center">
                     <div class="col-12 text-center">
                         <div class="section-title mb-4 pb-2">
-                            <h4 class="title my-4" data-aos="fade-up" data-aos-duration="1400">Nos missions ponctuelles salariées</h4>
-                            <p class="text-muted para-desc mx-auto mb-0" data-aos="fade-up" data-aos-duration="1800">Ces missions peuvent avoir lieu en semaine et en week-end avec des horaires variés, pour pouvoir y postuler et être au courant des opportunités, vous devez avoir au préalable rempli le formulaire d’inscription, en prenant soin de n’omettre aucune partie.<br>
+                            <h4 id="title5" class="title my-4" data-aos="fade-up" data-aos-duration="1400">Nos missions ponctuelles salariées</h4>
+                            <p id="par2" class="text-muted para-desc mx-auto mb-0" data-aos="fade-up" data-aos-duration="1800">Ces missions peuvent avoir lieu en semaine et en week-end avec des horaires variés, pour pouvoir y postuler et être au courant des opportunités, vous devez avoir au préalable rempli le formulaire d’inscription, en prenant soin de n’omettre aucune partie.<br>
 Vous serez informés par mail des missions à pourvoir, vous pourrez également les voir sur l’onglet « missions ponctuelles salariées en cours »<br>
 Quelle que soit la mission, une formation vous sera dispensée en nos locaux. Pour les enquêtes terrains, le port de l’uniforme et du badge sont obligatoires et fournis par AMS International. Ils peuvent également l’être pour les missions de comptage client, les missions de relevés de présence et de prix et les audits pro. </p>
                         </div>
@@ -152,8 +191,8 @@ Quelle que soit la mission, une formation vous sera dispensée en nos locaux. Po
                         <div class="card categories text-center rounded border-0" data-aos="fade-up" data-aos-duration="1000">
                             <div class="card-body">
                                 <img src=" {% static 'images/icon/location.svg' %} " class="avatar avatar-small mb-3" alt="">
-                                <h5><a href=" {% static 'javascript:void(0)' %} " class="text-dark">Visites mystères</a></h5>
-                                <p class="text-muted mb-0 mt-3">Lors de ces visites que vous effectuerez comme si vous faisiez une visite ordinaire pour vous, que vous aviez programmé dans une des enseignes que vous avez l’habitude de fréquenter ou que vous êtes susceptible de fréquenter.
+                                <h5 id="title6"><a  class="text-dark">Visites mystères</a></h5>
+                                <p id="par3" class="text-muted mb-0 mt-3">Lors de ces visites que vous effectuerez comme si vous faisiez une visite ordinaire pour vous, que vous aviez programmé dans une des enseignes que vous avez l’habitude de fréquenter ou que vous êtes susceptible de fréquenter.
 
 Vous aurez pour mission d’observer, de tester puis de noter la qualité d’un service rendu afin de contribuer directement à son amélioration.</p>
                             </div>
@@ -164,8 +203,8 @@ Vous aurez pour mission d’observer, de tester puis de noter la qualité d’un
                         <div class="card categories text-center rounded border-0" data-aos="fade-up" data-aos-duration="1300">
                             <div class="card-body">
                                 <img src=" {% static 'images/icon/customer-service.svg' %} " class="avatar avatar-small mb-3" alt="">
-                                <h5><a href=" {% static 'javascript:void(0)' %} " class="text-dark">Focus group ou réunions de consommateurs</a></h5>
-                                <p class="text-muted mb-0 mt-3">Des réunions de consommateurs préparées, ou la spontanéité prime, les réponses et comportements sont étudiés par nos analystes.</p>
+                                <h5><a id="title7" class="text-dark">Focus group ou réunions de consommateurs</a></h5>
+                                <p id="par4" class="text-muted mb-0 mt-3">Des réunions de consommateurs préparées, ou la spontanéité prime, les réponses et comportements sont étudiés par nos analystes.</p>
                             </div>
                         </div>
                     </div><!--end col-->
@@ -174,8 +213,8 @@ Vous aurez pour mission d’observer, de tester puis de noter la qualité d’un
                         <div class="card categories text-center rounded border-0" data-aos="fade-up" data-aos-duration="1600">
                             <div class="card-body">
                                 <img src=" {% static 'images/icon/smartphone.svg' %} " class="avatar avatar-small mb-3" alt="">
-                                <h5><a href=" {% static 'javascript:void(0)' %} " class="text-dark">Enquêtes web</a></h5>
-                                <p class="text-muted mb-0 mt-3">Les enquêtes web auront lieu depuis votre ordinateur ou via notre application smartphone. Il vous est demandé de répondre à des questions afin d’avoir votre avis sur un produit, un fait, vos habitude de consommations. Toutes vos réponses seront anonymes.</p>
+                                <h5><a id="title8" class="text-dark">Enquêtes web</a></h5>
+                                <p id="par5" class="text-muted mb-0 mt-3">Les enquêtes web auront lieu depuis votre ordinateur ou via notre application smartphone. Il vous est demandé de répondre à des questions afin d’avoir votre avis sur un produit, un fait, vos habitude de consommations. Toutes vos réponses seront anonymes.</p>
                             </div>
                         </div>
                     </div><!--end col-->
@@ -184,8 +223,8 @@ Vous aurez pour mission d’observer, de tester puis de noter la qualité d’un
                         <div class="card categories text-center rounded border-0" data-aos="fade-up" data-aos-duration="1900">
                             <div class="card-body">
                                 <img src=" {% static 'images/icon/call.svg' %} " class="avatar avatar-small mb-3" alt="">
-                                <h5><a href=" {% static 'javascript:void(0)' %} " class="text-dark">Appels mystères</a></h5>
-                                <p class="text-muted mb-0 mt-3">Pour connaitre l’accueil réservé au téléphone par vos équipes, se corriger et s’adapter aux attentes des clients</p>
+                                <h5><a id="titleq" class="text-dark">Appels mystères</a></h5>
+                                <p id="par6" class="text-muted mb-0 mt-3">Pour connaitre l’accueil réservé au téléphone par vos équipes, se corriger et s’adapter aux attentes des clients</p>
                             </div>
                         </div>
                     </div><!--end col-->
@@ -194,8 +233,8 @@ Vous aurez pour mission d’observer, de tester puis de noter la qualité d’un
                         <div class="card categories text-center rounded border-0" data-aos="fade-up" data-aos-duration="2200">
                             <div class="card-body">
                                 <img src=" {% static 'images/icon/car.svg' %} " class="avatar avatar-small mb-3" alt="">
-                                <h5><a href=" {% static 'javascript:void(0)' %} " class="text-dark">Enquêtes terrains</a></h5>
-                                <p class="text-muted mb-0 mt-3">Sous la tutelle d’un superviseur, et à la suite d’une formation dispensée par nos services, à l’aide d’un questionnaire papier ou sur tablette vous serez en charge d’interroger les passagers dans les aéroports, les gares ferroviaires, maritimes ou routières sur 2 à 5 questions.
+                                <h5><a id="titlec" class="text-dark">Enquêtes terrains</a></h5>
+                                <p id="parq" class="text-muted mb-0 mt-3">Sous la tutelle d’un superviseur, et à la suite d’une formation dispensée par nos services, à l’aide d’un questionnaire papier ou sur tablette vous serez en charge d’interroger les passagers dans les aéroports, les gares ferroviaires, maritimes ou routières sur 2 à 5 questions.
 Ces missions peuvent également avoir lieu à l’entrée des centres commerciaux, des grands magasins ou des institutions.</p>
                             </div>
                         </div>
@@ -205,8 +244,8 @@ Ces missions peuvent également avoir lieu à l’entrée des centres commerciau
                         <div class="card categories text-center rounded border-0" data-aos="fade-up" data-aos-duration="2500">
                             <div class="card-body">
                                 <img src=" {% static 'images/icon/speedometer.svg' %} " class="avatar avatar-small mb-3" alt="">
-                                <h5><a href=" {% static 'javascript:void(0)' %} " class="text-dark">Comptage clients, passagers ou visiteurs</a></h5>
-                                <p class="text-muted mb-0 mt-3">Sous la tutelle d’un superviseur et à l’aide d’un compteur client, vous serez en charge de compter les passagers ou usagers dans les gares, aéroports, prés des rames de trains ou de métro.</p> </div>
+                                <h5><a id="title9" class="text-dark">Comptage clients, passagers ou visiteurs</a></h5>
+                                <p id="par7" class="text-muted mb-0 mt-3">Sous la tutelle d’un superviseur et à l’aide d’un compteur client, vous serez en charge de compter les passagers ou usagers dans les gares, aéroports, prés des rames de trains ou de métro.</p> </div>
                         </div>
                     </div><!--end col-->
 
@@ -214,8 +253,8 @@ Ces missions peuvent également avoir lieu à l’entrée des centres commerciau
                         <div class="card categories text-center rounded border-0" data-aos="fade-up" data-aos-duration="1900">
                             <div class="card-body">
                                 <img src=" {% static 'images/icon/call.svg' %} " class="avatar avatar-small mb-3" alt="">
-                                <h5><a href=" {% static 'javascript:void(0)' %} " class="text-dark">Enquêtes téléphoniques</a></h5>
-                                <p class="text-muted mb-0 mt-3">Sous la tutelle d’un superviseur et à la suite d’une formation dispensée par nos services.
+                                <h5><a id="title1" class="text-dark">Enquêtes téléphoniques</a></h5>
+                                <p id="par12" class="text-muted mb-0 mt-3">Sous la tutelle d’un superviseur et à la suite d’une formation dispensée par nos services.
 Vous serez en charge de contacter un panel de clients particuliers ou professionnels pour leur poser entre deux et 8 questions sur un service ou produit qu’ils ont utilisé.
 Les personnes interrogées au téléphonique sont prévenu par notre client ou par nos services de notre appel, et nous fournissent la plupart du temps leurs disponibilités.
 
@@ -227,8 +266,8 @@ Les personnes interrogées au téléphonique sont prévenu par notre client ou p
                         <div class="card categories text-center rounded border-0" data-aos="fade-up" data-aos-duration="2200">
                             <div class="card-body">
                                 <img src=" {% static 'images/icon/lightbulb.svg' %} " class="avatar avatar-small mb-3" alt="">
-                                <h5><a href=" {% static 'javascript:void(0)' %} " class="text-dark">Relevés de présence ou de prix</a></h5>
-                                <p class="text-muted mb-0 mt-3">A l’aide d’une tablette ou d’une application sur smartphone, vous serez en charge de relever les prix des produits indiqués grâce à une liste et dans plusieurs typologies de points de vente.
+                                <h5><a id="title2" class="text-dark">Relevés de présence ou de prix</a></h5>
+                                <p id="par22" class="text-muted mb-0 mt-3">A l’aide d’une tablette ou d’une application sur smartphone, vous serez en charge de relever les prix des produits indiqués grâce à une liste et dans plusieurs typologies de points de vente.
 Le permis B et la possession d’un véhicule sont souvent exigés pour ce type de missions.
 Les frais sont pris en charge par Upgoods.
 Le montant de leur prise en charge est calculé en fonction des distances à parcourir et vous est indiqué avant toute mission.</p>
@@ -240,8 +279,8 @@ Le montant de leur prise en charge est calculé en fonction des distances à par
                         <div class="card categories text-center rounded border-0" data-aos="fade-up" data-aos-duration="2500">
                             <div class="card-body">
                                 <img src=" {% static 'images/icon/start-up.svg' %} " class="avatar avatar-small mb-3" alt="">
-                                <h5><a href=" {% static 'javascript:void(0)' %} " class="text-dark">Audit pro</a></h5>
-                                <p class="text-muted mb-0 mt-3">En plus du regard du particulier dans certains cas nous avons besoin du regard d’un professionnel pour mesurer la qualité de service rendu, l’organisation et l’environnement des différents services de travail en back office.
+                                <h5><a id="title3" class="text-dark">Audit pro</a></h5>
+                                <p id="par33" class="text-muted mb-0 mt-3">En plus du regard du particulier dans certains cas nous avons besoin du regard d’un professionnel pour mesurer la qualité de service rendu, l’organisation et l’environnement des différents services de travail en back office.
 Grâce à un référentiel élaboré par nos soins, l’auditeur vérifiera tous les points et indicateurs et sera force de proposition pour améliorer l’organisation du lieu visité en vue d’apporter un service de qualité aux consommateurs et garantir un environnement de travail serein aux salariés.
 Pour certains secteurs des certifications sont nécessaires, nous contacter.
 
@@ -259,13 +298,13 @@ Pour certains secteurs des certifications sont nécessaires, nous contacter.
                 <div class="row justify-content-center">
                     <div class="col-12 text-center">
                         <div class="section-title">
-                            <h4 class="title mb-4">Devenir client mystère - enquêteur
+                            <h4 class="title mb-4" id="t3">Devenir client mystère - enquêteur
 Service terrain & panélistes clients mystère </h4>
-                            <p class="text-muted para-desc mx-auto">Voici la procédure à suivre.</p>
-                            <p class="text-muted para-desc mx-auto">1: Je m’inscris au réseau des clients qualité Upgoods pour créer mon<span class="text-primary font-weight-bold"> compte</span> :</p>
-                            <p class="text-muted para-desc mx-auto">2: <span class="text-primary font-weight-bold"> Je répond</span> à toutes les questions pour pour aider le team support de Upgoods à mieux me connaître et me proposer les missions qui correspond à mon profil.</p>
-                            <p class="text-muted para-desc mx-auto">3: J’attends que Upgoods revienne vers moi : La vérification de votre compte se fait dans un délai moyen de 4jours, veuillez vérifier votre boîte de réception pour un <span class="text-primary font-weight-bold">courriel de confirmation</span></p>
-                            <p class="text-muted para-desc mx-auto">4: <span class="text-primary font-weight-bold">J'intégre le club </span>des clients mystéres Upgoods</p>
+                            <p class="text-muted para-desc mx-auto" id="t4">Voici la procédure à suivre.</p>
+                            <p class="text-muted para-desc mx-auto" id="t5">1: Je m’inscris au réseau des clients qualité Upgoods pour créer mon<span class="text-primary font-weight-bold"> compte</span> :</p>
+                            <p class="text-muted para-desc mx-auto" id="t6">2: <span class="text-primary font-weight-bold"> Je répond</span> à toutes les questions pour pour aider le team support de Upgoods à mieux me connaître et me proposer les missions qui correspond à mon profil.</p>
+                            <p class="text-muted para-desc mx-auto" id="t7">3: J’attends que Upgoods revienne vers moi : La vérification de votre compte se fait dans un délai moyen de 4jours, veuillez vérifier votre boîte de réception pour un <span class="text-primary font-weight-bold">courriel de confirmation</span></p>
+                            <p class="text-muted para-desc mx-auto" id="t8">4: <span class="text-primary font-weight-bold">J'intégre le club </span>des clients mystéres Upgoods</p>
 
                             <div class="mt-4">
                                 <a href=" {% url 'signup' %} " class="btn btn-primary mt-2 mr-2">Rejoindre le club Upgoods</a>
@@ -282,7 +321,7 @@ Service terrain & panélistes clients mystère </h4>
         <!-- Communiaction Priority End -->
 
         <!-- Footer Start -->
-                       {% include 'footer.html' %}
+
 
         <!-- Footer End -->
 
@@ -296,10 +335,10 @@ Service terrain & panélistes clients mystère </h4>
         <script src=" {% static 'js/jquery.easing.min.js' %} "></script>
         <script src=" {% static 'js/scrollspy.min.js' %} "></script>
         <!-- SLIDER -->
-        <script src=" {% static 'js/owl.carousel.min.js ' %} "></script>
-        <script src=" {% static 'js/owl.init.js ' %} "></script>
+        <script src=" {% static 'js/owl.carousel.min.js' %} "></script>
+        <script src=" {% static 'js/owl.init.js' %} "></script>
         <!-- Animation -->
-        <script src=" {% static 'js/aos.js ' %} "></script>
+        <script src=" {% static 'js/aos.js' %} "></script>
         <!-- Icons -->
         <script src=" {% static 'js/feather.min.js' %} "></script>
         <script src="https://unicons.iconscout.com/release/v3.0.3/script/monochrome/bundle.js"></script>
@@ -313,5 +352,114 @@ Service terrain & panélistes clients mystère </h4>
                 duration: 1000
             });
         </script>
+
+    /* traduction part*/
+      <script type="text/javascript">
+      $(document).ready(function(){
+           $('#es').click(function(){
+            espagnol()
+            localStorage.setItem("lang",'es')
+
+            });
+        });
+
+         $(document).ready(function(){
+           $('#en').click(function(){
+            english()
+            localStorage.setItem("lang",'en')
+
+            });
+        });
+
+        $(document).ready(function(){
+           $('#fr').click(function(){
+            localStorage.removeItem("lang");
+            location.reload();
+            });
+         });
+
+        window.onload = function getlang(){
+        var x = localStorage.getItem("lang")
+        console.log(x)
+        if(x == 'en'){
+            english()
+          }
+        if(x == 'es') {
+           espagnol()
+           }
+
+        }
+
+        function english(){
+            document.getElementById("title4").innerHTML = "Welcome to your space."
+            document.getElementById("par1").innerHTML = "Because you are the first users and consumers of brands, your opinions are precious, they help us advise our clients to meet your expectations and requirements.All consumer profiles interest us insofar as we each have to be customers, passengers, users, consumers, brands and brands.You will finally be heard and will be able to give your opinion by carrying out mystery visits, by participating in focus groups (also called consumer meetings) or in product tests, by answering online or telephone questionnaires. Whatever the method, you will be compensated for your answers.Because we practice benevolence on a daily basis, we advocate proximity with the panel and also value the positive remarks you send us about companies and their staff.These are of course tools for improvement, not rebuke."
+            document.getElementById("title5").innerHTML = "Our one-off salaried missions"
+            document.getElementById("par2").innerHTML = "These assignments can take place during the week and on weekends with varying schedules, in order to be able to apply and be aware of the opportunities, you must have previously completed the registration form, taking care not to omit any part.You will be informed by email of the assignments to be filled, you will also be able to see them on the tab temporary employee assignments in progress Whatever the mission, training will be provided to you on our premises. For field surveys, wearing a uniform and badge are mandatory and provided by AMS International. They can also be used for customer counting assignments, attendance and price statements assignments and pro audits."
+            document.getElementById("title6").innerHTML = "Mystery visits	"
+            document.getElementById("par3").innerHTML ="Service Marketing and Strategy"
+            document.getElementById("title7").innerHTML = "Focus group or consumer meetings"
+            document.getElementById("par4").innerHTML ="Prepared consumer meetings, where spontaneity takes precedence, responses and behaviors are studied by our analysts."
+            document.getElementById("title8").innerHTML = "Web surveys"
+            document.getElementById("par5").innerHTML ="Web surveys will take place from your computer or via our smartphone application. You are asked to answer questions in order to get your opinion on a product, a fact, your consumption habits. All your responses will be anonymous.	"
+            document.getElementById("titleq").innerHTML ="Mystery calls"
+            document.getElementById("par6").innerHTML = "To know the reception given to the telephone by your teams, to correct oneself and to adapt to customer expectations	"
+            document.getElementById("titlec").innerHTML ="Field surveys"
+            document.getElementById("parq").innerHTML ="Under the tutelage of a supervisor, and following training provided by our services, using a paper or tablet questionnaire, you will be in charge of questioning passengers in airports, train stations, maritime or road on 2 to 5 questions. These missions can also take place at the entrance of shopping centers, department stores or institutions."
+            document.getElementById("title9").innerHTML ="Counting customers, passengers or visitors"
+            document.getElementById("par7").innerHTML ="Under the tutelage of a supervisor and using a customer counter, you will be in charge of counting passengers or users in stations, airports, near train or metro sets.	"
+            document.getElementById("title1").innerHTML = "Telephone surveys"
+            document.getElementById("par12").innerHTML ="Under the tutelage of a supervisor and following training provided by our services. You will be in charge of contacting a panel of private or professional customers to ask them between two and 8 questions about a service or product they have used. The people questioned by telephone are warned by our client or our services of our call, and most of the time provide us with their availability."
+            document.getElementById("title2").innerHTML ="Attendance or price statements"
+            document.getElementById("par22").innerHTML ="Using a tablet or a smartphone application, you will be in charge of recording the prices of the products indicated through a list and in several types of points of sale. The B license and the possession of a vehicle are often required for this type of mission. The costs are covered by Upgoods. The amount of their support is calculated according to the distances to be covered and is indicated to you before any mission."
+            document.getElementById("title3").innerHTML ="Pro audit"
+            document.getElementById("par33").innerHTML ="In addition to the view of the individual in some cases we need the gaze of a professional to measure the quality of service provided, the organization and the environment of the various work services in the back office. Thanks to a benchmark drawn up by us, the auditor will check all the points and indicators and will be a source of proposals to improve the organization of the place visited in order to provide quality service to consumers and guarantee a serene working environment for employees. For certain sectors certifications are necessary, contact us."
+            document.getElementById("t3").innerHTML ="Become a mystery shopper - investigatorField service & mystery client panelists"
+            document.getElementById("t4").innerHTML ="Here is the procedure to follow."
+            document.getElementById("t5").innerHTML ="1: I subscribe to the Upgoods quality customer network to create my account :"
+            document.getElementById("t6").innerHTML ="2: I answer all questions to help the Upgoods support team get to know me better and offer me the assignments that match my profile."
+            document.getElementById("t7").innerHTML ="3: I'm waiting for Upgoods to get back to me: Your account is verified within an average of 4 days, please check your inbox for a confirmation email"
+            document.getElementById("t8").innerHTML ="4: I join the Upgoods mystery shopper club"
+            document.getElementById("accueil").innerHTML ="Homepage"
+            document.getElementById("pro").innerHTML = "Professional"
+            document.getElementById("panel").innerHTML ="Panel"
+            document.getElementById("ess").innerHTML ="INVESTIGATOR AREA: LOG IN"
+
+        }
+
+        function espagnol(){
+        document.getElementById("title4").innerHTML = "Bienvenido a tu espacio"
+            document.getElementById("par1").innerHTML = "Porque sois los primeros usuarios y consumidores de las marcas, vuestras opiniones son valiosas, nos ayudan a asesorar a nuestros clientes para cumplir con sus expectativas y requisitos. Todos los perfiles de consumidores nos interesan en la medida en que cada uno de nosotros tienen que ser clientes, pasajeros, usuarios, consumidores, marcas y marcas. Finalmente serás escuchado y podrás dar tu opinión realizando visitas misteriosas, participando en grupos focales (también llamados reuniones de consumidores) o en pruebas de producto, respondiendo cuestionarios en línea o por teléfono. Sea cual sea el método, será compensado por sus respuestas. Porque practicamos la benevolencia a diario, abogamos por la proximidad con el panel y también valoramos los comentarios positivos que nos envía sobre las empresas y su personal. por supuesto, herramientas para mejorar, no para reprender "
+            document.getElementById("title5").innerHTML = "Nuestras misiones asalariadas únicas"
+            document.getElementById("par2").innerHTML = "Estas asignaciones pueden realizarse durante la semana y los fines de semana con horarios variables, para poder postularse y estar al tanto de las oportunidades, debe haber completado previamente el formulario de registro, cuidando de no omitir ninguna parte. Informado por correo electrónico de las asignaciones a cubrir, también podrá verlas en la pestaña asignaciones temporales de empleados en curso Cualquiera que sea la misión, la capacitación se le brindará en nuestras instalaciones. Obligatoria y proporcionada por AMS International. También se pueden utilizar para asignaciones de conteo de clientes, asignaciones de declaraciones de precios y asistencia y auditorías profesionales "
+            document.getElementById("title6").innerHTML = "Visitas misteriosas"
+            document.getElementById("par3").innerHTML ="Departamento de Marketing y Estrategia"
+            document.getElementById("title7").innerHTML = "Grupos focales o reuniones de consumidores"
+            document.getElementById("par4").innerHTML ="Reuniones de consumidores preparadas, donde prima la espontaneidad, nuestros analistas estudian las respuestas y los comportamientos"
+            document.getElementById("title8").innerHTML = "Encuestas web"
+            document.getElementById("par5").innerHTML ="Las encuestas web se realizarán desde su computadora oa través de nuestra aplicación para teléfonos inteligentes. Se le pedirá que responda preguntas para obtener su opinión sobre un producto, un hecho, sus hábitos de consumo. Todas sus respuestas serán anónimas"
+            document.getElementById("titleq").innerHTML ="Llamadas misteriosas"
+            document.getElementById("par6").innerHTML = "Conocer la acogida que dan sus equipos al teléfono, corregirse y adaptarse a las expectativas del cliente"
+            document.getElementById("titlec").innerHTML ="Estudios de campo"
+            document.getElementById("parq").innerHTML ="Bajo la tutela de un supervisor, y luego de la capacitación brindada por nuestros servicios, mediante un cuestionario en papel o tableta, usted se encargará de interrogar a los pasajeros en aeropuertos, estaciones de tren, marítimo o terrestre sobre 2 a 5 preguntas. Estas misiones también pueden se realizan en la entrada de centros comerciales, grandes almacenes o instituciones "
+            document.getElementById("title9").innerHTML ="Contando clientes, pasajeros o visitantes"
+            document.getElementById("par7").innerHTML ="Bajo la tutela de un supervisor y utilizando un mostrador de atención al cliente, estarás a cargo de contar pasajeros o usuarios en estaciones, aeropuertos, trenes cercanos o conjuntos de metro"
+            document.getElementById("title1").innerHTML = "Encuestas telefónicas"
+            document.getElementById("par12").innerHTML ="Bajo la tutela de un supervisor y siguiendo la capacitación brindada por nuestros servicios. Usted será el encargado de contactar a un panel de clientes privados o profesionales para hacerles entre dos y 8 preguntas sobre un servicio o producto que hayan utilizado. Las personas interrogadas por Los teléfonos son avisados ​​por nuestro cliente o nuestros servicios de nuestra llamada, y la mayoría de las veces nos facilitan su disponibilidad "
+            document.getElementById("title2").innerHTML ="Declaraciones de asistencia o precios"
+            document.getElementById("par22").innerHTML ="Utilizando una tableta o una aplicación para smartphone, te encargarás de registrar los precios de los productos indicados a través de una lista y en varios tipos de puntos de venta. La licencia B y la posesión de un vehículo suelen ser necesarias para este tipo de misión. Los costos los cubre Upgoods. El monto de su apoyo se calcula en función de las distancias a recorrer y se te indica antes de cualquier misión "
+            document.getElementById("title3").innerHTML ="Auditoría profesional"
+            document.getElementById("par33").innerHTML ="Además de la mirada del individuo en algunos casos necesitamos la mirada de un profesional para medir la calidad del servicio prestado, la organización y el entorno de los distintos servicios de trabajo en el back office. Gracias a un benchmark elaborado por nosotros , el auditor revisará todos los puntos e indicadores y será fuente de propuestas para mejorar la organización del lugar visitado con el fin de brindar un servicio de calidad a los consumidores y garantizar un ambiente de trabajo sereno para los empleados. Para ciertos sectores son necesarias certificaciones, contactar nosotros."
+            document.getElementById("t3").innerHTML ="Conviértase en un comprador misterioso: servicio investigatorField y panelistas de clientes misteriosos"
+            document.getElementById("t4").innerHTML ="Aquí está el procedimiento a seguir"
+            document.getElementById("t5").innerHTML ="1: Me suscribo a la red de clientes de calidad Upgoods para crear mi cuenta:"
+            document.getElementById("t6").innerHTML ="2: Respondo todas las preguntas para ayudar al equipo de soporte de Upgoods a conocerme mejor y ofrecerme las tareas que coincidan con mi perfil"
+            document.getElementById("t7").innerHTML ="3: Estoy esperando que Upgoods se comunique conmigo: su cuenta se verifica en un promedio de 4 días, por favor revise su bandeja de entrada para obtener un correo electrónico de confirmación"
+            document.getElementById("t8").innerHTML ="4: Me uno al club de compradores misteriosos Upgoods"
+            document.getElementById("accueil").innerHTML ="Pagina de inicio"
+            document.getElementById("pro").innerHTML = "Profesional"
+            document.getElementById("ess").innerHTML ="ÁREA DEL INVESTIGADOR: INICIAR SESIÓN"
+            document.getElementById("panel").innerHTML ="Panel"
+        }
+    </script>
     </body>
 </html>

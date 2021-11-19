@@ -1,17 +1,11 @@
-{% load static %}
 <!DOCTYPE html>
+{% load static %}
     <html lang="en">
 
     <head>
         <meta charset="utf-8" />
-		<title>Upgoods - Mission id </title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="Upgoods mission" />
-        <meta name="keywords" content="upgoods, client-mystere, ams, smice, ams international" />
-        <meta name="author" content="MohammedAminezahhaoui" />
-        <meta name="email" content="zahhaoui@gmail.com" />
-        <meta name="website" content="http://www.up-goods.com" />
-        <meta name="Version" content="v1" />
+		<title>EtuPlan - Offres  </title>
+
         <!-- favicon -->
         <link rel="shortcut icon" href=" {% static 'images/1.ico' %} ">
         <!-- Bootstrap -->
@@ -38,7 +32,7 @@
         <!-- Loader -->
         
         <!-- Navbar STart -->
-             <header id="topnav" class="defaultscroll sticky">
+              <header id="topnav" class="defaultscroll sticky">
             <div class="container">
                 <!-- Logo container-->
                 <div>
@@ -51,22 +45,10 @@
                 <ul class="buy-button list-inline mb-0">
 
                 <div class="buy-button">
-                                                   {% url 'login' as login %}
+                                                   {% url 'logout' as login %}
 
                         <a href="{{login}}" class="btn btn-primary">Se deconnecter</a>                </div><!--end login button-->
                 <!-- End Logo container-->
-                   <li class="list-inline-item mb-0">
-                        <div class="dropdown dropdown-primary">
-                            <button type="button" class="btn btn-icon btn-soft-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="uil uil-user align-middle icons"></i></button>
-                            <div class="dropdown-menu dd-menu dropdown-menu-right bg-white shadow rounded border-0 mt-3 py-3" style="width: 200px;">
-                                <a class="dropdown-item text-dark" href="{% url 'account_settings'  %}"><i class="uil uil-user align-middle mr-1"></i> Settings</a>
-                                <a class="dropdown-item text-dark" href=" {% url 'account_messages'  %}"><i class="uil uil-clipboard-notes align-middle mr-1"></i>  Mes messages</a>
-                                <a class="dropdown-item text-dark" href="#"><i class="uil uil-arrow-circle-down align-middle mr-1"></i> Guide</a>
-                                <div class="dropdown-divider my-3 border-top"></div>
-                                <a class="dropdown-item text-dark" href="{% url 'logout'  %}"><i class="uil uil-sign-out-alt align-middle mr-1"></i> Déconnexion</a>
-                            </div>
-                        </div>
-                    </li>
                 </ul><!--end login button-->
                     <div class="menu-extras">
                     <div class="menu-item">
@@ -81,28 +63,27 @@
                         <!-- End mobile menu toggle-->
                     </div>
                 </div>
-
                 <div id="navigation">
                     <!-- Navigation Menu-->
                     <ul class="navigation-menu">
                         {% url 'indexEnqueteur' as index %}
 
-                        <li><a href=" {{index}} ">accueil</a></li>
+                        <li><a href=" {{index}} ">Accueil</a></li>
                         {% url 'trouvermission' as service %}
-                        <li><a href=" {{service}} ">Trouver une mission</a></li>
+                        <li><a href=" {{service}} ">Trouver une Offre</a></li>
                         {% url 'mission' as guide %}
 
-                        <li><a href=" {{guide}} ">Mes missions</a></li>
+                        <li><a href=" {{guide}} ">Mes offres</a></li>
                         {% url 'account_profile' as actualite %}
 
-                        <li><a href=" {{actualite}} ">Mon profile</a></li>
+                        <li><a href=" {{actualite}} ">Mon profil</a></li>
 
 
                     </ul><!--end navigation menu-->
                     <div class="buy-menu-btn d-none">
-                                                                                {% url 'login' as login %}
+                                                                                {% url 'logout' as login %}
 
-                        <a href="{{login}}"  class="btn btn-primary">Se deconnecter</a>
+                        <a href="{{login}}" class="btn btn-primary">Se deconnecter</a>
                     </div><!--end login button-->
                 </div><!--end navigation-->
             </div><!--end container-->
@@ -111,13 +92,13 @@
 
 
         <!-- Hero Start -->
-        <section class="bg-half bg-light d-table w-100">
+        <section class="bg-half bg-light d-table w-100" style="background:  url('/static/images/account/bg.png') center center;background-repeat: no-repeat; ">
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-lg-12 text-center">
                         <div class="page-next-level">
                             <img src="{{post.organisme.photo.url}} " class="avatar avatar-small" alt="">
-                            <h4 class="title mt-4 mb-3"> Mission {{post.ref}} - {{post.organisme.nom}}  </h4>
+                            <h4 class="title mt-4 mb-3"> Offre {{post.ref}} - {{post.organisme.nom}}  </h4>
                             <p class="para-desc mx-auto text-muted">{{post.nom}}</p>
                             <ul class="list-unstyled">
                                 <li class="list-inline-item text-primary mr-3"><i class="mdi mdi-map-marker text-warning mr-2"></i>{{post.ville}}, {{post.pays}}</li>
@@ -125,8 +106,8 @@
                             <div class="page-next">
                                 <nav aria-label="breadcrumb" class="d-inline-block">
                                     <ul class="breadcrumb bg-white rounded shadow mb-0">
-                                        <li class="breadcrumb-item"><a href=" {% static 'index.html' %} ">Missions</a></li>
-                                        <li class="breadcrumb-item active" aria-current="page">Mission Details</li>
+                                        <li class="breadcrumb-item"><a href=" {% static 'index.html' %} ">Offres</a></li>
+                                        <li class="breadcrumb-item active" aria-current="page">Détails de l offre</li>
                                     </ul>
                                 </nav>
                             </div>
@@ -154,7 +135,7 @@
                     <div class="col-lg-4 col-md-5 col-12">
                         <div class="card sidebar sticky-bar rounded shadow border-0">
                             <div class="card-body widget border-bottom">
-                                <h5 class="mb-0"> Information</h5>
+                                <h5 class="mb-0"> Informations</h5>
                             </div>
     
                             <div class="card-body">
@@ -176,20 +157,14 @@
                                     </div>
                                 </div>
 
-                                <div class="media widget align-items-center mt-3">
-                                    <i data-feather="briefcase" class="fea icon-ex-md mr-3"></i>
-                                    <div class="media-body">
-                                        <h6 class="widget-title">Experience:</h6>
-                                        <p class="text-primary mb-0">+1 Mission</p>
-                                    </div>
-                                </div>
+
 
 
 
                                 <div class="media widget align-items-center mt-3">
                                     <i data-feather="dollar-sign" class="fea icon-ex-md mr-3"></i>
                                     <div class="media-body">
-                                        <h6 class="widget-title">Remunération:</h6>
+                                        <h6 class="widget-title">Dédommagement :</h6>
                                         <p class="text-primary mb-0">{{post.remuneration}}</p>
                                     </div>
                                 </div>
@@ -197,14 +172,14 @@
                                 <div class="media widget align-items-center mt-3">
                                     <i data-feather="clock" class="fea icon-ex-md mr-3"></i>
                                     <div class="media-body">
-                                        <h6 class="widget-title">La date de debut de la mission :</h6>
+                                        <h6 class="widget-title">La date de debut de l offre :</h6>
                                         <p class="text-primary mb-0 mb-0">{{post.date_debut}}</p>
                                     </div>
                                 </div>
                                 <div class="media widget align-items-center mt-3">
                                     <i data-feather="clock" class="fea icon-ex-md mr-3"></i>
                                     <div class="media-body">
-                                        <h6 class="widget-title">La date de fin de la mission :</h6>
+                                        <h6 class="widget-title">La date de fin de la offre :</h6>
                                         <p class="text-primary mb-0 mb-0">{{post.date_fin}}</p>
                                     </div>
                                 </div>
@@ -214,19 +189,22 @@
     
                     <div class="col-lg-8 col-md-7 col-12 mt-4 mt-sm-0 pt-2 pt-sm-0">
                         <div class="ml-lg-4">
-                            <h5>Description de la mission : </h5>
+                            <h5>Description de l offre : </h5>
                             <p class="text-muted">{{post.description |safe}}.</p>
 
-                            <div class="mt-4">
-                                {% if candidature.candidature_status == 0 %}
-                                <button href=" {% url 'apply_for_mission' post.id %} " class="btn btn-outline-primary" disabled="disabled">Votre candidature est en cours de traitement <i class="mdi mdi-send"></i></button>
+<div class="mt-4">
+                               {%for candidature in candidature%}
+                                  {% if candidature.candidature_status == 0 %}
+                                <button href=" {% url 'apply_for_mission' post.id %} " class="btn btn-outline-warning" disabled="disabled">Votre candidature est en cours de traitement <i class="mdi mdi-send"></i></button>
                                 {% elif candidature.candidature_status == 1  %}
-                                <button href=" {% url 'apply_for_mission' post.id %} " class="btn btn-outline-primary" disabled="disabled"> Votre candidature est acceptée <i class="mdi mdi-send"></i></button>
+                                <button href=" {% url 'apply_for_mission' post.id %} " class="btn btn-outline-success" disabled="disabled"> Votre candidature est acceptée <i class="mdi mdi-send"></i></button>
                                 {% elif candidature.candidature_status == 2  %}
-                                <button href=" {% url 'apply_for_mission' post.id %} " class="btn btn-outline-primary" disabled="disabled"> Votre candidature est refusée < <i class="mdi mdi-send"></i></button>
+                                <button href=" {% url 'apply_for_mission' post.id %} " class="btn btn-outline-danger" disabled="disabled"> Votre candidature est refusée < <i class="mdi mdi-send"></i></button>
                                 {% else %}
-                                <a href=" {% url 'apply_for_mission' post.id %} " class="btn btn-outline-primary" >Enregistrer ma candidature pour cette mission <i class="mdi mdi-send"></i></a>
+                                <a href=" {% url 'apply_for_mission' post.id %} " class="btn btn-outline-primary" >je m inscris pour l offre <i class="mdi mdi-send"></i></a>
                                 {% endif %}
+                                {% endfor %}
+
                             </div>
                         </div>
                         <div class="form-group">
@@ -249,7 +227,6 @@
         <!-- Job Detail End -->
 
         <!-- Footer Start -->
-            {% include 'footer.html' %}
 
         <!-- Back to top -->
         <a href="#" class="btn btn-icon btn-primary back-to-top"><i data-feather="arrow-up" class="icons"></i></a>

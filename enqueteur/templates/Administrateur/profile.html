@@ -1,4 +1,4 @@
-   {% extends 'administrateur/base_template.html' %}
+   {% extends 'Administrateur/base_template.html' %}
    {%load static %}
   {% block page_title %}
 Profile de l'enquêteur {{enqueteur.nom}}
@@ -48,7 +48,7 @@ Profile de l'enquêteur {{enqueteur.nom}}
                     <b>Nombre de candidature en attente de confirmation</b> <a class="float-right">X</a>
                   </li>
                  <li class="list-group-item">
-                    <b>Remuneration recu:</b> <a class="float-right">X</a>
+                    <b>Dédommagements recu:</b> <a class="float-right">X</a>
                   </li></ul>
 
                 <a href="/mailbox_compose_envoie/{{enqueteur.id}}" class="btn btn-primary btn-block"><b>Envoyer un message</b></a>

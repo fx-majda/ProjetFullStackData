@@ -26,6 +26,27 @@
         <!-- Main Css -->
         <link href=" {% static 'css/style.css' %} " rel="stylesheet" type="text/css" id="theme-opt" />
         <link href=" {% static 'css/colors/default.css' %} " rel="stylesheet" id="color-opt">
+<style>
+    .navbar { background-color: #008c8d; }
+.navbar .navbar-nav .nav-link { color: #fff;  }
+.navbar .navbar-nav .nav-link:hover { color: #000000; }
+.navbar .navbar-nav .active > .nav-link { color: #b6ffff; }
+@media screen and (max-width: 600px) {
+  .navbar {
+            display: none;
+  }
+}
+.flag {
+  transition: all 300ms cubic-bezier(.25,.8,.25,1);
+
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 5px 7px rgba(0,0,0,0.60);
+}
+@media (min-width: 1200px) {#topnav .navigation-menu  .mob {display:block;}
+}
+@media (min-width: 1199px) { #topnav .navigation-menu .mob {display:none;} }
+
+
+</style>
     </head>
 
     <body>
@@ -39,23 +60,38 @@
             </div>
         </div> -->
         <!-- Loader -->
-        
+
         <!-- Navbar STart -->
-        <header id="topnav" class="defaultscroll sticky">
+  <header id="topnav" class="defaultscroll sticky">
+
+	<!--- Navbar --->
+	<nav class="navbar navbar-expand-lg">
+		<div class="container">
+               {% url 'index' as index %}
+
+                <a class="navbar-brand text-white" href=" {{index}}">                        <img src=" {% static 'images/logo-light.png' %} " height="50" alt=""></a>
+
+			<div class="collapse navbar-collapse" id="nvbCollapse">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item  pl-1">
+                            {% url 'login' as login %}
+                        <a class="nav-link" href="{{login}}" id="ess">ESPACE ENQUÊTEUR  : CONNEXION       <i class="uil uil-data-sharing      "></i>
+</a>
+					</li>
+
+
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<!--# Navbar #-->
+
+	<!--# Footer #-->
             <div class="container">
                 <!-- Logo container-->
-                <div>
-                    {% url 'index' as index %}
-                    <a class="logo" href=" {{index}} ">
-                        <img src=" {% static 'images/logo-dark.png' %} " height="24" alt="">
-                    </a>
-                </div>
-                									{% url 'login' as login %}
-                <div class="buy-button">
-                                                                  {% url 'login' as login %}
 
-                        <a href="{{login}}"  class="btn btn-primary">Se connecter</a>                </div><!--end login button-->
-                <!-- End Logo container-->
+                									{% url 'login' as login %}
+                         <!-- End Logo container-->
                 <div class="menu-extras">
                     <div class="menu-item">
                         <!-- Mobile menu toggle-->
@@ -74,44 +110,49 @@
                     <!-- Navigation Menu-->
                     <ul class="navigation-menu">
                         {% url 'index' as index %}
-
-                        <li><a href=" {{index}} ">Accueil</a></li>
+                       <li><a href=" {{index}} " id="accueil">Accueil</a></li>
                         {% url 'service' as service %}
-                        <li><a href=" {{service}} "> Professionnel</a></li>
+                        <li><a href=" {{service}} " id="pro"> Professionnel</a></li>
                           {% url 'panel' as guide %}
-
-                        <li><a href=" {{guide}} ">Panel</a></li>
-
-                        {% url 'guide' as guide %}
-
-                        <li><a href=" {{guide}} ">FAQs</a></li>
-                        {% url 'actualite' as actualite %}
-
-                        <li><a href=" {{actualite}} ">Actualités</a></li>
+                        <li><a href=" {{guide}} " id="panel">Panel</a></li>
                         {% url 'contact' as contact %}
+                            <li><a href=" {{contact}} ">Contact</a></li>
+                        {% url 'guide' as guide %}
+                             <li><a href=" {{guide}} ">FAQs</a></li>
+                            {% url 'login' as login %}
+                        <li><a class="mob" href=" {{login}} ">Se connecter</a></li>
 
-                        <li><a href=" {{contact}} ">Contact</a></li>
+                            <li>
+                        <a>
+			<img class="flag" id="fr" src="https://flagcdn.com/w20/fr.png" srcset="https://flagcdn.com/w40/fr.png 2x" width="20" style="cursor:pointer; outline:1px solid black;" onmouseover="this.style.backgroundPosition=-150px -25px;" onmouseout="this.style.backgroundPosition=-150px 0px;" alt="Francais">
+                            </a>
+                        </li>
+                        <li ><a>
+                           <img  class="flag" id="es" src="https://flagcdn.com/w20/es.png" srcset="https://flagcdn.com/w40/es.png 2x" width="20" style="  cursor:pointer;      outline:1px solid black;" alt="Spain">
+                            </a>
+                        </li>
+
+                             <li ><a>
+                            <img id="en" class="flag" src="https://flagcdn.com/w20/gb.png" srcset="https://flagcdn.com/w40/gb.png 2x" width="20" height="13.5"style="       cursor:pointer; outline:1px solid black;" alt="English">
+                            </a>
+                        </li>
+                 </ul><!--end navigation menu-->
 
 
-
-                    </ul><!--end navigation menu-->
-                    <div class="buy-menu-btn d-none">
-                                                                                {% url 'login' as login %}
-
-                        <a href="{{login}}"  class="btn btn-primary">Se connecter</a>
-                    </div><!--end login button-->
                 </div><!--end navigation-->
             </div><!--end container-->
         </header><!--end header-->
         <!-- Navbar End -->
+               <!-- Navbar End -->
+   <!-- Navbar End -->
         
         <!-- Hero Start -->
-        <section class="bg-half bg-light d-table w-100">
+        <section class="bg-half bg-light d-table w-100"  style="background:  url('/static/images/illustrator/faq.png') center center; background-repeat: no-repeat; margin-top:120px">
             <div class="container">
+
                 <div class="row justify-content-center">
                     <div class="col-lg-12 text-center">
                         <div class="page-next-level">
-                            <h4 class="title"> FOIRE AUX QUESTIONS | SOS</h4>
 
                             <div class="page-next">
                                 <nav aria-label="breadcrumb" class="d-inline-block">
@@ -135,27 +176,27 @@
                     <div class="col-lg-4 col-md-5 col-12 d-none d-md-block">
                         <div class="rounded shadow p-4 sticky-bar">
                             <ul class="list-unstyled mb-0">
-                                <li><a href=" #tech" class="mouse-down h6 text-dark">Questions générales</a></li>
-                                <li class="mt-4"><a href=" #general " class="mouse-down h6 text-dark">Nos méthodologies de mesure</a></li>
+                                <li><a href=" #tech" class="mouse-down h6 text-dark" id="h1">Questions générales</a></li>
+                                <li class="mt-4"><a href=" #general " class="mouse-down h6 text-dark" id="h2">Nos méthodologies de mesure</a></li>
                                        </ul>
                         </div>
                     </div><!--end col-->
 
                     <div class="col-lg-8 col-md-7 col-12">
                         <div class="section-title" id="tech">
-                            <h4>Questions générales</h4>
+                            <h4 id="h3">Questions générales</h4>
                         </div>
                         <div class="faq-content mt-4 pt-2">
                             <div class="accordion" id="accordionExampleone">
                                 <div class="card border-0 rounded mb-2">
                                     <a data-toggle="collapse" href=" #collapseone " class="faq position-relative" aria-expanded="true" aria-controls="collapseone">
                                         <div class="card-header border-0 bg-light p-3 pr-5" id="headingfifone">
-                                            <h6 class="title mb-0"> Comment faire une<span class="text-primary"> visite</span> ? </h6>
+                                            <h6 class="title mb-0" id="q1"> Comment faire une visite ? </h6>
                                         </div>
                                     </a>
                                     <div id="collapseone" class="collapse show" aria-labelledby="headingfifone" data-parent="#accordionExampleone">
                                         <div class="card-body px-2 py-4">
-                                            <p class="text-muted mb-0 faq-ans">Vous devez vous inscrire sur le panel pour recevoir toutes les visites susceptibles de correspondre à votre profil client.
+                                            <p class="text-muted mb-0 faq-ans" id="r1">Vous devez vous inscrire sur le panel pour recevoir toutes les visites susceptibles de correspondre à votre profil client.
                                             <br>Une fois inscrit (e), vous pourrez voir sur votre espace missions, la liste des visites mystères en cours dans votre secteur géographique. Si vous êtes amenés à voyager vous pourrez voir les visites sur d’autres secteurs géographiques.<br> Si l’une d’entre elle correspond à votre profil, vous pourrez  vous positionner en prenant soin d’indiquer sur le calendrier la date à laquelle vous souhaitez la réaliser.Une fois par semaine vous recevrez les visites en cours, assurez- vous que notre adresse mail soit dans vos favoris et non dans les spams au risque de laisser passer des visites intéressantes.</p>
                                         </div>
                                     </div>
@@ -164,12 +205,12 @@
                                 <div class="card border-0 rounded mb-2">
                                     <a data-toggle="collapse" href=" #collapsetwo " class="faq position-relative collapsed" aria-expanded="false" aria-controls="collapsetwo">
                                         <div class="card-header border-0 bg-light p-3 pr-5" id="headingtwo">
-                                            <h6 class="title mb-0"> Quels genres de sondages mystère me seront proposés ?  </h6>
+                                            <h6 class="title mb-0" id="q2"> Quels genres de sondages mystère me seront proposés ?  </h6>
                                         </div>
                                     </a>
                                     <div id="collapsetwo" class="collapse" aria-labelledby="headingtwo" data-parent="#accordionExampleone">
                                         <div class="card-body px-2 py-4">
-                                            <p class="text-muted mb-0 faq-ans"> Un projet de client mystère peut concerner toutes les situations d'un client, prospect, consommateur, usager... : supermarchés, boutiques de mode, restaurants, hôtels, parcs d'attractions, agences de voyage...
+                                            <p class="text-muted mb-0 faq-ans" id="r2"> Un projet de client mystère peut concerner toutes les situations d'un client, prospect, consommateur, usager... : supermarchés, boutiques de mode, restaurants, hôtels, parcs d'attractions, agences de voyage...
 
                                         Nos questionnaires concernent votre expérience normale de consommateur au quotidien. Vos courses, votre nuit à l'hôtel, votre dîner au restaurant, votre demande de renseignement ou de devis ou votre réclamation... vous nous indiquez vos vécus et de vos impressions dans un questionnaire.</p>
                                         </div>
@@ -178,12 +219,12 @@
                                 <div class="card border-0 rounded mb-2">
                                     <a data-toggle="collapse" href=" #collapsetwo2 " class="faq position-relative collapsed" aria-expanded="false" aria-controls="collapsetwo">
                                         <div class="card-header border-0 bg-light p-3 pr-5" id="headingtwo2">
-                                            <h6 class="title mb-0"> Combien de temps faut-il compter ?</h6>
+                                            <h6 class="title mb-0" id="q3"> Combien de temps faut-il compter ?</h6>
                                         </div>
                                     </a>
                                     <div id="collapsetwo2" class="collapse" aria-labelledby="headingtwo" data-parent="#accordionExampleone">
                                         <div class="card-body px-2 py-4">
-                                            <p class="text-muted mb-0 faq-ans"> Le temps à consacrer est variable et dépend des questionnaires et contextes.
+                                            <p class="text-muted mb-0 faq-ans" id="r3"> Le temps à consacrer est variable et dépend des questionnaires et contextes.
 
                                                 Remplir nos questionnaires prend entre 5 et 15 minutes et les sondages concernent votre quotidien habituel comme vos courses pour le week-end au supermarché, votre visite chez le coiffeur ou votre shopping à l'occasion des soldes d'été.
                                                     D'autres missions, plus orientées audit, peuvent nécessiter un déplacement spécial ou une organisation particulière. L'invitation à participer vous donnera une indication sur le type et le temps nécessaire à la réalisation de la mission. Côté horaires, vous choisirez selon vos envies et vos disponibilités, bien sûr dans le cadre des impératifs de la situation (horaires d'ouverture du magasin, heures de service du restaurant..).
@@ -195,7 +236,7 @@
                                 <div class="card border-0 rounded mb-2">
                                     <a data-toggle="collapse" href=" #collapsethree3 " class="faq position-relative collapsed" aria-expanded="false" aria-controls="collapsethree">
                                         <div class="card-header border-0 bg-light p-3 pr-5" id="headingthree3">
-                                            <h6 class="title mb-0"> Combien est-ce que je peux gagner ?</h6>
+                                            <h6 class="title mb-0" id="q4"> Combien est-ce que je peux gagner ?</h6>
                                         </div>
                                     </a>
                                     <div id="collapsethree3" class="collapse" aria-labelledby="headingthree" data-parent="#accordionExampleone">
@@ -209,23 +250,23 @@
                                 <div class="card border-0 rounded mb-2">
                                     <a data-toggle="collapse" href=" #collapsethree33 " class="faq position-relative collapsed" aria-expanded="false" aria-controls="collapsethree">
                                         <div class="card-header border-0 bg-light p-3 pr-5" id="headingthree33">
-                                            <h6 class="title mb-0"> Quand et comment je serais payé ?</h6>
+                                            <h6 class="title mb-0" id="q5"> Quand et comment je serais payé ?</h6>
                                         </div>
                                     </a>
                                     <div id="collapsethree33" class="collapse" aria-labelledby="headingthree" data-parent="#accordionExampleone">
                                         <div class="card-body px-2 py-4">
-                                            <p class="text-muted mb-0 faq-ans">Le dédommagement vous sera transmis par courrier recommandé sous un délai de 6 à 8 semaines pour vous permettre de cumuler avec d’autres dédommagements</p>
+                                            <p class="text-muted mb-0 faq-ans" id="r5">Le dédommagement vous sera transmis par courrier recommandé sous un délai de 6 à 8 semaines pour vous permettre de cumuler avec d’autres dédommagements</p>
                                     </div>
                                     </div></div>
                                 <div class="card border-0 rounded mb-2">
                                     <a data-toggle="collapse" href=" #collapsethree " class="faq position-relative collapsed" aria-expanded="false" aria-controls="collapsethree">
                                         <div class="card-header border-0 bg-light p-3 pr-5" id="headingthree">
-                                            <h6 class="title mb-0"> Support Upgoods </h6>
+                                            <h6 class="title mb-0" id="q6"> Support Upgoods </h6>
                                         </div>
                                     </a>
                                     <div id="collapsethree" class="collapse" aria-labelledby="headingthree" data-parent="#accordionExampleone">
                                         <div class="card-body px-2 py-4">
-                                            <p class="text-muted mb-0 faq-ans">L’équipe de chargés de relation et de communication avec le panel est à votre disposition pour répondre à vos questions et vous aider.Si vous deviez changer votre jour et heure de visite n’hésitez pas à les prévenir, ils sont à votre disposition par mail à client-mystere@amsinternational.fr ou au téléphone : 0033 (0)  4 72 81 99 57.</p>
+                                            <p class="text-muted mb-0 faq-ans" id="r6">L’équipe de chargés de relation et de communication avec le panel est à votre disposition pour répondre à vos questions et vous aider.Si vous deviez changer votre jour et heure de visite n’hésitez pas à les prévenir, ils sont à votre disposition par mail à client-mystere@amsinternational.fr ou au téléphone : 0033 (0)  4 72 81 99 57.</p>
                                         </div>
                                     </div>
                                 </div>
@@ -233,13 +274,13 @@
                                 <div class="card border-0 rounded mb-2">
                                     <a data-toggle="collapse" href=" #collapsefour " class="faq position-relative collapsed" aria-expanded="false" aria-controls="collapsefour">
                                         <div class="card-header border-0 bg-light p-3 pr-5" id="headingfour">
-                                        <h6 class="title mb-0"> J'ai perdu mon mot de passe comment le récuperer?</h6>
+                                        <h6 class="title mb-0" id="q7"> J'ai perdu mon mot de passe comment le récuperer?</h6>
                                                                          </div>
                                     </a>
                                     <div id="collapsefour" class="collapse" aria-labelledby="headingfour" data-parent="#accordionExampleone">
                                         <div class="card-body px-2 py-4">
                                             <div class="card-body px-2 py-4">
-                                                <p class="text-muted mb-0 faq-ans">Votre identifiant correspond à l’adresse e-mail avec laquelle vous vous êtes inscrit.<br>
+                                                <p class="text-muted mb-0 faq-ans" id="r7">Votre identifiant correspond à l’adresse e-mail avec laquelle vous vous êtes inscrit.<br>
                                                     Pour récupérer votre mot de passe, vous avez deux possibilités : depuis la page web ou depuis votre application mobile (en cliquant sur le bouton « mot de passe oublié »)</p>
                                         </div>                                              </div>
                                     </div>
@@ -250,7 +291,7 @@
                         </div>
 
                         <div class="section-title mt-5" id="general">
-                            <h4>Nos méthodologies de mesure</h4>
+                            <h4 id="h4">Nos méthodologies de mesure</h4>
                         </div>
 
                         <div class="faq-content mt-4 pt-3">
@@ -258,12 +299,12 @@
                                 <div class="card border-0 rounded mb-2">
                                     <a data-toggle="collapse" href="#collapsefive " class="faq position-relative" aria-expanded="true" aria-controls="collapsefive">
                                         <div class="card-header border-0 bg-light p-3 pr-5" id="headingfive">
-                                            <h6 class="title mb-0"> Visites mystère </h6>
+                                            <h6 class="title mb-0" id="q8"> Visites mystère </h6>
                                         </div>
                                     </a>
                                     <div id="collapsefive" class="collapse show" aria-labelledby="headingfive" data-parent="#accordionExampletwo">
                                         <div class="card-body px-2 py-4">
-                                            <p class="text-muted mb-0 faq-ans">les membres de notre panel dont le profil correspond à celui de vos clients sauront retranscrire leurs expériences vécues source pour un plan d’action en adéquation avec vos fondamentaux et l’image de votre marque.</p>
+                                            <p class="text-muted mb-0 faq-ans" id="r8">les membres de notre panel dont le profil correspond à celui de vos clients sauront retranscrire leurs expériences vécues source pour un plan d’action en adéquation avec vos fondamentaux et l’image de votre marque.</p>
                                         </div>
                                     </div>
                                 </div>
@@ -271,82 +312,82 @@
                                 <div class="card border-0 rounded mb-2">
                                     <a data-toggle="collapse" href=" #collapsesix " class="faq position-relative collapsed" aria-expanded="false" aria-controls="collapsesix">
                                         <div class="card-header border-0 bg-light p-3 pr-5" id="headingsix">
-                                            <h6 class="title mb-0"> Enquêtes terrains </h6>
+                                            <h6 class="title mb-0" id="q9"> Enquêtes terrains </h6>
                                         </div>
                                     </a>
                                     <div id="collapsesix" class="collapse" aria-labelledby="headingsix" data-parent="#accordionExampletwo">
                                         <div class="card-body px-2 py-4">
-                                            <p class="text-muted mb-0 faq-ans">interroger les passagers, utilisateurs ou clients d’un lieu vaste, dense et en mouvement, recueillir leurs ressenti et avis à chaud durant leur expérience client sans qu’ils ne s’y attendent et sans les importuner, nos enquêteurs sont formés à nos techniques et respectent vos environnements.</p> </div>
+                                            <p class="text-muted mb-0 faq-ans" id="r9">interroger les passagers, utilisateurs ou clients d’un lieu vaste, dense et en mouvement, recueillir leurs ressenti et avis à chaud durant leur expérience client sans qu’ils ne s’y attendent et sans les importuner, nos enquêteurs sont formés à nos techniques et respectent vos environnements.</p> </div>
                                     </div>
                                 </div>
 
                                 <div class="card border-0 rounded mb-2">
                                     <a data-toggle="collapse" href=" #collapseseven " class="faq position-relative collapsed" aria-expanded="false" aria-controls="collapseseven">
                                         <div class="card-header border-0 bg-light p-3 pr-5" id="headingseven">
-                                            <h6 class="title mb-0"> Focus groupe ou réunions de consommateurs </h6>
+                                            <h6 class="title mb-0" id="q10"> Focus groupe ou réunions de consommateurs </h6>
                                         </div>
                                     </a>
                                     <div id="collapseseven" class="collapse" aria-labelledby="headingseven" data-parent="#accordionExampletwo">
                                         <div class="card-body px-2 py-4">
-                                            <p class="text-muted mb-0 faq-ans">des réunions de consommateurs préparées, ou la spontanéité prime, les réponses et comportements sont étudiés par nos analystes.</p>  </div>
+                                            <p class="text-muted mb-0 faq-ans" id="r10">des réunions de consommateurs préparées, ou la spontanéité prime, les réponses et comportements sont étudiés par nos analystes.</p>  </div>
                                     </div>
                                 </div>
 
                                 <div class="card border-0 rounded mb-2">
                                     <a data-toggle="collapse" href=" #collapseeight" class="faq position-relative collapsed" aria-expanded="false" aria-controls="collapseeight">
                                         <div class="card-header border-0 bg-light p-3 pr-5" id="headingeight">
-                                            <h6 class="title mb-0"> Enquêtes téléphoniques </h6>
+                                            <h6 class="title mb-0" id="q11"> Enquêtes téléphoniques </h6>
                                         </div>
                                     </a>
                                     <div id="collapseeight" class="collapse" aria-labelledby="headingeight" data-parent="#accordionExampletwo">
                                         <div class="card-body px-2 py-4">
-                                            <p class="text-muted mb-0 faq-ans">Interroger vos clients sur une ou toutes étape du parcours clients, relever leur ressenti, valoriser leurs avis.</p>
+                                            <p class="text-muted mb-0 faq-ans" id="r11">Interroger vos clients sur une ou toutes étape du parcours clients, relever leur ressenti, valoriser leurs avis.</p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="card border-0 rounded mb-2">
                                     <a data-toggle="collapse" href=" #collapsenine" class="faq position-relative collapsed" aria-expanded="false" aria-controls="collapsenine">
                                         <div class="card-header border-0 bg-light p-3 pr-5" id="headingnine">
-                                            <h6 class="title mb-0">Tests produits</h6>
+                                            <h6 class="title mb-0" id="q12">Tests produits</h6>
                                         </div>
                                     </a>
                                     <div id="collapsenine" class="collapse" aria-labelledby="headingnine" data-parent="#accordionExampletwo">
                                         <div class="card-body px-2 py-4">
-                                            <p class="text-muted mb-0 faq-ans">Un retour factuel sur le produit, testé lors d’une réunion ou à domicile par les membres du panel sélectionné.</p>     </div>
+                                            <p class="text-muted mb-0 faq-ans" id="r12">Un retour factuel sur le produit, testé lors d’une réunion ou à domicile par les membres du panel sélectionné.</p>     </div>
                                     </div>
                                 </div>
                                 <div class="card border-0 rounded mb-2">
                                     <a data-toggle="collapse" href=" #collapseninee" class="faq position-relative collapsed" aria-expanded="false" aria-controls="collapsenine">
                                         <div class="card-header border-0 bg-light p-3 pr-5" id="headingnin">
-                                            <h6 class="title mb-0">Comptage clients, passagers ou visiteurs</h6>
+                                            <h6 class="title mb-0" id="q13">Comptage clients, passagers ou visiteurs</h6>
                                         </div>
                                     </a>
                                     <div id="collapseninee" class="collapse" aria-labelledby="headingnine" data-parent="#accordionExampletwo">
                                         <div class="card-body px-2 py-4">
-                                            <p class="text-muted mb-0 faq-ans">pour compter à différents endroits ou la densité et le passage sont en nombre (aéroports, gares, centres commerciaux etc…)</p></div>
+                                            <p class="text-muted mb-0 faq-ans" id="r13">pour compter à différents endroits ou la densité et le passage sont en nombre (aéroports, gares, centres commerciaux etc…)</p></div>
                                 </div>
                             </div>
                                 <div class="card border-0 rounded mb-2">
                                     <a data-toggle="collapse" href=" #collapsenineee" class="faq position-relative collapsed" aria-expanded="false" aria-controls="collapsenine">
                                         <div class="card-header border-0 bg-light p-3 pr-5" id="headingninn">
-                                            <h6 class="title mb-0">Relevés de présence ou de prix </h6>
+                                            <h6 class="title mb-0" id="q14">Relevés de présence ou de prix </h6>
                                         </div>
                                     </a>
                                     <div id="collapsenineee" class="collapse" aria-labelledby="headingnine" data-parent="#accordionExampletwo">
                                         <div class="card-body px-2 py-4">
-                                            <p class="text-muted mb-0 faq-ans">relever vos prix et ceux de la même famille de produits, pour réajuster ou contrôler.
+                                            <p class="text-muted mb-0 faq-ans" id="r14">relever vos prix et ceux de la même famille de produits, pour réajuster ou contrôler.
 </p></div>
                                 </div>
                             </div>
                                 <div class="card border-0 rounded mb-2">
                                     <a data-toggle="collapse" href=" #collapsenineeee" class="faq position-relative collapsed" aria-expanded="false" aria-controls="collapsenine">
                                         <div class="card-header border-0 bg-light p-3 pr-5" id="headingneinn">
-                                            <h6 class="title mb-0">Audit pro </h6>
+                                            <h6 class="title mb-0" id="q15">Audit pro </h6>
                                         </div>
                                     </a>
                                     <div id="collapsenineeee" class="collapse" aria-labelledby="headingnine" data-parent="#accordionExampletwo">
                                         <div class="card-body px-2 py-4">
-                                            <p class="text-muted mb-0 faq-ans">un audit de vos process vu par un regard de professionnel, mesurer la performance dans sa globalité, l’audit intervient sur le lieu de vente mais aussi en arrière boutique (logistique, cuisine, buanderie….)</p>
+                                            <p class="text-muted mb-0 faq-ans" id="r15">un audit de vos process vu par un regard de professionnel, mesurer la performance dans sa globalité, l’audit intervient sur le lieu de vente mais aussi en arrière boutique (logistique, cuisine, buanderie….)</p>
                                 </div>
                             </div>
 
@@ -354,48 +395,48 @@
                                 <div class="card border-0 rounded mb-2">
                                     <a data-toggle="collapse" href=" #collapsenineeeee" class="faq position-relative collapsed" aria-expanded="false" aria-controls="collapsenine">
                                         <div class="card-header border-0 bg-light p-3 pr-5" id="headingneiinn">
-                                            <h6 class="title mb-0">Etudes consommateurs </h6>
+                                            <h6 class="title mb-0" id="q16">Etudes consommateurs </h6>
                                         </div>
                                     </a>
                                     <div id="collapsenineeeee" class="collapse" aria-labelledby="headingnine" data-parent="#accordionExampletwo">
                                         <div class="card-body px-2 py-4">
-                                            <p class="text-muted mb-0 faq-ans">analyse des habitudes de consommations, des comportements d’achats, s’adapter.</p>    </div>
+                                            <p class="text-muted mb-0 faq-ans" id="r16">analyse des habitudes de consommations, des comportements d’achats, s’adapter.</p>    </div>
                             </div>
 
                         </div>
                                 <div class="card border-0 rounded mb-2">
                                     <a data-toggle="collapse" href=" #collapsenineeeeee" class="faq position-relative collapsed" aria-expanded="false" aria-controls="collapsenine">
                                         <div class="card-header border-0 bg-light p-3 pr-5" id="headingneiinn3">
-                                            <h6 class="title mb-0">Benchmark </h6>
+                                            <h6 class="title mb-0" id="q17">Benchmark </h6>
                                         </div>
                                     </a>
                                     <div id="collapsenineeeeee" class="collapse" aria-labelledby="headingnine" data-parent="#accordionExampletwo">
                                         <div class="card-body px-2 py-4">
-                                            <p class="text-muted mb-0 faq-ans">Analyser la concurrence, se positionner sur un marché, mieux cibler, mieux vendre</p>    </div>
+                                            <p class="text-muted mb-0 faq-ans" id="r17">Analyser la concurrence, se positionner sur un marché, mieux cibler, mieux vendre</p>    </div>
                             </div>
 
                         </div>
                                 <div class="card border-0 rounded mb-2">
                                     <a data-toggle="collapse" href=" #collapsenineeeee3e" class="faq position-relative collapsed" aria-expanded="false" aria-controls="collapsenine">
                                         <div class="card-header border-0 bg-light p-3 pr-5" id="headingneiinn33">
-                                            <h6 class="title mb-0">Enquêtes web </h6>
+                                            <h6 class="title mb-0" id="q18">Enquêtes web </h6>
                                         </div>
                                     </a>
                                     <div id="collapsenineeeee3e" class="collapse" aria-labelledby="headingnine" data-parent="#accordionExampletwo">
                                         <div class="card-body px-2 py-4">
-                                            <p class="text-muted mb-0 faq-ans">Pour atteindre un panel plus large et en nombre dans le cadre d’études ciblées</p>    </div>
+                                            <p class="text-muted mb-0 faq-ans" id="r18">Pour atteindre un panel plus large et en nombre dans le cadre d’études ciblées</p>    </div>
                             </div>
 
                         </div>
                                 <div class="card border-0 rounded mb-2">
                                     <a data-toggle="collapse" href=" #collapsenineeeee32e" class="faq position-relative collapsed" aria-expanded="false" aria-controls="collapsenine">
                                         <div class="card-header border-0 bg-light p-3 pr-5" id="headingneiinn323">
-                                            <h6 class="title mb-0">Etudes géomarketing </h6>
+                                            <h6 class="title mb-0" id="q19">Etudes géomarketing </h6>
                                         </div>
                                     </a>
                                     <div id="collapsenineeeee32e" class="collapse" aria-labelledby="headingnine" data-parent="#accordionExampletwo">
                                         <div class="card-body px-2 py-4">
-                                            <p class="text-muted mb-0 faq-ans">mieux cibler son marché géographiquement, trouver l’endroit ou s’implanter, valider un lieu.</p>    </div>
+                                            <p class="text-muted mb-0 faq-ans" id="r19">mieux cibler son marché géographiquement, trouver l’endroit ou s’implanter, valider un lieu.</p>    </div>
                             </div>
 
                         </div>
@@ -410,7 +451,6 @@
         <!-- End Section -->
 
         <!-- Footer Start -->
-                   {% include 'footer.html' %}
 
         <!-- Footer End -->
 
@@ -424,12 +464,144 @@
         <script src=" {% static 'js/jquery.easing.min.js' %} "></script>
         <script src=" {% static 'js/scrollspy.min.js' %} "></script>
         <!-- SLIDER -->
-        <script src=" {% static 'js/owl.carousel.min.js ' %} "></script>
-        <script src=" {% static 'js/owl.init.js ' %} "></script>
+        <script src=" {% static 'js/owl.carousel.min.js' %} "></script>
+        <script src=" {% static 'js/owl.init.js' %} "></script>
         <!-- Icons -->
         <script src=" {% static 'js/feather.min.js' %} "></script>
         <script src="https://unicons.iconscout.com/release/v3.0.3/script/monochrome/bundle.js"></script>
         <!-- Main Js -->
         <script src=" {% static 'js/app.js' %} "></script>
+          <script type="text/javascript">
+
+          $(document).ready(function(){
+           $('#es').click(function(){
+            espagnol()
+            localStorage.setItem("lang",'es')
+
+            });
+        });
+
+         $(document).ready(function(){
+           $('#en').click(function(){
+            english()
+            localStorage.setItem("lang",'en')
+
+            });
+        });
+
+        $(document).ready(function(){
+           $('#fr').click(function(){
+            localStorage.removeItem("lang");
+            location.reload();
+            });
+         });
+
+        window.onload = function getlang(){
+        var x = localStorage.getItem("lang")
+        console.log(x)
+        if(x == 'en'){
+            english()
+          }
+        if(x == 'es') {
+            espagnol()
+           }
+        }
+
+        function espagnol(){
+        document.getElementById("h1").innerHTML = "Preguntas generales"
+            document.getElementById("h2").innerHTML = "Nuestras metodologías de medición"
+            document.getElementById("h3").innerHTML = "Preguntas generales"
+            document.getElementById("h4").innerHTML ="Nuestras metodologías de medición"
+            document.getElementById("q1").innerHTML =  "Cómo hacer una visita?"
+            document.getElementById("r1").innerHTML = "Debe registrarse en el panel para recibir todas las visitas que puedan coincidir con su perfil de cliente. Una vez registrado, podrá ver en su área de misiones, la lista de visitas misteriosas en curso en tu área geográfica. Si vas a viajar podrás ver tours en otras áreas geográficas. Si alguno de ellos corresponde a tu perfil, puedes posicionarte cuidando de indicar en el calendario la fecha en la que deseas para llevarlo a cabo. Una vez a la semana recibirás las visitas actuales, asegúrate de que nuestra dirección de correo electrónico esté en tus favoritos y no en spam a riesgo de perder visitas interesantes "
+            document.getElementById("q2").innerHTML ="Qué tipo de encuestas misteriosas me ofrecerán?"
+            document.getElementById("r2").innerHTML = "Un proyecto de comprador misterioso puede afectar a todas las situaciones de un cliente, prospecto, consumidor, usuario ...: supermercados, boutiques de moda, restaurantes, hoteles, parques de atracciones, agencias de viajes ... .Nuestros cuestionarios se refieren a tu experiencia de consumo normal del día a día. Tus compras, tu noche en el hotel, tu cena en el restaurante, tu solicitud de información o presupuesto o tu queja ... nos cuentas tus experiencias y tus impresiones en un cuestionario. "
+            document.getElementById("q3").innerHTML ="Cuánto tiempo lleva?"
+            document.getElementById("r3").innerHTML = "El tiempo para dedicar es variable y depende de los cuestionarios y contextos. Completar nuestros cuestionarios toma entre 5 y 15 minutos y las encuestas se refieren a su vida diaria habitual, como sus compras de fin de semana en el supermercado, tu visita a la peluquería o tus compras durante las rebajas de verano. Otras misiones, más orientadas a auditorías, pueden requerir un viaje especial o una organización en particular. La invitación a participar te dará una indicación del tipo y tiempo requerido para completar el encargo. En cuanto a los horarios, elegirás según tus deseos y tu disponibilidad, por supuesto en el marco de los requisitos de la situación (horario de apertura de la tienda, horario de servicio del restaurante "
+            document.getElementById("q4").innerHTML ="Cuánto puedo ganar?"
+            document.getElementById("q5").innerHTML = "Cuándo y cómo me pagarán?"
+            document.getElementById("r5").innerHTML ="The compensation will be sent to you by registered mail within 6 to 8 weeks to allow you to accumulate with other compensation  "
+            document.getElementById("q6").innerHTML ="Upgoods Support"
+            document.getElementById("r6").innerHTML = "El equipo de responsables de relaciones y comunicación con el panel está a su disposición para responder a sus preguntas y ayudarle. -Mystere@amsinternational.fr o por teléfono: 0033 (0) 4 72 81 99 57. "
+            document.getElementById("q7").innerHTML ="Perdí mi contraseña, cómo puedo recuperarla?"
+            document.getElementById("r7").innerHTML = "Su nombre de usuario es la dirección de correo electrónico con la que se registró. Para recuperar su contraseña, tiene dos posibilidades: desde la página web o desde su aplicación móvil (haciendo clic en el botón de contraseña olvidada) "
+            document.getElementById("q8").innerHTML ="Visitas misteriosas"
+            document.getElementById("r8").innerHTML = "los miembros de nuestro panel cuyo perfil corresponda al de sus clientes podrán transcribir sus experiencias fuente para un plan de acción acorde con sus fundamentos y la imagen de su marca"
+            document.getElementById("q9").innerHTML ="Encuestas de campo"
+            document.getElementById("r9").innerHTML ="cuestionar a los pasajeros, usuarios o clientes de un lugar amplio, denso y conmovedor, recoger sus sentimientos y opiniones durante su experiencia de cliente sin que se lo esperen y sin molestarlos, nuestros investigadores están capacitados en nuestras técnicas y respetan su entorno"
+            document.getElementById("q10").innerHTML ="Grupos de discusión o reuniones de consumidores"
+            document.getElementById("r10").innerHTML ="reuniones de consumidores preparadas, donde prima la espontaneidad, las respuestas y los comportamientos son estudiados por nuestros analistas"
+            document.getElementById("q11").innerHTML ="Encuestas telefónicas"
+            document.getElementById("r11").innerHTML ="Cuestione a sus clientes en una o todas las etapas del recorrido del cliente, registre sus sentimientos, promueva sus opiniones"
+            document.getElementById("q12").innerHTML ="Pruebas de producto"
+            document.getElementById("r12").innerHTML ="Comentarios reales sobre el producto, probados durante una reunión o en casa por los miembros del panel seleccionado."
+            document.getElementById("q13").innerHTML ="Contando clientes, pasajeros o visitantes"
+            document.getElementById("r13").innerHTML ="para contar en diferentes lugares donde la densidad y el paso son numerosos (aeropuertos, estaciones, centros comerciales etc ...)"
+            document.getElementById("q14").innerHTML ="Declaraciones de asistencia o precios"
+            document.getElementById("r14").innerHTML ="registra tus precios y los de la misma familia de productos, para reajustarlos o controlarlos"
+            document.getElementById("q15").innerHTML ="Auditoría profesional"
+            document.getElementById("r15").innerHTML = "una auditoría de sus procesos vista por un ojo profesional, mide el rendimiento en su conjunto, la auditoría se lleva a cabo en el punto de venta pero también detrás de la tienda (logística, cocina, lavandería , etc.) "
+            document.getElementById("q16").innerHTML ="Estudios de consumidores"
+            document.getElementById("r16").innerHTML ="análisis de hábitos de consumo, comportamiento de compra, adaptación"
+            document.getElementById("q17").innerHTML ="Benchmark "
+            document.getElementById("r17").innerHTML ="Analice la competencia, posicione usted mismo en un mercado, apunte mejor, venda mejor"
+            document.getElementById("q18").innerHTML ="Encuestas web"
+            document.getElementById("r18").innerHTML ="Para llegar a un panel más grande y en números dentro del marco de estudios específicos"
+            document.getElementById("q19").innerHTML ="Estudios de geomarketing"
+            document.getElementById("r19").innerHTML ="apunte mejor a su mercado geográficamente, encuentre el lugar o establezca una tienda, valide un lugar"
+            document.getElementById("accueil").innerHTML ="Pagina de inicio"
+            document.getElementById("pro").innerHTML = "Profesional"
+            document.getElementById("panel").innerHTML ="Panel"
+            document.getElementById("ess").innerHTML ="ÁREA DEL INVESTIGADOR: INICIAR SESIÓN"
+
+        }
+
+        function english(){
+            document.getElementById("h1").innerHTML = "General questions"
+            document.getElementById("h2").innerHTML = " Our measurement methodologies"
+            document.getElementById("h3").innerHTML = "General questions"
+            document.getElementById("h4").innerHTML ="Our measurement methodologies "
+            document.getElementById("q1").innerHTML = " How to make a visit?"
+            document.getElementById("r1").innerHTML = " You must register on the panel to receive all visits that may match your customer profile. Once registered, you will be able to see in your missions area, the list of mystery visits in progress in your geographical area. If you are going to travel you will be able to see tours in other geographic areas. If one of them corresponds to your profile, you can position yourself by taking care to indicate on the calendar the date on which you wish to carry it out.Once a week you will receive the current visits, make sure that our email address is in your favorites and not in spam at the risk of missing interesting visits."
+            document.getElementById("q2").innerHTML ="What kinds of mystery surveys will I be offered? "
+            document.getElementById("r2").innerHTML = "A mystery shopper project can concern all the situations of a client, prospect, consumer, user ...: supermarkets, fashion boutiques, restaurants, hotels, amusement parks, travel agencies ... Our questionnaires concern your experience normal day-to-day consumer. Your shopping, your night at the hotel, your dinner at the restaurant, your request for information or quote or your complaint ... you tell us your experiences and your impressions in a questionnaire. "
+            document.getElementById("q3").innerHTML =" How long does it take? "
+            document.getElementById("r3").innerHTML = "The time to devote is variable and depends on the questionnaires and contexts. Filling out our questionnaires takes between 5 and 15 minutes and the surveys concern your usual daily life such as your weekend shopping at the supermarket, your visit to the hairdresser or your shopping during the summer sales. Other missions, more audit-oriented, may require a special trip or a particular organization. The invitation to participate will give you an indication of the type and time required to complete the assignment. As for the hours, you will choose according to your wishes and your availability, of course within the framework of the requirements of the situation (opening hours of the store, hours of service of the restaurant "
+            document.getElementById("q4").innerHTML ="How much can I earn?"
+            document.getElementById("q5").innerHTML = "When and how will I be paid?"
+            document.getElementById("r5").innerHTML ="The compensation will be sent to you by registered mail within 6 to 8 weeks to allow you to accumulate with other compensation  "
+            document.getElementById("q6").innerHTML ="Upgoods Support"
+            document.getElementById("r6").innerHTML = "The team of relationship and communication managers with the panel is at your disposal to answer your questions and help you.If you had to change your day and time of visit, do not hesitate to notify them, they are at your disposal by mail to client-mystere@amsinternational.fr or by phone: 0033 (0) 4 72 81 99 57."
+            document.getElementById("q7").innerHTML ="I lost my password, how can I recover it?"
+            document.getElementById("r7").innerHTML = "Your username is the email address you registered with.To retrieve your password, you have two possibilities: from the web page or from your mobile application (by clicking on the forgot password button) "
+            document.getElementById("q8").innerHTML ="Mystery visits"
+            document.getElementById("r8").innerHTML ="the members of our panel whose profile corresponds to that of your customers will be able to transcribe their source experiences for an action plan in line with your fundamentals and the image of your brand. "
+            document.getElementById("q9").innerHTML ="Field surveys "
+            document.getElementById("r9").innerHTML ="question passengers, users or customers of a large, dense and moving place, collect their feelings and opinions during their customer experience without them expecting it and without annoying them, our investigators are trained in our techniques and respect your surroundings. "
+            document.getElementById("q10").innerHTML ="Focus group or consumer meetings  "
+            document.getElementById("r10").innerHTML ="prepared consumer meetings, where spontaneity takes precedence, responses and behaviors are studied by our analysts. "
+            document.getElementById("q11").innerHTML =" Telephone surveys"
+            document.getElementById("r11").innerHTML ="Question your customers on one or all stages of the customer journey, record their feelings, promote their opinions. "
+            document.getElementById("q12").innerHTML ="Product tests  "
+            document.getElementById("r12").innerHTML =" Factual feedback on the product, tested during a meeting or at home by the members of the selected panel."
+            document.getElementById("q13").innerHTML ="Counting customers, passengers or visitors "
+            document.getElementById("r13").innerHTML = " to count in different places where the density and the passage are numerous (airports, stations, shopping centers etc ...)"
+            document.getElementById("q14").innerHTML =" Attendance or price statements"
+            document.getElementById("r14").innerHTML ="record your prices and those of the same family of products, to readjust or control. "
+            document.getElementById("q15").innerHTML ="Pro audit "
+            document.getElementById("r15").innerHTML ="an audit of your processes seen by a professional eye, measure performance as a whole, the audit takes place at the point of sale but also behind the store (logistics, kitchen, laundry room, etc.) "
+            document.getElementById("q16").innerHTML ="Consumer studies "
+            document.getElementById("r16").innerHTML ="analysis of consumption habits, purchasing behavior, adapting. "
+            document.getElementById("q17").innerHTML ="Benchmark "
+            document.getElementById("r17").innerHTML ="Analyze the competition, position yourself in a market, target better, sell better "
+            document.getElementById("q18").innerHTML ="Web surveys "
+            document.getElementById("r18").innerHTML ="To reach a larger panel and in numbers within the framework of targeted studies "
+            document.getElementById("q19").innerHTML ="Geomarketing studies "
+            document.getElementById("r19").innerHTML ="better target your market geographically, find the place or set up shop, validate a place. "
+            document.getElementById("ess").innerHTML ="INVESTIGATOR AREA: LOG IN"
+
+        }
+    </script>
+
     </body>
 </html>

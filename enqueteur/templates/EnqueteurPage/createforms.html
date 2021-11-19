@@ -5,7 +5,7 @@
     <title>Title</title>
 </head>
 <body>
-<form method="post" action="">
+<form method="post" action="" enctype="multipart/form-data">
     {% csrf_token %}
     <div>
     <input type="text" name="missionname" placeholder="Enter mission name">
@@ -13,6 +13,10 @@
 </div>
 <div>
     <textarea name="htmlcode" placeholder="enter Html core here"></textarea>
+</div>
+     <div>
+    <input type="file" name="breifing" >
+
 </div>
     <div>
         <input name="submit" type="submit" value="submit form">

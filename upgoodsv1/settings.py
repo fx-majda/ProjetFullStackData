@@ -23,9 +23,9 @@ BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 SECRET_KEY = 'fr*+cgh&q2^yy9zy)-%gxwh5#(p2qkaub$qxf^p$%4u_36nt%6'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['upgoods.herokuapp.com','127.0.0.1']
+ALLOWED_HOSTS = []
 
 MEDIA_URL="/media/"
 MEDIA_ROOT=os.path.join(BASE_DIR, "media")
@@ -48,9 +48,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'ckeditor',
-    'djcompoundqueryset',
-
     'enqueteur',
+    'django_extensions',
+
 ]
 
 SITE_ID = 1
@@ -90,8 +90,6 @@ TEMPLATES = [
 WSGI_APPLICATION = 'upgoodsv1.wsgi.application'
 
 LOGOUT_REDIRECT_URL='/'
-# Database
-# https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 DATABASES = {
     'default': {
@@ -137,7 +135,7 @@ LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
 
-USE_I18N = True
+USE_I18N= True
 
 USE_L10N = True
 
@@ -150,6 +148,18 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+def verified_callback(user):
+    user.is_active = True
+
+
+EMAIL_VERIFIED_CALLBACK = verified_callback
+EMAIL_FROM_ADDRESS = 'noreply@upgoods.com'
+EMAIL_MAIL_SUBJECT = 'Confirmer votre adresse email'
+EMAIL_MAIL_HTML = 'mail_body.html'
+EMAIL_MAIL_PLAIN = 'mail_body.txt'
+EMAIL_TOKEN_LIFE = 60 * 60
+EMAIL_PAGE_TEMPLATE = 'confirm_template.html'
+EMAIL_PAGE_DOMAIN = 'http://up-goods.com/'
 
 # SMTP Configuration
 
@@ -158,4 +168,10 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'upgoodstest@gmail.com'
-EMAIL_HOST_PASSWORD = 'upgoodstest1234'
+EMAIL_HOST_PASSWORD = 'gwbglboljgephemw'
+DEFAULT_FROM_EMAIL = 'Upgoods <upgoods@gmail.com>'
+
+GRAPH_MODELS = {
+  'all_applications': True,
+  'group_models': True,
+}

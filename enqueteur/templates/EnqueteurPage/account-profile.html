@@ -6,14 +6,8 @@
 
     <head>
            <meta charset="utf-8" />
-		<title>Upgoods - Profile </title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="Upgoods trouver une mission" />
-        <meta name="keywords" content="upgoods, client-mystere, ams, smice, ams international" />
-        <meta name="author" content="MohammedAminezahhaoui" />
-        <meta name="email" content="zahhaoui@gmail.com" />
-        <meta name="website" content="http://www.up-goods.com" />
-        <meta name="Version" content="v1" />
+		<title>EtuPlan - Profile </title>
+
         <!-- favicon -->
         <link rel="shortcut icon" href=" {% static 'images/1    .ico' %} ">
         <!-- Bootstrap -->
@@ -56,22 +50,10 @@
                 <ul class="buy-button list-inline mb-0">
 
                 <div class="buy-button">
-                                                   {% url 'login' as login %}
+                                                   {% url 'logout' as login %}
 
                         <a href="{{login}}"  class="btn btn-primary">Se deconnecter</a>                </div><!--end login button-->
                 <!-- End Logo container-->
-                 <li class="list-inline-item mb-0">
-                        <div class="dropdown dropdown-primary">
-                            <button type="button" class="btn btn-icon btn-soft-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="uil uil-user align-middle icons"></i></button>
-                            <div class="dropdown-menu dd-menu dropdown-menu-right bg-white shadow rounded border-0 mt-3 py-3" style="width: 200px;">
-                                <a class="dropdown-item text-dark" href="{% url 'account_settings'  %}"><i class="uil uil-user align-middle mr-1"></i> Settings</a>
-                                <a class="dropdown-item text-dark" href=" {% url 'account_messages'  %}"><i class="uil uil-clipboard-notes align-middle mr-1"></i>  Mes messages</a>
-                                <a class="dropdown-item text-dark" href="#"><i class="uil uil-arrow-circle-down align-middle mr-1"></i> Guide</a>
-                                <div class="dropdown-divider my-3 border-top"></div>
-                                <a class="dropdown-item text-dark" href="{% url 'logout'  %}"><i class="uil uil-sign-out-alt align-middle mr-1"></i> Déconnexion</a>
-                            </div>
-                        </div>
-                    </li>
                 </ul><!--end login button-->
                     <div class="menu-extras">
                     <div class="menu-item">
@@ -86,30 +68,31 @@
                         <!-- End mobile menu toggle-->
                     </div>
                 </div>
-           <div id="navigation">
+            <div id="navigation">
                     <!-- Navigation Menu-->
                     <ul class="navigation-menu">
                         {% url 'indexEnqueteur' as index %}
 
-                        <li><a href=" {{index}} ">accueil</a></li>
+                        <li><a href=" {{index}} ">Accueil</a></li>
                         {% url 'trouvermission' as service %}
-                        <li><a href=" {{service}} ">Trouver une mission</a></li>
+                        <li><a href=" {{service}} ">Trouver une offre</a></li>
                         {% url 'mission' as guide %}
 
-                        <li><a href=" {{guide}} ">Mes missions</a></li>
+                        <li><a href=" {{guide}} ">Mes offres</a></li>
                         {% url 'account_profile' as actualite %}
 
-                        <li><a href=" {{actualite}} ">Mon profile</a></li>
+                        <li><a href=" {{actualite}} ">Mon profil</a></li>
+
 
                     </ul><!--end navigation menu-->
                     <div class="buy-menu-btn d-none">
-                                                                                {% url 'login' as login %}
+                                                                                {% url 'logout' as login %}
 
-                        <a href="{{login}}"  class="btn btn-primary">Se deconnecter</a>
+                        <a href="{{login}}" class="btn btn-primary">Se deconnecter</a>
                     </div><!--end login button-->
                 </div><!--end navigation-->
             </div><!--end container-->
-        </header><!--end header-->
+            </div> </header><!--end header-->
         <!-- Navbar End -->
         
         <!-- Hero Start -->
@@ -121,17 +104,44 @@
                             <div class="card-body">
                                 <div class="row align-items-center">
                                     <div class="col-lg-2 col-md-3 text-md-left text-center">
-                                        <img src=" {{enqueteur.profile_pic}}  " class="avatar avatar-large rounded-circle shadow d-block mx-auto" alt="">
+
+<img src=" {% static 'dist/img/AdminLTELogo.png'%}  " class="avatar avatar-large rounded-circle shadow d-block mx-auto" alt="">
                                     </div><!--end col-->
-    
+
                                     <div class="col-lg-10 col-md-9">
                                         <div class="row align-items-end">
                                             <div class="col-md-7 text-md-left text-center mt-4 mt-sm-0">
                                                 <h3 class="title mb-0">{{ enqueteur.nom }}</h3>
-                                                <small class="text-muted h6 mr-2">Compte vérifié : {{ enqueteur.status }}</small>
+                                                <small class="text-primary h6 mr-2">Status du compte :
+                                                 {% if enqueteur.verification == 0  %}
+                                                    <small class="text-muted h6 mr-2 ">
+                                                        En attente de confirmation <i class="mdi mdi-account-clock"></i>
+                                                    </small >
+                                                    {% endif %}
+                                                    {% if enqueteur.verification == 1  %}
+                                                    <small class="text-muted h6 mr-2">
+                                                        Votre profil est verifié
+                                                        <i data-feather="check-circle" class="fea icon-sm icons"></i>
+
+                                                    </small>
+                                                    {% else %}
+                                                    <small class="text-muted h6 mr-2">
+
+                                                    </small>
+                                                    {% endif%}
+
+                                                </small>
 
                                             </div><!--end col-->
-
+                                            <div class="col-md-5 text-md-right text-center">
+                                                <ul class="list-unstyled social-icon social mb-0 mt-4">
+                                                    <li class="list-inline-item"><a href="{% url 'account_profile' %}" class=" rounded" data-toggle="tooltip" data-placement="bottom" title="Mon profil"><i data-feather="user" class="fea icon-sm fea-social"></i></a></li>
+                                                    <li class="list-inline-item"><a href="{% url 'account_works'  %}" class="rounded" data-toggle="tooltip" data-placement="bottom" title="Mes missions"><i data-feather="compass" class="fea icon-sm fea-social"></i></a></li>
+                                                    <li class="list-inline-item"><a href="{% url 'account_messages'  %}" class="rounded" data-toggle="tooltip" data-placement="bottom" title="Messages"><i data-feather="message-circle" class="fea icon-sm fea-social"></i></a></li>
+                                                    <li class="list-inline-item"><a href="{% url 'account_payments'  %}" class="rounded" data-toggle="tooltip" data-placement="bottom" title="Rémunération "><i data-feather="gift" class="fea icon-sm fea-social"></i></a></li>
+                                                    <li class="list-inline-item"><a href="{% url 'account_settings'  %}" class="rounded" data-toggle="tooltip" data-placement="bottom" title="Paramètres"><i data-feather="tool" class="fea icon-sm fea-social"></i></a></li>
+                                                </ul><!--end icon-->
+                                            </div><!--end col-->
                                         </div><!--end row-->
                                     </div><!--end col-->
                                 </div><!--end row-->
@@ -153,14 +163,7 @@
 
                             <div class="widget mt-4 pt-2">
                                 <h5 class="widget-title">Espace profil :</h5>
-                                <div class="progress-box mt-4">
-                                    <h6 class="title text-muted">Score</h6>
-                                    <div class="progress">
-                                        <div class="progress-bar position-relative bg-primary" style="width:50%;">
-                                            <div class="progress-value d-block text-muted h6">5 / 100</div>
-                                        </div>
-                                    </div>
-                                </div><!--end process box-->
+
                             </div>
                             
                             <div class="widget">
@@ -170,7 +173,7 @@
 
                                         <a href=" {{contact}} " class="accounts active rounded d-block shadow text-center py-3">
                                             <span class="pro-icons h3 text-muted"><i class="uil uil-dashboard"></i></span>
-                                            <h6 class="title text-dark h6 my-0">Profile</h6>
+                                            <h6 class="title text-dark h6 my-0">Profil</h6>
                                         </a>
                                     </div><!--end col-->
 
@@ -180,7 +183,7 @@
                                     <div class="col-6 mt-4 pt-2">
                                         <a href=" {{contact}} " class="accounts rounded d-block shadow text-center py-3">
                                             <span class="pro-icons h3 text-muted"><i class="uil uil-file"></i></span>
-                                            <h6 class="title text-dark h6 my-0">Missions</h6>
+                                            <h6 class="title text-dark h6 my-0">Offres</h6>
                                         </a>
                                     </div><!--end col-->
                                                                 {% url 'account_messages' as contact %}
@@ -196,7 +199,7 @@
                                         {% url 'account_payments' as contact %}
                                         <a href=" {{contact}} " class="accounts rounded d-block shadow text-center py-3">
                                             <span class="pro-icons h3 text-muted"><i class="uil uil-transaction"></i></span>
-                                            <h6 class="title text-dark h6 my-0">rémunération</h6>
+                                            <h6 class="title text-dark h6 my-0">Dédommagement</h6>
                                         </a>
                                     </div><!--end col-->
 
@@ -240,7 +243,7 @@
                         <div class="border-bottom pb-4">
                             <div class="row">
                                 <div class="col-md-6 mt-4">
-                                    <h5>Personal Details :</h5>
+                                    <h5>Détails personnels :</h5>
                                     <div class="mt-4">
                                         <div class="media align-items-center">
                                             <i data-feather="mail" class="fea icon-ex-md text-muted mr-3"></i>
@@ -276,20 +279,20 @@
                                             <i data-feather="phone" class="fea icon-ex-md text-muted mr-3"></i>
                                             <div class="media-body">
                                                 <h6 class="text-primary mb-0">Numéro de télephone :</h6>
-                                                <a class="text-muted">{{enqueteur.telephone}}</a>
+                                                <a class="text-muted">+{{enqueteur.telephone}}</a>
                                             </div>
                                         </div>
                                     </div>
                                 </div><!--end col-->
 
                                 <div class="col-md-6 mt-4 pt-2 pt-sm-0">
-                                    <h5>Missions effectuées :</h5>
+                                    <h5>Offres :</h5>
 
                                     <div class="media key-feature align-items-center p-3 rounded shadow mt-4">
-                                        <img src=" {% static 'images/job/xxxxxxxxxxxxxxxxx.svg' %} " class="avatar avatar-ex-sm" alt="">
+                                        <img src="  " class="avatar avatar-ex-sm" alt="">
                                         <div class="media-body content ml-3">
-                                            <h4 class="title mb-0">Aucune mission n'est effectuée</h4>
-                                            <p class="text-muted mb-0">Visiter l'espace des missions</p>
+                                            <h4 class="title mb-0">Aucun offre n'est disponible</h4>
+                                            <p class="text-muted mb-0">Visiter l'espace des offres</p>
                                             <p class="text-muted mb-0"><a href=" {% url 'trouvermission' %} " class="text-primary">Cliquez ici</a> </p>
                                         </div>
                                     </div>
@@ -319,7 +322,7 @@
                                         </div>
                                     </div>
                                     <div class="author">
-                                        <small class="text-light user d-block"><i class="mdi mdi-account"></i> Upgoods Support</small>
+                                        <small class="text-light user d-block">Upgoods Support</small>
                                         <small class="text-light date"><i class="mdi mdi-calendar-check"></i> {{ post.created_at }}</small>
                                     </div>
                                 </div>
@@ -349,7 +352,6 @@
         <!-- Profile End -->
 
         <!-- Footer Start -->
-                 {% include 'footer.html' %}
 
 
         <!-- Back to top -->
@@ -362,8 +364,8 @@
         <script src=" {% static 'js/jquery.easing.min.js' %} "></script>
         <script src=" {% static 'js/scrollspy.min.js' %} "></script>
         <!-- SLIDER -->
-        <script src=" {% static 'js/owl.carousel.min.js ' %} "></script>
-        <script src=" {% static 'js/owl.init.js ' %} "></script>
+        <script src=" {% static 'js/owl.carousel.min.js' %} "></script>
+        <script src=" {% static 'js/owl.init.js' %} "></script>
         <!-- Icons -->
         <script src=" {% static 'js/feather.min.js' %} "></script>
         <script src="https://unicons.iconscout.com/release/v3.0.3/script/monochrome/bundle.js"></script>

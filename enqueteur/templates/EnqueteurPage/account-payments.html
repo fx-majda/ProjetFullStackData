@@ -8,14 +8,8 @@
         <meta charset="utf-8" />
        <head>
         <meta charset="utf-8" />
-		<title>Upgoods - Rémunération </title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="Upgoods trouver une mission" />
-        <meta name="keywords" content="upgoods, client-mystere, ams, smice, ams international" />
-        <meta name="author" content="MohammedAminezahhaoui" />
-        <meta name="email" content="zahhaoui@gmail.com" />
-        <meta name="website" content="http://www.up-goods.com" />
-        <meta name="Version" content="v1" />
+		<title>EtuPlan - Dédommagement </title>
+
         <link rel="shortcut icon" href=" {% static 'images/1.ico' %} ">
         <!-- Bootstrap -->
         <link href=" {% static 'css/bootstrap.min.css' %} " rel="stylesheet" type="text/css" />
@@ -44,7 +38,7 @@
         <!-- Loader -->
         
         <!-- Navbar STart -->
-                 <header id="topnav" class="defaultscroll sticky">
+              <header id="topnav" class="defaultscroll sticky">
             <div class="container">
                 <!-- Logo container-->
                 <div>
@@ -57,22 +51,10 @@
                 <ul class="buy-button list-inline mb-0">
 
                 <div class="buy-button">
-                                                   {% url 'login' as login %}
+                                                   {% url 'logout' as login %}
 
                         <a href="{{login}}" class="btn btn-primary">Se deconnecter</a>                </div><!--end login button-->
                 <!-- End Logo container-->
-                    <li class="list-inline-item mb-0">
-                        <div class="dropdown dropdown-primary">
-                            <button type="button" class="btn btn-icon btn-soft-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="uil uil-user align-middle icons"></i></button>
-                            <div class="dropdown-menu dd-menu dropdown-menu-right bg-white shadow rounded border-0 mt-3 py-3" style="width: 200px;">
-                                <a class="dropdown-item text-dark" href="{% url 'account_settings'  %}"><i class="uil uil-user align-middle mr-1"></i> Settings</a>
-                                <a class="dropdown-item text-dark" href=" {% url 'account_messages'  %}"><i class="uil uil-clipboard-notes align-middle mr-1"></i>  Mes messages</a>
-                                <a class="dropdown-item text-dark" href="#"><i class="uil uil-arrow-circle-down align-middle mr-1"></i> Guide</a>
-                                <div class="dropdown-divider my-3 border-top"></div>
-                                <a class="dropdown-item text-dark" href="{% url 'logout'  %}"><i class="uil uil-sign-out-alt align-middle mr-1"></i> Déconnexion</a>
-                            </div>
-                        </div>
-                    </li>
                 </ul><!--end login button-->
                     <div class="menu-extras">
                     <div class="menu-item">
@@ -92,27 +74,26 @@
                     <ul class="navigation-menu">
                         {% url 'indexEnqueteur' as index %}
 
-                        <li><a href=" {{index}} ">accueil</a></li>
+                        <li><a href=" {{index}} ">Accueil</a></li>
                         {% url 'trouvermission' as service %}
-                        <li><a href=" {{service}} ">Trouver une mission</a></li>
+                        <li><a href=" {{service}} ">Trouver une offre</a></li>
                         {% url 'mission' as guide %}
 
-                        <li><a href=" {{guide}} ">Mes missions</a></li>
+                        <li><a href=" {{guide}} ">Mes offres</a></li>
                         {% url 'account_profile' as actualite %}
 
-                        <li><a href=" {{actualite}} ">Mon profile</a></li>
+                        <li><a href=" {{actualite}} ">Mon profil</a></li>
 
 
                     </ul><!--end navigation menu-->
                     <div class="buy-menu-btn d-none">
-                                                                                {% url 'login' as login %}
+                                                                                {% url 'logout' as login %}
 
-                        <a href="{{login}}"  class="btn btn-primary">Se deconnecter</a>
+                        <a href="{{login}}" class="btn btn-primary">Se deconnecter</a>
                     </div><!--end login button-->
                 </div><!--end navigation-->
             </div><!--end container-->
         </header><!--end header-->
-        <!-- Navbar End -->
 
         <!-- Navbar End -->
         
@@ -124,19 +105,47 @@
                         <div class="card public-profile border-0 rounded shadow" style="z-index: 1;">
                             <div class="card-body">
                                 <div class="row align-items-center">
-                                    <div class="col-lg-2 col-md-3 text-md-left text-center">
-                                        <img src=" {{enqueteur.profile_pic}}  " class="avatar avatar-large rounded-circle shadow d-block mx-auto" alt="">
+                                  <div class="col-lg-2 col-md-3 text-md-left text-center">
+
+<img src=" {% static 'dist/img/AdminLTELogo.png'%}  " class="avatar avatar-large rounded-circle shadow d-block mx-auto" alt="">
                                     </div><!--end col-->
-    
+
+
                                     <div class="col-lg-10 col-md-9">
                                         <div class="row align-items-end">
                                             <div class="col-md-7 text-md-left text-center mt-4 mt-sm-0">
-                                                <h3 class="title mb-0">{{enqueteur.nom}}</h3>
-                                                <small class="text-muted h6 mr-2">Compte vérifié : {{enqueteur.status}} </small>
+                                                <h3 class="title mb-0">{{ enqueteur.nom }}</h3>
+                                                <small class="text-primary h6 mr-2">Status du compte :
+                                                 {% if enqueteur.verification == 0  %}
+                                                    <small class="text-muted h6 mr-2 ">
+                                                        En attente de confirmation <i class="mdi mdi-account-clock"></i>
+                                                    </small >
+                                                    {% endif %}
 
+                                                    {% if enqueteur.verification == 1  %}
+                                                    <small class="text-muted h6 mr-2">
+                                                        Votre profil est verifié
+                                                        <i data-feather="check-circle" class="fea icon-sm icons"></i>
+
+                                                    </small>
+                                                    {% else %}
+                                                    <small class="text-muted h6 mr-2">
+
+                                                    </small>
+                                                    {% endif%}
+
+                                                </small>
 
                                             </div><!--end col-->
-
+                                             <div class="col-md-5 text-md-right text-center">
+                                                 <ul class="list-unstyled social-icon social mb-0 mt-4">
+                                                    <li class="list-inline-item"><a href="{% url 'account_profile'  %}" class="rounded" data-toggle="tooltip" data-placement="bottom" title="Mon profil"><i data-feather="user" class="fea icon-sm fea-social"></i></a></li>
+                                                    <li class="list-inline-item"><a href="{% url 'account_works'  %}" class="rounded" data-toggle="tooltip" data-placement="bottom" title="Mes missions"><i data-feather="compass" class="fea icon-sm fea-social"></i></a></li>
+                                                    <li class="list-inline-item"><a href="{% url 'account_messages'  %}" class="rounded" data-toggle="tooltip" data-placement="bottom" title="Messages"><i data-feather="message-circle" class="fea icon-sm fea-social"></i></a></li>
+                                                    <li class="list-inline-item"><a href="{% url 'account_payments'  %}" class="rounded" data-toggle="tooltip" data-placement="bottom" title="Rémunération "><i data-feather="gift" class="fea icon-sm fea-social"></i></a></li>
+                                                    <li class="list-inline-item"><a href="{% url 'account_settings'  %}" class="rounded" data-toggle="tooltip" data-placement="bottom" title="Paramètres"><i data-feather="tool" class="fea icon-sm fea-social"></i></a></li>
+                                                </ul><!--end icon-->
+                                            </div><!--end col-->
                                         </div><!--end row-->
                                     </div><!--end col-->
                                 </div><!--end row-->
@@ -158,14 +167,7 @@
 
                             <div class="widget mt-4 pt-2">
                                 <h5 class="widget-title">Espace profil :</h5>
-                                <div class="progress-box mt-4">
-                                    <h6 class="title text-muted">Score</h6>
-                                    <div class="progress">
-                                        <div class="progress-bar position-relative bg-primary" style="width:50%;">
-                                            <div class="progress-value d-block text-muted h6">5 / 100</div>
-                                        </div>
-                                    </div>
-                                </div><!--end process box-->
+
                             </div>
                             
                              <div class="widget">
@@ -185,7 +187,7 @@
                                     <div class="col-6 mt-4 pt-2">
                                         <a href=" {{contact}} " class="accounts rounded d-block shadow text-center py-3">
                                             <span class="pro-icons h3 text-muted"><i class="uil uil-file"></i></span>
-                                            <h6 class="title text-dark h6 my-0">Missions</h6>
+                                            <h6 class="title text-dark h6 my-0">offres</h6>
                                         </a>
                                     </div><!--end col-->
                                                                 {% url 'account_messages' as contact %}
@@ -201,7 +203,7 @@
                                         {% url 'account_payments' as contact %}
                                         <a href=" {{contact}} " class="accounts active rounded d-block shadow text-center py-3">
                                             <span class="pro-icons h3 text-muted"><i class="uil uil-transaction"></i></span>
-                                            <h6 class="title text-dark h6 my-0">rémunération</h6>
+                                            <h6 class="title text-dark h6 my-0">Dédommagement</h6>
                                         </a>
                                     </div><!--end col-->
 
@@ -240,7 +242,7 @@
                     <div class="col-lg-8 col-12">
                         <div class="rounded shadow p-4">
                             <div class="d-flex align-items-center justify-content-between">
-                                <h5 class="mb-0">Balance de rémunération :</h5>
+                                <h5 class="mb-0">Mes offres :</h5>
                                 </div>
 
                             <div class="row">
@@ -251,19 +253,31 @@
                                     <table class="table mb-0 table-center table-nowrap">
                                         <thead>
                                             <tr>
-                                                <th scope="col">Mission no.</th>
+                                                <th scope="col">Offre no.</th>
                                                 <th scope="col">Date</th>
                                                 <th scope="col">Status</th>
-                                                <th scope="col">Remuneration</th>
+                                                <th scope="col">code promo</th>
                                             </tr>
                                         </thead>
+
                                         <tbody>
+                                         <tr>
+                                                <th>{{i.id_survey}}</th>
+                                                <th scope="row">{{i.mission_id.}}</th>
+                                                <td>{{i.date_envoie}}</td>
+                                                <td class="text-success">{{i.status}}</td>
+                                                <td>$ {{i.remuneration}} </td>
+                                            </tr>
                                             <tr>
-                                                <th scope="row">test</th>
-                                                <td></td>
-                                                <td class="text-success">Aucune mission effectuées</td>
-                                                <td>$ 0 </td>
-                                            </tr> </table>
+                                                {% for i in remu_enqueteur%}
+                                                <th>{{i.id_survey}}</th>
+                                                <th scope="row">{{i.mission_id.}}</th>
+                                                <td>{{i.date_envoie}}</td>
+                                                <td class="text-success">{{i.status}}</td>
+                                                <td>$ {{i.remuneration}} </td>
+                                                {% endfor %}
+                                            </tr>
+                                    </table>
                                 </div>
                             </div>
 <!--
@@ -316,7 +330,6 @@
         <!-- Profile End -->
 
         <!-- Footer Start -->
-            {% include 'footer.html' %}
 
         <!-- Footer End -->
 
@@ -330,8 +343,8 @@
         <script src=" {% static 'js/jquery.easing.min.js' %} "></script>
         <script src=" {% static 'js/scrollspy.min.js' %} "></script>
         <!-- SLIDER -->
-        <script src=" {% static 'js/owl.carousel.min.js ' %} "></script>
-        <script src=" {% static 'js/owl.init.js ' %} "></script>
+        <script src=" {% static 'js/owl.carousel.min.js' %} "></script>
+        <script src=" {% static 'js/owl.init.js' %} "></script>
         <!-- Icons -->
         <script src=" {% static 'js/feather.min.js' %} "></script>
         <script src="https://unicons.iconscout.com/release/v3.0.3/script/monochrome/bundle.js"></script>

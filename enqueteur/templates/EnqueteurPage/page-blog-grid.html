@@ -5,14 +5,8 @@
 
     <head>
         <meta charset="utf-8" />
-		<title>Upgoods - Mission </title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="Upgoods mission" />
-        <meta name="keywords" content="upgoods, client-mystere, ams, smice, ams international" />
-        <meta name="author" content="MohammedAminezahhaoui" />
-        <meta name="email" content="zahhaoui@gmail.com" />
-        <meta name="website" content="http://www.up-goods.com" />
-        <meta name="Version" content="v1" />
+		<title>EtuPlan - Offre </title>
+
         <!-- favicon -->
         <link rel="shortcut icon" href=" {% static 'images/1.ico' %} ">
         <!-- Bootstrap -->
@@ -56,22 +50,10 @@
                 <ul class="buy-button list-inline mb-0">
 
                 <div class="buy-button">
-                                                   {% url 'login' as login %}
+                                                   {% url 'logout' as login %}
 
                         <a href="{{login}}" class="btn btn-primary">Se deconnecter</a>                </div><!--end login button-->
                 <!-- End Logo container-->
-                   <li class="list-inline-item mb-0">
-                        <div class="dropdown dropdown-primary">
-                            <button type="button" class="btn btn-icon btn-soft-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="uil uil-user align-middle icons"></i></button>
-                            <div class="dropdown-menu dd-menu dropdown-menu-right bg-white shadow rounded border-0 mt-3 py-3" style="width: 200px;">
-                                <a class="dropdown-item text-dark" href="{% url 'account_settings'  %}"><i class="uil uil-user align-middle mr-1"></i> Settings</a>
-                                <a class="dropdown-item text-dark" href=" {% url 'account_messages'  %}"><i class="uil uil-clipboard-notes align-middle mr-1"></i>  Mes messages</a>
-                                <a class="dropdown-item text-dark" href="#"><i class="uil uil-arrow-circle-down align-middle mr-1"></i> Guide</a>
-                                <div class="dropdown-divider my-3 border-top"></div>
-                                <a class="dropdown-item text-dark" href="{% url 'logout'  %}"><i class="uil uil-sign-out-alt align-middle mr-1"></i> Déconnexion</a>
-                            </div>
-                        </div>
-                    </li>
                 </ul><!--end login button-->
                     <div class="menu-extras">
                     <div class="menu-item">
@@ -92,21 +74,22 @@
                     <ul class="navigation-menu">
                         {% url 'indexEnqueteur' as index %}
 
-                        <li><a href=" {{index}} ">accueil</a></li>
+                        <li><a href=" {{index}} ">Accueil</a></li>
                         {% url 'trouvermission' as service %}
-                        <li><a href=" {{service}} ">Trouver une mission</a></li>
+                        <li><a href=" {{service}} ">Trouver une offre</a></li>
                         {% url 'mission' as guide %}
 
-                        <li><a href=" {{guide}} ">Mes missions</a></li>
+                        <li><a href=" {{guide}} ">Mes offres</a></li>
                         {% url 'account_profile' as actualite %}
 
-                        <li><a href=" {{actualite}} ">Mon profile</a></li>
+                        <li><a href=" {{actualite}} ">Mon profil</a></li>
+
 
                     </ul><!--end navigation menu-->
                     <div class="buy-menu-btn d-none">
-                                                                                {% url 'login' as login %}
+                                                                                {% url 'logout' as login %}
 
-                        <a href="{{login}}"  class="btn btn-primary">Se deconnecter</a>
+                        <a href="{{login}}" class="btn btn-primary">Se deconnecter</a>
                     </div><!--end login button-->
                 </div><!--end navigation-->
             </div><!--end container-->
@@ -115,18 +98,16 @@
 
         
         <!-- Hero Start -->
-        <section class="bg-half bg-light d-table w-100">
+        <section class="bg-half bg-light d-table w-100"  style="background:  url('/static/images/task/task.svg') center center; background-repeat: no-repeat; margin-top:66px">
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-lg-12 text-center">
                         <div class="page-next-level">
-                            <h4 class="title"> Suivi de vos candidatures et missions </h4>
-                            <p class="mt-3">Vous retrouverez ici toutes les candidatures que vous avez posées, ainsi que vos missions.</p>
                             <div class="page-next">
                                 <nav aria-label="breadcrumb" class="d-inline-block">
                                     <ul class="breadcrumb bg-white rounded shadow mb-0">
                                         <li class="breadcrumb-item"><a href=" {% static 'index.html' %} ">Accueil</a></li>
-                                        <li class="breadcrumb-item active" aria-current="page">Mes missions</li>
+                                        <li class="breadcrumb-item active" aria-current="page">Mes offres</li>
                                     </ul>
                                 </nav>
                             </div>
@@ -151,60 +132,75 @@
 
         <section class="section">
             <div class="container">
+  <h4 class="title" style=" text-align: center;"> Suivi de vos candidatures et offres </h4>
+                    <p class="text-muted font-italic p-3  rounded" style="  text-align: center;">Vous retrouverez ici toutes les candidatures que vous avez posées, ainsi que vos offres.</p>
 
                 <div class="row">
-
                      <ul class="col container-filter list-unstyled categories-filter text-center mb-0" id="filter">
-                         <li class="list-inline-item" id="i-have-a-tool2tippp" data-toggle="tooltip" data-placement="top" title="Vous retrouverez ici toutes les candidatures que vous avez posées" ><a class="categories-name border d-block text-dark rounded active" title="tooltip goes here" data-filter=".pending">Candidatures en cours</a></li>
-                        <li class="list-inline-item" id="i-have-a-tooltippp" data-toggle="tooltip" data-placement="top" title="Vous retrouverez ici vos missions en cours"><a class="categories-name border d-block text-dark rounded" data-filter=".accepter">Missions en cours</a></li>
-                        <li class="list-inline-item"id="i-have-a-tooltipp" data-toggle="tooltip" data-placement="top" title="Les missions en cours  sont classées dans les missions réalisées dès la finalisation de la saisie de votre questionnaire."><a class="categories-name border d-block text-dark rounded " data-filter=".EE">Missions réalisées</a></li>
+                         <li class="list-inline-item" id="i-have-a-tool2tippp" data-toggle="tooltip" data-placement="top" title="Vous retrouverez ici toutes les candidatures que vous avez posées" ><a class="categories-name border d-block text-dark rounded active" title="tooltip goes here" data-filter=".0">Offres en cours</a></li>
                     </ul>
-
-
                 </div><!--end row-->
                 <div class="row projects-wrapper">
-                                                                          {% for candidature in candidature %}
-                    <div class="col-lg-4 col-md-6 col-12 mt-4 pt-2 Pending">
+                       {% for candidature in candidature %}
+                    <div class="col-lg-4 col-md-6 col-12 mt-4 pt-2 {{candidature.candidature_status}}">
                         <div class="card blog border-0 work-container work-classic shadow rounded-md overflow-hidden">
                             <img src="{% static 'images/work/2.png' " class="img-fluid work-image" alt="">
                             <div class="card-body">
                                 <div class="content">
-                                    <a  class="badge badge-success">Pending</a>
-                                    <h5 class="mt-3"><a href="" class="text-dark title">Candidature pour la mission: {{candidature.mission_id.nom}}</a></h5>
-                                    <p class="text-muted"></p>
-                                    <a href=" " class="text-primary h6">Date de candidature: {{ candidature.created_at }} </a>
+                                    {% if candidature.candidature_status == 1%}
+                                    <a  class="badge badge-success">En cours</a>
+                                    {% elif candidature.candidature_status == 0%}
+                                    <a  class="badge badge-warning">Votre code promo est pret </a>
+                                    {%endif%}
+                                    <h5 class="mt-3"><a class="text-dark title"> {{candidature.mission_id.nom}}</a></h5>
+                                                                        <h5 class="mt-3"><a class="text-dark title">Votre code promo : X086737QTRYGAHA</a></h5>
+
+                                    <p class="text-muted">Date de candidature: {{ candidature.created_at }} </p>
+                                    <a  href="{% url 'delete_candidature' candidature.id %}" class=" h6" style="  color: #B22222;"> ⚠️<br>Retirer  </a>
                                 </div>
                             </div>
                         </div>
                     </div><!--end col-->
-                                                                                                      {% endfor %}
+                    {% endfor %}
 
 
-
+</div>
 
                 </div><!--end row-->
             </div><!--end container-->
         </section><!--end section-->
 
+
+<!--
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Message de confirmation</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+        <form method="post" action="/delete_candidature/{{candidature.id}}">
+ {% csrf_token %}
+            <div class="modal-body">
+
+êtes-vous sûr de vouloir supprimer la candidature      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Non</button>
+
+        <button type="submit"  class="btn btn-primary"  >Oui</button>
+      </div>
+        </form> </div>
+  </div>
+</div>-->
         <!--Blog Lists Start-->
         <section class="section">
             <div class="container">
                 <div class="row">
 
                     <!-- PAGINATION START -->
-                    <div class="col-12">
-                        <ul class="pagination justify-content-center mb-0">
-                                                    {% if page.has_previous %}
 
-                            <li class="page-item"><a class="page-link" href="{% url 'actualite' %}?page={{ page.previous_page_number }}  " aria-label="Previous">Page précédente</a></li>
-                                                 {% endif %}
-                                                    {% if page.has_next %}
-
-                            <li class="page-item"><a class="page-link" href=" {% url 'actualite' %}?page={{ page.next_page_number }} " aria-label="Next">Page suivante</a></li>
-                                                    {% endif %}
-
-                        </ul>
-                    </div><!--end col-->
                     <!-- PAGINATION END -->
                 </div><!--end row-->
             </div><!--end container-->
@@ -217,26 +213,13 @@
                 <div class="row">
 
                     <!-- PAGINATION START -->
-                    <div class="col-12">
-                        <ul class="pagination justify-content-center mb-0">
-                                                    {% if page.has_previous %}
 
-                            <li class="page-item"><a class="page-link" href="{% url 'actualite' %}?page={{ page.previous_page_number }}  " aria-label="Previous">Page précédente</a></li>
-                                                 {% endif %}
-                                                    {% if page.has_next %}
-
-                            <li class="page-item"><a class="page-link" href=" {% url 'actualite' %}?page={{ page.next_page_number }} " aria-label="Next">Page suivante</a></li>
-                                                    {% endif %}
-
-                        </ul>
-                    </div><!--end col-->
                     <!-- PAGINATION END -->
                 </div><!--end row-->
             </div><!--end container-->
         </section><!--end section -->
         <!--Blog Lists End-->
 
-            {% include 'footer.html' %}
 
 
         <!-- Back to top -->
@@ -265,12 +248,13 @@
         <script src=" {% static 'js/isotope.pkgd.min.js' %} "></script>
         <script src=" {% static 'js/portfolio.init.js' %} "></script>
 
-        <script src=" {% static 'js/owl.carousel.min.js ' %} "></script>
-        <script src=" {% static 'js/owl.init.js ' %} "></script>
+        <script src=" {% static 'js/owl.carousel.min.js' %} "></script>
+        <script src=" {% static 'js/owl.init.js' %} "></script>
 
         <script src=" {% static 'js/feather.min.js' %} "></script>
         <script src="https://unicons.iconscout.com/release/v3.0.3/script/monochrome/bundle.js"></script>
         <!-- Main Js -->
         <script src=" {% static 'js/app.js' %} "></script>
+
     </body>
 </html>

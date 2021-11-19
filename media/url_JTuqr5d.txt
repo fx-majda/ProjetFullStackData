@@ -1,0 +1,3 @@
+path('data_each_mission', views.data_each_mission, name='data_each_mission'),
+path('approuve_survey/<str:id>', views.approuve_survey, name='approuve_survey'),
+path('refuse_survey/<str:id>', views.refuse_survey, name='refuse_survey')

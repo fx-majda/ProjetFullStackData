@@ -4,14 +4,8 @@
 
    <head>
         <meta charset="utf-8" />
-		<title>Upgoods - Trouver une mission </title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="Upgoods trouver une mission" />
-        <meta name="keywords" content="upgoods, client-mystere, ams, smice, ams international" />
-        <meta name="author" content="MohammedAminezahhaoui" />
-        <meta name="email" content="zahhaoui@gmail.com" />
-        <meta name="website" content="http://www.up-goods.com" />
-        <meta name="Version" content="v1" />
+		<title>EtuPlan - Trouver une offre </title>
+
         <!-- favicon -->
         <link rel="shortcut icon" href=" {% static 'images/1.ico' %} ">
         <!-- Bootstrap -->
@@ -43,7 +37,7 @@
         <!-- Loader -->
 
         <!-- Navbar STart -->
-         <header id="topnav" class="defaultscroll sticky">
+              <header id="topnav" class="defaultscroll sticky">
             <div class="container">
                 <!-- Logo container-->
                 <div>
@@ -56,22 +50,10 @@
                 <ul class="buy-button list-inline mb-0">
 
                 <div class="buy-button">
-                                                   {% url 'login' as login %}
+                                                   {% url 'logout' as login %}
 
                         <a href="{{login}}" class="btn btn-primary">Se deconnecter</a>                </div><!--end login button-->
                 <!-- End Logo container-->
-          <li class="list-inline-item mb-0">
-                        <div class="dropdown dropdown-primary">
-                            <button type="button" class="btn btn-icon btn-soft-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="uil uil-user align-middle icons"></i></button>
-                            <div class="dropdown-menu dd-menu dropdown-menu-right bg-white shadow rounded border-0 mt-3 py-3" style="width: 200px;">
-                                <a class="dropdown-item text-dark" href="{% url 'account_settings'  %}"><i class="uil uil-user align-middle mr-1"></i> Settings</a>
-                                <a class="dropdown-item text-dark" href=" {% url 'account_messages'  %}"><i class="uil uil-clipboard-notes align-middle mr-1"></i>  Mes messages</a>
-                                <a class="dropdown-item text-dark" href="#"><i class="uil uil-arrow-circle-down align-middle mr-1"></i> Guide</a>
-                                <div class="dropdown-divider my-3 border-top"></div>
-                                <a class="dropdown-item text-dark" href="{% url 'logout'  %}"><i class="uil uil-sign-out-alt align-middle mr-1"></i> Déconnexion</a>
-                            </div>
-                        </div>
-                    </li>
                 </ul><!--end login button-->
                     <div class="menu-extras">
                     <div class="menu-item">
@@ -86,45 +68,43 @@
                         <!-- End mobile menu toggle-->
                     </div>
                 </div>
-
-            <div id="navigation">
+                <div id="navigation">
                     <!-- Navigation Menu-->
                     <ul class="navigation-menu">
                         {% url 'indexEnqueteur' as index %}
 
-                        <li><a href=" {{index}} ">accueil</a></li>
+                        <li><a href=" {{index}} ">Accueil</a></li>
                         {% url 'trouvermission' as service %}
-                        <li><a href=" {{service}} ">Trouver une mission</a></li>
+                        <li><a href=" {{service}} ">Trouver une offre</a></li>
                         {% url 'mission' as guide %}
 
-                        <li><a href=" {{guide}} ">Mes missions</a></li>
+                        <li><a href=" {{guide}} ">Mes offres</a></li>
                         {% url 'account_profile' as actualite %}
 
-                        <li><a href=" {{actualite}} ">Mon profile</a></li>
+                        <li><a href=" {{actualite}} ">Mon profil</a></li>
 
 
                     </ul><!--end navigation menu-->
                     <div class="buy-menu-btn d-none">
-                                                                                {% url 'login' as login %}
+                                                                                {% url 'logout' as login %}
 
-                        <a href="{{login}}"  class="btn btn-primary">Se deconnecter</a>
+                        <a href="{{login}}" class="btn btn-primary">Se deconnecter</a>
                     </div><!--end login button-->
                 </div><!--end navigation-->
             </div><!--end container-->
         </header><!--end header-->
         <!-- Navbar End -->
         <!-- Hero Start -->
-        <section class="bg-half bg-light d-table w-100">
+        <section class="bg-half bg-light d-table w-100" style="background:  url('/static/images/account/bg.png') center center;background-repeat: no-repeat; ">
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-lg-12 text-center">
                         <div class="page-next-level">
-                            <h4 class="title"> Trouver une mission</h4>
                             <div class="page-next">
                                 <nav aria-label="breadcrumb" class="d-inline-block">
                                     <ul class="breadcrumb bg-white rounded shadow mb-0">
                                         <li class="breadcrumb-item"><a href=" {{index}} ">Accueil</a></li>
-                                        <li class="breadcrumb-item active" aria-current="page">Trouver une mission</li>
+                                        <li class="breadcrumb-item active" aria-current="page">Trouver une offre</li>
                                     </ul>
                                 </nav>
                             </div>
@@ -144,12 +124,14 @@
             </div>
         </div>
         <!--Shape End-->
-        
+
         <!-- Job List Start -->
-        <section class="section">
+        <section class="section" >
             <div class="container">
                 <div class="row">
+
                     <div class="col-lg-4 col-md-6 col-12">
+
                         <div class="sidebar sticky-bar p-4 rounded shadow">
                             <!-- SEARCH -->
 
@@ -172,12 +154,7 @@
                                 <div class="form-group mt-4 mb-0">
                                     <select class="form-control custom-select" id="job-categories">
                                         <option>Tous les thématiques</option>
-                                        <option>Digital & Creative</option>
-                                        <option>Accountancy</option>
-                                        <option>Banking</option>
-                                        <option>IT Contractor</option>
-                                        <option>Graduate</option>
-                                        <option>Estate Agency</option>
+
                                     </select>
                                 </div>
                             </div>
@@ -194,21 +171,21 @@
                                         </div>
                                     </div>
 
-    
+
                                     <div class="custom-control custom-radio">
                                         <div class="form-group mb-2">
                                             <input type="radio" id="sevenday" name="customRadio" class="custom-control-input">
                                             <label class="custom-control-label" for="sevenday">Les 7 derniers jours</label>
                                         </div>
                                     </div>
-    
+
                                     <div class="custom-control custom-radio">
                                         <div class="form-group mb-2">
                                             <input type="radio" id="fourteenday" name="customRadio" class="custom-control-input">
                                             <label class="custom-control-label" for="fourteenday">Les 14 derniers jours</label>
                                         </div>
                                     </div>
-    
+
                                     <div class="custom-control custom-radio">
                                         <div class="form-group mb-0">
                                             <input type="radio" id="onemonth" name="customRadio" class="custom-control-input">
@@ -230,81 +207,93 @@
                     </div><!--end col-->
 
                     <div class="col-lg-8 col-md-6 col-12 mt-4 mt-sm-0 pt-2 pt-sm-0">
+                        <div class="row ">
+                    <div class="col-lg-8 col-md-12 text-center ">
+                        <ul class="nav nav-pills rounded nav-justified flex-column flex-sm-row" id="pills-tab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link rounded active" id="pills-dayone-tab" data-toggle="pill" href="#pills-dayone" role="tab" aria-controls="pills-dayone" aria-selected="false">
+                                    <div class="text-center py-2">
+                                        <h6 class="mb-0">Vue Liste</h6>
+                                    </div>
+                                </a><!--end nav link-->
+                            </li><!--end nav item-->
+
+                            <li class="nav-item">
+                                <a class="nav-link rounded" id="pills-daytwo-tab" data-toggle="pill" href="#pills-daytwo" role="tab" aria-controls="pills-daytwo" aria-selected="false">
+                                    <div class="text-center py-2">
+                                        <h6 class="mb-0">Vue Map</h6>
+                                    </div>
+                                </a><!--end nav link-->
+                            </li><!--end nav item-->
+
+                        </ul><!--end nav pills-->
+                    </div>
+                </div>
+                                                <div class="tab-content" id="pills-tabContent">
+
+                            <div class="tab-pane fade show active" id="pills-dayone" role="tabpanel" aria-labelledby="pills-dayone-tab">
+
                         <div class="row">
+
                                 {% for post in page.object_list %}
 
                             <div class="col-lg-6 col-12 mb-4 pb-2">
 
-                                <div class="card job-box rounded shadow border-0 overflow-hidden">
-                                    <div class="border-bottom">
-                                        <div class="position-relative">
-                                            <img src=" {% static 'images/job/full.jpg' %} " class="img-fluid" alt="">
-                                            <div class="job-overlay bg-white"></div>
-                                        </div>
-                                        {% url 'mission_detail' as index %}
-                                        <h5 class="mb-0 position"><a href="  {% url 'mission_detail' post.id %} " class="text-dark">{{ post.nom }}</a>
-                                            <ul class="list-unstyled h6 mb-0 text-warning">
-                                                <li class="list-inline-item mb-0"><i class="mdi mdi-star"></i></li>                                    
-                                                <li class="list-inline-item mb-0"><i class="mdi mdi-star"></i></li>                                    
-                                                <li class="list-inline-item mb-0"><i class="mdi mdi-star"></i></li>                                    
-                                                <li class="list-inline-item mb-0"><i class="mdi mdi-star"></i></li>                                    
-                                                <li class="list-inline-item mb-0"><i class="mdi mdi-star"></i></li>
-                                            </ul>
-                                        </h5>
+                                                                  <div class="company-list card border-0 rounded shadow bg-white">
+                            <div class="text-center py-5 border-bottom">
+                                <img src="{{post.organisme.photo.url}}" class="avatar avatar-small mx-auto rounded-circle d-block mb-3" alt="">
+                                <a href="page-job-company.html" class="text-dark h5 name">{{ post.nom }}</a>
+                                <p class="text-muted mt-1 mb-0">Date de fin de l offre:{{ post.date_fin }} </p>
+                            </div>
 
-                                        <ul class="list-unstyled head mb-0">
-                                        </ul>
-                                    </div>
-                                    
-                                    <div class="card-body content position-relative">
-
-                                        <div class="firm-logo rounded-circle shadow bg-light text-center">
-                                            <img src="{{post.organisme.photo.url}}"  class="avatar avatar-md-sm" alt="">
-                                        </div>
-                                        <div class="company-detail text-center mt-3">
-                                            <h5 class="mb-0"><a href=" {% url 'mission_detail' post.id %}  " class="text-dark company-name">{{ post.organisme.nom }}</a></h5>
-                                            <p class="text-muted"><a  class="video-play-icon text-muted"><i data-feather="map-pin" class="fea icon-sm"></i>
-                                                {{post.ville}},{{post.pays}}</a></p>
-                                        </div>
-                                        <ul class="job-facts list-unstyled">
-                                            <li class="list-inline-item text-muted"><i data-feather="check" class="fea icon-sm text-success mr-1"></i> Thematique:{{ post.thematique }} </li>
-                                            <li class="list-inline-item text-muted"><i data-feather="check" class="fea icon-sm text-success mr-1"></i> Rémunération:{{ post.remuneration }} </li>
-                                            <li class="list-inline-item text-muted"><i data-feather="check" class="fea icon-sm text-success mr-1"></i> Date de fin de mission:{{ post.date_fin }} </li>
-
-                                        </ul>
-                                        <a href=" {% url 'mission_detail' post.id %} " class="btn btn-outline-primary btn-block">Plus d'information</a>
-                                    </div>
-                                </div>
+                            <div class="p-4">
+                                <h5>Offre Details :</h5>
+                                <ul class="list-unstyled mb-4">
+                                    <li class="h6"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-map-pin fea icon-sm text-warning mr-2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg><span class="text-muted">Emplacement :</span> {{post.ville}},{{post.pays}}</li>
+                                    <li class="h6"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-link fea icon-sm text-warning mr-2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg><span class="text-muted">Organisme :</span> {{ post.organisme.nom }}</li>
+                                    <li class="h6"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-dollar-sign fea icon-sm text-warning mr-2"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg><span class="text-muted">Dédommagements :</span> {{post.remuneration}}</li>
+                                    <li class="h6"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users fea icon-sm text-warning mr-2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg><span class="text-muted">Thématique :</span>
+                                        {{post.thematique}}</li>
+                                </ul>
+                                <a href="{% url 'mission_detail' post.id %}" class="btn btn-block btn-soft-primary">Plus d'information <i data-feather="arrow-right" class="fea icon-sm"></i></a>
+                            </div>
+                        </div>
 
                             </div><!--end col-->
 {% endfor %}
                         </div><!--end row-->
-
                         <div class="row">
                             <!-- PAGINATION START -->
-                                              <div class="col-12">
-                        <ul class="pagination justify-content-center mb-0">
-                                                    {% if page.has_previous %}
 
-                            <li class="page-item"><a class="page-link" href="{% url 'actualite' %}?page={{ page.previous_page_number }}  " aria-label="Previous">Page précédente</a></li>
-                                                 {% endif %}
-                                                    {% if page.has_next %}
-
-                            <li class="page-item"><a class="page-link" href=" {% url 'actualite' %}?page={{ page.next_page_number }} " aria-label="Next">Page suivante</a></li>
-                                                    {% endif %}
-
-                        </ul>
-                    </div><!--end col-->
 
                             <!-- PAGINATION END -->
                         </div><!--end row-->
+
                     </div><!--end col-->
-                </div><!--end row-->
+                                                <div class="tab-pane fade" id="pills-daytwo" role="tabpanel" aria-labelledby="pills-daytwo-tab">
+                                <div class="row">
+                                       <div class="col " id="map">
+                                <div class="component-wrapper rounded shadow">
+                                    <div class="p-4 border-bottom">
+                                        <h4 class="title mb-0"> Google Map </h4>
+                                    </div>
+
+                                    <div class="p-4">
+                                        <div class="map">
+<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d21007.482102847756!2d2.5705465776794467!3d48.84037350567839!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xe643b83e6c217949!2sESIEE%20Paris!5e0!3m2!1sfr!2sma!4v1637272171737!5m2!1sfr!2sma" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>                                    </div>
+                                </div>
+                            </div><!--end col-->
+                                </div><!--end row-->
+                            </div><!--end teb pane-->
+
+                    </div><!--end row-->
             </div><!--end container-->
+            </div>
+                                    </div><!--end col-->
+
         </section><!--end section-->
         <!-- Job List End -->
 
-               {% include 'footer.html' %}
 
 
         <!-- Back to top -->

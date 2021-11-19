@@ -20,14 +20,6 @@ class Enqueteur(models.Model):
         ('1', 'oui'),
         ('2', 'non'),
     )
-    MEDIA_CHOICES5 = (
-        ('1', 'Maison'),
-        ('2', 'Appartement'),
-        ('3', 'Villa'),
-        ('4', 'Lotissement'),
-        ('5', 'Autre'),
-
-    )
     MEDIA_CHOICES4 = (
         ('1', 'Entre 0 et 3'),
         ('2', 'Entre 3 et 6'),
@@ -43,35 +35,41 @@ class Enqueteur(models.Model):
         ('2', 'locataire'),
     )
 
+    class Status(models.IntegerChoices):
+        unchecked = 0
+        verified = 1
+        refused = 2
+
+
     id = models.AutoField(primary_key=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     nom = models.CharField(max_length=20,null=True,blank=True)
     genre = models.CharField(max_length=25, null=True)
-    telephone = models.IntegerField(blank=True, null=True)
+    telephone = models.BigIntegerField(blank=True, null=True)
     email = models.EmailField()
     adresse = models.CharField(max_length=200, blank=True, null=True)
-    latitude = models.DecimalField(max_digits=9, decimal_places=6, null=True)
-    longitude = models.DecimalField(max_digits=9, decimal_places=6, null=True)
-    birth_day = models.DateTimeField(blank=True, null=True)
+    latitude = models.DecimalField(max_digits=9, decimal_places=6, null=True,default=0.1)
+    longitude = models.DecimalField(max_digits=9, decimal_places=6, null=True,default=0.1)
+    birth_day = models.CharField(max_length=200,blank=True, null=True)
     created_at = models.CharField(blank=True, max_length=250)
     ordinateur = models.CharField(max_length=25, choices=MEDIA_CHOICES2, blank=True)
     vehicule = models.CharField(max_length=25, choices=MEDIA_CHOICES2, blank=True)
-    userexpen = models.CharField(max_length=40, blank=True, null=True)
     userexp = models.CharField(max_length=40, blank=True, null=True)
     expmois = models.CharField(max_length=25, choices=MEDIA_CHOICES4, blank=True, null=True)
-    societe = models.CharField(max_length=40, blank=True, null=True)
+    societe = models.CharField(max_length=250, blank=True, null=True)
     lunettes = models.CharField(max_length=25, choices=MEDIA_CHOICES2, blank=True, null=True)
     logement = models.CharField(max_length=40, choices=MEDIA_CHOICES6, blank=True, null=True)
-    habitation = models.CharField(max_length=40, choices=MEDIA_CHOICES5, blank=True, null=True)
+    habitation = models.CharField(max_length=40, blank=True, null=True)
     langues = models.CharField(max_length=40,null=True,blank=True)
-    meilleur = models.CharField(max_length=40, blank=True, null=True)
-    pire = models.CharField(max_length=40, blank=True, null=True)
-    restaurant = models.CharField(max_length=25, choices=MEDIA_CHOICES4, blank=True, null=True)
-    situation = models.CharField(max_length=40, blank=True, null=True)
-    profile_pic = models.FileField(blank=True, null=True)
+    meilleur = models.CharField(max_length=1200, blank=True, null=True)
+    pire = models.CharField(max_length=1200, blank=True, null=True)
+    restaurant = models.CharField(max_length=250, choices=MEDIA_CHOICES4, blank=True, null=True)
+    situation = models.CharField(max_length=400, blank=True, null=True)
+    profile_pic = models.FileField(blank=True,default='static/dist/img/AdminLTELogo.png')
     joindre = models.CharField(max_length=25, choices=MEDIA_CHOICES7, blank=True, null=True)
     enfants = models.CharField(max_length=25, choices=MEDIA_CHOICES4, blank=True, null=True)
     status = models.BooleanField()
+    verification = models.IntegerField(choices=status.choices,default=0)
 
     def __str__(self):
         return self.nom
@@ -92,8 +90,10 @@ class Organisme(models.Model):
 class CreateForms(models.Model):
     id = models.AutoField(primary_key=True)
     nameform = models.CharField(max_length=250, blank=True)
-    coreform = models.CharField(max_length=9000, blank=True)
+    coreform = models.CharField(max_length=900000, blank=True)
     description=models.CharField(max_length=9000, blank=True)
+    breifing=models.FileField(upload_to='media/mission_logo', blank=True)
+
     date_debut = models.DateTimeField(auto_now_add=True)
     date_fin=models.DateTimeField(blank=True,null=True)
 
@@ -160,12 +160,15 @@ class Candidature(models.Model):
         ('0', 'Pending'),
         ('1', 'Accepter'),
         ('2', 'refuser'),
+        ('3', 'new'),
+
     )
     id = models.AutoField(primary_key=True)
     enqueteur_id = models.ForeignKey(Enqueteur, on_delete=models.CASCADE)
     mission_id = models.ForeignKey(Mission, on_delete=models.CASCADE)
-    candidature_status = models.IntegerField(default=0, choices=MEDIA_CHOICES7)
+    candidature_status = models.IntegerField(default=3, choices=MEDIA_CHOICES7)
     motivation = models.CharField(max_length=255,blank=True, null=True)
+    date_visite = models.CharField(max_length=255,blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     objects = models.Manager()
 
@@ -223,7 +226,46 @@ class avergedata(models.Model):
     averges = models.JSONField(max_length=9000,blank=True, null=True)
 
 
+class Remuneration_table(models.Model):
+    MEDIA_CHOICES7 = (
+        ('0', 'En cours'),
+        ('1', 'Payer'),
+        ('2', 'refuser'),
+
+    )
+    id =models.AutoField(primary_key=True)
+    id_survey = models.CharField(max_length=1000,blank=False, null=True)
+    mission_id = models.CharField(max_length=100, blank=True, null=True)
+    enqueteur_id = models.ForeignKey(Enqueteur, on_delete=models.CASCADE)
+    date_envoie= models.CharField(max_length=100 ,blank=True,null=True)
+    status=models.IntegerField(default=0, choices=MEDIA_CHOICES7)
+    remuneration = models.CharField(max_length=100, blank=True, null=True)
+
+
+class Handicap(models.Model):
+    id = models.AutoField(primary_key=True)
+    enqueteur_id = models.ForeignKey(Enqueteur, on_delete=models.CASCADE)
+    data=models.JSONField(max_length=9000, blank=True,null=True)
+
+
 '''' 
+
+    mission_type = models.CharField(default=0, choices=MEDIA_CHOICES7)
+    TYPE_MISSION = [
+        (VISITE, 'Visite_mystére'),
+        (EnqTEl, 'Enquete_tel'),
+        (JUNIOR, 'Junior'),
+        (SENIOR, 'Senior'),
+        (GRADUATE, 'Graduate'),
+    ]
+    
+    
+class remun(models.Model):
+    id = models.AutoField(primary_key=True)
+    enqueteur_id = models.ForeignKey(Enqueteur, on_delete=models.CASCADE)
+    date=models.DateField(blank=True, null=True)
+
+
 class MessageEnqueteurs(models.Model):
     id = models.AutoField(primary_key=True)
     enqueteur_id = models.ForeignKey(Enqueteur, on_delete=models.CASCADE)

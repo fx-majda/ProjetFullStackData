@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+{%load static%}<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>International Telephone Input</title>
+    <link rel="stylesheet" href=" {% static 'build/css/intlTelInput.css' %} ">
+    <link rel="stylesheet" href=" {% static 'build/css/demo.css' %} ">
+</head>
+
+<body>
+  <h1>International Telephone Input</h1>
+  <form>
+   <input id="phone" name="phone" type="tel">
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <script src=" {% static 'build/js/intlTelInput.js' %} "></script>
+
+  <script>
+    var input = document.querySelector("#phone");
+    window.intlTelInput(input, {
+      // allowDropdown: false,
+      // autoHideDialCode: false,
+      // autoPlaceholder: "off",
+      // dropdownContainer: document.body,
+      // excludeCountries: ["ws"],
+      // formatOnDisplay: false,
+        //initialCountry: "auto",
+        geoIpLookup: function(success, failure) {
+        $.get("https://ipinfo.io", function() {}, "jsonp").always(function(resp) {
+            var countryCode = (resp && resp.country) ? resp.country : "";
+            success(countryCode);
+        });
+    },
+       hiddenInput: "full_number",
+      // initialCountry: "auto",
+      // localizedCountries: { 'de': 'Deutschland' },
+      // nationalMode: false,
+      // onlyCountries: ['us', 'gb', 'ch', 'ca', 'do'],
+         placeholderNumberType: "MOBILE",
+       preferredCountries: ['fr', 'ma',],
+      // separateDialCode: true,
+
+      utilsScript: "{% static 'build/js/utils.js' %}",
+
+    });
+  </script>
+
+    <script type="text/javascript">
+     function Populate(){
+    vals = $('input[type="checkbox"]:checked').map(function() {
+        return this.value;
+    }).get().join(',');
+    console.log(vals);
+    $('#tags').val(vals);
+}
+
+$('input[type="checkbox"]').on('change', function() {
+    Populate()
+}).change();
+    });
+
+
+    </script>
+
+
+        <script src=" {% static 'js/jquery-3.5.1.min.js' %} "></script>
+
+</body>
+
+</html>
